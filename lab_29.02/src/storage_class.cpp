@@ -5,6 +5,7 @@ using namespace std;
 storage_class::storage_class() {
     elements = new int[10];
     rozmiar = 10;
+    indeks = 0;
 }
 
 int storage_class::get_size() {
@@ -12,12 +13,11 @@ int storage_class::get_size() {
 }
 
 bool storage_class::save(int n) {
-    if(!is_full())
-        ;
-    else
-    {
+    if(is_full())
         increase_size();
-    }
+
+    indeks++;
+    elements[indeks] = n;
 
 }
 
@@ -28,11 +28,15 @@ bool storage_class::is_full() {
 }
 
 bool storage_class::increase_size() {
-    int *new_elements = new int[rozmiar+1];
+    int nowy_rozmiar = rozmiar + 1;
+
+    int *new_elements = new int[nowy_rozmiar];
     for(int i=0; i < rozmiar; i++) {
         new_elements[i] = elements[i];
     }
-    rozmiar++;
+
     delete elements; // tutaj nie jestem pewien czy nie bedzie wycieku pamieci
+                     // bo nie usuwam new_elements, tylko elements
     elements = new_elements;
+    rozmiar = nowy_rozmiar;
 }
