@@ -3,7 +3,8 @@
 
 class storage_class {
 private:
-    int* elements;
+    int *elements;
+    long long rozmiar;
 public:
     storage_class();
 
@@ -12,6 +13,8 @@ public:
     bool save(int n);
 
     int get_size();
+
+    bool increase_size();
 
 };
 

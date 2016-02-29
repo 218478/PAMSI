@@ -7,6 +7,6 @@ int main() {
 
     storage_class pojemnik;
 
-    cout << pojemnik.get_size() << endl;
+    cout <<  "Rozmiar pojemnika: " << pojemnik.get_size() << " elementy." << endl;
     return 0;
 }

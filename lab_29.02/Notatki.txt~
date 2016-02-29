@@ -11,5 +11,19 @@ Te z gwiazdką na później.
 ___________________________________________________________________________________
 
 zad. 1
-
 Stwórz klasę pozwalającą na przechowywanie dowolnej ilości elementów typu int w tablicy.
+
+zad. 2
+Wykonaj pomiary czasów zapisu do obiektu klasy z punktu 1.
+Dla ilości elementów n = 10^1, 10^3, 10^5, 10^6, 10^9
+
+
+
+Pomiary czasu należy wykonywać z jak największą dokładnością (największa rozdzielczość zegara). Minimum to milisekundy ale fajnie jak było by ich więcej.
+
+
+Zad. domowe:
+- dokończyć
+- sprawozdanie, w którym zawrę jakie czasy udało mi się uzyskać
+- zaimplementowanie innych sposobów alokacji pamięci (czyli nie zwiększać o 1, tylko razy 2)
+- 
