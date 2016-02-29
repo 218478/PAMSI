@@ -11,5 +11,5 @@ obj/main.o: src/main.cpp inc/storage_class.h
 	g++ -c src/main.cpp -o obj/main.o
 
 clean:
-	rm -i obj/*.o a.out
+	rm obj/*.o a.out
 

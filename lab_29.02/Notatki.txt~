@@ -1,0 +1,15 @@
+POLECANA LITERATUR:
+
+"Thinking in C++" B. Eckel
+"Algorytmy i struktury danych" 		Aho, Ullman, Hopcraft
+"Projektowanie i analiza algorytmów" 	---------||----------
+"Wprowadzenie do algorytmów" Corman
+*"Wzorce projektowe" Gamma et al.
+*"Agile Software Development. Design Principles and Patterns" Robert C. Martin
+
+Te z gwiazdką na później.
+___________________________________________________________________________________
+
+zad. 1
+
+Stwórz klasę pozwalającą na przechowywanie dowolnej ilości elementów typu int w tablicy.
