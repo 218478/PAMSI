@@ -5,13 +5,15 @@ using namespace std;
 
 int main() {
 
-    storage_class pojemnik;
+    storage_class container;
 
-    cout <<  "Rozmiar pojemnika: " << pojemnik.get_size() << " elementy." << endl;
+    cout << "Rozmiar pojemnika\t\t" << "Czas programu" << endl;
+
+    cout <<  "\t" << container.get_size() << " elementy." << endl;
     for(int i =0; i < 15; i++)
-        pojemnik.save(i);
+        container.save(i);
 
-    cout <<  "Rozmiar pojemnika po dodaniu: " << pojemnik.get_size() << " elementy." << endl;
+    cout <<  "Rozmiar pojemnika po dodaniu: " << container.get_size() << " elementy." << endl;
 
     return 0;
 }

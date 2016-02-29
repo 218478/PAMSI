@@ -22,13 +22,14 @@ bool storage_class::save(int n) {
 }
 
 bool storage_class::is_full() {
-
-
-    return false;
+    if(rozmiar == indeks+1)
+        return true;
+    else
+        return false;
 }
 
 bool storage_class::increase_size() {
-    int nowy_rozmiar = rozmiar + 1;
+    int nowy_rozmiar = rozmiar + 1; // metoda alokacji pamieci
 
     int *new_elements = new int[nowy_rozmiar];
     for(int i=0; i < rozmiar; i++) {
