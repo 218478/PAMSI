@@ -19,9 +19,9 @@ void storage_class::save(int n) {
             cerr << "Blad alokacji pamieci" << endl;
     }
 
-    indeks++;
+    // Tutaj wazna jest kolejnosc, aby najpierw zapisac, a dopiero potem zmienic indeks
     elements[indeks] = n;
-
+    indeks++;
 }
 
 bool storage_class::is_full() {

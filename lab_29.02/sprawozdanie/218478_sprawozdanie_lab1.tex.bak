@@ -1,4 +1,4 @@
-\documentclass[10pt,a4paper]{report}
+\documentclass[10pt,a4paper]{article}
 \usepackage{polski}					%dodanie polskich literek
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
@@ -13,7 +13,6 @@
 \maketitle
 
 \pagebreak
-\chapter{•}[Nazwa]
 
 \end{document}
 
