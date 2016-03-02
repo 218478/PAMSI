@@ -31,8 +31,15 @@ bool storage_class::is_full() {
         return false;
 }
 
+
+/*
+ * BUG INFO:
+ * Program wydaje sie dodawac przy kazdej alokacji wartosc o jaka zwieksza
+ * rozmiar tablicy dynamicznej (przy komentarzu "//metoda alkoacji pamieci"
+ * Jutro sie tym zajme bo mi sie juz nie chce. Nadal jestem w branchu test.
+*/
 bool storage_class::increase_size() {
-    int nowy_rozmiar = rozmiar+1; // metoda alokacji pamieci
+    int nowy_rozmiar = rozmiar+100; // metoda alokacji pamieci
 
     int *new_elements = new int[nowy_rozmiar];
     for(int i=0; i < rozmiar; i++) {
@@ -45,4 +52,8 @@ bool storage_class::increase_size() {
     rozmiar = nowy_rozmiar;
 
     return true;
+}
+
+int storage_class::get() {
+    return elements[indeks];
 }
