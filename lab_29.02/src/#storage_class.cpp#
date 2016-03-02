@@ -1,5 +1,4 @@
 #include "../inc/storage_class.h"
-#include <iostream>
 
 using namespace std;
 
@@ -13,11 +12,9 @@ int storage_class::get_size() {
     return rozmiar;
 }
 
-void storage_class::save(int n) {
-    if(is_full()) {
-        if(!increase_size())
-            cerr << "Blad alokacji pamieci" << endl;
-    }
+bool storage_class::save(int n) {
+    if(is_full())
+        increase_size();
 
     indeks++;
     elements[indeks] = n;
@@ -32,7 +29,7 @@ bool storage_class::is_full() {
 }
 
 bool storage_class::increase_size() {
-    int nowy_rozmiar = rozmiar+1; // metoda alokacji pamieci
+    int nowy_rozmiar = rozmiar + 1; // metoda alokacji pamieci
 
     int *new_elements = new int[nowy_rozmiar];
     for(int i=0; i < rozmiar; i++) {
@@ -43,6 +40,4 @@ bool storage_class::increase_size() {
                      // bo nie usuwam new_elements, tylko elements
     elements = new_elements;
     rozmiar = nowy_rozmiar;
-
-    return true;
 }
