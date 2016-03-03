@@ -9,9 +9,9 @@ storage_class::storage_class() {
     indeks = 0;
 }
 
-int storage_class::get_size() {
-    return rozmiar;
-}
+storage_class::~storage_class() { delete elements; }
+
+unsigned int storage_class::get_size() { return rozmiar; }
 
 void storage_class::save(int n) {
     if(is_full()) {
@@ -25,7 +25,7 @@ void storage_class::save(int n) {
 }
 
 bool storage_class::is_full() {
-    if(rozmiar == indeks+1)
+    if(rozmiar == (indeks+1) )
         return true;
     else
         return false;
@@ -33,16 +33,16 @@ bool storage_class::is_full() {
 
 
 /*
- * BUG INFO:
- * Program wydaje sie dodawac przy kazdej alokacji wartosc o jaka zwieksza
- * rozmiar tablicy dynamicznej (przy komentarzu "//metoda alkoacji pamieci"
- * Jutro sie tym zajme bo mi sie juz nie chce. Nadal jestem w branchu test.
-*/
+ * W momencie alokacji podwojnej program wpieprza
+ * <orkiestra tusz> 3 GB ramu
+ * To na pewno trzeba przerobic
+ */
+
 bool storage_class::increase_size() {
-    int nowy_rozmiar = rozmiar+100; // metoda alokacji pamieci
+    unsigned int nowy_rozmiar = rozmiar*2; // metoda alokacji pamieci
 
     int *new_elements = new int[nowy_rozmiar];
-    for(int i=0; i < rozmiar; i++) {
+    for(unsigned int i=0; i < rozmiar; i++) {
         new_elements[i] = elements[i];
     }
 
@@ -54,6 +54,7 @@ bool storage_class::increase_size() {
     return true;
 }
 
-int storage_class::get() {
-    return elements[indeks];
-}
+/*
+ * Napisana w celu debuggowania programu
+ */
+int storage_class::get() { return elements[indeks]; }

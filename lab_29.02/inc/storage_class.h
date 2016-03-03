@@ -4,16 +4,18 @@
 class storage_class {
 private:
     int *elements;
-    int rozmiar;
-    int indeks; // zmienna, ktora przechowuje w pamieci indeks ostatniego elementu
+    unsigned int rozmiar;
+    unsigned int indeks; // zmienna, ktora przechowuje w pamieci indeks ostatniego elementu
 public:
     storage_class();
+
+    ~storage_class();
 
     bool is_full();
 
     void save(int n);
 
-    int get_size();
+    unsigned int get_size();
 
     bool increase_size();
 
