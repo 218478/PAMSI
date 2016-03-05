@@ -7,7 +7,7 @@
 
 using namespace std;
 
-void HowManyToSave(int n);
+void HowManyToSave(unsigned int n);
 
 int main() {
 
@@ -17,7 +17,7 @@ int main() {
     cout << endl << endl;
 
     cout << "Rozmiar pojemnika" << setw(30) << "Czas programu" << endl;
-    HowManyToSave(10);          // dziesiec     10
+    HowManyToSave(20);          // dziesiec     10
     HowManyToSave(1000);        // tysiac       1000
     HowManyToSave(100000);      // sto tysiecy  100 000
     HowManyToSave(1000000);     // milion       1 000 000
@@ -28,12 +28,14 @@ int main() {
 }
 
 
-void HowManyToSave(int n) {
+void HowManyToSave(unsigned int n) {
     storage_class container;
 
     clock_t start = clock();
-    for(int i = 0; i < (n); i++)
+    for(unsigned int i = 0; i < (n-1); i++) {
         container.save(i%1000);
+        container.get(); }
+
     clock_t end = clock();
 
     float elapsed_time = float(end - start)/CLOCKS_PER_SEC*100000;

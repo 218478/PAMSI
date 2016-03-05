@@ -1,5 +1,6 @@
 #include "../inc/storage_class.h"
 #include <iostream>
+#include <cstring>
 
 using namespace std;
 
@@ -9,23 +10,23 @@ storage_class::storage_class() {
     indeks = 0;
 }
 
-storage_class::~storage_class() { delete elements; }
+storage_class::~storage_class() { delete [] elements; }
 
 unsigned int storage_class::get_size() { return rozmiar; }
 
 void storage_class::save(int n) {
     if(is_full()) {
-        if(!increase_size())
-            cerr << "Blad alokacji pamieci" << endl;
+//        if(!increase_size())
+//            cerr << "Blad alokacji pamieci" << endl;
+        increase_size();
     }
 
     // Tutaj wazna jest kolejnosc, aby najpierw zapisac, a dopiero potem zmienic indeks
-    elements[indeks] = n;
-    indeks++;
+    elements[indeks++] = n;
 }
 
 bool storage_class::is_full() {
-    if(rozmiar == (indeks+1) )
+    if(rozmiar <= indeks )
         return true;
     else
         return false;
@@ -35,21 +36,24 @@ bool storage_class::is_full() {
 /*
  * W momencie alokacji podwojnej program wpieprza
  * <orkiestra tusz> 3 GB ramu
- * To na pewno trzeba przerobic
+ * Ale blad jest tez gdzies indziej.
  */
 
 bool storage_class::increase_size() {
-    unsigned int nowy_rozmiar = rozmiar*2; // metoda alokacji pamieci
+    unsigned int nowy_rozmiar = rozmiar*3; // metoda alokacji pamieci
 
     int *new_elements = new int[nowy_rozmiar];
-    for(unsigned int i=0; i < rozmiar; i++) {
-        new_elements[i] = elements[i];
-    }
 
-    delete elements; // tutaj nie jestem pewien czy nie bedzie wycieku pamieci
-                     // bo nie usuwam new_elements, tylko elements
-    elements = new_elements;
+//    for(unsigned int i=0; i < rozmiar; i++) {
+//        new_elements[i] = elements[i];
+//    }
+
+    copy(elements,elements+indeks,new_elements);
+    // zasugerowany sposob ze http://stackoverflow.com/questions/1350630/how-to-expand-an-array-dynamically-in-c-like-in-vector
+
     rozmiar = nowy_rozmiar;
+    delete [] elements;
+    elements = new_elements;
 
     return true;
 }
