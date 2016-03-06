@@ -5,7 +5,7 @@ __start__: program
 	./program
 
 program: obj obj/main.o obj/pojemnik.o
-	g++ obj/main.o -o program
+	g++ obj/main.o obj/pojemnik.o -o program
 
 obj:
 	mkdir obj
@@ -20,7 +20,7 @@ clean:
 	rm -f obj/* program
 
 order:
-	rm -f src/*~ inc/*~ *~
+	rm -f src/*~ inc/*~ *~ src/#* inc/#*
 
 help:
 	@echo

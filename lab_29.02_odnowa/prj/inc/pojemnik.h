@@ -5,12 +5,12 @@
 #include <iostream> // dla wyswietlenia bledu
 
 class pojemnik  {
+ private:
   int *elementy;
-  unsigned int rozmiar;
-  unsigned int indeks;
+  unsigned long rozmiar;
+  unsigned long indeks;
 
  public:
-
   pojemnik(int x=10);
 
   ~pojemnik();
@@ -21,9 +21,10 @@ class pojemnik  {
   
   int zwieksz_rozmiar();
   
-  int zwroc_rozmiar();
+  unsigned long zwroc_rozmiar();
 
-
+  // w celu debuggowania
+  void wypisz();
 };
 
 #endif

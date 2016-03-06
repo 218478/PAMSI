@@ -7,10 +7,10 @@ pojemnik::pojemnik(int x) {
   indeks = 0;
 }
 
-pojemnik::~pojemnik() { delete [] elementy; }
+pojemnik::~pojemnik() { delete [] elementy; rozmiar = indeks = 0; }
 
 bool pojemnik::czy_pelne() {
-  if(indeks >= (rozmiar-1) )
+  if(indeks >= (rozmiar) )
     return true;
   else
     return false;
@@ -24,11 +24,11 @@ void pojemnik::zapisz(int dana) {
 }
  
 int pojemnik::zwieksz_rozmiar() {
-  int nowy_rozmiar = rozmiar + 1;
+  long nowy_rozmiar = rozmiar +rozmiar*0.5;
   try {
     int *nowe_elementy = new int[nowy_rozmiar];
 
-    for(unsigned int i=0; i < rozmiar; i++)
+    for(unsigned long i=0; i < rozmiar; i++)
       nowe_elementy[i] = elementy[i];
 
     delete [] elementy;
@@ -44,8 +44,12 @@ int pojemnik::zwieksz_rozmiar() {
 
 }
 
-int pojemnik::zwroc_rozmiar() {
-  return rozmiar;
-}
+unsigned long pojemnik::zwroc_rozmiar() { return rozmiar; }
     
+
+void pojemnik::wypisz() {
+  std::cout << "Indeks: " << indeks << "    Rozmiar: " << rozmiar << "\n\n";
+  for(unsigned int i=0; i < rozmiar; i++)
+    std::cout << elementy[i] << std::endl;
+}
 
