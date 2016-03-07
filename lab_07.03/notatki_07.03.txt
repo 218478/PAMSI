@@ -1,0 +1,66 @@
+Nie kompilowała mi się alokacja bo nie włączyłem swapa.
+
+Metoda programowania abstrakcyjnymi kalsami to "design by contract"
+
+Aby dobrze zrobić te klasy modemu (dla różnych modemów) trzeba zrobić interfejs. Te modemy wprowadzą implementację tego interfejsu.
+
+Interfejs ---> IModem
+Metody ----> reset(); call(); hangup();
+
+Modem1 i Modem2 implementuje IModem
+
+
+Dobra, teraz śmigamy interfejs IStoper:
+
+__________________________________________________
+
+IStoper
+-------
+start()
+stop()
+getElapsedTime()
+dumpToFile()
+
+________________________________________________
+
+Ale to jest dupne, bo brakuje typów.
+
+
+___________________________________
+
+ISędzia
+---------
+
+
+_________________________________
+
+
+______________________________________
+IRunnable
+----------
+bool prepare(int size)  // żeby nie tracić czasu na wypełnianie talibcy, tylko będziemy mierzyć sam
+			// czas run
+bool run()
+
+
+_________________________________________
+on musi informować, że dobiegł
+on musi być widzialny
+
+
+
+
+
+
+Separation from concepts ~ Robert C. Martin
+
+
+_____________________
+Zadanie domowe
+
+1. Przeprojektować to co mam na projekt, który ustaliliśmy zadania.
+2. Znowu wykonaj pomiary dla tablicy dynaminczej, przynajmniej dziesięciokrotnie i zaznacz na wykresie. 
+3. Przeczytać o abstrakcyjnych typach danych, w szczególności dla listy, kolejki i stosu.
+
+
+*Spróbuj coś ze złożonością obliczeniową zawrzeć tym razem w sprawku
