@@ -1,7 +1,10 @@
-#ifndef ISTOPER_H
-#define ISTOPER_H
+#ifndef STOPER_H
+#define STOPER_H
 
 #include "IStoper.h"
+
+#include <ctime>   // to deal with time operations
+#include <fstream> // to deal with file streams
 
 class Stoper: IStoper {
 private:

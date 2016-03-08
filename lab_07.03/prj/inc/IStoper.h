@@ -1,9 +1,6 @@
 #ifndef ISTOPER_H
 #define ISTOPER_H
 
-#include <ctime>   // to deal with time operations
-#include <fstream> // to deal with file streams
-
 class IStoper {
  public:
   virtual void start()=0;
