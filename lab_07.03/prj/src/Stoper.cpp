@@ -11,7 +11,7 @@ void Stoper::stop() {
 }
 
 double Stoper::getElapsedTime() {
-  return static_cast<double>(_stop-_start)/CLOCKS_PER_SEC;
+  return static_cast<double>(_stop-_start) / CLOCKS_PER_SEC;
 }
 
 void Stoper::dumpToFile() {

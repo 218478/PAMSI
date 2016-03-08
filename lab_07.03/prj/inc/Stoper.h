@@ -18,8 +18,6 @@ public:
   virtual double getElapsedTime();
 
   virtual void dumpToFile();
-
-
 };
 
 #endif

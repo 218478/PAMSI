@@ -8,14 +8,24 @@
 
 class Tablica: IRunnable  {
  private:
-  int *elementy;
-  unsigned int rozmiar;
-  unsigned int indeks;
+  int *elements;
+  unsigned int current_size, desired_size, index;
+  
+
+  bool isFull();
 
  public:
   Tablica(int x=10);
 
   ~Tablica();
+
+  virtual void prepare (unsigned int size);
+
+  virtual void run();
+
+  unsigned int getSize();
+ 
+  void increaseSize();
 
 };
 

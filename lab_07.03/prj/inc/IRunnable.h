@@ -3,9 +3,9 @@
 
 class IRunnable {
 
-  virtual bool prepare (unsigned int size)=0;
+  virtual void prepare (unsigned int size)=0;
 
-  virtual bool run()=0;
+  virtual void run()=0;
 
 };
 

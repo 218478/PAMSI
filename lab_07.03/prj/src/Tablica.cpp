@@ -1,55 +1,41 @@
 #include "Tablica.h"
 
+//#include <iostream>
 
-Tablica::Tablica(int x) {
-  elementy = new int[x];
-  rozmiar = x;
-  indeks = 0;
+Tablica::Tablica(int x) { elements = new int[1]; current_size = x; }
+
+Tablica::~Tablica() { delete [] elements; }
+
+void Tablica::prepare (unsigned int size) { desired_size = size; }
+
+void Tablica::run() {
+  while(index < desired_size) {
+    if(isFull())
+      increaseSize();
+    else
+      elements[index++] = 123;
+  }
 }
 
-Tablica::~Tablica() { delete [] elementy; rozmiar = indeks = 0; }
+bool Tablica::isFull() { return (index >= (current_size)) ? true : false; }
 
-// bool Tablica::czy_pelne() {
-//   if(indeks >= (rozmiar) )
-//     return true;
-//   else
-//     return false;
-// }
+unsigned int Tablica::getSize() { return current_size; }
 
-// void Tablica::zapisz(int dana) {
-//   if( czy_pelne() )
-//     zwieksz_rozmiar();
+void Tablica::increaseSize() {
+  unsigned int new_size = current_size * 2;
+  try {
+    int *new_elements = new int[new_size];
+    for(unsigned int i=0; i < current_size; i++)
+      new_elements[i] = elements[i];
 
-//   elementy[indeks++] = dana;
-// }
+    delete [] elements;
+    current_size = new_size;
+    elements = new_elements;
+  }
+  catch (std::bad_alloc& ex) {
+    std::cerr << ex.what() << std::endl;
+  }
+
+}
+
  
-// int Tablica::zwieksz_rozmiar() {
-//   long nowy_rozmiar = rozmiar +rozmiar*0.5;
-//   try {
-//     int *nowe_elementy = new int[nowy_rozmiar];
-
-//     for(unsigned long i=0; i < rozmiar; i++)
-//       nowe_elementy[i] = elementy[i];
-
-//     delete [] elementy;
-//     rozmiar = nowy_rozmiar;
-//     elementy=nowe_elementy;
-
-//     return 0;
-//   }
-//   catch (std::bad_alloc& ex) {
-//     std::cerr << ex.what() << std::endl;
-//     return -1;
-//   }
-
-// }
-
-// unsigned long Tablica::zwroc_rozmiar() { return rozmiar; }
-    
-
-// void Tablica::wypisz() {
-//   std::cout << "Indeks: " << indeks << "    Rozmiar: " << rozmiar << "\n\n";
-//   for(unsigned int i=0; i < rozmiar; i++)
-//     std::cout << elementy[i] << std::endl;
-// }
-

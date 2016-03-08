@@ -4,7 +4,7 @@ COMPILER = g++
 __start__: program
 	./program
 
-program: obj obj/main.o obj/Stoper.o obj/Tablica.o obj/Sedzia.o 
+program: obj obj/main.o obj/Stoper.o obj/Tablica.o obj/Sedzia.o inc/Sedzia.h
 	g++ obj/main.o obj/Stoper.o obj/Tablica.o obj/Sedzia.o -o program
 
 obj:

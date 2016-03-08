@@ -1,18 +1,20 @@
 #include <iostream>
 #include <ctime>
 #include <iomanip>
-#include "IRunnable.h"
+#include "Sedzia.h"
 
 using namespace std;
 
 void zapiszDoPojemnika(unsigned long ilosc);
 
 int main(int argc, char **argv) {
-  // dziesiec, tysiac, sto tysiecy, milion, milard
-  //  unsigned int rozmiary_danych [5]= {10,1000,100000,1000000,1000000000};
+  //dziesiec, tysiac, sto tysiecy, milion, milard
+  // unsigned int data_sizes [5]= {10,1000,100000,1000000,1000000000};
 
+  Sedzia referee;
 
-
+  referee.setOff(2000);
+  
   for(int i = 0; i < 5; i++)
     ;// zapiszDoPojemnika(rozmiary_danych[i]);
 }
