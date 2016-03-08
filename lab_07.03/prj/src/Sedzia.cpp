@@ -1,6 +1,5 @@
 #include "Sedzia.h"
 
-
 bool Sedzia::setOff(unsigned int how_many) {
 
   Stoper timer;
@@ -10,11 +9,10 @@ bool Sedzia::setOff(unsigned int how_many) {
   timer.start();
   array.run();
   timer.stop();
-
-  //  array.printAllElements();
+  timer.dumpToFile();
 
   std::cout << std::setw(15) << array.getSize() << " el."
-	    << std::setw(20) << timer.getElapsedTime()*1000 << " ms" << std::endl;
+	    << std::setw(20) << timer.getElapsedTime() << " ms" << std::endl;
 
   return true;
 }
