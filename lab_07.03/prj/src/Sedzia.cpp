@@ -11,8 +11,10 @@ bool Sedzia::setOff(unsigned int how_many) {
   array.run();
   timer.stop();
 
+  //  array.printAllElements();
+
   std::cout << std::setw(15) << array.getSize() << " el."
-	    << std::setw(20) << timer.getElapsedTime()/100.0 << " ms" << std::endl;
+	    << std::setw(20) << timer.getElapsedTime()*1000 << " ms" << std::endl;
 
   return true;
 }

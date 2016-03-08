@@ -9,14 +9,11 @@ void zapiszDoPojemnika(unsigned long ilosc);
 
 int main(int argc, char **argv) {
   //dziesiec, tysiac, sto tysiecy, milion, milard
-  // unsigned int data_sizes [5]= {10,1000,100000,1000000,1000000000};
+  unsigned int data_sizes [5]= {10,1000,100000,1000000,1000000000};
 
   Sedzia referee;
-
-  referee.setOff(2000);
-  
   for(int i = 0; i < 5; i++)
-    ;// zapiszDoPojemnika(rozmiary_danych[i]);
+    referee.setOff(data_sizes[i]);// zapiszDoPojemnika(rozmiary_danych[i]);
 }
 
 /*void zapiszDoPojemnika(unsigned long ilosc) {

@@ -13,6 +13,7 @@ class Tablica: IRunnable  {
   
 
   bool isFull();
+  void increaseSize();
 
  public:
   Tablica(int x=10);
@@ -24,8 +25,8 @@ class Tablica: IRunnable  {
   virtual void run();
 
   unsigned int getSize();
- 
-  void increaseSize();
+
+  void printAllElements();
 
 };
 

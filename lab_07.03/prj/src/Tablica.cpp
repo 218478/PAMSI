@@ -2,7 +2,7 @@
 
 //#include <iostream>
 
-Tablica::Tablica(int x) { elements = new int[1]; current_size = x; }
+Tablica::Tablica(int x) { elements = new int[x]; current_size = x; index = 0; }
 
 Tablica::~Tablica() { delete [] elements; }
 
@@ -12,12 +12,18 @@ void Tablica::run() {
   while(index < desired_size) {
     if(isFull())
       increaseSize();
-    else
-      elements[index++] = 123;
+
+    elements[index++] = 123;
   }
 }
 
-bool Tablica::isFull() { return (index >= (current_size)) ? true : false; }
+// for debug
+void Tablica::printAllElements() {
+  for(unsigned int i=0; i < current_size; i++)
+    std::cout << elements[i] << std::endl;
+}
+
+bool Tablica::isFull() { return ((index >= (current_size)) ? true : false); }
 
 unsigned int Tablica::getSize() { return current_size; }
 
