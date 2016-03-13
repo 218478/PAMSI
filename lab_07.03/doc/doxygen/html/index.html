@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Pomiar czasu dynamicznej alokacji pamięci: Main Page</title>
+<title>Pomiar czasu dynamicznej alokacji pamięci: Opis programu</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -63,7 +63,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -74,13 +74,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div class="header">
   <div class="headertitle">
-<div class="title">Pomiar czasu dynamicznej alokacji pamięci Documentation</div>  </div>
+<div class="title">Opis programu </div>  </div>
 </div><!--header-->
 <div class="contents">
-</div><!-- contents -->
+<div class="textblock"><dl class="section author"><dt>Author</dt><dd>Kamil Kuczaj <a href="#" onclick="location.href='mai'+'lto:'+'218'+'47'+'8@s'+'tu'+'den'+'t.'+'pwr'+'.e'+'du.'+'pl'; return false;">21847<span style="display: none;">.nosp@m.</span>8@st<span style="display: none;">.nosp@m.</span>udent<span style="display: none;">.nosp@m.</span>.pwr<span style="display: none;">.nosp@m.</span>.edu.<span style="display: none;">.nosp@m.</span>pl</a></dd></dl>
+<h1><a class="anchor" id="intro_sec"></a>
+Wstep</h1>
+<p>Program zostal zbudowany modulowo. W folderze inc/ znajduja sie pliki naglowkowe. Folder src/ zawiera pliki zrodlowe. W glownym folderze zbudowany zostal Makefile. Pliki obiektowe sa budowane w folderze obj/ a nastepnie linkowane do glownego folderu (prj/). Testowano przy wykorzystaniu kompilatora g++ w wersji 4.8.4 na systemie Linux Ubuntu 14.04.04 opartego o jądro 4.2.0-30-generic.</p>
+<h1><a class="anchor" id="Licencja"></a>
+Licencja</h1>
+<p>Program udostepniam na licencji GPLv3.</p>
+<h1><a class="anchor" id="install_sec"></a>
+Instalacja</h1>
+<p>Aby zbudowac i jednoczesnie odpalic program: $ make</p>
+<p>Aby pozbyc sie plikow z koncowka *~ lub zaczynajacych sie na #*: $ make order</p>
+<p>Aby pozbyc sie programu wykonywalnego oraz plikow obiektowych: $ make clean</p>
+<p>Aby wyswietlic pomoc do pliku Makefile: $ make help </p>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Mar 13 2016 20:32:17 for Pomiar czasu dynamicznej alokacji pamięci by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Mar 13 2016 20:47:33 for Pomiar czasu dynamicznej alokacji pamięci by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

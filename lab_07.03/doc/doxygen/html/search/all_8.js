@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['run',['run',['../class_i_runnable.html#a6566fc2aa9fb5a7136f960172cee918d',1,'IRunnable::run()'],['../class_tablica.html#a28b44f3a54a592827ab50c65c27d9a83',1,'Tablica::run()']]]
+  ['prepare',['prepare',['../class_i_runnable.html#ac4d20dee4cb12c42eeed8698e839ddaf',1,'IRunnable::prepare()'],['../class_tablica.html#a3869f7d75092c9c4ad9d3036285cc6e2',1,'Tablica::prepare()']]]
 ];

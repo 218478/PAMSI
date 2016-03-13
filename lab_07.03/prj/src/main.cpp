@@ -5,23 +5,23 @@
 
 using namespace std;
 
-/*! \file main.cpp
+/*! \mainpage Opis programu
  *
  * \author Kamil Kuczaj <218478@student.pwr.edu.pl>
  *
- * \date 
- *
- * \section LICENCJA
- *
- * Program udostepniam na licencji GPLv3.
- *
- * \section OPIS
+ * \section intro_sec Wstep
  *
  * Program zostal zbudowany modulowo. W folderze inc/ znajduja sie pliki naglowkowe.
  * Folder src/ zawiera pliki zrodlowe. W glownym folderze zbudowany zostal Makefile.
  * Pliki obiektowe sa budowane w folderze obj/ a nastepnie linkowane do glownego
  * folderu (prj/). Testowano przy wykorzystaniu kompilatora g++ w wersji 4.8.4 na
  * systemie Linux Ubuntu 14.04.04 opartego o jądro 4.2.0-30-generic.
+ *
+ * \section Licencja
+ *
+ * Program udostepniam na licencji GPLv3.
+ *
+ * \section install_sec Instalacja
  *
  * Aby zbudowac i jednoczesnie odpalic program:
  * $ make
