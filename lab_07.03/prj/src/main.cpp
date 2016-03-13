@@ -38,7 +38,7 @@ using namespace std;
 
 int main(int argc, char **argv) {
   //dziesiec, tysiac, sto tysiecy, milion, milard
-  unsigned int data_sizes [1]= {/*10,1000,*/100000/*,1000000,1000000000*/};
+  unsigned int data_sizes [1]= {/*10,1000,100000,1000000,*/1000000000};
   int trial_count = 50; // ile razy nalezy zapisac dane
 
   Sedzia referee;
