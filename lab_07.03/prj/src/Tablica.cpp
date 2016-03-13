@@ -1,7 +1,5 @@
 #include "Tablica.h"
 
-//#include <iostream>
-
 Tablica::Tablica(int x) { elements = new int[x]; current_size = x; index = 0; }
 
 Tablica::~Tablica() { delete [] elements; }
@@ -15,12 +13,6 @@ void Tablica::run() {
 
     elements[index++] = 123;
   }
-}
-
-// for debug
-void Tablica::printAllElements() {
-  for(unsigned int i=0; i < current_size; i++)
-    std::cout << elements[i] << std::endl;
 }
 
 bool Tablica::isFull() { return ((index >= (current_size)) ? true : false); }
@@ -38,6 +30,7 @@ void Tablica::increaseSize() {
     current_size = new_size;
     elements = new_elements;
   }
+  // jezeli nie uda sie przypisac pamieci
   catch (std::bad_alloc& ex) {
     std::cerr << ex.what() << std::endl;
   }

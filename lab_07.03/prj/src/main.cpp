@@ -5,31 +5,44 @@
 
 using namespace std;
 
-void zapiszDoPojemnika(unsigned long ilosc);
+/*! \file main.cpp
+ *
+ * \author Kamil Kuczaj <218478@student.pwr.edu.pl>
+ *
+ * \date 
+ *
+ * \section LICENCJA
+ *
+ * Program udostepniam na licencji GPLv3.
+ *
+ * \section OPIS
+ *
+ * Program zostal zbudowany modulowo. W folderze inc/ znajduja sie pliki naglowkowe.
+ * Folder src/ zawiera pliki zrodlowe. W glownym folderze zbudowany zostal Makefile.
+ * Pliki obiektowe sa budowane w folderze obj/ a nastepnie linkowane do glownego
+ * folderu (prj/). Testowano przy wykorzystaniu kompilatora g++ w wersji 4.8.4 na
+ * systemie Linux Ubuntu 14.04.04 opartego o jądro 4.2.0-30-generic.
+ *
+ * Aby zbudowac i jednoczesnie odpalic program:
+ * $ make
+ *
+ * Aby pozbyc sie plikow z koncowka *~ lub zaczynajacych sie na #*:
+ * $ make order
+ *
+ * Aby pozbyc sie programu wykonywalnego oraz plikow obiektowych:
+ * $ make clean
+ *
+ * Aby wyswietlic pomoc do pliku Makefile:
+ * $ make help
+ */
 
 int main(int argc, char **argv) {
   //dziesiec, tysiac, sto tysiecy, milion, milard
-  unsigned int data_sizes [1]= {/*10,*/1000/*,100000,1000000,1000000000*/};
-  int trial_count = 50;
+  unsigned int data_sizes [1]= {/*10,1000,*/100000/*,1000000,1000000000*/};
+  int trial_count = 50; // ile razy nalezy zapisac dane
 
   Sedzia referee;
   for(int i = 0; i < trial_count; i++)
-    referee.setOff(data_sizes[0]);// zapiszDoPojemnika(rozmiary_danych[i]);
+    referee.setOff(data_sizes[0]);
 }
 
-/*void zapiszDoPojemnika(unsigned long ilosc) {
-  IRunnable kontener;
-
-  clock_t start = clock();
-  for(unsigned long i=0; i < ilosc; i++) {
-    kontener.zapisz(123);
-  }
-
-  //  kontener.wypisz();
-
-  clock_t koniec = clock();
-  float czas = float(koniec - start)/CLOCKS_PER_SEC*100000;
-  cout << setw(15) << kontener.zwroc_rozmiar() << " el."
-       << setw(20) << czas/100.0 << " ms" << endl;
-}
-*/

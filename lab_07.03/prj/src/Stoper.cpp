@@ -28,11 +28,3 @@ void Stoper::dumpToFile() {
   }
   my_file.close();
 }
-
-Stoper::Stoper() {
-
-}
-
-Stoper::~Stoper() {
-
-}
