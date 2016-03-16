@@ -1,0 +1,61 @@
+Konsy C-16 p.P1.2 piątek 11-13				Laboratorium 3
+
+Abstrakcyjne typy danych: lista, stos i kolejka.
+
+***Notka odnośnie zadania***********************************************************************************************************************
+
+Jakiekolwiek nie jasności=pytania na zajęciach!
+(nie ma głupich pytań, są tylko głupie odpowiedzi)
+
+
+************************************************************************************************************************************************
+ADT- jasno określone przez programiste operacje jakie mogą być wykonywane przez te funkcja oraz dane jakie moga być przechowywane. Będą implementowane w plikach .h , bedziemy patrzeć żeby metody były zdefiniowane w jakiś plikach i zwracały oczekiwane przez nas wartości.
+ADT realizuje abstrakcje potrzebną do zdefniniowania pewnych typów danych. ADT określa które metody są ubliczne, a które prywatne.
+
+Lista-ADD(Item,Index),Remove(Index),IsEmpty(), get(Index),SIZE()
+add-dodaje metody(jakis element ktory ma byc na niej umieszczony, index to pozycja na jaki ma przyjac element),
+remove-zdejmuje elementy z okrelsonego indexu,
+IsEmpty- sprawdza czy lista jest pusta,
+get-pobiera element z listy,
+SIZE-podaje informacje o aktualnej ilości elementów;
+-------------------Zabezpieczenia przeciwko:----------------------------
+- zdejmowaniu z pustej listy(odczytac)/przekroczenie rozmiaru tablicy  |
+- wczytaniu zlego typu danych					       |
+- usuniecie nie instniejacego elementu				       |
+- chęć modyfikacji naszej listy					       |
+- układanie elementów na zajęty index				       |
+------------------------------------------------------------------------
+Możemy podać przy definicji listy typ danych jaki ma przyjmować. W przypadku usuniecia nieistniejacego elementu , metoda remove może zwrócić Exception(wyjątki, funkcja throw). 
+Mamy napisac sobie interfejs tej listy. Dopiero potem zacząć ten interfejs implementować, następnie napisać klase która implementuje interfejs IRunnable. Ma byc klasa lista i jakas klasa w ktorej mierzymy czas.
+Interfejs listy, interfejs stosu, interfejs kolejki na zajęciach. 
+W domu mamy za zadanie udokumentować te 3 struktury w taki sposób , żeby dało się to przetrawić doxygenem i wygenerować dokumentacje w PDF z tego. dokumentacje w doxygenie będziemy generować po każdych zajęciach.
+W ramach zadania domowego mamy też zbadać czas przeszukiwania listy. Mamy budowac w jakis losowy sposób ta liste(słowa maja się nie pokrywac). Celem jest pokazanie zlozonosci wykonywania na liscie, mamy pokazac ze to trwa iles tam czasu. Tekst w liscie za kazdym razem ma byc inny. 
+Find(Item)-jesli zostal znaleziony to zwraca index  jesli nie to -1. Pakujemy go do implementacji list, nie do ADT. 
+Na nastepne zajecia implementacja listy kolejki i stosu oraz mierzenie czasu dla przeszukiwania w samej liscie o rozmiarze 10,1000,10000 itp oraz dokumentacje. Operacje wypelniania tych list maja byc poza stoperem. Zamiast losowac X elementow mozemy losowac słowo którego szukamy. To nam przyspieszy prace. 
+
+
+Za tydzień będą zajęcia w których koeldzy wezmą nasz kod i dokumentację i będziemy na nich pracować.
+
+
+Interfejs z meirzeniem czsu ma na celu niezmiennosc funkcji main(przy mierzeniu tych interfejsow), wiec wszystkie klasy ktore chca cos zmierzyc itp odpalaja nam ten interfejs. W przypadku listy umiscimy cos co przeszukuje. Idea jest taka , zeby nie zmieniac kodu ktory juz istnieje i dziala, ale zeby dopisywac koeljne linijki kodu i pliki, ktore maja uzupelniac funkcje naszego programu. Unikniemy w ten spsoob zbednego poprawiania bledów. Ten program jest rozszerzeniem wczesniejszego projektu , lecz napisanie go nie ma zadnego wplywu na niego wiec go nie ruszamy.
+
+Zaimplementowac klase IRunnable ktora wykona nam przeszukanie listy. Wczensiej uzupelniala tablice.
+
+
+
+
+
+
+
+
+
+
+
+
+************************************************************************************************************************************************
+
+
+
+
+
+
