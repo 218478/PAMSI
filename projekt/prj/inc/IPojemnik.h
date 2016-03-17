@@ -3,7 +3,7 @@
 
 /*! \file IPojemnik.h
  *
- * \brief Plik zawiera interfejs dla każdego pojemnika..
+ * \brief Plik zawiera interfejs dla pojemnika Stos, Kolejka oraz Tablica.
  *
  * \details Wskutek zastosowania szablonow wszystkie definicje musza znajdowac
  *          sie w pliku naglowkowym, a nie zrodlowym.
@@ -44,6 +44,8 @@ template <class Type> class Pojemnik {
    * \param[in] index   Indeks,z ktorego ma zostac usunieta dana.
    */
   virtual Type push(uint index);
+
+  /*!
   virtual bool empty();
   virtual Type pop(uint index);
   virtual uint size();
