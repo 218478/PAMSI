@@ -1,7 +1,8 @@
+#include "Sedzia.h"
+
 #include <iostream>
 #include <ctime>
 #include <iomanip>
-#include "Sedzia.h"
 
 using namespace std;
 

@@ -13,32 +13,38 @@
  * \author Kamil Kuczaj
  */
 
+/*! \brief Skraca zapis.
+ *
+ * \details Zdefiniowanie wlasnego typu - pozwala na krotszy zapis
+ */
+typedef unsigned int uint;
+
 /*! \brief Klasa tablica, w ktorej odbywa sie zapis dynamiczny elementow typu int.
  *
  * \details Implementuje metody interfejsu IRunnable. Zajmuje sie dynamiczna
  *          alokacja pamieci.
  */
-class Tablica: IRunnable  {
+template <class Type> class Tablica: IRunnable  {
  private:
   /*! \brief Wskaznik do poczatku tablicy dynamicznej.
    *
    * \details Wskazuje na adres w pamieci sterty. Pole prywatne.
    */
-  int *elements;
+  Type *elements;
 
   /*! \brief Okresla aktualny rozmiar stosu.
    *
    * \details Pole prywatne typu unsigned int, gdyz rozmiar nigdy nie
    *          powinien byc ujemny.
    */
-  unsigned int current_size;
+  uint current_size;
 
   /*! \brief Okresla pozadany rozmiar stosu.
    *
    * \details Pole prywatne typu unsigned int, gdyz rozmiar nigdy nie
    *          powinien byc ujemny. Zadawane w funkcji prepare().
    */
-  unsigned int desired_size;
+  uint desired_size;
 
   /*! \brief Okresla aktualny indeks.
    *
@@ -57,7 +63,7 @@ class Tablica: IRunnable  {
    *
    * \return false Jest jeszcze wolne miejsce.
    */
-  bool isFull();
+  bool isFull() { return ((index >= (current_size)) ?true:false); }
 
   /*! \brief Zwieksza rozmiar przydzielonej pamieci na stercie.
    *
@@ -65,7 +71,22 @@ class Tablica: IRunnable  {
    *          komorki z nowo-przydzielona pamiecia. Usuwa stara
    *          pamiec.
    */
-  void increaseSize();
+  void increaseSize() {
+    uint new_size = current_size * 2;
+    try {
+      int *new_elements = new int[new_size];
+      for(uint i=0; i < current_size; i++)
+	new_elements[i] = elements[i];
+
+      delete [] elements;
+      current_size = new_size;
+      elements = new_elements;
+    }
+    // if you fail to allocate memory
+    catch (std::bad_alloc& ex) {
+      std::cerr << ex.what() << std::endl;
+    }
+  }
 
  public:
 
@@ -77,13 +98,13 @@ class Tablica: IRunnable  {
    * \param x Okresla poczatkowa wielkosc przydzielonej pamieci. Domyslna wartosc
    *          w przypadku braku podania to 10.
    */
-  Tablica(int x=10);
+  Tablica(uint x=10) { elements=new int[x]; current_size=x; index=0; }
 
   /*! \brief Destruktor.
    *
    * \details Usuwa pamiec przypisana komorce, na ktora wskazuje pole *elements.
    */
-  ~Tablica();
+  ~Tablica() { delete [] elements; }
 
   /*! \brief Implementacja funkcji prepare() interfesju IRunnable.
    *
@@ -92,7 +113,7 @@ class Tablica: IRunnable  {
    * \param size Parametr typu unsigned int, gdyz rozmiar nie powinien nigdy byc
    *             ujemny. Jego wartosc zapisywana jest do pola desired_size.
    */
-  virtual void prepare (unsigned int size);
+  virtual void prepare (uint size) { desired_size = size; }
 
   /*! \brief Implementacja funkcji run() interfesju IRunnable.
    *
@@ -100,7 +121,14 @@ class Tablica: IRunnable  {
    *          elementow tablicy dynamicznej. Tam odbywa sie alokacja pamieci oraz
    *          instrukcje warunkowe.
    */
-  virtual void run();
+  virtual void run() {
+    while(index < desired_size) {
+      if(isFull())
+	increaseSize();
+
+      elements[index++] = 123;
+    }
+  }
 
   /*! \brief Zwraca aktualny rozmiar tablicy dynamicznej.
    *
@@ -109,7 +137,7 @@ class Tablica: IRunnable  {
    * \return Zwraca wartosc typu unsigned int, gdyz takiego typu jest zmienna
    *         current_size.
    */
-  unsigned int getSize();
+  uint getSize() { return current_size; }
 };
 
 #endif

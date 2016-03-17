@@ -17,8 +17,6 @@ double Stoper::getElapsedTime() {
 void Stoper::dumpToFile(std::string file_name) {
   file_name += ".csv";
 
-  std::cout << file_name << std::endl;
-
   my_file.open(file_name.c_str(),std::fstream::app | std::fstream::out);
   try {  
     my_file.exceptions(my_file.failbit);
