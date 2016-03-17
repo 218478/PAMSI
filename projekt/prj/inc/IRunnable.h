@@ -13,7 +13,7 @@
  * \details Klasa abstrakcyjna z metodami czysto wirtualnymi.
  */
 class IRunnable {
-
+ protected:
   virtual void prepare (unsigned int size)=0;
 
   virtual void run()=0;

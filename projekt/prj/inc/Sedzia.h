@@ -6,7 +6,7 @@
 
 #include <iostream>
 #include <iomanip>
-
+#include <sstream> //to convert int to string
 
 /*! \file Sedzia.h
  *

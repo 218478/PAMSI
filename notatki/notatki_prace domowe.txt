@@ -1,0 +1,4 @@
+nie mogę stosować nazw zaczynających się od underscore'a ("_"), bo to jest zarezerwowane dla
+zmiennych w implementacji języka C++
+
+
