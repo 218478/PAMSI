@@ -1,5 +1,9 @@
 #include "Tablica.h"
 
+
+// Zdecydowalem sie na uzycie szablonow, dlatego musialem pozbyc sie definicji
+// metod w pliku zrodlowym i przeniesc je do naglowkowego.
+
 // template <class Type>
 // Tablica<Type>::Tablica(uint x) { elements=new int[x]; current_size=x; index=0; }
 

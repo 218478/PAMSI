@@ -1,5 +1,6 @@
 #include "Lista.h"
 
-template <class Type> Type Lista<Type>::add(Type item, uint index) {
+// Zdecydowalem sie na uzycie szablonow, dlatego musialem pozbyc sie definicji
+// metod w pliku zrodlowym i przeniesc je do naglowkowego.
 
-}
+

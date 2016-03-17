@@ -19,10 +19,11 @@
  */
 typedef unsigned int uint;
 
-/*! \brief Klasa tablica, w ktorej odbywa sie zapis dynamiczny elementow typu int.
+/*! \brief Klasa Tablica, w ktorej odbywa sie zapis dynamiczny elementow.
  *
  * \details Implementuje metody interfejsu IRunnable. Zajmuje sie dynamiczna
- *          alokacja pamieci.
+ *          alokacja pamieci. Elastyczna a propos typow wskutek zastosowania
+ *          szablonow.
  */
 template <class Type> class Tablica: IRunnable  {
  private:
