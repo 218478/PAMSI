@@ -1,4 +1,5 @@
 #include "Sedzia.h"
+#include "Lista.h"
 
 #include <iostream>
 #include <ctime>
@@ -38,14 +39,25 @@ using namespace std;
  */
 
 int main(int argc, char **argv) {
-  //dziesiec, tysiac, sto tysiecy, milion, milard
-  unsigned int data_sizes [5]= {10,1000,100000,1000000,1000000000};
-  int trial_count = 50; // ile razy nalezy zapisac dane
+  // Poprzednie zadanie
+  //  
+  // //dziesiec, tysiac, sto tysiecy, milion, milard
+  // unsigned int data_sizes [5]= {10,1000,100000,1000000,1000000000};
+  // int trial_count = 50; // ile razy nalezy zapisac dane
 
-  Sedzia referee;
-  for(int j = 0; j < 5; j++) {
-    for(int i = 0; i < trial_count; i++)
-      referee.setOff(data_sizes[j]);
-  }
+  // Sedzia referee;
+  // for(int j = 0; j < 5; j++) {
+  //   for(int i = 0; i < trial_count; i++)
+  //     referee.setOff(data_sizes[j]);
+  // }
+
+  Lista<int> list;
+  cout << "blablabl " << endl;
+  list.print();
+  list.add(2,0);
+  list.add(3,1);
+  list.add(1,0);
+  cout << "Rozmiar listy: " << list.size() << endl;
+  cout << "Zawartosc listy:" << endl;
+  list.print();
 }
-

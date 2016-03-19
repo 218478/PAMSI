@@ -1,6 +1,8 @@
 #ifndef ILISTA_H
 #define ILISTA_H
 
+#include <cstddef> // to use the NULL macro
+
 /*! \file ILista.h
  *
  * \brief Plik zawiera interfejs dla pojemnika Lista oraz dla klasy Wezel.
@@ -23,38 +25,60 @@ typedef unsigned int uint;
  *
  * \details Potrzebne do implementacji interfejsu listy.
  */
-template <class Type> class Node {
+template <class NodeType> class Node {
+  public:
   /*! \brief Element w wezle.
    *
    * \details Co jest w wezle.
    */
-  Type element;
+  NodeType element;
 
   /*! \brief Wskaznik na nastepny wezel.
    *
    * \details Wskazuje na nastepny wezel.
    */
-  Node *next;
-
-  /*! \brief Wskaznik na poprzedni wezel.
-   *
-   * \details Wskazuje na poprzedni wezel.
-   */
-  Node *previous;
-
-  /*! \brief Konstruktor parametryczny.
-   *
-   * \details Stworzony w celu szybkiej inicjalizacji nowego wezla dana.
-   *
-   * \param[in] x Dana, ktora ma zostac zapisana.
-   */
-  Node<Type>(Type x): element(x){}
+  Node<NodeType>* next;
 
   /*! \brief Zaprzyjaznienie interfejsu ILista.
    *
    * \details Umozliwia dostep do wezlow dla listy.
    */
+  template <class ListType>
   friend class ILista;
+
+ public:
+  
+  /*! \brief Dostep do pola element.
+   *
+   * \details Wymuszone poprzez hermetyzacje.
+   *
+   * \return Zwraca element typu Type.
+   */
+  NodeType getElem() { return element; }
+
+  /*! \brief Dostep do nastepnego wezla.
+   *
+   * \details Wymuszone poprzez hermetyzacje.
+   *
+   * \return Zwraca element typu Node.
+   */
+  Node getNext() { return next; }
+
+  /*! \brief Ustawia pole element.
+   *
+   * \details Wymuszone poprzez hermetyzacje.
+   *
+   * \param[in] Wartosc, ktora ma zostac zapisana do pola element.
+   */
+  void setElem(const NodeType t) { element=t; }
+
+  /*! \brief Ustawia nastepny wezel.
+   *
+   * \details Wymuszone poprzez hermetyzacje.
+   *
+   * \param[in] t Wezel, ktory ma zostac przypisany do pola next.
+   */
+  void setNext(Node<NodeType>* t) { next=t; }
 };
 
 
@@ -63,7 +87,7 @@ template <class Type> class Node {
  * \details Abstrakcyjna klasa, ktora zostala utworzona na potrzeby ADT
  *          Abstract Data Types.
  */
-template <class Type> class ILista {
+template <class ListType> class ILista {
  protected:
 
   /*! \brief Wstawia element w dowolnym miejscu listy.
@@ -73,7 +97,7 @@ template <class Type> class ILista {
    * \param[in] item Element wstawiany.
    * \param[in] index Miejsce, w ktore ma byc wstawiony element item.
    */
-  virtual void add(Type item, uint index)=0;
+  virtual void add(ListType item, uint index)=0;
 
   /*! \brief Usuwa element z dowolnego miejsca listy.
    *
@@ -81,7 +105,7 @@ template <class Type> class ILista {
    *
    * \return Zwraca element typu Type.
    */
-  virtual Type remove(uint index)=0;
+  virtual ListType remove(uint index)=0;
 
   /*! \brief Sprawdza czy lista jest pusta.
    *
@@ -98,7 +122,7 @@ template <class Type> class ILista {
    *
    * \return Zwraca element typu Type.
    */
-  virtual Type get(uint index)=0;
+  virtual ListType get(uint index)=0;
 
   /*! \brief Zwraca rozmiar listy.
    *
