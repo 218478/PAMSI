@@ -17,7 +17,7 @@
 
 class IStoper {
  protected:
-  /* ! \brief Ma symulowac moment startu stopera.
+  /*! \brief Ma symulowac moment startu stopera.
    *
    * \details Metoda czysto wirtualna.
    */
@@ -29,13 +29,13 @@ class IStoper {
    */
   virtual void stop()=0;
 
-  /* ! \brief Ma symulowac rezultat pokazania wyniku pomiaru czasu na stoperze.
+  /*! \brief Ma symulowac rezultat pokazania wyniku pomiaru czasu na stoperze.
    *
    * \details Metoda czysto wirtualna.
    */
   virtual double getElapsedTime()=0;
 
-  /* ! \brief Ma symulowac moment zapisu zmierzonego czasu na kartke papieru.
+  /*! \brief Ma symulowac moment zapisu zmierzonego czasu na kartke papieru.
    *
    * \details Metoda czysto wirtualna.
    *

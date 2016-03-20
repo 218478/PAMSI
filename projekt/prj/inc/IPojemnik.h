@@ -41,9 +41,8 @@ template <class Type> class IPojemnik {
    *
    * \details Usuwa i zwraca podany element znajdujacy sie w index-owym miejscu.
    *
-   * \param[in] index   Indeks,z ktorego ma zostac usunieta dana.
    */
-  virtual Type push(uint index)=0;
+  virtual Type push()=0;
 
   /*! \brief Usuwa element z pojemnika.
    *
@@ -52,7 +51,7 @@ template <class Type> class IPojemnik {
    *
    * \return Usuniety element.
    */
-  virtual Type pop(uint index)=0;
+  virtual Type pop()=0;
 
   /*! \brief Sprawdza czy pojemnika jest pusty.
    *

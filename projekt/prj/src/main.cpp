@@ -2,10 +2,7 @@
 #include "Lista.h"
 
 #include <iostream>
-#include <ctime>
-#include <iomanip>
 
-#include <string> // to deal with displaying error messages
 
 using namespace std;
 
@@ -40,57 +37,25 @@ using namespace std;
  * $ make help
  */
 
+
 int main(int argc, char **argv) {
   // information for the user
   cout << "!!! INFO: Program starts indexing at 0, not at 1 !!!" << endl << endl;
 
-  // Poprzednie zadanie
-  //  
-  // //dziesiec, tysiac, sto tysiecy, milion, milard
-  // unsigned int data_sizes [5]= {10,1000,100000,1000000,1000000000};
-  // int trial_count = 50; // ile razy nalezy zapisac dane
+  Sedzia referee;
+  unsigned int trials_count = 50;
+ 
+  //dziesiec, tysiac, sto tysiecy, milion, milard
+  unsigned int data_sizes [5]= {10,1000,100000,1000000,1000000000};
 
-  // Sedzia referee;
-  // for(int j = 0; j < 5; j++) {
-  //   for(int i = 0; i < trial_count; i++)
-  //     referee.setOff(data_sizes[j]);
-  // }
+  // running the list
+  for(uint i=0; i < 3; i++) {
+    referee.setOffList(data_sizes[i]); }
 
-  Lista<string> list;
-  // // it works and should display: 5 3 4 2 1 6
-  // list.add(1,0);
-  // list.add(2,0);
-  // list.add(3,0);
-  // list.add(4,1);
-  // list.add(5,0);
-  // list.add(6,5);
-  // cout << "Found first '4' at index: " << list.run(4) << endl;
-  list.prepare(10);
-
-  cout << "Rozmiar listy: " << list.size() << endl;
-  cout << "Zawartosc listy:" << endl;
-  list.print();
-
-  for(uint i = 0; i <= 11; i++) {
-    try {
-      cout << "Indeks: " << i << "\tWartosc: " << list.get(i) << endl; }
-    catch (char const *e) {
-      cerr << e << endl; }
-
+  // running the array
+  for(uint i=0; i < 5; i++) {
+    for(uint j=0; j < trials_count; j++)
+      referee.setOffTable(data_sizes[i]);
   }
-
-
-  // throws segmentation fault error
-  // cout << "Found 'ab' at index: " << list.run("ab") << endl;
-
-  // cout << "Trying to remove index no: " << list.run("ab") << endl;
-  // list.remove(list.run("ab"));
-
-  // cout << "Rozmiar listy: " << list.size() << endl;
-  // cout << "Zawartosc listy:" << endl;
-  // list.print();
-
-  // cout << "Found 'abaci' at index: " << list.run("abaci") << endl;
-  // cout << "Didn't found 'ab', because of error no: " << list.run("ab") << endl;
 
 }

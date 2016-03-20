@@ -6,14 +6,14 @@
 \usepackage{amsfonts}
 \usepackage{graphicx}
 \author{Kamil Kuczaj}
-\title{Sprawozdanie z Laboratorium 2 - Pomiar czasu dynamicznie alokowanej pamięci. Wykorzystanie interfejsów oraz zapis do pliku.}
+\title{Sprawozdanie z Laboratorium 3 - Pomiar czasu znajdywania losowego słowa z listy.\\Implementacja listy, stosu oraz kolejki przy wykorzystaniu odpowiednich interfejsów.}
 \date{\today}
 \begin{document}
 
 \maketitle
 
 \section{Wstęp}
-Podanym zadaniem był pomiar czasu wykonywania alokacji pamięci dla tablicy dynamicznej elementów typu \textit{int}. Należało wykonać pomiary zapisu: $10^1$, $10^3$, $10^5$, $10^6$, $10^9$ danych oraz stworzyć specjalną klasę, która będzie zarządzać zapisem danych oraz alokacją pamięci.
+Podanym zadaniem był pomiar czasu znajdywania losowego elementu listy typu\textit{string}. Należało wykonać pomiary zapisu: $10^1$, $10^3$ oraz $10^5$. Wykorzystano słownik $109582$ najpopularniejszych słów w języku angielskim. Zdecydowano się na wybór języka angielskiego nad polskim z uwagi na zlikwidowanie problemów z wczytywaniem znaków łacińskich. W programie zaimplementowano szablony, dzięki czemu bardzo łatwo jest zmierzyć czas dla innych zmiennych lub nawet własnych klas. 
 
 \section{Specyfikacja komputera}
 
@@ -28,23 +28,27 @@ Podanym zadaniem był pomiar czasu wykonywania alokacji pamięci dla tablicy dyn
 	\end{tabular}
 \end{center}
 
+\newpage
+
 \section{Pomiary}
-
-\begin{figure}[hb]
-	\begin{center}
-		\includegraphics[scale=0.5]{../wykresy/stotysiecy-milion.png}
-		\caption{Czas zapisu stu tysięcy oraz miliona intów oraz odpowiednia regresja liniowa}
-	\end{center}
+\bigskip
+\begin{figure}[h]
+	\centering
+		\includegraphics[scale=0.47]{../wykresy/Lista_znajdywanie.png}
+		\caption	{Pomiar czasu znajdywania losowego slowa.}	
 \end{figure}
 
-\begin{figure}[hb]
-	\begin{center}
-		\includegraphics[scale=0.5]{../wykresy/miliard.png}
-		\caption{Czas zapisu miliarda intów oraz odpowiednia regresja liniowa}
-	\end{center}
+\bigskip
+\bigskip
+\begin{figure}[h]
+	\centering
+		\includegraphics[scale=0.47]{../wykresy/Lista_znajdywanie2.png}
+		\caption	{Pomiar czasu znajdywania innego losowego slowa.}	
 \end{figure}
+\bigskip
 
+Bardzo dużą część czasu zajmowało zapisanie stu tysięcy słów - wynikało to z tego, że należało je zaalokować, a potem wylosować z tej puli. Przeszukiwanie listy było natomiast bardzo krótkie i zwykle nie przekraczało 3 milisekund.
 
 \section{Wnioski}
-Zastosowanie nowego interfejsu znacznie zmniejszyło szanse na popełnienie błędu.
+Zastosowanie struktury danych typu lista zdecydowanie pozwoliło zmniejszyć czas na znalezienie słowa. Zdecydowanie pomogło mi również w tym jak ważne jest zastosowanie odpowiedniej struktury danych do programu.
 \end{document}

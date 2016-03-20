@@ -334,11 +334,12 @@ template <class Type> uint Lista<Type>::run(Type desired_element) {
                       // conductor->next was pointing to NULL
   }
 
-  std::cout << "Element no: " << searched_index << " is: "
-	    << conductor->next->element << std::endl;
+  /* // for debug */
+  /* std::cout << "Element no: " << searched_index << " is: " */
+  /* 	    << conductor->next->element << std::endl; */
 
-  std::cout << "conductor->next = " << conductor->next << std::endl;
-  std::cout << "searched_index = " << searched_index << std::endl;
+  /* std::cout << "conductor->next = " << conductor->next << std::endl; */
+  /* std::cout << "searched_index = " << searched_index << std::endl; */
   
   if(conductor->next->element == desired_element && searched_index != size()-1)
     return searched_index; // it is an element inside the list, not at the end
@@ -363,13 +364,14 @@ template <class Type> void Lista<Type>::prepare(uint desired_size) {
   if(dictionary.is_open() && isEmpty() ) {
     // http://stackoverflow.com/questions/21647/reading-from-text-file-until-eof-repeats-last-line
     // user Wilhelmtell '08
+    Type word;
     for(uint i=0; i < desired_size; i++) {
-      Type word;
       dictionary >> word;
       if(dictionary.eof()) break;
       add(word,i);
     }
   }
+  dictionary.close();
 }
 
 
