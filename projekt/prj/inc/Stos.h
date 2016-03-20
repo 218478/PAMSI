@@ -5,13 +5,14 @@
 
 template <class Type>
 class Stos: IPojemnik<Type> {
-
+ public:
   /*! \brief Usuwa element z okreslonego miejsca.
    *
    * \details Usuwa i zwraca podany element znajdujacy sie w index-owym miejscu.
    *
+   * \param[in] element "Wpychany" element typu Type.
    */
-  virtual Type push();
+  virtual void push(Type element);
 
   /*! \brief Usuwa element z pojemnika.
    *
@@ -43,5 +44,10 @@ class Stos: IPojemnik<Type> {
   virtual uint size();
   
 };
+
+template <class Type> void Stos<Type>::push(Type element) {
+
+}
+
 
 #endif

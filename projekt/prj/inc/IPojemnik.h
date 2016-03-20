@@ -25,7 +25,15 @@ typedef unsigned int uint;
  *          Abstract Data Types.
  */
 template <class Type> class IPojemnik {
-  protected:
+ protected:
+  /*! \brief Gora stosu.
+   *
+   * \details Glowa stosu. Dostep chroniony, gdyz klasy, ktore beda implementowac
+   *          ten interfejs powinny juz miec to pole prywatne. Patrz dziedziczenie.
+   */
+  IPojemnik<Type> *head;
+
+  public:
 
   /*! \brief Dodaje element w okreslonym miejscu.
    *
@@ -37,12 +45,13 @@ template <class Type> class IPojemnik {
    */
   virtual Type add(Type item, uint index)=0;
 
-  /*! \brief Usuwa element z okreslonego miejsca.
+  /*! \brief Dodaje element na poczatek.
    *
-   * \details Usuwa i zwraca podany element znajdujacy sie w index-owym miejscu.
+   * \details Dodaje element na poczatek pojemnika.
    *
+   * \param[in] element "Wpychany" element typu Type.
    */
-  virtual Type push()=0;
+  virtual void push(Type element)=0;
 
   /*! \brief Usuwa element z pojemnika.
    *
