@@ -105,7 +105,7 @@ template <class ListType> class ILista {
    *
    * \return Zwraca element typu Type.
    */
-  virtual ListType remove(uint index)=0;
+  virtual bool remove(uint index)=0;
 
   /*! \brief Sprawdza czy lista jest pusta.
    *

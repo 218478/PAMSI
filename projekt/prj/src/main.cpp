@@ -39,6 +39,9 @@ using namespace std;
  */
 
 int main(int argc, char **argv) {
+  // information for the user
+  cout << "!!! INFO: Program starts indexing at 0, not at 1 !!!" << endl << endl;
+
   // Poprzednie zadanie
   //  
   // //dziesiec, tysiac, sto tysiecy, milion, milard
@@ -51,13 +54,31 @@ int main(int argc, char **argv) {
   //     referee.setOff(data_sizes[j]);
   // }
 
-  Lista<int> list;
-  cout << "blablabl " << endl;
-  list.print();
-  list.add(2,0);
-  list.add(3,1);
-  list.add(1,0);
+  Lista<string> list;
+  // // it works and should display: 5 3 4 2 1 6
+  // list.add(1,0);
+  // list.add(2,0);
+  // list.add(3,0);
+  // list.add(4,1);
+  // list.add(5,0);
+  // list.add(6,5);
+  // cout << "Found first '4' at index: " << list.run(4) << endl;
+  list.prepare(10);
+
   cout << "Rozmiar listy: " << list.size() << endl;
   cout << "Zawartosc listy:" << endl;
   list.print();
+
+  cout << "Found 'ab' at index: " << list.run("ab") << endl;
+
+  cout << "Trying to remove index no: " << list.run("ab") << endl;
+  list.remove(list.run("ab"));
+
+  cout << "Rozmiar listy: " << list.size() << endl;
+  cout << "Zawartosc listy:" << endl;
+  list.print();
+
+  cout << "Found 'abaci' at index: " << list.run("abaci") << endl;
+  cout << "Didn't found 'ab', because of error no: " << list.run("ab") << endl;
+
 }

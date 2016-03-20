@@ -24,7 +24,7 @@ typedef unsigned int uint;
  * \details Abstrakcyjna klasa, ktora zostala utworzona na potrzeby ADT
  *          Abstract Data Types.
  */
-template <class Type> class Pojemnik {
+template <class Type> class IPojemnik {
   protected:
 
   /*! \brief Dodaje element w okreslonym miejscu.
@@ -35,7 +35,7 @@ template <class Type> class Pojemnik {
    * \param[in] item    Dana, ktora ma byc wlozona.
    * \param[in] index   Indeks, w ktorym ma znalezc sie nowa dana.
    */
-  virtual Type add(Type item, uint index);
+  virtual Type add(Type item, uint index)=0;
 
   /*! \brief Usuwa element z okreslonego miejsca.
    *
@@ -43,12 +43,36 @@ template <class Type> class Pojemnik {
    *
    * \param[in] index   Indeks,z ktorego ma zostac usunieta dana.
    */
-  virtual Type push(uint index);
+  virtual Type push(uint index)=0;
+
+  /*! \brief Usuwa element z pojemnika.
+   *
+   * \details Usuwa element z pojemnika i zwraca go uzytkownikowi.
+   *          Metoda czysto wirtualna.
+   *
+   * \return Usuniety element.
+   */
+  virtual Type pop(uint index)=0;
+
+  /*! \brief Sprawdza czy pojemnika jest pusty.
+   *
+   * \details Sprawdza czy znajduja sie jakies elementy w pojemniku.
+   *          Metoda czysto wirtualna.
+   *
+   * \retval true Pojemnik pusty.
+   * \retval false Pojemnik nie jest pusty.
+   */
+  virtual bool empty()=0;
 
   /*!
-  virtual bool empty();
-  virtual Type pop(uint index);
-  virtual uint size();
+   * \brief Zwraca aktualny rozmiar pojemnika.
+   *
+   * \details Zwraca wartosc, ktora reprezentuje obecna ilosc elementow
+   *          w pojemniku. Metoda czysto wirtualna.
+   *
+   * \return Ilosc elementow w pojemniku.
+   */
+  virtual uint size()=0;
 };
 
 

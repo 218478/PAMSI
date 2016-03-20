@@ -7,6 +7,7 @@
 #include <cstddef>  // to use the NULL macro
 #include <string>   // to deal with words saving and searching
 #include <iostream> // to print the contents of the list
+#include <fstream>  // to deal with loading words from the dictionary
 
 /*! \file Lista.h
  *
@@ -81,9 +82,10 @@ template <class Type> class Lista: /*IRunnable,*/ ILista<Type> {
    *
    * \details Usuwa element z miejsca wskazywanego przez zmienna index.
    *
-   * \return Zwraca element typu Type.
+   * \retval true Udalo sie usunac element o podanym indeksie.
+   * \retval false Nie udalo sie usunac elementu o podanym indeksie.
    */
-  virtual Type remove(uint index);
+  virtual bool remove(uint index);
 
   /*! \brief Sprawdza czy lista jest pusta.
    *
@@ -114,22 +116,31 @@ template <class Type> class Lista: /*IRunnable,*/ ILista<Type> {
 
   /*! \brief Szuka elementu.
    *
-   * \details Szuka elementu wskazanego przez uzytkownika.
+   * \details Szuka elementu wskazanego przez uzytkownika. W funkcji nastepuje
+   *          Segmentation fault, gdy probujemy znalezc element, ktorego tam
+   *          nie ma. W ogole sposob kodowania bledow gdy na nie napotka jest
+   *          debilny ale nie mialem wystarczajaco duzo czasu aby to przerobic.
    *
    * \param[in] desired_element Poszukiwana fraza.
    *
-   * \retval true Znalazl element i wyswietlil.
-   * \retval false Nie znalazl i nie wyswietlil elementu.
+   * \retval index>0         Znalazl element i wyswietlil.
+   * \retval 1199999999      Nie znalazl i nie wyswietlil elementu. Wybrana
+   *                         wartosc, poniewaz nigdy tak duzej liczby elementow
+   *                         nie wczytamy. 10 cyfr.
+   * \retval 1198989898      Lista pusta. Wybrana wartosc, poniewaz nigdy tak
+   *                         duzej liczby elementow nie wczytamy. 10 cyfr.
    */
-  bool find(Type desired_element);
+  virtual uint run(Type desired_element);
 
   /*! \brief Zapisuje liste slowami.
    *
-   * \details Zapisuje liste slowami zaczerpnietymi ze slownika.
+   * \details Zapisuje liste slowami zaczerpnietymi ze slownika. !!! WAZNE !!!!
+   *          Funkcja powinna byc uzyta tylko na poczatku, gdy cala lista jest
+   *          pusta. Inaczej nastapi nadpisanie elementow poczatkowych.
    *
    * \param[in] desired_size Ile elementow ma zostac wczytanych.
    */
-  //virtual void prepare(uint desired_size);
+  virtual void prepare(uint desired_size);
 
 
   /*! \brief Wypisuje zawartosc listy.
@@ -170,10 +181,16 @@ template <class Type> uint Lista<Type>::size() {
   return size_temp;
 }
 
+// old method and not optimized
+// 
+// template <class Type> bool Lista<Type>::isEmpty() { 
+//   return (size() == 0) ? true : false; 
+// } 
+
 template <class Type> void Lista<Type>::add(Type item, uint index) {
   uint size_temp = size();
 
-  // if we want to add it at first
+  // if we want to add it at the beginning
   if (index == 0)
     {
       Node<Type> *temp = new Node<Type>;
@@ -188,14 +205,14 @@ template <class Type> void Lista<Type>::add(Type item, uint index) {
       Node<Type> *conductor = head;
       
       // just at the element before indexed one
-      for(uint i=0; i < index; i++) {
+      for(uint i=0; i < index-1; i++) {
 	conductor=conductor->next;
       }
 
       temp->next=conductor->next;
       conductor->next=temp;
     }
-  else if(size_temp == index)
+  else if(size_temp == index) // if we want to add at the end
     {
       Node<Type> *temp = new Node<Type>;
       temp->element=item;
@@ -230,16 +247,111 @@ template <class Type> void Lista<Type>::print() {
   }
 }
 
-template <class Type> Type Lista<Type>::remove(uint index) { return Type();}
+template <class Type> bool Lista<Type>::remove(uint index) { 
+  uint size_temp = size();
+  Node<Type> *after_conductor = 0;
+  Node<Type> *conductor = head;
+
+  // if we want to add it at the beginning
+  if (index == 0 && !isEmpty())
+    {
+      head = conductor->next;
+      delete conductor; // delete the beginning
+      return true; // return success
+    }
+  else if(size_temp > index)
+    {
+   
+      // just at the element before indexed one
+      for(uint i=0; i < index-1; i++) {
+	conductor=conductor->next;
+      }
+      after_conductor = conductor->next;
+      conductor->next=conductor->next->next; // connect the previous with the next
+                                             // after the indexed one
+      delete after_conductor;
+      return true; // return success
+    }
+  else if(size_temp == index) // if we want to add at the end
+    {
+      // just at the element before indexed one
+      for(uint i=0; i < index-1; i++) {
+	conductor=conductor->next;
+      }
+      
+      after_conductor = conductor->next;
+      conductor->next = 0;
+      delete after_conductor;
+      return true; // return success
+    }
+  else
+    {
+      std::cerr << "Can't remove element no '" << index
+		<< "': index out of bounds" << std::endl;
+      return false; // return failure
+    }
+
+  //  return true;
+}
+
 template <class Type> Type Lista<Type>::get(uint index) {return Type();}
 
 template <class Type> bool Lista<Type>::isEmpty() {
-  return (head == NULL) ? true : false;
+  return (head == 0) ? true : false;
 }
 
-template <class Type> bool Lista<Type>::find(Type desired_element) {
-  return true;}
-//template <class Type> void Lista<Type>::prepare(uint desired_size) {}
+template <class Type> uint Lista<Type>::run(Type desired_element) {
+  Node<Type> *conductor;
+  uint searched_index=0;
+
+  conductor = head;
+  if(isEmpty())
+    return 1198989898; // Empty list error.
+
+  if ( conductor->element != desired_element) {
+    while ( conductor->next != 0 && conductor->next->element != desired_element) {
+      conductor = conductor->next;
+      searched_index++;
+    }
+    searched_index++; // it wasn't counting the last element, since
+                      // conductor->next was pointing to NULL
+  }
+
+  std::cout << "Element no: " << searched_index << " is: "
+	    << conductor->next->element << std::endl;
+
+  std::cout << "conductor->next = " << conductor->next << std::endl;
+  std::cout << "searched_index = " << searched_index << std::endl;
+  
+  if(conductor->next->element == desired_element && searched_index != size()-1)
+    return searched_index; // it is an element inside the list, not at the end
+  else if (searched_index == size() - 1)
+    return searched_index; // at the end and found the word
+  else
+    return 1199999999; // we are at the end of list and haven't found anything
+    
+}
+
+template <class Type> void Lista<Type>::prepare(uint desired_size) {
+  std::ifstream dictionary;
+  dictionary.open("109582_English_Words.txt",std::fstream::in);
+  try {
+    dictionary.exceptions(dictionary.failbit);
+  }
+  catch(const std::ios_base::failure & ex) {
+    std::cerr << "Error! Couldn't find or open a file" << ex.what() << std::endl;
+  }
+
+  // read input only if the list is empty and file stream is open
+  if(dictionary.is_open() && isEmpty() ) {
+    for(uint i=0; i < desired_size; i++) {
+      Type word;
+      dictionary >> word;
+      if(dictionary.eof()) break;
+      add(word,i);
+    }
+  }
+}
 
 
 #endif
