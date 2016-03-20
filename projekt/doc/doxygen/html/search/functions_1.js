@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['getelapsedtime',['getElapsedTime',['../class_i_stoper.html#abf0cb1128747e1a482ed487af6e6d114',1,'IStoper::getElapsedTime()'],['../class_stoper.html#a8f50bbba9cb719ca9d573a5cb4a19e36',1,'Stoper::getElapsedTime()']]],
-  ['getsize',['getSize',['../class_tablica.html#ac7ab68953bf4a9a56a5f0a579ea78ecb',1,'Tablica']]]
+  ['dumptofile',['dumpToFile',['../class_i_stoper.html#ab0ce71cfe9db23e9b0016990816c1be2',1,'IStoper::dumpToFile()'],['../class_stoper.html#a8896c3b2fa5428e29e5fef7f7bad3615',1,'Stoper::dumpToFile()']]]
 ];

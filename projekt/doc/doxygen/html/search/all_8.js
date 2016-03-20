@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['prepare',['prepare',['../class_i_runnable.html#ac4d20dee4cb12c42eeed8698e839ddaf',1,'IRunnable::prepare()'],['../class_tablica.html#a3869f7d75092c9c4ad9d3036285cc6e2',1,'Tablica::prepare()']]]
+  ['lista',['Lista',['../class_lista.html',1,'Lista&lt; Type &gt;'],['../class_lista.html#a9e74820e2d81e143c273992e563dffd3',1,'Lista::Lista()']]],
+  ['lista_2ecpp',['Lista.cpp',['../_lista_8cpp.html',1,'']]],
+  ['lista_2eh',['Lista.h',['../_lista_8h.html',1,'']]]
 ];

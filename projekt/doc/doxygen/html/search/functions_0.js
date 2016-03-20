@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['dumptofile',['dumpToFile',['../class_i_stoper.html#a23702eb2b1b898c5de7a30fbe07a1377',1,'IStoper::dumpToFile()'],['../class_stoper.html#acf73c06c59e8007142b276172a6a07ed',1,'Stoper::dumpToFile()']]]
+  ['add',['add',['../class_i_lista.html#a756c44e78597aca5c7442645cf1f3cd5',1,'ILista::add()'],['../class_i_pojemnik.html#af344e1b83a85b421d97d4beccaa30322',1,'IPojemnik::add()'],['../class_lista.html#a5016da5359009ca7e3421de513cb3999',1,'Lista::add()']]]
 ];

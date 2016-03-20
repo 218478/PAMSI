@@ -1,6 +1,6 @@
-<map id="/home/kkuczaj/PAMSI/lab_07.03/prj/inc/Sedzia.h" name="/home/kkuczaj/PAMSI/lab_07.03/prj/inc/Sedzia.h">
-<area shape="rect" id="node2" href="$_stoper_8h.html" title="Implementacja interfejsu IStoper w klasie Stoper. " alt="" coords="182,96,252,123"/>
-<area shape="rect" id="node7" href="$_tablica_8h.html" title="Implementacja interfesju IRunnable. " alt="" coords="348,96,421,123"/>
-<area shape="rect" id="node3" href="$_i_stoper_8h.html" title="Naglowek zawierajacy interfejs dla stopera. " alt="" coords="5,171,79,197"/>
-<area shape="rect" id="node8" href="$_i_runnable_8h.html" title="Naglowek zawierajacy interfejs dla biegacza. " alt="" coords="371,171,463,197"/>
+<map id="inc/Sedzia.h" name="inc/Sedzia.h">
+<area shape="rect" id="node2" href="$_stoper_8h.html" title="Implementacja interfejsu IStoper w klasie Stoper. " alt="" coords="190,80,260,107"/>
+<area shape="rect" id="node8" href="$_tablica_8h.html" title="Implementacja interfesju IRunnable. " alt="" coords="399,80,472,107"/>
+<area shape="rect" id="node3" href="$_i_stoper_8h.html" title="Naglowek zawierajacy interfejs dla stopera. " alt="" coords="5,155,79,181"/>
+<area shape="rect" id="node9" href="$_i_runnable_8h.html" title="Naglowek zawierajacy interfejs dla biegacza. " alt="" coords="422,155,513,181"/>
 </map>

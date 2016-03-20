@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['current_5fsize',['current_size',['../class_tablica.html#a3ab4e545e0e1fe87c3df700276a6ffe2',1,'Tablica']]]
+  ['desired_5fsize',['desired_size',['../class_tablica.html#ab9bd8738c20ec1d02ceff156af4675bc',1,'Tablica']]]
 ];

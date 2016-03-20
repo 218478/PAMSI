@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['desired_5fsize',['desired_size',['../class_tablica.html#a78da07574c3c186c974c9d84d1c6a2cb',1,'Tablica']]]
+  ['element',['element',['../class_node.html#a7ae3a8a0cf4c0d490402599bd5d11c88',1,'Node']]],
+  ['elements',['elements',['../class_tablica.html#a03f7862b518bdd503051388389949257',1,'Tablica']]]
 ];

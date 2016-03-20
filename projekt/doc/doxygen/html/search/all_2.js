@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['desired_5fsize',['desired_size',['../class_tablica.html#a78da07574c3c186c974c9d84d1c6a2cb',1,'Tablica']]],
-  ['dumptofile',['dumpToFile',['../class_i_stoper.html#a23702eb2b1b898c5de7a30fbe07a1377',1,'IStoper::dumpToFile()'],['../class_stoper.html#acf73c06c59e8007142b276172a6a07ed',1,'Stoper::dumpToFile()']]]
+  ['desired_5fsize',['desired_size',['../class_tablica.html#ab9bd8738c20ec1d02ceff156af4675bc',1,'Tablica']]],
+  ['dumptofile',['dumpToFile',['../class_i_stoper.html#ab0ce71cfe9db23e9b0016990816c1be2',1,'IStoper::dumpToFile()'],['../class_stoper.html#a8896c3b2fa5428e29e5fef7f7bad3615',1,'Stoper::dumpToFile()']]]
 ];
