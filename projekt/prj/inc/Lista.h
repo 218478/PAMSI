@@ -63,9 +63,9 @@ template <class Type> class Lista: /*IRunnable,*/ ILista<Type> {
    */
   Lista();
 
-  /*! \brief Konstruktor.
+  /*! \brief Destruktor.
    *
-   * \details Tworzy poczatek listy.
+   * \details Usuwa cala pamiec listy "skaczac" po jej elementach.
    */
   ~Lista();
 
@@ -99,8 +99,9 @@ template <class Type> class Lista: /*IRunnable,*/ ILista<Type> {
   /*! \brief Zwraca element z dowolnego miejsca listy.
    *
    * \details Zwraca element z miejsca wskazywanego przez zmienna index.
-   *          ! WAZNE ! Przed uzyciem nalezy sprawdzic, czy lista jest pusta.
-   *          W metodzie na obecna chwile nie ma zabezpieczen.
+   *          Wyjatki są typu: const char *
+   *          "Empty list"          - pusta lista
+   *          "Index out of bounds" - przekroczono zakres, nie ma tylu elementow
    *
    * \return Zwraca element typu Type.
    */
@@ -294,7 +295,23 @@ template <class Type> bool Lista<Type>::remove(uint index) {
   //  return true;
 }
 
-template <class Type> Type Lista<Type>::get(uint index) {return Type();}
+template <class Type> Type Lista<Type>::get(uint index) {
+  Node<Type> *conductor = head;
+  uint current_index=0;
+
+  if ( isEmpty() )
+    throw("Empty list");
+
+  if (index > size()-1)
+    throw("Index out of bounds");
+
+  while(conductor->next != 0 && current_index != index) {
+    conductor=conductor->next;
+    current_index++;
+  }
+
+  return conductor->element;
+}
 
 template <class Type> bool Lista<Type>::isEmpty() {
   return (head == 0) ? true : false;
@@ -306,7 +323,7 @@ template <class Type> uint Lista<Type>::run(Type desired_element) {
 
   conductor = head;
   if(isEmpty())
-    return 1198989898; // Empty list error.
+    throw("Empty list");
 
   if ( conductor->element != desired_element) {
     while ( conductor->next != 0 && conductor->next->element != desired_element) {
@@ -344,6 +361,8 @@ template <class Type> void Lista<Type>::prepare(uint desired_size) {
 
   // read input only if the list is empty and file stream is open
   if(dictionary.is_open() && isEmpty() ) {
+    // http://stackoverflow.com/questions/21647/reading-from-text-file-until-eof-repeats-last-line
+    // user Wilhelmtell '08
     for(uint i=0; i < desired_size; i++) {
       Type word;
       dictionary >> word;

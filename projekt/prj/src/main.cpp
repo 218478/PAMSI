@@ -5,6 +5,8 @@
 #include <ctime>
 #include <iomanip>
 
+#include <string> // to deal with displaying error messages
+
 using namespace std;
 
 /*! \mainpage Opis programu
@@ -69,16 +71,26 @@ int main(int argc, char **argv) {
   cout << "Zawartosc listy:" << endl;
   list.print();
 
-  cout << "Found 'ab' at index: " << list.run("ab") << endl;
+  for(uint i = 0; i <= 11; i++) {
+    try {
+      cout << "Indeks: " << i << "\tWartosc: " << list.get(i) << endl; }
+    catch (char const *e) {
+      cerr << e << endl; }
 
-  cout << "Trying to remove index no: " << list.run("ab") << endl;
-  list.remove(list.run("ab"));
+  }
 
-  cout << "Rozmiar listy: " << list.size() << endl;
-  cout << "Zawartosc listy:" << endl;
-  list.print();
 
-  cout << "Found 'abaci' at index: " << list.run("abaci") << endl;
-  cout << "Didn't found 'ab', because of error no: " << list.run("ab") << endl;
+  // throws segmentation fault error
+  // cout << "Found 'ab' at index: " << list.run("ab") << endl;
+
+  // cout << "Trying to remove index no: " << list.run("ab") << endl;
+  // list.remove(list.run("ab"));
+
+  // cout << "Rozmiar listy: " << list.size() << endl;
+  // cout << "Zawartosc listy:" << endl;
+  // list.print();
+
+  // cout << "Found 'abaci' at index: " << list.run("abaci") << endl;
+  // cout << "Didn't found 'ab', because of error no: " << list.run("ab") << endl;
 
 }
