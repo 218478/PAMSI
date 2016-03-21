@@ -1,0 +1,131 @@
+\hypertarget{class_i_pojemnik}{\section{I\-Pojemnik$<$ Type $>$ Class Template Reference}
+\label{class_i_pojemnik}\index{I\-Pojemnik$<$ Type $>$@{I\-Pojemnik$<$ Type $>$}}
+}
+
+
+Interfejs dla każdego pojemnika.  
+
+
+
+
+{\ttfamily \#include $<$I\-Pojemnik.\-h$>$}
+
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual Type \hyperlink{class_i_pojemnik_af344e1b83a85b421d97d4beccaa30322}{add} (Type item, \hyperlink{_i_lista_8h_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} index)=0
+\begin{DoxyCompactList}\small\item\em Dodaje element w okreslonym miejscu. \end{DoxyCompactList}\item 
+virtual Type \hyperlink{class_i_pojemnik_a95392ac62ce9417322986f870dd96191}{push} (\hyperlink{_i_lista_8h_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} index)=0
+\begin{DoxyCompactList}\small\item\em Usuwa element z okreslonego miejsca. \end{DoxyCompactList}\item 
+virtual Type \hyperlink{class_i_pojemnik_a699a1e80c731e602e8418f37c4707b96}{pop} (\hyperlink{_i_lista_8h_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} index)=0
+\begin{DoxyCompactList}\small\item\em Usuwa element z pojemnika. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_i_pojemnik_ab4b01fcf2b3efc085722443dc083e1dc}{empty} ()=0
+\begin{DoxyCompactList}\small\item\em Sprawdza czy pojemnika jest pusty. \end{DoxyCompactList}\item 
+virtual \hyperlink{_i_lista_8h_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \hyperlink{class_i_pojemnik_aed43b8d3b8114ce213eb182e80e35627}{size} ()=0
+\begin{DoxyCompactList}\small\item\em Zwraca aktualny rozmiar pojemnika. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class Type$>$class I\-Pojemnik$<$ Type $>$}
+
+Interfejs dla każdego pojemnika. 
+
+Abstrakcyjna klasa, ktora zostala utworzona na potrzeby A\-D\-T Abstract Data Types. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_i_pojemnik_af344e1b83a85b421d97d4beccaa30322}{\index{I\-Pojemnik@{I\-Pojemnik}!add@{add}}
+\index{add@{add}!IPojemnik@{I\-Pojemnik}}
+\subsubsection[{add}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type $>$ virtual Type {\bf I\-Pojemnik}$<$ Type $>$\-::add (
+\begin{DoxyParamCaption}
+\item[{Type}]{item, }
+\item[{{\bf uint}}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}}\label{class_i_pojemnik_af344e1b83a85b421d97d4beccaa30322}
+
+
+Dodaje element w okreslonym miejscu. 
+
+Metoda czysto wirtualna. Dodaje element item w miejscu index pojemnika.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em item} & Dana, ktora ma byc wlozona. \\
+\hline
+\mbox{\tt in}  & {\em index} & Indeks, w ktorym ma znalezc sie nowa dana. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_i_pojemnik_ab4b01fcf2b3efc085722443dc083e1dc}{\index{I\-Pojemnik@{I\-Pojemnik}!empty@{empty}}
+\index{empty@{empty}!IPojemnik@{I\-Pojemnik}}
+\subsubsection[{empty}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type $>$ virtual bool {\bf I\-Pojemnik}$<$ Type $>$\-::empty (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}}\label{class_i_pojemnik_ab4b01fcf2b3efc085722443dc083e1dc}
+
+
+Sprawdza czy pojemnika jest pusty. 
+
+Sprawdza czy znajduja sie jakies elementy w pojemniku. Metoda czysto wirtualna.
+
+
+\begin{DoxyRetVals}{Return values}
+{\em true} & Pojemnik pusty. \\
+\hline
+{\em false} & Pojemnik nie jest pusty. \\
+\hline
+\end{DoxyRetVals}
+\hypertarget{class_i_pojemnik_a699a1e80c731e602e8418f37c4707b96}{\index{I\-Pojemnik@{I\-Pojemnik}!pop@{pop}}
+\index{pop@{pop}!IPojemnik@{I\-Pojemnik}}
+\subsubsection[{pop}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type $>$ virtual Type {\bf I\-Pojemnik}$<$ Type $>$\-::pop (
+\begin{DoxyParamCaption}
+\item[{{\bf uint}}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}}\label{class_i_pojemnik_a699a1e80c731e602e8418f37c4707b96}
+
+
+Usuwa element z pojemnika. 
+
+Usuwa element z pojemnika i zwraca go uzytkownikowi. Metoda czysto wirtualna.
+
+\begin{DoxyReturn}{Returns}
+Usuniety element. 
+\end{DoxyReturn}
+\hypertarget{class_i_pojemnik_a95392ac62ce9417322986f870dd96191}{\index{I\-Pojemnik@{I\-Pojemnik}!push@{push}}
+\index{push@{push}!IPojemnik@{I\-Pojemnik}}
+\subsubsection[{push}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type $>$ virtual Type {\bf I\-Pojemnik}$<$ Type $>$\-::push (
+\begin{DoxyParamCaption}
+\item[{{\bf uint}}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}}\label{class_i_pojemnik_a95392ac62ce9417322986f870dd96191}
+
+
+Usuwa element z okreslonego miejsca. 
+
+Usuwa i zwraca podany element znajdujacy sie w index-\/owym miejscu.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em index} & Indeks,z ktorego ma zostac usunieta dana. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_i_pojemnik_aed43b8d3b8114ce213eb182e80e35627}{\index{I\-Pojemnik@{I\-Pojemnik}!size@{size}}
+\index{size@{size}!IPojemnik@{I\-Pojemnik}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type $>$ virtual {\bf uint} {\bf I\-Pojemnik}$<$ Type $>$\-::size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}}\label{class_i_pojemnik_aed43b8d3b8114ce213eb182e80e35627}
+
+
+Zwraca aktualny rozmiar pojemnika. 
+
+Zwraca wartosc, ktora reprezentuje obecna ilosc elementow w pojemniku. Metoda czysto wirtualna.
+
+\begin{DoxyReturn}{Returns}
+Ilosc elementow w pojemniku. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+inc/\hyperlink{_i_pojemnik_8h}{I\-Pojemnik.\-h}\end{DoxyCompactItemize}

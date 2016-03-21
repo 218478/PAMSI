@@ -1,0 +1,6 @@
+<map id="main" name="main">
+<area shape="rect" id="node2" href="$class_lista.html#a28b2f7513f4ec6596463f2b60f2a753b" title="Zapisuje liste slowami. " alt="" coords="104,5,205,32"/>
+<area shape="rect" id="node3" href="$class_lista.html#aff0cca3c261459240d16dfc64d397e5d" title="Zwraca rozmiar listy. " alt="" coords="113,56,196,83"/>
+<area shape="rect" id="node4" href="$class_lista.html#acfeb35d442b628fbcfb4db31e6acea16" title="Wypisuje zawartosc listy. " alt="" coords="113,107,196,133"/>
+<area shape="rect" id="node5" href="$class_lista.html#aee227de057432c07d4045506b350ee14" title="Zwraca element z dowolnego miejsca listy. " alt="" coords="117,157,193,184"/>
+</map>

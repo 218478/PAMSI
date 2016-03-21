@@ -1,0 +1,283 @@
+\hypertarget{class_tablica}{\section{Tablica$<$ Type $>$ Class Template Reference}
+\label{class_tablica}\index{Tablica$<$ Type $>$@{Tablica$<$ Type $>$}}
+}
+
+
+Klasa \hyperlink{class_tablica}{Tablica}, w ktorej odbywa sie zapis dynamiczny elementow.  
+
+
+
+
+{\ttfamily \#include $<$Tablica.\-h$>$}
+
+
+
+Inheritance diagram for Tablica$<$ Type $>$\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=166pt]{class_tablica__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Tablica$<$ Type $>$\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=166pt]{class_tablica__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_tablica_a3ebc24ff90be6556ec0c0fa87f354c81}{Tablica} (\hyperlink{_i_lista_8h_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} x=10)
+\begin{DoxyCompactList}\small\item\em Konstruktor parametryczny. \end{DoxyCompactList}\item 
+\hyperlink{class_tablica_aa41eb34f825167e33916793c807087ec}{$\sim$\-Tablica} ()
+\begin{DoxyCompactList}\small\item\em Destruktor. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_tablica_ac54e8c5dcbd665dcf48d10b9df8ff41b}{prepare} (\hyperlink{_i_lista_8h_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} size)
+\begin{DoxyCompactList}\small\item\em Implementacja funkcji \hyperlink{class_tablica_ac54e8c5dcbd665dcf48d10b9df8ff41b}{prepare()} interfesju \hyperlink{class_i_runnable}{I\-Runnable}. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_tablica_a0e9570529b80cc6e1b40bf8b0d7e55c1}{run} ()
+\begin{DoxyCompactList}\small\item\em Implementacja funkcji \hyperlink{class_tablica_a0e9570529b80cc6e1b40bf8b0d7e55c1}{run()} interfesju \hyperlink{class_i_runnable}{I\-Runnable}. \end{DoxyCompactList}\item 
+\hyperlink{_i_lista_8h_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \hyperlink{class_tablica_ac3341812852356aa941c7077f7dfcfd7}{get\-Size} ()
+\begin{DoxyCompactList}\small\item\em Zwraca aktualny rozmiar tablicy dynamicznej. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_tablica_afbabf1c6a51051bd69c04e6c7306938c}{is\-Full} ()
+\begin{DoxyCompactList}\small\item\em Pozwala prosto okreslic, czy nalezy przydzielic pamiec. \end{DoxyCompactList}\item 
+void \hyperlink{class_tablica_a6c8a0a055eb2bda8e7e76cc5b7690652}{increase\-Size} ()
+\begin{DoxyCompactList}\small\item\em Zwieksza rozmiar przydzielonej pamieci na stercie. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Type $\ast$ \hyperlink{class_tablica_a03f7862b518bdd503051388389949257}{elements}
+\begin{DoxyCompactList}\small\item\em Wskaznik do poczatku tablicy dynamicznej. \end{DoxyCompactList}\item 
+\hyperlink{_i_lista_8h_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \hyperlink{class_tablica_aa2313b2db3dfda306acaf2a28be00707}{current\-\_\-size}
+\begin{DoxyCompactList}\small\item\em Okresla aktualny rozmiar stosu. \end{DoxyCompactList}\item 
+\hyperlink{_i_lista_8h_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \hyperlink{class_tablica_ab9bd8738c20ec1d02ceff156af4675bc}{desired\-\_\-size}
+\begin{DoxyCompactList}\small\item\em Okresla pozadany rozmiar stosu. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{class_tablica_ab05112ff73217668c456d7a92273574e}{index}
+\begin{DoxyCompactList}\small\item\em Okresla aktualny indeks. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class Type$>$class Tablica$<$ Type $>$}
+
+Klasa \hyperlink{class_tablica}{Tablica}, w ktorej odbywa sie zapis dynamiczny elementow. 
+
+Implementuje metody interfejsu \hyperlink{class_i_runnable}{I\-Runnable}. Zajmuje sie dynamiczna alokacja pamieci. Elastyczna a propos typow wskutek zastosowania szablonow. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_tablica_a3ebc24ff90be6556ec0c0fa87f354c81}{\index{Tablica@{Tablica}!Tablica@{Tablica}}
+\index{Tablica@{Tablica}!Tablica@{Tablica}}
+\subsubsection[{Tablica}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type$>$ {\bf Tablica}$<$ Type $>$\-::{\bf Tablica} (
+\begin{DoxyParamCaption}
+\item[{{\bf uint}}]{x = {\ttfamily 10}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_tablica_a3ebc24ff90be6556ec0c0fa87f354c81}
+
+
+Konstruktor parametryczny. 
+
+Umozliwia okreslenie poczatkowego rozmiaru tablicy. W przypadku braku okreslenia tego rozmiaru przyjmuje domyslna wartosc rowna 10.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Okresla poczatkowa wielkosc przydzielonej pamieci. Domyslna wartosc w przypadku braku podania to 10. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_tablica_aa41eb34f825167e33916793c807087ec}{\index{Tablica@{Tablica}!$\sim$\-Tablica@{$\sim$\-Tablica}}
+\index{$\sim$\-Tablica@{$\sim$\-Tablica}!Tablica@{Tablica}}
+\subsubsection[{$\sim$\-Tablica}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type$>$ {\bf Tablica}$<$ Type $>$\-::$\sim${\bf Tablica} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_tablica_aa41eb34f825167e33916793c807087ec}
+
+
+Destruktor. 
+
+Usuwa pamiec przypisana komorce, na ktora wskazuje pole $\ast$elements. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_tablica_ac3341812852356aa941c7077f7dfcfd7}{\index{Tablica@{Tablica}!get\-Size@{get\-Size}}
+\index{get\-Size@{get\-Size}!Tablica@{Tablica}}
+\subsubsection[{get\-Size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type$>$ {\bf uint} {\bf Tablica}$<$ Type $>$\-::get\-Size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_tablica_ac3341812852356aa941c7077f7dfcfd7}
+
+
+Zwraca aktualny rozmiar tablicy dynamicznej. 
+
+Zwraca wartosc pola current\-\_\-size.
+
+\begin{DoxyReturn}{Returns}
+Zwraca wartosc typu unsigned int, gdyz takiego typu jest zmienna current\-\_\-size. 
+\end{DoxyReturn}
+\hypertarget{class_tablica_a6c8a0a055eb2bda8e7e76cc5b7690652}{\index{Tablica@{Tablica}!increase\-Size@{increase\-Size}}
+\index{increase\-Size@{increase\-Size}!Tablica@{Tablica}}
+\subsubsection[{increase\-Size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type$>$ void {\bf Tablica}$<$ Type $>$\-::increase\-Size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}}\label{class_tablica_a6c8a0a055eb2bda8e7e76cc5b7690652}
+
+
+Zwieksza rozmiar przydzielonej pamieci na stercie. 
+
+Metoda prywatna. Kopiuje elementy starej pamieci do komorki z nowo-\/przydzielona pamiecia. Usuwa stara pamiec. 
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_tablica_a6c8a0a055eb2bda8e7e76cc5b7690652_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_tablica_afbabf1c6a51051bd69c04e6c7306938c}{\index{Tablica@{Tablica}!is\-Full@{is\-Full}}
+\index{is\-Full@{is\-Full}!Tablica@{Tablica}}
+\subsubsection[{is\-Full}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type$>$ bool {\bf Tablica}$<$ Type $>$\-::is\-Full (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}}\label{class_tablica_afbabf1c6a51051bd69c04e6c7306938c}
+
+
+Pozwala prosto okreslic, czy nalezy przydzielic pamiec. 
+
+Metoda prywatna. Sluzy do okreslania czy nalezy wywolac metode \hyperlink{class_tablica_a6c8a0a055eb2bda8e7e76cc5b7690652}{increase\-Size()}.
+
+\begin{DoxyReturn}{Returns}
+true Pamiec pelna. Nalezy zwiekszyc rozmiar.
+
+false Jest jeszcze wolne miejsce. 
+\end{DoxyReturn}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_tablica_afbabf1c6a51051bd69c04e6c7306938c_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_tablica_ac54e8c5dcbd665dcf48d10b9df8ff41b}{\index{Tablica@{Tablica}!prepare@{prepare}}
+\index{prepare@{prepare}!Tablica@{Tablica}}
+\subsubsection[{prepare}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type$>$ virtual void {\bf Tablica}$<$ Type $>$\-::prepare (
+\begin{DoxyParamCaption}
+\item[{{\bf uint}}]{size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_tablica_ac54e8c5dcbd665dcf48d10b9df8ff41b}
+
+
+Implementacja funkcji \hyperlink{class_tablica_ac54e8c5dcbd665dcf48d10b9df8ff41b}{prepare()} interfesju \hyperlink{class_i_runnable}{I\-Runnable}. 
+
+Zapisuje pozadany rozmiar do pola desired\-\_\-size.
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & Parametr typu unsigned int, gdyz rozmiar nie powinien nigdy byc ujemny. Jego wartosc zapisywana jest do pola desired\-\_\-size. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_i_runnable_ac4d20dee4cb12c42eeed8698e839ddaf}{I\-Runnable}.
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=282pt]{class_tablica_ac54e8c5dcbd665dcf48d10b9df8ff41b_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_tablica_a0e9570529b80cc6e1b40bf8b0d7e55c1}{\index{Tablica@{Tablica}!run@{run}}
+\index{run@{run}!Tablica@{Tablica}}
+\subsubsection[{run}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type$>$ virtual void {\bf Tablica}$<$ Type $>$\-::run (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_tablica_a0e9570529b80cc6e1b40bf8b0d7e55c1}
+
+
+Implementacja funkcji \hyperlink{class_tablica_a0e9570529b80cc6e1b40bf8b0d7e55c1}{run()} interfesju \hyperlink{class_i_runnable}{I\-Runnable}. 
+
+Uruchamia \char`\"{}bieg\char`\"{}, w ktorym nastepuje zapis elementow do poszczegolnych elementow tablicy dynamicznej. Tam odbywa sie alokacja pamieci oraz instrukcje warunkowe. 
+
+Implements \hyperlink{class_i_runnable_a6566fc2aa9fb5a7136f960172cee918d}{I\-Runnable}.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=294pt]{class_tablica_a0e9570529b80cc6e1b40bf8b0d7e55c1_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=264pt]{class_tablica_a0e9570529b80cc6e1b40bf8b0d7e55c1_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_tablica_aa2313b2db3dfda306acaf2a28be00707}{\index{Tablica@{Tablica}!current\-\_\-size@{current\-\_\-size}}
+\index{current\-\_\-size@{current\-\_\-size}!Tablica@{Tablica}}
+\subsubsection[{current\-\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type$>$ {\bf uint} {\bf Tablica}$<$ Type $>$\-::current\-\_\-size\hspace{0.3cm}{\ttfamily [private]}}}\label{class_tablica_aa2313b2db3dfda306acaf2a28be00707}
+
+
+Okresla aktualny rozmiar stosu. 
+
+Pole prywatne typu unsigned int, gdyz rozmiar nigdy nie powinien byc ujemny. \hypertarget{class_tablica_ab9bd8738c20ec1d02ceff156af4675bc}{\index{Tablica@{Tablica}!desired\-\_\-size@{desired\-\_\-size}}
+\index{desired\-\_\-size@{desired\-\_\-size}!Tablica@{Tablica}}
+\subsubsection[{desired\-\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type$>$ {\bf uint} {\bf Tablica}$<$ Type $>$\-::desired\-\_\-size\hspace{0.3cm}{\ttfamily [private]}}}\label{class_tablica_ab9bd8738c20ec1d02ceff156af4675bc}
+
+
+Okresla pozadany rozmiar stosu. 
+
+Pole prywatne typu unsigned int, gdyz rozmiar nigdy nie powinien byc ujemny. Zadawane w funkcji \hyperlink{class_tablica_ac54e8c5dcbd665dcf48d10b9df8ff41b}{prepare()}. \hypertarget{class_tablica_a03f7862b518bdd503051388389949257}{\index{Tablica@{Tablica}!elements@{elements}}
+\index{elements@{elements}!Tablica@{Tablica}}
+\subsubsection[{elements}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type$>$ Type$\ast$ {\bf Tablica}$<$ Type $>$\-::elements\hspace{0.3cm}{\ttfamily [private]}}}\label{class_tablica_a03f7862b518bdd503051388389949257}
+
+
+Wskaznik do poczatku tablicy dynamicznej. 
+
+Wskazuje na adres w pamieci sterty. Pole prywatne. \hypertarget{class_tablica_ab05112ff73217668c456d7a92273574e}{\index{Tablica@{Tablica}!index@{index}}
+\index{index@{index}!Tablica@{Tablica}}
+\subsubsection[{index}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type$>$ unsigned int {\bf Tablica}$<$ Type $>$\-::index\hspace{0.3cm}{\ttfamily [private]}}}\label{class_tablica_ab05112ff73217668c456d7a92273574e}
+
+
+Okresla aktualny indeks. 
+
+Pole prywatne typu unsigned int, gdyz indeks nigdy nie powinien byc ujemny. Przechowuje indeks, pierwszej wolnej komorki pamieci, do ktorego mozliwy bedzie zapis. 
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+inc/\hyperlink{_tablica_8h}{Tablica.\-h}\end{DoxyCompactItemize}

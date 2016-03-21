@@ -1,0 +1,149 @@
+\hypertarget{class_i_lista}{\section{I\-Lista$<$ List\-Type $>$ Class Template Reference}
+\label{class_i_lista}\index{I\-Lista$<$ List\-Type $>$@{I\-Lista$<$ List\-Type $>$}}
+}
+
+
+Interfejs dla pojemnika \hyperlink{class_lista}{Lista}.  
+
+
+
+
+{\ttfamily \#include $<$I\-Lista.\-h$>$}
+
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{class_i_lista_a756c44e78597aca5c7442645cf1f3cd5}{add} (List\-Type item, \hyperlink{_i_lista_8h_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} index)=0
+\begin{DoxyCompactList}\small\item\em Wstawia element w dowolnym miejscu listy. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_i_lista_afbfc2fddaeb3cffb76cf92bb4a25ea1e}{remove} (\hyperlink{_i_lista_8h_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} index)=0
+\begin{DoxyCompactList}\small\item\em Usuwa element z dowolnego miejsca listy. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_i_lista_ad902b7932a4d28d6c6c86d59111c4bd0}{is\-Empty} ()=0
+\begin{DoxyCompactList}\small\item\em Sprawdza czy lista jest pusta. \end{DoxyCompactList}\item 
+virtual List\-Type \hyperlink{class_i_lista_a6cf7937df214e06927df32046e231d08}{get} (\hyperlink{_i_lista_8h_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} index)=0
+\begin{DoxyCompactList}\small\item\em Zwraca element z dowolnego miejsca listy. \end{DoxyCompactList}\item 
+virtual \hyperlink{_i_lista_8h_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \hyperlink{class_i_lista_a82a9479c66bc41f61e186769fa59c04b}{size} ()=0
+\begin{DoxyCompactList}\small\item\em Zwraca rozmiar listy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class List\-Type$>$class I\-Lista$<$ List\-Type $>$}
+
+Interfejs dla pojemnika \hyperlink{class_lista}{Lista}. 
+
+Abstrakcyjna klasa, ktora zostala utworzona na potrzeby A\-D\-T Abstract Data Types. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_i_lista_a756c44e78597aca5c7442645cf1f3cd5}{\index{I\-Lista@{I\-Lista}!add@{add}}
+\index{add@{add}!ILista@{I\-Lista}}
+\subsubsection[{add}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class List\-Type$>$ virtual void {\bf I\-Lista}$<$ List\-Type $>$\-::add (
+\begin{DoxyParamCaption}
+\item[{List\-Type}]{item, }
+\item[{{\bf uint}}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}}\label{class_i_lista_a756c44e78597aca5c7442645cf1f3cd5}
+
+
+Wstawia element w dowolnym miejscu listy. 
+
+Wstawia element typu Type w miejsce wskazywane przez zmienna index.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em item} & Element wstawiany. \\
+\hline
+\mbox{\tt in}  & {\em index} & Miejsce, w ktore ma byc wstawiony element item. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{class_lista_a5016da5359009ca7e3421de513cb3999}{Lista$<$ Type $>$}.
+
+\hypertarget{class_i_lista_a6cf7937df214e06927df32046e231d08}{\index{I\-Lista@{I\-Lista}!get@{get}}
+\index{get@{get}!ILista@{I\-Lista}}
+\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class List\-Type$>$ virtual List\-Type {\bf I\-Lista}$<$ List\-Type $>$\-::get (
+\begin{DoxyParamCaption}
+\item[{{\bf uint}}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}}\label{class_i_lista_a6cf7937df214e06927df32046e231d08}
+
+
+Zwraca element z dowolnego miejsca listy. 
+
+Zwraca element z miejsca wskazywanego przez zmienna index.
+
+\begin{DoxyReturn}{Returns}
+Zwraca element typu Type. 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_lista_aee227de057432c07d4045506b350ee14}{Lista$<$ Type $>$}.
+
+\hypertarget{class_i_lista_ad902b7932a4d28d6c6c86d59111c4bd0}{\index{I\-Lista@{I\-Lista}!is\-Empty@{is\-Empty}}
+\index{is\-Empty@{is\-Empty}!ILista@{I\-Lista}}
+\subsubsection[{is\-Empty}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class List\-Type$>$ virtual bool {\bf I\-Lista}$<$ List\-Type $>$\-::is\-Empty (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}}\label{class_i_lista_ad902b7932a4d28d6c6c86d59111c4bd0}
+
+
+Sprawdza czy lista jest pusta. 
+
+Sprawdza czy w liscie sa jakies elementy.
+
+
+\begin{DoxyRetVals}{Return values}
+{\em true} & \hyperlink{class_lista}{Lista} jest pusta. \\
+\hline
+{\em false} & \hyperlink{class_lista}{Lista} nie jest pusta. \\
+\hline
+\end{DoxyRetVals}
+
+
+Implemented in \hyperlink{class_lista_acbc1b67a23e04ed8a6fd1ca378872c7d}{Lista$<$ Type $>$}.
+
+\hypertarget{class_i_lista_afbfc2fddaeb3cffb76cf92bb4a25ea1e}{\index{I\-Lista@{I\-Lista}!remove@{remove}}
+\index{remove@{remove}!ILista@{I\-Lista}}
+\subsubsection[{remove}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class List\-Type$>$ virtual bool {\bf I\-Lista}$<$ List\-Type $>$\-::remove (
+\begin{DoxyParamCaption}
+\item[{{\bf uint}}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}}\label{class_i_lista_afbfc2fddaeb3cffb76cf92bb4a25ea1e}
+
+
+Usuwa element z dowolnego miejsca listy. 
+
+Usuwa element z miejsca wskazywanego przez zmienna index.
+
+\begin{DoxyReturn}{Returns}
+Zwraca element typu Type. 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_lista_a0513f36b0f98c1793a015e955b7274cb}{Lista$<$ Type $>$}.
+
+\hypertarget{class_i_lista_a82a9479c66bc41f61e186769fa59c04b}{\index{I\-Lista@{I\-Lista}!size@{size}}
+\index{size@{size}!ILista@{I\-Lista}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class List\-Type$>$ virtual {\bf uint} {\bf I\-Lista}$<$ List\-Type $>$\-::size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}}\label{class_i_lista_a82a9479c66bc41f61e186769fa59c04b}
+
+
+Zwraca rozmiar listy. 
+
+Zwraca ilosc elementow w liscie.
+
+\begin{DoxyReturn}{Returns}
+Rozmiar listy. 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{class_lista_aff0cca3c261459240d16dfc64d397e5d}{Lista$<$ Type $>$}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+inc/\hyperlink{_i_lista_8h}{I\-Lista.\-h}\end{DoxyCompactItemize}

@@ -1,0 +1,21 @@
+1.	nie mierz czasu clock(), tylko getTimeOfDay() -> POPRAW
+	można używać też chrono
+2.	organizacja repozytoriów -> kolejne laboratoria w nowym folderze
+  	w każdym folderze Makefile oraz pliki nagłówkowe i źródłowe do osobnych
+3.	zrób porządek
+4.	wymieniamy kod z kolegą na następnych zajęciach (ale muszę mieć listę, stos i kolejkę)
+5.	sedzią będzie po prostu kilkoma insturkcjami w mainie()
+  	Mamy zrobić trzy interfejsy, dla stosu, listy i kolejki
+  	Potem implementacje tych interfesjow,
+  	A potem IRunnable ma być dziedziczone przez te implementacje (Stos_test, Kolejka_test)
+
+  	Pamiętać o tym, aby opisać wyjątki. Jeżeli da się to w kodzie (SPRAWDŹ). Ale jeżeli się
+  	nie da to lecisz z dokumentacją.
+6.	Sprawozdania pisać ładnie. Musi być wstęp, wyniki pomiarów oraz wnioski.
+7.	Oceny będą wystawione w ramach następnych ćwiczeń, więc popraw wszystko.
+8.	Pisząc stos i kolejkę trzeba użyć tablicy
+	albo użyć listy do zrobienia stosu i kolejki
+9.	jak nie będę używał templateów to kod będzie bardziej czytelny
+10.	na zajęciach mamy zrobić bubbleSort
+11.	W swoim kodzie muszę wywalić template'y, wywalić ten głupi tym zmiennej uint oraz dokończyć
+12.	

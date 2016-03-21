@@ -1,0 +1,346 @@
+\hypertarget{class_lista}{\section{Lista$<$ Type $>$ Class Template Reference}
+\label{class_lista}\index{Lista$<$ Type $>$@{Lista$<$ Type $>$}}
+}
+
+
+Klasa \hyperlink{class_lista}{Lista}, w ktorej odbywa sie zapis dynamiczny elementow typu int.  
+
+
+
+
+{\ttfamily \#include $<$Lista.\-h$>$}
+
+
+
+Inheritance diagram for Lista$<$ Type $>$\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=160pt]{class_lista__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Lista$<$ Type $>$\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=298pt]{class_lista__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_lista_a9e74820e2d81e143c273992e563dffd3}{Lista} ()
+\begin{DoxyCompactList}\small\item\em Konstruktor. \end{DoxyCompactList}\item 
+\hyperlink{class_lista_a8de4b73bf5501c3fea7dd4041c320008}{$\sim$\-Lista} ()
+\begin{DoxyCompactList}\small\item\em Destruktor. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_lista_a5016da5359009ca7e3421de513cb3999}{add} (Type item, \hyperlink{_i_lista_8h_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} index)
+\begin{DoxyCompactList}\small\item\em Wstawia element w dowolnym miejscu listy. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_lista_a0513f36b0f98c1793a015e955b7274cb}{remove} (\hyperlink{_i_lista_8h_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} index)
+\begin{DoxyCompactList}\small\item\em Usuwa element z dowolnego miejsca listy. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_lista_acbc1b67a23e04ed8a6fd1ca378872c7d}{is\-Empty} ()
+\begin{DoxyCompactList}\small\item\em Sprawdza czy lista jest pusta. \end{DoxyCompactList}\item 
+virtual Type \hyperlink{class_lista_aee227de057432c07d4045506b350ee14}{get} (\hyperlink{_i_lista_8h_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} index)
+\begin{DoxyCompactList}\small\item\em Zwraca element z dowolnego miejsca listy. \end{DoxyCompactList}\item 
+virtual \hyperlink{_i_lista_8h_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \hyperlink{class_lista_aff0cca3c261459240d16dfc64d397e5d}{size} ()
+\begin{DoxyCompactList}\small\item\em Zwraca rozmiar listy. \end{DoxyCompactList}\item 
+virtual \hyperlink{_i_lista_8h_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \hyperlink{class_lista_a5b2885df007727df930fc293ef2ab2b2}{run} (Type desired\-\_\-element)
+\begin{DoxyCompactList}\small\item\em Szuka elementu. \end{DoxyCompactList}\item 
+virtual void \hyperlink{class_lista_a28b2f7513f4ec6596463f2b60f2a753b}{prepare} (\hyperlink{_i_lista_8h_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} desired\-\_\-size)
+\begin{DoxyCompactList}\small\item\em Zapisuje liste slowami. \end{DoxyCompactList}\item 
+void \hyperlink{class_lista_acfeb35d442b628fbcfb4db31e6acea16}{print} ()
+\begin{DoxyCompactList}\small\item\em Wypisuje zawartosc listy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_node}{Node}$<$ Type $>$ $\ast$ \hyperlink{class_lista_a9024fb7afb23ca1658288623fb940727}{head}
+\begin{DoxyCompactList}\small\item\em Pierwszy element listy. \end{DoxyCompactList}\item 
+\hyperlink{class_node}{Node}$<$ Type $>$ $\ast$ \hyperlink{class_lista_a510db6c07e6aa5802176451632f6bf4c}{tail}
+\begin{DoxyCompactList}\small\item\em Ostatni element listy. \end{DoxyCompactList}\item 
+\hyperlink{_i_lista_8h_a91ad9478d81a7aaf2593e8d9c3d06a14}{uint} \hyperlink{class_lista_a2ccdeaf5854898d0ba0fce725e0fa676}{size\-\_\-of\-\_\-list}
+\begin{DoxyCompactList}\small\item\em Przechowuje rozmiar listy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class Type$>$class Lista$<$ Type $>$}
+
+Klasa \hyperlink{class_lista}{Lista}, w ktorej odbywa sie zapis dynamiczny elementow typu int. 
+
+Implementuje metody interfejsu \hyperlink{class_i_runnable}{I\-Runnable}. Zajmuje sie dynamiczna alokacja pamieci. \hyperlink{class_lista}{Lista} jest dwukierunkowa oraz posiada mechanizm, dzieki ktoremu mamy dostep zarowno do pierwszego jak i ostatniego elementu. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_lista_a9e74820e2d81e143c273992e563dffd3}{\index{Lista@{Lista}!Lista@{Lista}}
+\index{Lista@{Lista}!Lista@{Lista}}
+\subsubsection[{Lista}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type $>$ {\bf Lista}$<$ Type $>$\-::{\bf Lista} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_lista_a9e74820e2d81e143c273992e563dffd3}
+
+
+Konstruktor. 
+
+Tworzy poczatek listy. \hypertarget{class_lista_a8de4b73bf5501c3fea7dd4041c320008}{\index{Lista@{Lista}!$\sim$\-Lista@{$\sim$\-Lista}}
+\index{$\sim$\-Lista@{$\sim$\-Lista}!Lista@{Lista}}
+\subsubsection[{$\sim$\-Lista}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type $>$ {\bf Lista}$<$ Type $>$\-::$\sim${\bf Lista} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_lista_a8de4b73bf5501c3fea7dd4041c320008}
+
+
+Destruktor. 
+
+Usuwa cala pamiec listy \char`\"{}skaczac\char`\"{} po jej elementach. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_lista_a5016da5359009ca7e3421de513cb3999}{\index{Lista@{Lista}!add@{add}}
+\index{add@{add}!Lista@{Lista}}
+\subsubsection[{add}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type $>$ void {\bf Lista}$<$ Type $>$\-::add (
+\begin{DoxyParamCaption}
+\item[{Type}]{item, }
+\item[{{\bf uint}}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_lista_a5016da5359009ca7e3421de513cb3999}
+
+
+Wstawia element w dowolnym miejscu listy. 
+
+Wstawia element typu Type w miejsce wskazywane przez zmienna index.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em item} & Element wstawiany. \\
+\hline
+\mbox{\tt in}  & {\em index} & Miejsce, w ktore ma byc wstawiony element item. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{class_i_lista_a756c44e78597aca5c7442645cf1f3cd5}{I\-Lista$<$ Type $>$}.
+
+\hypertarget{class_lista_aee227de057432c07d4045506b350ee14}{\index{Lista@{Lista}!get@{get}}
+\index{get@{get}!Lista@{Lista}}
+\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type $>$ Type {\bf Lista}$<$ Type $>$\-::get (
+\begin{DoxyParamCaption}
+\item[{{\bf uint}}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_lista_aee227de057432c07d4045506b350ee14}
+
+
+Zwraca element z dowolnego miejsca listy. 
+
+Zwraca element z miejsca wskazywanego przez zmienna index. Wyjatki są typu\-: const char $\ast$ \char`\"{}\-Empty list\char`\"{} -\/ pusta lista \char`\"{}\-Index out of bounds\char`\"{} -\/ przekroczono zakres, nie ma tylu elementow
+
+\begin{DoxyReturn}{Returns}
+Zwraca element typu Type. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_i_lista_a6cf7937df214e06927df32046e231d08}{I\-Lista$<$ Type $>$}.
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{class_lista_aee227de057432c07d4045506b350ee14_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_lista_acbc1b67a23e04ed8a6fd1ca378872c7d}{\index{Lista@{Lista}!is\-Empty@{is\-Empty}}
+\index{is\-Empty@{is\-Empty}!Lista@{Lista}}
+\subsubsection[{is\-Empty}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type $>$ bool {\bf Lista}$<$ Type $>$\-::is\-Empty (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_lista_acbc1b67a23e04ed8a6fd1ca378872c7d}
+
+
+Sprawdza czy lista jest pusta. 
+
+Sprawdza czy w liscie sa jakies elementy.
+
+
+\begin{DoxyRetVals}{Return values}
+{\em true} & \hyperlink{class_lista}{Lista} jest pusta. \\
+\hline
+{\em false} & \hyperlink{class_lista}{Lista} nie jest pusta. \\
+\hline
+\end{DoxyRetVals}
+
+
+Implements \hyperlink{class_i_lista_ad902b7932a4d28d6c6c86d59111c4bd0}{I\-Lista$<$ Type $>$}.
+
+\hypertarget{class_lista_a28b2f7513f4ec6596463f2b60f2a753b}{\index{Lista@{Lista}!prepare@{prepare}}
+\index{prepare@{prepare}!Lista@{Lista}}
+\subsubsection[{prepare}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type $>$ void {\bf Lista}$<$ Type $>$\-::prepare (
+\begin{DoxyParamCaption}
+\item[{{\bf uint}}]{desired\-\_\-size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_lista_a28b2f7513f4ec6596463f2b60f2a753b}
+
+
+Zapisuje liste slowami. 
+
+Zapisuje liste slowami zaczerpnietymi ze slownika. !!! W\-A\-Z\-N\-E !!!! Funkcja powinna byc uzyta tylko na poczatku, gdy cala lista jest pusta. Inaczej nastapi nadpisanie elementow poczatkowych.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em desired\-\_\-size} & Ile elementow ma zostac wczytanych. \\
+\hline
+\end{DoxyParams}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=230pt]{class_lista_a28b2f7513f4ec6596463f2b60f2a753b_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_lista_acfeb35d442b628fbcfb4db31e6acea16}{\index{Lista@{Lista}!print@{print}}
+\index{print@{print}!Lista@{Lista}}
+\subsubsection[{print}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type $>$ void {\bf Lista}$<$ Type $>$\-::print (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_lista_acfeb35d442b628fbcfb4db31e6acea16}
+
+
+Wypisuje zawartosc listy. 
+
+Wypisuje kazdy element listy w osobnej linii. Na gorze znajduje sie poczatek listy. 
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{class_lista_acfeb35d442b628fbcfb4db31e6acea16_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{class_lista_a0513f36b0f98c1793a015e955b7274cb}{\index{Lista@{Lista}!remove@{remove}}
+\index{remove@{remove}!Lista@{Lista}}
+\subsubsection[{remove}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type $>$ bool {\bf Lista}$<$ Type $>$\-::remove (
+\begin{DoxyParamCaption}
+\item[{{\bf uint}}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_lista_a0513f36b0f98c1793a015e955b7274cb}
+
+
+Usuwa element z dowolnego miejsca listy. 
+
+Usuwa element z miejsca wskazywanego przez zmienna index.
+
+
+\begin{DoxyRetVals}{Return values}
+{\em true} & Udalo sie usunac element o podanym indeksie. \\
+\hline
+{\em false} & Nie udalo sie usunac elementu o podanym indeksie. \\
+\hline
+\end{DoxyRetVals}
+
+
+Implements \hyperlink{class_i_lista_afbfc2fddaeb3cffb76cf92bb4a25ea1e}{I\-Lista$<$ Type $>$}.
+
+\hypertarget{class_lista_a5b2885df007727df930fc293ef2ab2b2}{\index{Lista@{Lista}!run@{run}}
+\index{run@{run}!Lista@{Lista}}
+\subsubsection[{run}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type $>$ {\bf uint} {\bf Lista}$<$ Type $>$\-::run (
+\begin{DoxyParamCaption}
+\item[{Type}]{desired\-\_\-element}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_lista_a5b2885df007727df930fc293ef2ab2b2}
+
+
+Szuka elementu. 
+
+Szuka elementu wskazanego przez uzytkownika. W funkcji nastepuje Segmentation fault, gdy probujemy znalezc element, ktorego tam nie ma. W ogole sposob kodowania bledow gdy na nie napotka jest debilny ale nie mialem wystarczajaco duzo czasu aby to przerobic.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em desired\-\_\-element} & Poszukiwana fraza.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em index$>$0} & Znalazl element i wyswietlil. \\
+\hline
+{\em 1199999999} & Nie znalazl i nie wyswietlil elementu. Wybrana wartosc, poniewaz nigdy tak duzej liczby elementow nie wczytamy. 10 cyfr. \\
+\hline
+{\em 1198989898} & \hyperlink{class_lista}{Lista} pusta. Wybrana wartosc, poniewaz nigdy tak duzej liczby elementow nie wczytamy. 10 cyfr. \\
+\hline
+\end{DoxyRetVals}
+\hypertarget{class_lista_aff0cca3c261459240d16dfc64d397e5d}{\index{Lista@{Lista}!size@{size}}
+\index{size@{size}!Lista@{Lista}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type $>$ {\bf uint} {\bf Lista}$<$ Type $>$\-::size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_lista_aff0cca3c261459240d16dfc64d397e5d}
+
+
+Zwraca rozmiar listy. 
+
+Zwraca ilosc elementow w liscie.
+
+\begin{DoxyReturn}{Returns}
+Rozmiar listy. 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{class_i_lista_a82a9479c66bc41f61e186769fa59c04b}{I\-Lista$<$ Type $>$}.
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{class_lista_aff0cca3c261459240d16dfc64d397e5d_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_lista_a9024fb7afb23ca1658288623fb940727}{\index{Lista@{Lista}!head@{head}}
+\index{head@{head}!Lista@{Lista}}
+\subsubsection[{head}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type$>$ {\bf Node}$<$Type$>$$\ast$ {\bf Lista}$<$ Type $>$\-::head\hspace{0.3cm}{\ttfamily [private]}}}\label{class_lista_a9024fb7afb23ca1658288623fb940727}
+
+
+Pierwszy element listy. 
+
+Wskazuje na pierwszy element listy. \hypertarget{class_lista_a2ccdeaf5854898d0ba0fce725e0fa676}{\index{Lista@{Lista}!size\-\_\-of\-\_\-list@{size\-\_\-of\-\_\-list}}
+\index{size\-\_\-of\-\_\-list@{size\-\_\-of\-\_\-list}!Lista@{Lista}}
+\subsubsection[{size\-\_\-of\-\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type$>$ {\bf uint} {\bf Lista}$<$ Type $>$\-::size\-\_\-of\-\_\-list\hspace{0.3cm}{\ttfamily [private]}}}\label{class_lista_a2ccdeaf5854898d0ba0fce725e0fa676}
+
+
+Przechowuje rozmiar listy. 
+
+Dzieki zastosowaniu tej zmiennej, o wiele latwiej poslugiwac sie lista. \hypertarget{class_lista_a510db6c07e6aa5802176451632f6bf4c}{\index{Lista@{Lista}!tail@{tail}}
+\index{tail@{tail}!Lista@{Lista}}
+\subsubsection[{tail}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Type$>$ {\bf Node}$<$Type$>$$\ast$ {\bf Lista}$<$ Type $>$\-::tail\hspace{0.3cm}{\ttfamily [private]}}}\label{class_lista_a510db6c07e6aa5802176451632f6bf4c}
+
+
+Ostatni element listy. 
+
+Wskazuje na ostatni element listy. 
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+inc/\hyperlink{_lista_8h}{Lista.\-h}\end{DoxyCompactItemize}

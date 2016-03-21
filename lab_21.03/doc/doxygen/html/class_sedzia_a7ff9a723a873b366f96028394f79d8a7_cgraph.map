@@ -1,0 +1,10 @@
+<map id="Sedzia::setOff" name="Sedzia::setOff">
+<area shape="rect" id="node2" href="$class_tablica.html#ac54e8c5dcbd665dcf48d10b9df8ff41b" title="Implementacja funkcji prepare() interfesju IRunnable. " alt="" coords="171,5,285,32"/>
+<area shape="rect" id="node3" href="$class_stoper.html#ae9dc93f4113f2d3afbe3b67166a7615d" title="Implementacja funkcji start() z interfejsu IStoper. " alt="" coords="181,56,275,83"/>
+<area shape="rect" id="node4" href="$class_tablica.html#a0e9570529b80cc6e1b40bf8b0d7e55c1" title="Implementacja funkcji run() interfesju IRunnable. " alt="" coords="183,107,273,133"/>
+<area shape="rect" id="node7" href="$class_stoper.html#afa91decbc99ba7509f1129f77c03b443" title="Implementacja funkcji stop() z interfejsu IStoper. " alt="" coords="181,157,275,184"/>
+<area shape="rect" id="node8" href="$class_stoper.html#a8896c3b2fa5428e29e5fef7f7bad3615" title="Implementacja funkcji dumpToFile() z interfejsu IStoper. " alt="" coords="160,208,296,235"/>
+<area shape="rect" id="node5" href="$class_tablica.html#afbabf1c6a51051bd69c04e6c7306938c" title="Pozwala prosto okreslic, czy nalezy przydzielic pamiec. " alt="" coords="374,81,477,108"/>
+<area shape="rect" id="node6" href="$class_tablica.html#a6c8a0a055eb2bda8e7e76cc5b7690652" title="Zwieksza rozmiar przydzielonej pamieci na stercie. " alt="" coords="352,132,499,159"/>
+<area shape="rect" id="node9" href="$class_stoper.html#a8f50bbba9cb719ca9d573a5cb4a19e36" title="Implementacja funkcji getElapse() z interfejsu IStoper. " alt="" coords="344,208,507,235"/>
+</map>

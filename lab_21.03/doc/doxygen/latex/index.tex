@@ -1,0 +1,13 @@
+\begin{DoxyAuthor}{Author}
+Kamil Kuczaj \href{mailto:218478@student.pwr.edu.pl}{\tt 218478@student.\-pwr.\-edu.\-pl}
+\end{DoxyAuthor}
+\hypertarget{index_intro_sec}{}\section{Wstep}\label{index_intro_sec}
+Program zostal zbudowany modulowo. W folderze inc/ znajduja sie pliki naglowkowe. Folder src/ zawiera pliki zrodlowe. W glownym folderze zbudowany zostal Makefile. Pliki obiektowe sa budowane w folderze obj/ a nastepnie linkowane do glownego folderu (prj/). Testowano przy wykorzystaniu kompilatora g++ w wersji 4.\-8.\-4 na systemie Linux Ubuntu 14.\-04.\-04 opartego o jądro 4.\-2.\-0-\/30-\/generic.\hypertarget{index_Licencja}{}\section{Licencja}\label{index_Licencja}
+Program udostepniam na licencji G\-P\-Lv3.\hypertarget{index_install_sec}{}\section{Instalacja}\label{index_install_sec}
+Aby zbudowac i jednoczesnie odpalic program\-: \$ make
+
+Aby pozbyc sie plikow z koncowka $\ast$$\sim$ lub zaczynajacych sie na \#$\ast$\-: \$ make order
+
+Aby pozbyc sie programu wykonywalnego oraz plikow obiektowych\-: \$ make clean
+
+Aby wyswietlic pomoc do pliku Makefile\-: \$ make help 
