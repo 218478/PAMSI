@@ -3,7 +3,7 @@
 
 /*! \file IPojemnik.h
  *
- * \brief Plik zawiera interfejs dla każdego pojemnika..
+ * \brief Plik zawiera interfejs dla pojemnika Stos, Kolejka oraz Tablica.
  *
  * \details Wskutek zastosowania szablonow wszystkie definicje musza znajdowac
  *          sie w pliku naglowkowym, a nie zrodlowym.
@@ -24,8 +24,16 @@ typedef unsigned int uint;
  * \details Abstrakcyjna klasa, ktora zostala utworzona na potrzeby ADT
  *          Abstract Data Types.
  */
-template <class Type> class Pojemnik {
-  protected:
+template <class Type> class IPojemnik {
+ protected:
+  /*! \brief Gora stosu.
+   *
+   * \details Glowa stosu. Dostep chroniony, gdyz klasy, ktore beda implementowac
+   *          ten interfejs powinny juz miec to pole prywatne. Patrz dziedziczenie.
+   */
+  IPojemnik<Type> *head;
+
+  public:
 
   /*! \brief Dodaje element w okreslonym miejscu.
    *
@@ -35,18 +43,44 @@ template <class Type> class Pojemnik {
    * \param[in] item    Dana, ktora ma byc wlozona.
    * \param[in] index   Indeks, w ktorym ma znalezc sie nowa dana.
    */
-  virtual Type add(Type item, uint index);
+  virtual Type add(Type item, uint index)=0;
 
-  /*! \brief Usuwa element z okreslonego miejsca.
+  /*! \brief Dodaje element na poczatek.
    *
-   * \details Usuwa i zwraca podany element znajdujacy sie w index-owym miejscu.
+   * \details Dodaje element na poczatek pojemnika.
    *
-   * \param[in] index   Indeks,z ktorego ma zostac usunieta dana.
+   * \param[in] element "Wpychany" element typu Type.
    */
-  virtual Type push(uint index);
-  virtual bool empty();
-  virtual Type pop(uint index);
-  virtual uint size();
+  virtual void push(Type element)=0;
+
+  /*! \brief Usuwa element z pojemnika.
+   *
+   * \details Usuwa element z pojemnika i zwraca go uzytkownikowi.
+   *          Metoda czysto wirtualna.
+   *
+   * \return Usuniety element.
+   */
+  virtual Type pop()=0;
+
+  /*! \brief Sprawdza czy pojemnika jest pusty.
+   *
+   * \details Sprawdza czy znajduja sie jakies elementy w pojemniku.
+   *          Metoda czysto wirtualna.
+   *
+   * \retval true Pojemnik pusty.
+   * \retval false Pojemnik nie jest pusty.
+   */
+  virtual bool empty()=0;
+
+  /*!
+   * \brief Zwraca aktualny rozmiar pojemnika.
+   *
+   * \details Zwraca wartosc, ktora reprezentuje obecna ilosc elementow
+   *          w pojemniku. Metoda czysto wirtualna.
+   *
+   * \return Ilosc elementow w pojemniku.
+   */
+  virtual uint size()=0;
 };
 
 

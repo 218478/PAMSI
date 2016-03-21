@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Pomiar czasu dynamicznej alokacji pamięci: Class Hierarchy</title>
+<title>Pomiar czasu przeszukania listy jednokierunkowej: Class Hierarchy</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Pomiar czasu dynamicznej alokacji pamięci
+   <div id="projectname">Pomiar czasu przeszukania listy jednokierunkowej
    </div>
   </td>
  </tr>
@@ -71,7 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -89,17 +89,24 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p><a href="inherits.html">Go to the graphical class hierarchy</a></p>
 This inheritance list is sorted roughly, but not completely, alphabetically:</div><div class="directory">
 <div class="levels">[detail level <span onclick="javascript:toggleLevel(1);">1</span><span onclick="javascript:toggleLevel(2);">2</span>]</div><table class="directory">
-<tr id="row_0_" class="even"><td class="entry"><img id="arr_0_" src="ftv2mnode.png" alt="o" width="16" height="22" onclick="toggleFolder('0_')"/><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="class_i_runnable.html" target="_self">IRunnable</a></td><td class="desc">Interfejs dla biegacza </td></tr>
-<tr id="row_0_0_"><td class="entry"><img src="ftv2vertline.png" alt="|" width="16" height="22" /><img src="ftv2lastnode.png" alt="\" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="class_tablica.html" target="_self">Tablica</a></td><td class="desc">Klasa tablica, w ktorej odbywa sie zapis dynamiczny elementow typu int </td></tr>
-<tr id="row_1_" class="even"><td class="entry"><img id="arr_1_" src="ftv2mnode.png" alt="o" width="16" height="22" onclick="toggleFolder('1_')"/><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="class_i_stoper.html" target="_self">IStoper</a></td><td class="desc">Interfejs dla stopera </td></tr>
-<tr id="row_1_0_"><td class="entry"><img src="ftv2vertline.png" alt="|" width="16" height="22" /><img src="ftv2lastnode.png" alt="\" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="class_stoper.html" target="_self">Stoper</a></td><td class="desc">Implementacja klasy <a class="el" href="class_stoper.html" title="Implementacja klasy Stoper. ">Stoper</a> </td></tr>
-<tr id="row_2_" class="even"><td class="entry"><img src="ftv2lastnode.png" alt="\" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="class_sedzia.html" target="_self">Sedzia</a></td><td class="desc">Implementacja klasy <a class="el" href="class_sedzia.html" title="Implementacja klasy Sedzia. ">Sedzia</a> </td></tr>
+<tr id="row_0_" class="even"><td class="entry"><img src="ftv2node.png" alt="o" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="class_i_lista.html" target="_self">ILista&lt; ListType &gt;</a></td><td class="desc">Interfejs dla pojemnika <a class="el" href="class_lista.html" title="Klasa Lista, w ktorej odbywa sie zapis dynamiczny elementow typu int. ">Lista</a> </td></tr>
+<tr id="row_1_"><td class="entry"><img id="arr_1_" src="ftv2mnode.png" alt="o" width="16" height="22" onclick="toggleFolder('1_')"/><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="class_i_lista.html" target="_self">ILista&lt; Type &gt;</a></td><td class="desc"></td></tr>
+<tr id="row_1_0_" class="even"><td class="entry"><img src="ftv2vertline.png" alt="|" width="16" height="22" /><img src="ftv2lastnode.png" alt="\" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="class_lista.html" target="_self">Lista&lt; Type &gt;</a></td><td class="desc">Klasa <a class="el" href="class_lista.html" title="Klasa Lista, w ktorej odbywa sie zapis dynamiczny elementow typu int. ">Lista</a>, w ktorej odbywa sie zapis dynamiczny elementow typu int </td></tr>
+<tr id="row_2_"><td class="entry"><img src="ftv2node.png" alt="o" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="class_i_pojemnik.html" target="_self">IPojemnik&lt; Type &gt;</a></td><td class="desc">Interfejs dla każdego pojemnika </td></tr>
+<tr id="row_3_" class="even"><td class="entry"><img id="arr_3_" src="ftv2mnode.png" alt="o" width="16" height="22" onclick="toggleFolder('3_')"/><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="class_i_runnable.html" target="_self">IRunnable</a></td><td class="desc">Interfejs dla biegacza </td></tr>
+<tr id="row_3_0_"><td class="entry"><img src="ftv2vertline.png" alt="|" width="16" height="22" /><img src="ftv2node.png" alt="o" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="class_kolejka.html" target="_self">Kolejka</a></td><td class="desc"></td></tr>
+<tr id="row_3_1_" class="even"><td class="entry"><img src="ftv2vertline.png" alt="|" width="16" height="22" /><img src="ftv2lastnode.png" alt="\" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="class_tablica.html" target="_self">Tablica&lt; Type &gt;</a></td><td class="desc">Klasa <a class="el" href="class_tablica.html" title="Klasa Tablica, w ktorej odbywa sie zapis dynamiczny elementow. ">Tablica</a>, w ktorej odbywa sie zapis dynamiczny elementow </td></tr>
+<tr id="row_4_"><td class="entry"><img id="arr_4_" src="ftv2mnode.png" alt="o" width="16" height="22" onclick="toggleFolder('4_')"/><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="class_i_stoper.html" target="_self">IStoper</a></td><td class="desc">Interfejs dla stopera </td></tr>
+<tr id="row_4_0_" class="even"><td class="entry"><img src="ftv2vertline.png" alt="|" width="16" height="22" /><img src="ftv2lastnode.png" alt="\" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="class_stoper.html" target="_self">Stoper</a></td><td class="desc">Implementacja klasy <a class="el" href="class_stoper.html" title="Implementacja klasy Stoper. ">Stoper</a> </td></tr>
+<tr id="row_5_"><td class="entry"><img src="ftv2node.png" alt="o" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="class_node.html" target="_self">Node&lt; NodeType &gt;</a></td><td class="desc">Imlementacja wezlow dla listy </td></tr>
+<tr id="row_6_" class="even"><td class="entry"><img src="ftv2node.png" alt="o" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="class_node.html" target="_self">Node&lt; Type &gt;</a></td><td class="desc"></td></tr>
+<tr id="row_7_"><td class="entry"><img src="ftv2lastnode.png" alt="\" width="16" height="22" /><img src="ftv2cl.png" alt="C" width="24" height="22" /><a class="el" href="class_sedzia.html" target="_self">Sedzia</a></td><td class="desc">Implementacja klasy <a class="el" href="class_sedzia.html" title="Implementacja klasy Sedzia. ">Sedzia</a> </td></tr>
 </table>
 </div><!-- directory -->
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Mar 13 2016 20:47:33 for Pomiar czasu dynamicznej alokacji pamięci by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Mar 20 2016 15:56:27 for Pomiar czasu przeszukania listy jednokierunkowej by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

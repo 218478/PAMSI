@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Pomiar czasu dynamicznej alokacji pamięci: /home/kkuczaj/PAMSI/lab_07.03/prj/inc/Stoper.h Source File</title>
+<title>Pomiar czasu przeszukania listy jednokierunkowej: inc/Stoper.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Pomiar czasu dynamicznej alokacji pamięci
+   <div id="projectname">Pomiar czasu przeszukania listy jednokierunkowej
    </div>
   </td>
  </tr>
@@ -68,7 +68,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -79,7 +79,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_4aa64b0872d36146e049722e293482e3.html">prj</a></li><li class="navelem"><a class="el" href="dir_72345776cd6700fb0dedb8f1faaa0c00.html">inc</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_bfccd401955b95cf8c75461437045ac0.html">inc</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -95,42 +95,43 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;ctime&gt;</span>    <span class="comment">// to deal with time operations</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span>  <span class="comment">// to deal with file streams</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span> <span class="comment">// to deal with error stream output</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="class_stoper.html">   26</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_stoper.html">Stoper</a>: <a class="code" href="class_i_stoper.html">IStoper</a> {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="class_stoper.html#ad41812354b09e5af625e5fea527d83ac">   33</a></span>&#160;  clock_t <a class="code" href="class_stoper.html#ad41812354b09e5af625e5fea527d83ac">_start</a>;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="class_stoper.html#aecc04e31f41048a1c5279a6bd6763e3d">   40</a></span>&#160;  clock_t <a class="code" href="class_stoper.html#aecc04e31f41048a1c5279a6bd6763e3d">_stop</a>;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="class_stoper.html#af4b77a51397bf1dfd324987685bc4d5b">   46</a></span>&#160;  std::fstream <a class="code" href="class_stoper.html#af4b77a51397bf1dfd324987685bc4d5b">my_file</a>;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_stoper.html#ae9dc93f4113f2d3afbe3b67166a7615d">start</a>();</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_stoper.html#afa91decbc99ba7509f1129f77c03b443">stop</a>();</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">double</span> <a class="code" href="class_stoper.html#a8f50bbba9cb719ca9d573a5cb4a19e36">getElapsedTime</a>();</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_stoper.html#acf73c06c59e8007142b276172a6a07ed">dumpToFile</a>();</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;};</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span>   <span class="comment">// to deal with getting file name saved to a variable</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="class_stoper.html">   27</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_stoper.html">Stoper</a>: <a class="code" href="class_i_stoper.html">IStoper</a> {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="class_stoper.html#a333b53d442ef20aa9ab907baf2c8f3b5">   35</a></span>&#160;  clock_t <a class="code" href="class_stoper.html#a333b53d442ef20aa9ab907baf2c8f3b5">start_time</a>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="class_stoper.html#a75fde898e50b0a40353881f51e7510d5">   43</a></span>&#160;  clock_t <a class="code" href="class_stoper.html#a75fde898e50b0a40353881f51e7510d5">stop_time</a>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="class_stoper.html#af4b77a51397bf1dfd324987685bc4d5b">   49</a></span>&#160;  std::fstream <a class="code" href="class_stoper.html#af4b77a51397bf1dfd324987685bc4d5b">my_file</a>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_stoper.html#ae9dc93f4113f2d3afbe3b67166a7615d">start</a>();</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_stoper.html#afa91decbc99ba7509f1129f77c03b443">stop</a>();</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">double</span> <a class="code" href="class_stoper.html#a8f50bbba9cb719ca9d573a5cb4a19e36">getElapsedTime</a>();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_stoper.html#a8896c3b2fa5428e29e5fef7f7bad3615">dumpToFile</a>(std::string file_name);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;};</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="class_stoper_html_ae9dc93f4113f2d3afbe3b67166a7615d"><div class="ttname"><a href="class_stoper.html#ae9dc93f4113f2d3afbe3b67166a7615d">Stoper::start</a></div><div class="ttdeci">virtual void start()</div><div class="ttdoc">Implementacja funkcji start() z interfejsu IStoper. </div><div class="ttdef"><b>Definition:</b> Stoper.cpp:5</div></div>
-<div class="ttc" id="class_stoper_html_ad41812354b09e5af625e5fea527d83ac"><div class="ttname"><a href="class_stoper.html#ad41812354b09e5af625e5fea527d83ac">Stoper::_start</a></div><div class="ttdeci">clock_t _start</div><div class="ttdoc">Moment startu stopera. </div><div class="ttdef"><b>Definition:</b> Stoper.h:33</div></div>
 <div class="ttc" id="_i_stoper_8h_html"><div class="ttname"><a href="_i_stoper_8h.html">IStoper.h</a></div><div class="ttdoc">Naglowek zawierajacy interfejs dla stopera. </div></div>
-<div class="ttc" id="class_stoper_html_af4b77a51397bf1dfd324987685bc4d5b"><div class="ttname"><a href="class_stoper.html#af4b77a51397bf1dfd324987685bc4d5b">Stoper::my_file</a></div><div class="ttdeci">std::fstream my_file</div><div class="ttdoc">Strumien zapisu do pliku. </div><div class="ttdef"><b>Definition:</b> Stoper.h:46</div></div>
-<div class="ttc" id="class_stoper_html"><div class="ttname"><a href="class_stoper.html">Stoper</a></div><div class="ttdoc">Implementacja klasy Stoper. </div><div class="ttdef"><b>Definition:</b> Stoper.h:26</div></div>
-<div class="ttc" id="class_stoper_html_aecc04e31f41048a1c5279a6bd6763e3d"><div class="ttname"><a href="class_stoper.html#aecc04e31f41048a1c5279a6bd6763e3d">Stoper::_stop</a></div><div class="ttdeci">clock_t _stop</div><div class="ttdoc">Moment zatrzymania stopera. </div><div class="ttdef"><b>Definition:</b> Stoper.h:40</div></div>
-<div class="ttc" id="class_i_stoper_html"><div class="ttname"><a href="class_i_stoper.html">IStoper</a></div><div class="ttdoc">Interfejs dla stopera. </div><div class="ttdef"><b>Definition:</b> IStoper.h:16</div></div>
-<div class="ttc" id="class_stoper_html_acf73c06c59e8007142b276172a6a07ed"><div class="ttname"><a href="class_stoper.html#acf73c06c59e8007142b276172a6a07ed">Stoper::dumpToFile</a></div><div class="ttdeci">virtual void dumpToFile()</div><div class="ttdoc">Implementacja funkcji dumpToFile() z interfejsu IStoper. </div><div class="ttdef"><b>Definition:</b> Stoper.cpp:17</div></div>
+<div class="ttc" id="class_stoper_html_af4b77a51397bf1dfd324987685bc4d5b"><div class="ttname"><a href="class_stoper.html#af4b77a51397bf1dfd324987685bc4d5b">Stoper::my_file</a></div><div class="ttdeci">std::fstream my_file</div><div class="ttdoc">Strumien zapisu do pliku. </div><div class="ttdef"><b>Definition:</b> Stoper.h:49</div></div>
+<div class="ttc" id="class_stoper_html_a75fde898e50b0a40353881f51e7510d5"><div class="ttname"><a href="class_stoper.html#a75fde898e50b0a40353881f51e7510d5">Stoper::stop_time</a></div><div class="ttdeci">clock_t stop_time</div><div class="ttdoc">Moment zatrzymania stopera. </div><div class="ttdef"><b>Definition:</b> Stoper.h:43</div></div>
+<div class="ttc" id="class_stoper_html"><div class="ttname"><a href="class_stoper.html">Stoper</a></div><div class="ttdoc">Implementacja klasy Stoper. </div><div class="ttdef"><b>Definition:</b> Stoper.h:27</div></div>
+<div class="ttc" id="class_stoper_html_a333b53d442ef20aa9ab907baf2c8f3b5"><div class="ttname"><a href="class_stoper.html#a333b53d442ef20aa9ab907baf2c8f3b5">Stoper::start_time</a></div><div class="ttdeci">clock_t start_time</div><div class="ttdoc">Moment startu stopera. </div><div class="ttdef"><b>Definition:</b> Stoper.h:35</div></div>
+<div class="ttc" id="class_stoper_html_a8896c3b2fa5428e29e5fef7f7bad3615"><div class="ttname"><a href="class_stoper.html#a8896c3b2fa5428e29e5fef7f7bad3615">Stoper::dumpToFile</a></div><div class="ttdeci">virtual void dumpToFile(std::string file_name)</div><div class="ttdoc">Implementacja funkcji dumpToFile() z interfejsu IStoper. </div><div class="ttdef"><b>Definition:</b> Stoper.cpp:17</div></div>
+<div class="ttc" id="class_i_stoper_html"><div class="ttname"><a href="class_i_stoper.html">IStoper</a></div><div class="ttdoc">Interfejs dla stopera. </div><div class="ttdef"><b>Definition:</b> IStoper.h:18</div></div>
 <div class="ttc" id="class_stoper_html_a8f50bbba9cb719ca9d573a5cb4a19e36"><div class="ttname"><a href="class_stoper.html#a8f50bbba9cb719ca9d573a5cb4a19e36">Stoper::getElapsedTime</a></div><div class="ttdeci">virtual double getElapsedTime()</div><div class="ttdoc">Implementacja funkcji getElapse() z interfejsu IStoper. </div><div class="ttdef"><b>Definition:</b> Stoper.cpp:13</div></div>
 <div class="ttc" id="class_stoper_html_afa91decbc99ba7509f1129f77c03b443"><div class="ttname"><a href="class_stoper.html#afa91decbc99ba7509f1129f77c03b443">Stoper::stop</a></div><div class="ttdeci">virtual void stop()</div><div class="ttdoc">Implementacja funkcji stop() z interfejsu IStoper. </div><div class="ttdef"><b>Definition:</b> Stoper.cpp:9</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Mar 13 2016 20:47:33 for Pomiar czasu dynamicznej alokacji pamięci by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Mar 20 2016 15:56:27 for Pomiar czasu przeszukania listy jednokierunkowej by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

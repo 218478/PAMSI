@@ -1,8 +1,8 @@
 #include "Sedzia.h"
+#include "Lista.h"
 
 #include <iostream>
-#include <ctime>
-#include <iomanip>
+
 
 using namespace std;
 
@@ -37,15 +37,25 @@ using namespace std;
  * $ make help
  */
 
+
 int main(int argc, char **argv) {
-  //dziesiec, tysiac, sto tysiecy, milion, milard
-  unsigned int data_sizes [5]= {10,1000,100000,1000000,1000000000};
-  int trial_count = 50; // ile razy nalezy zapisac dane
+  // information for the user
+  cout << "!!! INFO: Program starts indexing at 0, not at 1 !!!" << endl << endl;
 
   Sedzia referee;
-  for(int j = 0; j < 5; j++) {
-    for(int i = 0; i < trial_count; i++)
-      referee.setOff(data_sizes[j]);
-  }
-}
+  unsigned int trials_count = 50;
+ 
+  //dziesiec, tysiac, sto tysiecy, milion, milard
+  unsigned int data_sizes [5]= {10,1000,100000,1000000,1000000000};
 
+  // running the list
+  for(uint i=0; i < 3; i++) {
+    referee.setOffList(data_sizes[i]); }
+
+  // running the array
+  for(uint i=0; i < 5; i++) {
+    for(uint j=0; j < trials_count; j++)
+      referee.setOffTable(data_sizes[i]);
+  }
+
+}

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Pomiar czasu dynamicznej alokacji pamięci: IRunnable Class Reference</title>
+<title>Pomiar czasu przeszukania listy jednokierunkowej: IRunnable Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Pomiar czasu dynamicznej alokacji pamięci
+   <div id="projectname">Pomiar czasu przeszukania listy jednokierunkowej
    </div>
   </td>
  </tr>
@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Friends</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -82,7 +82,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="class_i_runnable-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">IRunnable Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
@@ -98,11 +98,11 @@ Inheritance diagram for IRunnable:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_i_runnable__inherit__graph.png" border="0" usemap="#_i_runnable_inherit__map" alt="Inheritance graph"/></div>
 <map name="_i_runnable_inherit__map" id="_i_runnable_inherit__map">
-<area shape="rect" id="node2" href="class_tablica.html" title="Klasa tablica, w ktorej odbywa sie zapis dynamiczny elementow typu int. " alt="" coords="13,80,77,107"/></map>
+<area shape="rect" id="node2" href="class_kolejka.html" title="Kolejka" alt="" coords="5,80,69,107"/><area shape="rect" id="node3" href="class_tablica.html" title="Klasa Tablica, w ktorej odbywa sie zapis dynamiczny elementow. " alt="" coords="93,80,209,107"/></map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
 <tr class="memitem:ac4d20dee4cb12c42eeed8698e839ddaf"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_runnable.html#ac4d20dee4cb12c42eeed8698e839ddaf">prepare</a> (unsigned int size)=0</td></tr>
 <tr class="separator:ac4d20dee4cb12c42eeed8698e839ddaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6566fc2aa9fb5a7136f960172cee918d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_i_runnable.html#a6566fc2aa9fb5a7136f960172cee918d">run</a> ()=0</td></tr>
@@ -129,12 +129,12 @@ Private Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="class_tablica.html#a3869f7d75092c9c4ad9d3036285cc6e2">Tablica</a>.</p>
+<p>Implemented in <a class="el" href="class_tablica.html#ac54e8c5dcbd665dcf48d10b9df8ff41b">Tablica&lt; Type &gt;</a>.</p>
 
 </div>
 </div>
@@ -154,22 +154,22 @@ Private Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="class_tablica.html#a28b44f3a54a592827ab50c65c27d9a83">Tablica</a>.</p>
+<p>Implemented in <a class="el" href="class_tablica.html#a0e9570529b80cc6e1b40bf8b0d7e55c1">Tablica&lt; Type &gt;</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>/home/kkuczaj/PAMSI/lab_07.03/prj/inc/<a class="el" href="_i_runnable_8h_source.html">IRunnable.h</a></li>
+<li>inc/<a class="el" href="_i_runnable_8h_source.html">IRunnable.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Mar 13 2016 20:47:33 for Pomiar czasu dynamicznej alokacji pamięci by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Mar 20 2016 15:56:27 for Pomiar czasu przeszukania listy jednokierunkowej by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

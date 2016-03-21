@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['_5fstart',['_start',['../class_stoper.html#ad41812354b09e5af625e5fea527d83ac',1,'Stoper']]],
-  ['_5fstop',['_stop',['../class_stoper.html#aecc04e31f41048a1c5279a6bd6763e3d',1,'Stoper']]]
+  ['current_5fsize',['current_size',['../class_tablica.html#aa2313b2db3dfda306acaf2a28be00707',1,'Tablica']]]
 ];

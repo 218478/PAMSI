@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['sedzia',['Sedzia',['../class_sedzia.html',1,'']]],
-  ['stoper',['Stoper',['../class_stoper.html',1,'']]]
+  ['kolejka',['Kolejka',['../class_kolejka.html',1,'']]]
 ];
