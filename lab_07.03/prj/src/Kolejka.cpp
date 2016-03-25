@@ -1,1 +1,0 @@
-#include "IPojemnik.h"
