@@ -1,4 +1,4 @@
-CXXFLAGS = -Iinc -Wall -pedantic -g
+CXXFLAGS = -Iinc -Wall -pedantic -g -std=c++11
 COMPILER = g++
 
 __start__: program

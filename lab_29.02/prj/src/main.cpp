@@ -1,5 +1,5 @@
 #include <iostream>
-#include <ctime>
+#include <chrono> // requires C++11 standard
 #include <iomanip>
 #include "pojemnik.h"
 
@@ -17,16 +17,16 @@ int main(int argc, char **argv) {
 
 void zapiszDoPojemnika(unsigned long ilosc) {
   pojemnik kontener;
+  chrono::time_point<chrono::system_clock> start, stop;
 
-  clock_t start = clock();
+
+  start = chrono::system_clock::now();
   for(unsigned long i=0; i < ilosc; i++) {
     kontener.zapisz(123);
   }
-
-  //  kontener.wypisz();
-
-  clock_t koniec = clock();
-  float czas = float(koniec - start)/CLOCKS_PER_SEC*100000;
+  //  kontener.wypisz(); // for debug
+  stop = chrono::system_clock::now();
+  chrono::duration<double> elapsed_seconds = stop - start;
   cout << setw(15) << kontener.zwroc_rozmiar() << " el."
-       << setw(20) << czas/100.0 << " ms" << endl;
+       << setw(20) << elapsed_seconds.count()*1000 << showpoint <<" ms" << endl;
 }
