@@ -1,9 +1,7 @@
 CXXFLAGS = -Iinc -Wall -pedantic -g
 CC = g++
-SOURCES = src/main.cpp src/Stoper.cpp src/Sedzia.cpp src/Tablica.cpp src/Stos.cpp \
-	src/Kolejka.cpp src/Lista.cpp
-HEADERS = inc/Stoper.h inc/Sedzia.h inc/Tablica.h inc/Stos.h \
-	inc/Kolejka.h inc/Lista.h inc/IRunnable.h inc/IStoper.h inc/IPojemnik.h
+SOURCES = src/main.cpp src/Stoper.cpp src/Sedzia.cpp src/Tablica.cpp
+HEADERS = inc/Stoper.h inc/Sedzia.h inc/Tablica.h inc/IRunnable.h inc/IStoper.h
 OBJECTS = $(subst src/,obj/,$(subst .cpp,.o,$(SOURCES)))
 EXECUTABLE = program
 

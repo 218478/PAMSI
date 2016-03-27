@@ -1,12 +1,13 @@
-#ifndef STOPER_H
-#define STOPER_H
+// Copyright 2016 Kamil Kuczaj
+#ifndef LAB02_07_03_PRJ_INC_STOPER_H_
+#define LAB02_07_03_PRJ_INC_STOPER_H_
 
 #include "IStoper.h"
 
-#include <ctime>    // to deal with time operations
-#include <fstream>  // to deal with file streams
-#include <iostream> // to deal with error stream output
-#include <string>   // to deal with getting file name saved to a variable
+#include <sys/time.h>  // to deal with time operations
+#include <fstream>     // to deal with file streams
+#include <iostream>    // to deal with error stream output
+#include <string>      // to deal with getting file name saved to a variable
 
 /*! \file Stoper.h
  *
@@ -19,13 +20,13 @@
 /*! \brief Implementacja klasy Stoper.
  *
  * \details W klasie Stoper zostaly zaimplemetowane metody pozwalajace na pomiar
- *          czasu. Pomiar czasu odbywa sie dzieki bibliotece <ctime> a zapis do
- *          pliku korzysta z biblioteki <fstream>.
+ *          czasu. Pomiar czasu odbywa sie dzieki bibliotece <sys/time.h>
+ *          a zapis do pliku korzysta z biblioteki <fstream>.
  */
 
 
 class Stoper: IStoper {
-private:
+ private:
   /*! \brief Moment startu stopera.
    *
    * \details Element przechowujacy informacje o czasie systemowym w momencie
@@ -48,8 +49,7 @@ private:
    */
   std::fstream my_file;
 
-public:
-
+ public:
   /*! \brief Implementacja funkcji start() z interfejsu IStoper.
    *
    * \details Zapisuje moment uruchomienia stopera.
@@ -83,7 +83,6 @@ public:
    *                  dodawane w funkcji.
    */
   virtual void dumpToFile(std::string file_name);
-
 };
 
-#endif
+#endif  // LAB02_07_03_PRJ_INC_STOPER_H_

@@ -1,5 +1,6 @@
-#ifndef IPOJEMNIK_H
-#define IPOJEMNIK_H
+// Copyright 2016 <Kamil Kuczaj>
+#ifndef 02_LAB_07_03_PRJ_INC_IPOJEMNIK_H_
+#define 02_LAB_07_03_PRJ_INC_IPOJEMNIK_H_
 
 /*! \file IPojemnik.h
  *
@@ -33,8 +34,7 @@ template <class Type> class IPojemnik {
    */
   IPojemnik<Type> *head;
 
-  public:
-
+ public:
   /*! \brief Dodaje element w okreslonym miejscu.
    *
    * \details Metoda czysto wirtualna. Dodaje element item w miejscu index
@@ -43,7 +43,7 @@ template <class Type> class IPojemnik {
    * \param[in] item    Dana, ktora ma byc wlozona.
    * \param[in] index   Indeks, w ktorym ma znalezc sie nowa dana.
    */
-  virtual Type add(Type item, uint index)=0;
+  virtual Type add(Type item, uint index) = 0;
 
   /*! \brief Dodaje element na poczatek.
    *
