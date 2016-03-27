@@ -1,6 +1,6 @@
 // Copyright 2016 Kamil Kuczaj
-#ifndef ILISTA_H
-#define ILISTA_H
+#ifndef LAB03_14_03_PRJ_INC_ILISTA_H_
+#define LAB03_14_03_PRJ_INC_ILISTA_H_
 
 #include <cstddef>  // to use the NULL macro
 #include <string>   // to insert words
@@ -21,7 +21,7 @@
  *          typu string.
  */
 class Node {
-  public:
+ public:
   /*! \brief Element w wezle.
    *
    * \details Co jest w wezle. Ma przechowywac pojedyncze slowo.
@@ -41,7 +41,6 @@ class Node {
   friend class ILista;
 
  public:
-  
   /*! \brief Dostep do pola element.
    *
    * \details Wymuszone poprzez hermetyzacje.
@@ -64,7 +63,7 @@ class Node {
    *
    * \param[in] t Wartosc, ktora ma zostac zapisana do pola element.
    */
-  void setElem(const string t) { element=t; }
+  void setElem(const std::string t) { element = t; }
 
   /*! \brief Ustawia nastepny wezel.
    *
@@ -72,7 +71,7 @@ class Node {
    *
    * \param[in] t Wezel, ktory ma zostac przypisany do pola next.
    */
-  void setNext(const Node* t) { next=t; }
+  void setNext(Node* t) { next = t; }
 };
 
 
@@ -110,7 +109,7 @@ class ILista {
    * \retval true Lista jest pusta.
    * \retval false Lista nie jest pusta.
    */
-  virtual bool isEmpty()=0;
+  virtual bool isEmpty() = 0;
 
   /*! \brief Zwraca element z dowolnego miejsca listy.
    *
@@ -129,4 +128,4 @@ class ILista {
   virtual int size() = 0;
 };
 
-#endif
+#endif  // LAB03_14_03_PRJ_INC_ILISTA_H_

@@ -1,10 +1,7 @@
+// Copyright 2016 Kamil Kuczaj
 #include "Sedzia.h"
-#include "Lista.h"
 
 #include <iostream>
-
-
-using namespace std;
 
 /*! \mainpage Opis programu
  *
@@ -40,22 +37,22 @@ using namespace std;
 
 int main(int argc, char **argv) {
   // information for the user
-  cout << "!!! INFO: Program starts indexing at 0, not at 1 !!!" << endl << endl;
+  std::cout << "!!! INFO: Program starts indexing at 0, not at 1 !!!"
+            << std::endl << std::endl;
 
   Sedzia referee;
-  unsigned int trials_count = 50;
- 
-  //dziesiec, tysiac, sto tysiecy, milion, milard
-  unsigned int data_sizes [5]= {10,1000,100000,1000000,1000000000};
+  int trials_count = 50;
+
+  // dziesiec, tysiac, sto tysiecy, milion, milard
+  int data_sizes[5]= {10, 1000, 100000, 1000000, 1000000000};
 
   // running the list
-  for(uint i=0; i < 3; i++) {
+  for (int i=0; i < 3; i++) {
     referee.setOffList(data_sizes[i]); }
 
   // running the array
-  for(uint i=0; i < 5; i++) {
-    for(uint j=0; j < trials_count; j++)
+  for (int i=0; i < 5; i++) {
+    for (int j=0; j < trials_count; j++)
       referee.setOffTable(data_sizes[i]);
   }
-
 }

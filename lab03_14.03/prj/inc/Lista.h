@@ -1,14 +1,14 @@
 // Copyright 2016 Kamil Kuczaj
-#ifndef LISTA_H
-#define LISTA_H
+#ifndef LAB03_14_03_PRJ_INC_LISTA_H_
+#define LAB03_14_03_PRJ_INC_LISTA_H_
 
 #include "IRunnable.h"
 #include "ILista.h"
 
-#include <cstddef>  // to use the NULL macro
-#include <string>   // to deal with words saving and searching
-#include <iostream> // to print the contents of the list
-#include <fstream>  // to deal with loading words from the dictionary
+#include <cstddef>   // to use the NULL macro
+#include <string>    // to deal with words saving and searching
+#include <iostream>  // to print the contents of the list
+#include <fstream>   // to deal with loading words from the dictionary
 
 /*! \file Lista.h
  *
@@ -26,7 +26,6 @@
  *          Mamy dostep do pierwszego elementu w liscie
  */
 class Lista: ILista {
-
   /*! \brief Pierwszy element listy.
    *
    * \details Wskazuje na pierwszy element listy.
@@ -135,7 +134,6 @@ class Lista: ILista {
    *          Na gorze znajduje sie poczatek listy.
    */
   void print();
-
 };
 
 // Lista::Lista() {
@@ -360,4 +358,4 @@ class Lista: ILista {
 // }
 
 
-#endif
+#endif  // LAB03_14_03_PRJ_INC_LISTA_H_

@@ -1,18 +1,25 @@
-#ifndef STOS_H
-#define STOS_H
+// Copyright 2016 Kamil Kuczaj
+#ifndef LAB03_14_03_PRJ_INC_STOS_H_
+#define LAB03_14_03_PRJ_INC_STOS_H_
 
-#include "IPojemnik.h"
+#include "IStos.h"
 
-template <class Type>
-class Stos: IPojemnik<Type> {
+
+/*! \brief Implementacja klasy Stos.
+ *
+ * \details Implementacja pojemnika, gdzie dostepny jest jedynie element
+ *          bedacy "na gorze".
+ *
+ */
+class Stos: IStos {
  public:
   /*! \brief Usuwa element z okreslonego miejsca.
    *
    * \details Usuwa i zwraca podany element znajdujacy sie w index-owym miejscu.
    *
-   * \param[in] element "Wpychany" element typu Type.
+   * \param[in] element "Wpychany" element typu int.
    */
-  virtual void push(Type element);
+  virtual void push(int element);
 
   /*! \brief Usuwa element z pojemnika.
    *
@@ -21,7 +28,7 @@ class Stos: IPojemnik<Type> {
    *
    * \return Usuniety element.
    */
-  virtual Type pop();
+  virtual int pop();
 
   /*! \brief Sprawdza czy pojemnika jest pusty.
    *
@@ -41,13 +48,9 @@ class Stos: IPojemnik<Type> {
    *
    * \return Ilosc elementow w pojemniku.
    */
-  virtual uint size();
-  
+  virtual int size();
 };
 
-template <class Type> void Stos<Type>::push(Type element) {
-
-}
 
 
-#endif
+#endif  // LAB03_14_03_PRJ_INC_STOS_H_

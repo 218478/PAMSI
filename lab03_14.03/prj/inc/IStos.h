@@ -1,40 +1,24 @@
 // Copyright 2016 <Kamil Kuczaj>
-#ifndef 02_LAB_07_03_PRJ_INC_IPOJEMNIK_H_
-#define 02_LAB_07_03_PRJ_INC_IPOJEMNIK_H_
+#ifndef LAB03_14_03_PRJ_INC_ISTOS_H_
+#define LAB03_14_03_PRJ_INC_ISTOS_H_
 
-/*! \file IPojemnik.h
+/*! \file IStos.h
  *
- * \brief Plik zawiera interfejs dla pojemnika Stos, Kolejka oraz Tablica.
+ * \brief Plik zawiera interfejs dla pojemnika Stos.
  *
- * \details Wskutek zastosowania szablonow wszystkie definicje musza znajdowac
- *          sie w pliku naglowkowym, a nie zrodlowym.
+ * \details Nie zdecydowano sie na uzycie szablonow, gdyz zbyt komplikuje to
+ *          budowe programu.
  *
  * \author Kamil Kuczaj.
  */
-
-
-/*! \brief Skraca zapis.
- *
- * \details Zdefiniowanie wlasnego typu - pozwala na krotszy zapis.
- */
-typedef unsigned int uint;
-
 
 /*! \brief Interfejs dla każdego pojemnika.
  *
  * \details Abstrakcyjna klasa, ktora zostala utworzona na potrzeby ADT
  *          Abstract Data Types.
  */
-template <class Type> class IPojemnik {
+class IStos {
  protected:
-  /*! \brief Gora stosu.
-   *
-   * \details Glowa stosu. Dostep chroniony, gdyz klasy, ktore beda implementowac
-   *          ten interfejs powinny juz miec to pole prywatne. Patrz dziedziczenie.
-   */
-  IPojemnik<Type> *head;
-
- public:
   /*! \brief Dodaje element w okreslonym miejscu.
    *
    * \details Metoda czysto wirtualna. Dodaje element item w miejscu index
@@ -43,15 +27,15 @@ template <class Type> class IPojemnik {
    * \param[in] item    Dana, ktora ma byc wlozona.
    * \param[in] index   Indeks, w ktorym ma znalezc sie nowa dana.
    */
-  virtual Type add(Type item, uint index) = 0;
+  virtual int add(int item, int index) = 0;
 
   /*! \brief Dodaje element na poczatek.
    *
    * \details Dodaje element na poczatek pojemnika.
    *
-   * \param[in] element "Wpychany" element typu Type.
+   * \param[in] element "Wpychany" element typu int.
    */
-  virtual void push(Type element)=0;
+  virtual void push(int element) = 0;
 
   /*! \brief Usuwa element z pojemnika.
    *
@@ -60,7 +44,7 @@ template <class Type> class IPojemnik {
    *
    * \return Usuniety element.
    */
-  virtual Type pop()=0;
+  virtual int pop() = 0;
 
   /*! \brief Sprawdza czy pojemnika jest pusty.
    *
@@ -70,7 +54,7 @@ template <class Type> class IPojemnik {
    * \retval true Pojemnik pusty.
    * \retval false Pojemnik nie jest pusty.
    */
-  virtual bool empty()=0;
+  virtual bool empty() = 0;
 
   /*!
    * \brief Zwraca aktualny rozmiar pojemnika.
@@ -80,8 +64,8 @@ template <class Type> class IPojemnik {
    *
    * \return Ilosc elementow w pojemniku.
    */
-  virtual uint size()=0;
+  virtual int size() = 0;
 };
 
 
-#endif
+#endif  // LAB03_14_03_PRJ_INC_ISTOS_H_

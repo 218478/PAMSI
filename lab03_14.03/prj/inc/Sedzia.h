@@ -1,15 +1,8 @@
-#ifndef SEDZIA_H
-#define SEDZIA_H
+// Copyright 2016 Kamil Kuczaj
+#ifndef LAB03_14_03_PRJ_INC_SEDZIA_H_
+#define LAB03_14_03_PRJ_INC_SEDZIA_H_
 
-#include "Stoper.h"
-#include "Tablica.h"
-#include "Lista.h"
-
-#include <iostream>
-#include <iomanip>
-#include <sstream> // to convert int to string
-#include <string>  // to deal with strings
-#include <cstdlib>   // to deal with drawing random word from the dictionary
+#include <string>    // to deal with strings
 
 /*! \file Sedzia.h
  *
@@ -17,21 +10,12 @@
  * \author Kamil Kuczaj
  */
 
-
-/*! \brief Skraca zapis.
- *
- * \details Zdefiniowanie wlasnego typu - pozwala na krotszy zapis
- */
-typedef unsigned int uint;
-
-
 /*! \brief Implementacja klasy Sedzia.
  *
  * \details Sedzia wykorzystuje elementy klasy Stoper oraz klasy Tablica.
  *          Mierzy czas wypelniania elemntow Tablicy.
  */
 class Sedzia {
-
  public:
   /*! \brief Funkcja, w ktorej odbywa sie bieg.
    *
@@ -40,9 +24,10 @@ class Sedzia {
    *          przygotowaniu.
    *
    * \param how_many Informacja iloma elementami ma zostac wypelniona tablica.
+   *
    * \retval true Wyscig zakonczony.
    */
-  bool setOffTable(uint how_many);
+  bool setOffTable(int how_many);
 
   /*! \brief Funkcja, w ktorej odbywa sie pomiar czasu szukania w liscie.
    *
@@ -50,7 +35,7 @@ class Sedzia {
    *
    * \retval true Wyscig zakonczony.
    */
-  bool setOffList (uint how_many);
+  bool setOffList(int how_many);
 
   /*! \brief Losuje slowo ze slownika.
    *
@@ -58,7 +43,7 @@ class Sedzia {
    *
    * \return Losowe slowo typu string.
    */
-  std::string getRandomWordFromTheDict(uint how_many);
+  std::string getRandomWordFromTheDict(int how_many);
 };
 
-#endif
+#endif  // LAB03_14_03_PRJ_INC_SEDZIA_H_
