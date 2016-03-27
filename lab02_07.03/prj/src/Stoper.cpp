@@ -1,21 +1,33 @@
 // Copyright 2016 Kamil Kuczaj
 #include "Stoper.h"
 
+Stoper::Stoper() {
+  start_time = new timeval;
+  stop_time = new timeval;
+}
 
+Stoper::~Stoper() {
+  delete start_time;
+  delete stop_time;
+}
 
 void Stoper::start() {
-  start_time = clock();
+  gettimeofday(start_time,NULL);
 }
 
 void Stoper::stop() {
-  stop_time = clock();
+  gettimeofday(stop_time,NULL);
 }
 
 double Stoper::getElapsedTime() {
-  return static_cast<double>(stop_time-start_time) / CLOCKS_PER_SEC*1000;
+  double start, stop;
+  start = start_time->tv_sec*1000000+start_time->tv_usec;
+  stop = stop_time->tv_sec*1000000+stop_time->tv_usec;
+  return stop-start;
 }
 
 void Stoper::dumpToFile(std::string file_name) {
+  std::ofstream my_file;  // strumien plikow
   file_name += ".csv";
 
   my_file.open(file_name.c_str(),std::fstream::app | std::fstream::out);
@@ -27,7 +39,7 @@ void Stoper::dumpToFile(std::string file_name) {
   }
 
   if(my_file.is_open()) {
-    my_file << getElapsedTime() << ",";
+    my_file << getElapsedTime() << std::endl;
   }
   my_file.close();
 }

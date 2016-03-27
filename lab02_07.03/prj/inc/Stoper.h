@@ -30,43 +30,53 @@ class Stoper: IStoper {
   /*! \brief Moment startu stopera.
    *
    * \details Element przechowujacy informacje o czasie systemowym w momencie
-   *          uruchomienia stopera. Element typu clock_t. Nazwa zgodna
+   *          uruchomienia stopera. Element timeval. Nazwa zgodna
    *          konwencja podrecznika "Google C++ Style Guide".
    */
-  clock_t start_time;
+  timeval *start_time;
 
   /*! \brief Moment zatrzymania stopera.
    *
    * \details Element przechowujacy informacje o czasie systemowym w momencie
-   *          zatrzymania stopera. Element typu clock_t. Nazwa zgodna
+   *          zatrzymania stopera. Element typu timeval. Nazwa zgodna
    *          konwencja podrecznika "Google C++ Style Guide".
    */
-  clock_t stop_time;
-
-  /*! \brief Strumien zapisu do pliku.
-   *
-   * \details Pole ulatwiajace zapis do pliku.
-   */
-  std::fstream my_file;
+  timeval *stop_time;
 
  public:
+ /*! \brief Konstruktor bezparametryczny.
+  *
+  * \details Alokuje pamiec dla pol, poniewaz sa wskaznikami.
+  */
+ Stoper();
+ 
+ /*! \brief Destruktor.
+  *
+  * \details Zwalniam pamiec po polach.
+  */
+  ~Stoper();
+  
   /*! \brief Implementacja funkcji start() z interfejsu IStoper.
    *
-   * \details Zapisuje moment uruchomienia stopera.
+   * \details Zapisuje moment uruchomienia stopera. Korzysta z metody
+   *          gettimeofday().
    */
   virtual void start();
 
   /*! \brief Implementacja funkcji stop() z interfejsu IStoper.
    *
-   * \details Zapisuje moment zatrzymania stopera.
+   * \details Zapisuje moment zatrzymania stopera. Korzysta z metody
+   *          gettimeofday().
    */
   virtual void stop();
 
   /*! \brief Implementacja funkcji getElapse() z interfejsu IStoper.
    *
-   * \details Oblicza czas pomiedzy czasem zapisanym w zmiennych start_time i stop_time.
+   * \details Oblicza czas pomiedzy czasem zapisanym w zmiennych start_time
+   *          i stop_time.
    *
-   * \return Zwraca zmierzony czas - roznica pomiedzy polem start_time a polem stop_time.
+   * \return Zwraca zmierzony czas - roznica pomiedzy polem start_time
+   *         a polem stop_time. Zwraca wynik w mikrosekundach.
    */
   virtual double getElapsedTime();
 
