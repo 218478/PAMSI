@@ -1,49 +1,43 @@
+// Copyright 2016 Kamil Kuczaj
 #ifndef ILISTA_H
 #define ILISTA_H
 
-#include <cstddef> // to use the NULL macro
+#include <cstddef>  // to use the NULL macro
+#include <string>   // to insert words
 
 /*! \file ILista.h
  *
  * \brief Plik zawiera interfejs dla pojemnika Lista oraz dla klasy Wezel.
  *
- * \details Wskutek zastosowania szablonow wszystkie definicje musza znajdowac
- *          sie w pliku naglowkowym, a nie zrodlowym. Wezel jest elementem listy.
+ * \details Wezel jest elementem listy. Uzycie szablonow zbytnio komplikuje
+ *          implementacje, wiec odrzucilem ich zastosowanie.
  *
  * \author Kamil Kuczaj.
  */
 
-
-/*! \brief Skraca zapis.
- *
- * \details Zdefiniowanie wlasnego typu - pozwala na krotszy zapis.
- */
-typedef unsigned int uint;
-
-
 /*! \brief Imlementacja wezlow dla listy.
  *
- * \details Potrzebne do implementacji interfejsu listy.
+ * \details Potrzebne do implementacji interfejsu listy. Zawiera pole
+ *          typu string.
  */
-template <class NodeType> class Node {
+class Node {
   public:
   /*! \brief Element w wezle.
    *
-   * \details Co jest w wezle.
+   * \details Co jest w wezle. Ma przechowywac pojedyncze slowo.
    */
-  NodeType element;
+  std::string element;
 
   /*! \brief Wskaznik na nastepny wezel.
    *
    * \details Wskazuje na nastepny wezel.
    */
-  Node<NodeType>* next;
+  Node* next;
 
   /*! \brief Zaprzyjaznienie interfejsu ILista.
    *
    * \details Umozliwia dostep do wezlow dla listy.
    */
-  template <class ListType>
   friend class ILista;
 
  public:
@@ -52,25 +46,25 @@ template <class NodeType> class Node {
    *
    * \details Wymuszone poprzez hermetyzacje.
    *
-   * \return Zwraca element typu Type.
+   * \return Zwraca element typu String.
    */
-  NodeType getElem() { return element; }
+  std::string getElem() { return element; }
 
   /*! \brief Dostep do nastepnego wezla.
    *
    * \details Wymuszone poprzez hermetyzacje.
    *
-   * \return Zwraca element typu Node.
+   * \return Zwraca wskaznik typu Node*.
    */
-  Node getNext() { return next; }
+  const Node* getNext() const { return next; }
 
   /*! \brief Ustawia pole element.
    *
    * \details Wymuszone poprzez hermetyzacje.
    *
-   * \param[in] Wartosc, ktora ma zostac zapisana do pola element.
+   * \param[in] t Wartosc, ktora ma zostac zapisana do pola element.
    */
-  void setElem(const NodeType t) { element=t; }
+  void setElem(const string t) { element=t; }
 
   /*! \brief Ustawia nastepny wezel.
    *
@@ -78,7 +72,7 @@ template <class NodeType> class Node {
    *
    * \param[in] t Wezel, ktory ma zostac przypisany do pola next.
    */
-  void setNext(Node<NodeType>* t) { next=t; }
+  void setNext(const Node* t) { next=t; }
 };
 
 
@@ -87,25 +81,27 @@ template <class NodeType> class Node {
  * \details Abstrakcyjna klasa, ktora zostala utworzona na potrzeby ADT
  *          Abstract Data Types.
  */
-template <class ListType> class ILista {
+class ILista {
  protected:
 
   /*! \brief Wstawia element w dowolnym miejscu listy.
    *
-   * \details Wstawia element typu Type w miejsce wskazywane przez zmienna index.
+   * \details Wstawia element typu std::string w miejsce wskazywane przez
+   *          zmienna index.
    *
-   * \param[in] item Element wstawiany.
+   * \param[in] item Element wstawiany. Slowo.
    * \param[in] index Miejsce, w ktore ma byc wstawiony element item.
    */
-  virtual void add(ListType item, uint index)=0;
+  virtual void add(std::string item, int index) = 0;
 
   /*! \brief Usuwa element z dowolnego miejsca listy.
    *
    * \details Usuwa element z miejsca wskazywanego przez zmienna index.
    *
-   * \return Zwraca element typu Type.
+   * \retval true Udalo sie usunac.
+   * \retval false Nie udalo sie usunac wskazanego elementu.
    */
-  virtual bool remove(uint index)=0;
+  virtual bool remove(int index) = 0;
 
   /*! \brief Sprawdza czy lista jest pusta.
    *
@@ -122,7 +118,7 @@ template <class ListType> class ILista {
    *
    * \return Zwraca element typu Type.
    */
-  virtual ListType get(uint index)=0;
+  virtual std::string get(int index) = 0;
 
   /*! \brief Zwraca rozmiar listy.
    *
@@ -130,7 +126,7 @@ template <class ListType> class ILista {
    *
    * \return Rozmiar listy.
    */
-  virtual uint size()=0;
+  virtual int size() = 0;
 };
 
 #endif
