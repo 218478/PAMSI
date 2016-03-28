@@ -20,12 +20,17 @@ Lista::~Lista() {
 }
 
 void Lista::add(std::string item, int n) {
+  if (head == 0 && n != 0)
+    throw("Can't insert, because list is not initialised.");
+
+  int current_size = size();
+
   if (n == 0) {  // adding at the beginning
     Node *temp = new Node;
     temp->element = item;
     temp->next = head;
     head = temp;
-  } else if (n < size()) {  // inserting in the middle
+  } else if (n < current_size) {  // inserting in the middle
     Node *inserted = new Node;
     inserted->element = item;
     Node *conductor = head;
@@ -36,16 +41,16 @@ void Lista::add(std::string item, int n) {
 
       inserted->next = conductor->next;
       conductor->next = inserted;
-    } else if (n == size()) {  // adding at the end
+    } else if (n == current_size) {  // adding at the end
       Node *added_at_the_end = new Node;
       added_at_the_end->element = item;
+      added_at_the_end->next = 0;  // bad things happen if you don't do this
       Node *conductor = head;
       if (conductor != 0) {
         // repeating this operation n-times
-        for (int i = 0; i < n; i++)
+        while (conductor->next)
           conductor = conductor->next;
         conductor->next = added_at_the_end;
-        added_at_the_end->next = 0;  // bad things happen if you don't do this
       }
     }
   } else {
@@ -118,7 +123,6 @@ void Lista::print() {
       std::cout << conductor->element << std::endl;
       conductor = conductor->next;  // jump to the next element
     }
-    conductor->element;
   }
 }
 

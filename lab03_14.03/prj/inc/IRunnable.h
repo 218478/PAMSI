@@ -15,8 +15,21 @@
  */
 class IRunnable {
  protected:
+  /*! \brief Przygotowuje pojemnik przed wykonaniem czynnosci.
+   *
+   * \details Funkcja, ktora ma wykonac wszystkie dodatkowe czynnosci,
+   *          ktorych czasu nie bedziemy mierzyc. Polega ona na
+   *          wczytaniu konkretnej ilosci elementow.
+   *
+   * \param[in] size Ilosc elementow.
+   */
   virtual void prepare(int size) = 0;
 
+  /*! \brief Odpalenie badanej czynnosci.
+   *
+   * \details Funkcja, ktorej cialem maja byc instrukcje, ktorych czas
+   *          chcemy zmierzyc.
+   */
   virtual void run() = 0;
 };
 

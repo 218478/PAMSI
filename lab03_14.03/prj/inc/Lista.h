@@ -20,8 +20,6 @@
  */
 
 
-
-
 /*! \brief Klasa Lista, ktora symuluje zachowanie klasy list z biblioteki STL.
  *
  * \details Zajmuje sie dynamiczna alokacja pamieci. Lista jest jednokierunkowa.
@@ -46,6 +44,11 @@ class Lista: ILista {
      * \details Wskazuje na nastepny wezel.
      */
     Node* next;
+
+    /*! \brief
+     *
+     */
+    Node(): next(0){}
   };
 
 

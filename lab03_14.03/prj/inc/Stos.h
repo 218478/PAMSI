@@ -3,16 +3,41 @@
 #define LAB03_14_03_PRJ_INC_STOS_H_
 
 #include "IStos.h"
+#include "Lista.h"
 
 
-/*! \brief Implementacja klasy Stos.
+/*! \brief Implementacja klasy Stos, zlozonej z intow.
  *
  * \details Implementacja pojemnika, gdzie dostepny jest jedynie element
- *          bedacy "na gorze".
- *
+ *          bedacy "na gorze". Jej skladowe elementy to inty. Zdecydowalem
+ *          sie nie stosowac szablonow ze wzgledu na niepotrzebna komplikacje.
  */
 class Stos: IStos {
+ private:
+  /*! \brief Gora stosu.
+   *
+   * \details Wskaznik na wierzcholek stosu.
+   */
+  int *top;
+
+  /*! \brief Stos.
+   *
+   * \details Reprezentacja stosu. Zwieksza pamiec dwukrotnie.
+   */
+  Lista *stack;
+
  public:
+  /*! \brief Bezparametryczny konstruktor.
+   *
+   * \details Inicjalizuje wierzcholek *top jak wskaznik na NULL.
+   */
+  Stos(): top(0) {}
+
+  /*! \brief Destruktor.
+   *
+   * \details Popuje wszystkie elementy.
+   */
+
   /*! \brief Usuwa element z okreslonego miejsca.
    *
    * \details Usuwa i zwraca podany element znajdujacy sie w index-owym miejscu.
