@@ -1,3 +1,4 @@
+// Copyright 2016 Kamil Kuczaj
 #ifndef IRUNNABLE_H
 #define IRUNNABLE_H
 
@@ -14,9 +15,9 @@
  */
 class IRunnable {
  protected:
-  virtual void prepare (unsigned int size)=0;
+  virtual void prepare (int size) = 0;
 
-  virtual void run()=0;
+  virtual void run() = 0;
 
 };
 

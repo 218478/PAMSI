@@ -1,7 +1,7 @@
 // Copyright 2016 Kamil Kuczaj
 #include "Sedzia.h"
 #include "Stoper.h"
-#include "Tablica.h"
+#include "Tablica_test.h"
 #include "Lista.h"
 
 #include <iostream>
@@ -12,7 +12,7 @@
 
 bool Sedzia::setOffTable(int how_many) {
   Stoper timer;
-  Tablica<int> array;
+  Tablica_test array;
 
   std::ostringstream ss;
   ss << how_many;
@@ -21,6 +21,7 @@ bool Sedzia::setOffTable(int how_many) {
   timer.start();
   array.run();
   timer.stop();
+  timer.dumpToFile(ss.str());
 
   return true;
 }
