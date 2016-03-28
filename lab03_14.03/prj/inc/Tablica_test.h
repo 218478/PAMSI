@@ -4,6 +4,7 @@
 
 #include "Tablica.h"
 #include "IRunnable.h"
+#include <iostream>     // to deal with displaying messages
 
 class Tablica_test: IRunnable {
  private:
@@ -28,7 +29,13 @@ class Tablica_test: IRunnable {
     for(int index = 0; index < arr.getDesiredSize(); index++) {
       if(arr.isFull())
 	      arr.increaseSize();
+	      
+	   try {
       arr[index] = 123;
+	   }
+	   catch (const char* message) {
+	     std::cout << message << std::endl;
+	   }
     }
   }
  

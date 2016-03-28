@@ -2,7 +2,6 @@
 #ifndef LAB03_14_03_PRJ_INC_LISTA_H_
 #define LAB03_14_03_PRJ_INC_LISTA_H_
 
-#include "IRunnable.h"
 #include "ILista.h"
 
 #include <cstddef>   // to use the NULL macro
@@ -19,6 +18,66 @@
  *
  * \author Kamil Kuczaj.
  */
+
+/*! \brief Imlementacja wezlow dla listy.
+ *
+ * \details Potrzebne do implementacji interfejsu listy. Zawiera pole
+ *          typu string.
+ */
+class Node {
+ private:
+  /*! \brief Element w wezle.
+   *
+   * \details Co jest w wezle. Ma przechowywac pojedyncze slowo.
+   */
+  std::string element;
+
+  /*! \brief Wskaznik na nastepny wezel.
+   *
+   * \details Wskazuje na nastepny wezel.
+   */
+  Node* next;
+
+  /*! \brief Zaprzyjaznienie interfejsu ILista.
+   *
+   * \details Umozliwia dostep do wezlow dla listy.
+   */
+  friend class ILista;
+
+ public:
+  /*! \brief Dostep do pola element.
+   *
+   * \details Wymuszone poprzez hermetyzacje.
+   *
+   * \return Zwraca element typu String.
+   */
+  std::string getElem() { return element; }
+
+  /*! \brief Dostep do nastepnego wezla.
+   *
+   * \details Wymuszone poprzez hermetyzacje.
+   *
+   * \return Zwraca wskaznik typu Node*.
+   */
+  Node* getNext() const { return next; }
+
+  /*! \brief Ustawia pole element.
+   *
+   * \details Wymuszone poprzez hermetyzacje.
+   *
+   * \param[in] t Wartosc, ktora ma zostac zapisana do pola element.
+   */
+  void setElem(const std::string t) { element = t; }
+
+  /*! \brief Ustawia nastepny wezel.
+   *
+   * \details Wymuszone poprzez hermetyzacje.
+   *
+   * \param[in] t Wezel, ktory ma zostac przypisany do pola next.
+   */
+  void setNext(Node* t) { next = t; }
+};
+
 
 /*! \brief Klasa Lista, ktora symuluje zachowanie klasy list z biblioteki STL.
  *
@@ -69,7 +128,7 @@ class Lista: ILista {
    * \retval true Udalo sie usunac element o podanym indeksie.
    * \retval false Nie udalo sie usunac elementu o podanym indeksie.
    */
-  virtual bool remove(int index);
+  virtual void remove(int index);
 
   /*! \brief Sprawdza czy lista jest pusta.
    *
@@ -99,41 +158,26 @@ class Lista: ILista {
    */
   virtual int size();
 
-  /*! \brief Szuka elementu.
-   *
-   * \details Szuka elementu wskazanego przez uzytkownika. W funkcji nastepuje
-   *          Segmentation fault, gdy probujemy znalezc element, ktorego tam
-   *          nie ma. W ogole sposob kodowania bledow gdy na nie napotka jest
-   *          debilny ale nie mialem wystarczajaco duzo czasu aby to przerobic.
-   *
-   * \param[in] desired_element Poszukiwana fraza.
-   *
-   * \retval index>0         Znalazl element i wyswietlil.
-   * \retval 1199999999      Nie znalazl i nie wyswietlil elementu. Wybrana
-   *                         wartosc, poniewaz nigdy tak duzej liczby elementow
-   *                         nie wczytamy. 10 cyfr.
-   * \retval 1198989898      Lista pusta. Wybrana wartosc, poniewaz nigdy tak
-   *                         duzej liczby elementow nie wczytamy. 10 cyfr.
-   */
-  virtual int run(std::string desired_element);
-
-  /*! \brief Zapisuje liste slowami.
-   *
-   * \details Zapisuje liste slowami zaczerpnietymi ze slownika. !!! WAZNE !!!!
-   *          Funkcja powinna byc uzyta tylko na poczatku, gdy cala lista jest
-   *          pusta. Inaczej nastapi nadpisanie elementow poczatkowych.
-   *
-   * \param[in] desired_size Ile elementow ma zostac wczytanych.
-   */
-  virtual void prepare(int desired_size);
-
-
   /*! \brief Wypisuje zawartosc listy.
    *
    * \details Wypisuje kazdy element listy w osobnej linii.
    *          Na gorze znajduje sie poczatek listy.
    */
   void print();
+  
+  /*! \brief Wyszukuje podane slowo i zwraca jego indeks
+  *
+  * \details Wyszukuje w liscie podane slowo ypu std::string. Zwraca liczbe,
+  *          ktora reprezentuje indeks z podanym slowem.\
+  *
+  * \param[in] searched_word Szukane slowo.
+  *
+  * \retval -1 Lista pusta.
+  * \retval -2 Nie ma takiego elementu.
+  *
+  * \return Indeks, na ktorym znajduje sie szukane slowo.
+  */
+  int search(std::string searched_word);
 };
 
 // Lista::Lista() {

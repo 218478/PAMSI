@@ -2,7 +2,6 @@
 #ifndef LAB03_14_03_PRJ_INC_ILISTA_H_
 #define LAB03_14_03_PRJ_INC_ILISTA_H_
 
-#include <cstddef>  // to use the NULL macro
 #include <string>   // to insert words
 
 /*! \file ILista.h
@@ -14,65 +13,6 @@
  *
  * \author Kamil Kuczaj.
  */
-
-/*! \brief Imlementacja wezlow dla listy.
- *
- * \details Potrzebne do implementacji interfejsu listy. Zawiera pole
- *          typu string.
- */
-class Node {
- public:
-  /*! \brief Element w wezle.
-   *
-   * \details Co jest w wezle. Ma przechowywac pojedyncze slowo.
-   */
-  std::string element;
-
-  /*! \brief Wskaznik na nastepny wezel.
-   *
-   * \details Wskazuje na nastepny wezel.
-   */
-  Node* next;
-
-  /*! \brief Zaprzyjaznienie interfejsu ILista.
-   *
-   * \details Umozliwia dostep do wezlow dla listy.
-   */
-  friend class ILista;
-
- public:
-  /*! \brief Dostep do pola element.
-   *
-   * \details Wymuszone poprzez hermetyzacje.
-   *
-   * \return Zwraca element typu String.
-   */
-  std::string getElem() { return element; }
-
-  /*! \brief Dostep do nastepnego wezla.
-   *
-   * \details Wymuszone poprzez hermetyzacje.
-   *
-   * \return Zwraca wskaznik typu Node*.
-   */
-  const Node* getNext() const { return next; }
-
-  /*! \brief Ustawia pole element.
-   *
-   * \details Wymuszone poprzez hermetyzacje.
-   *
-   * \param[in] t Wartosc, ktora ma zostac zapisana do pola element.
-   */
-  void setElem(const std::string t) { element = t; }
-
-  /*! \brief Ustawia nastepny wezel.
-   *
-   * \details Wymuszone poprzez hermetyzacje.
-   *
-   * \param[in] t Wezel, ktory ma zostac przypisany do pola next.
-   */
-  void setNext(Node* t) { next = t; }
-};
 
 
 /*! \brief Interfejs dla pojemnika Lista.
@@ -100,7 +40,7 @@ class ILista {
    * \retval true Udalo sie usunac.
    * \retval false Nie udalo sie usunac wskazanego elementu.
    */
-  virtual bool remove(int index) = 0;
+  virtual void remove(int index) = 0;
 
   /*! \brief Sprawdza czy lista jest pusta.
    *
