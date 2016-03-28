@@ -6,72 +6,98 @@
 
 Lista::Lista() {
   head = 0;    // bad things happen if you forget about it
+  size_of_list = 0;  // for debug
 }
 
 Lista::~Lista() {
   Node *conductor1 = head;  // two conductors to avoid memory
   Node *conductor2 = head;  // issues when deleting memory
   // null checking is not needed
-  for (int i = 0; i < size(); i++) {
+  while (conductor1 != 0) {
     delete conductor1;  // usuwanie pamieci
     conductor1 = conductor2->next;
     conductor2 = conductor1;
   }
 }
 
+// dziala wstawianie na poczatku, gdy lista pusta lub gdy nie jest pusta
+// dziala wstawianie w srodku, oraz na koncu
+// dziala wyjatek informujacy o indeksie
 void Lista::add(std::string item, int n) {
-  if (head == 0 && n != 0)
-    throw("Can't insert, because list is not initialised.");
-
   int current_size = size();
+  if (n > current_size)  // if we want to add an element beyond list
+    throw("Requested index out of bounds");
 
-  if (n == 0) {  // adding at the beginning
-    Node *temp = new Node;
+  if (isEmpty()) {  // if the list is empty
+    Node* temp = new Node;
     temp->element = item;
-    temp->next = head;
+    // // for debug
+    // std::cout << "Dodajemy na poczatku i lista pusta." << std::endl;
     head = temp;
-  } else if (n < current_size) {  // inserting in the middle
-    Node *inserted = new Node;
-    inserted->element = item;
-    Node *conductor = head;
-    if (conductor != 0) {
-      // repeating this operation n-times
-      for (int i = 0; i < n; i++)
-        conductor = conductor->next;
+    head->next = 0;
+    size_of_list++;
 
-      inserted->next = conductor->next;
-      conductor->next = inserted;
-    } else if (n == current_size) {  // adding at the end
-      Node *added_at_the_end = new Node;
-      added_at_the_end->element = item;
-      added_at_the_end->next = 0;  // bad things happen if you don't do this
+  } else {  // and when it's not empty
+    Node* temp = new Node;
+    temp->element = item;
+
+    if (n == 0) {  // when we adding at the beginning
+      // // for debug
+      // std::cout << "Dodajemy na poczatku." << std::endl;
+      temp->next = head;
+      head = temp;
+      size_of_list++;
+    } else {
       Node *conductor = head;
-      if (conductor != 0) {
-        // repeating this operation n-times
-        while (conductor->next)
+
+      if (n < current_size) {  // when inserting
+        // // for debug
+        // std::cout << "Wsadzamy do srodka." << std::endl;
+        for (int i = 0; i < (n-1); i++)
           conductor = conductor->next;
-        conductor->next = added_at_the_end;
+
+        temp->next = conductor->next;
+        conductor->next = temp;
+        size_of_list++;
+      }
+
+      if (n == current_size) {  // when adding at the end
+        // // for debug
+        // std::cout << "Dolaczamy na koniec." << std::endl;
+        for (int i = 0; i < (n-1); i++)
+          conductor = conductor->next;
+
+        temp->next = 0;
+        conductor->next = temp;
       }
     }
-  } else {
-    throw("Unexpected exception while adding an element int the list"); }
+  }
 }
 
+
+// dziala usuwanie z poczatku, ze srodka i z konca
+// dziala rowaniez wyswietlanie wyjatkow w przypadku gdy lista pusta
+// lub odwolujemy sie do zbyt duzego indeksu
 void Lista::remove(int n) {
+  if (size() == 0)
+    throw("List is empty");
   if (n < size()) {
     Node *conductor = head;
-    if (conductor != 0) {
+
+    if (n == 0) {  // if we want to remove at the beginning
+      head = conductor->next;
+      delete conductor;
+    } else {
       // repeating this operation (n-1)-times
       for (int i = 0; i < n-1; i++)
         conductor = conductor->next;
       Node *after_cond = conductor->next;  // point to the next element
-                                                // which is to be deleted
+      // which is to be deleted
       conductor->next = after_cond->next;
-      delete after_cond;
-    } else {
-      throw("List is empty"); }
-  } else {
-    throw("Index out of bounds"); }
+      delete after_cond; }
+    }
+  else 
+    throw("Index out of bounds");
 }
 
 bool Lista::isEmpty() {
@@ -98,38 +124,35 @@ std::string Lista::get(int n) {
 }
 
 int Lista::size() {
-  //  std::cout << "Chcemy obliczyc rozmiar listy" << std::endl;
   Node *conductor = head;
-  //  std::cout << "Ustawilismy conductor na head" << std::endl;
   int temp_size = 0;
-  if (conductor != 0) {
-    while (conductor->next != 0) {
-      std::cout << "Zawartosc listy:" << std::endl;
-      print();
-      conductor = conductor->next;
-
-      temp_size++;
-    }
+  while (conductor != 0) {
+    conductor = conductor->next;
     temp_size++;
   }
 
   return temp_size;
+
+  // for debug
+  //  return size_of_list;
 }
 
 void Lista::print() {
   Node *conductor = head;
-  if (conductor != 0) {
-    while (conductor->next != 0) {
-      std::cout << conductor->element << std::endl;
-      conductor = conductor->next;  // jump to the next element
-    }
+  while (conductor != 0) {
+    std::cout << conductor->element << std::endl;
+    conductor = conductor->next;  // jump to the next element
   }
 }
 
+
+// tutaj trzeba zmienic mechanizm
 int Lista::search(std::string searched_word) {
   Node *conductor = head;
   int searched_index = 0;
-  if (size() == 0) {
+  // // for debug
+  // std::cout << "Czy pusta? " << isEmpty() << std::endl;
+  if (!isEmpty()) {
      while (conductor->next != 0) {
         if (conductor->element == searched_word)
           return searched_index;
@@ -139,10 +162,11 @@ int Lista::search(std::string searched_word) {
         if (searched_index < size())
           searched_index++;
         else
-          return -2;  // we didn't find anything
-    }
-  } else {
-    return -1; }  // list is empty
+          return -2;   // we didn't find anything
+     }  // while
+  }
+  else
+    return -1;   // list is empty
 
-  return -3;
+  return -3;  // unresolved error
 }

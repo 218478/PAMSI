@@ -44,11 +44,6 @@ class Lista: ILista {
      * \details Wskazuje na nastepny wezel.
      */
     Node* next;
-
-    /*! \brief
-     *
-     */
-    Node(): next(0){}
   };
 
 

@@ -32,7 +32,7 @@ bool Sedzia::setOffList(int how_many) {
 
   list.prepare(how_many);
   timer.start();
-  //list.run();
+  list.run();
   timer.stop();
   return true;
 }

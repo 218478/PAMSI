@@ -56,8 +56,6 @@ class Lista_test: IRunnable {
                 << ex.what() << std::endl;
     }
 
-    std::cout << list.isEmpty() << std::endl;
-
     // read input only if the list is empty and file stream is open
     if (dictionary.is_open() && list.isEmpty()) {
       // http://stackoverflow.com

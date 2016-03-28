@@ -3,11 +3,11 @@
 #define LAB03_14_03_PRJ_INC_STOS_TEST_H_
 
 #include "IRunnable.h"
-#include "Stos.h"
+// #include "Stos.h"
 
 class Stos_test: IRunnable {
  private:
-  Stos stack;
+  //  Stos stack;
 
  public:
   /*! \brief Przygotowuje pojemnik przed wykonaniem czynnosci.
