@@ -1,7 +1,8 @@
-#ifndef ISTOPER_H
-#define ISTOPER_H
+// Copyright 2016 Kamil Kuczaj
+#ifndef LAB03_14_03_PRJ_INC_ISTOPER_H_
+#define LAB03_14_03_PRJ_INC_ISTOPER_H_
 
-#include <string> // to deal with file_name as an argument in dumpToFile() func
+#include <string>  // to deal with file_name as an argument in dumpToFile() func
 
 /*! \file IStoper.h
  *
@@ -21,19 +22,19 @@ class IStoper {
    *
    * \details Metoda czysto wirtualna.
    */
-  virtual void start()=0;
+  virtual void start() = 0;
 
   /* ! \brief Ma symulowac moment zatrzymania stopera.
    *
    * \details Metoda czysto wirtualna.
    */
-  virtual void stop()=0;
+  virtual void stop() = 0;
 
   /*! \brief Ma symulowac rezultat pokazania wyniku pomiaru czasu na stoperze.
    *
    * \details Metoda czysto wirtualna.
    */
-  virtual double getElapsedTime()=0;
+  virtual double getElapsedTime() = 0;
 
   /*! \brief Ma symulowac moment zapisu zmierzonego czasu na kartke papieru.
    *
@@ -41,8 +42,7 @@ class IStoper {
    *
    * \param file_name Nazwa pliku. Obiekt klasy string.
    */
-  virtual void dumpToFile(std::string file_name)=0;
-
+  virtual void dumpToFile(std::string file_name) = 0;
 };
 
-#endif
+#endif  // LAB03_14_03_PRJ_INC_ISTOPER_H_

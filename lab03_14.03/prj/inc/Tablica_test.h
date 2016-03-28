@@ -1,6 +1,6 @@
 // Copyright 2016 Kamil Kuczaj
-#ifndef TABLICA_TEST_H
-#define TABLICA_TEST_H
+#ifndef LAB03_14_03_PRJ_INC_TABLICA_TEST_H_
+#define LAB03_14_03_PRJ_INC_TABLICA_TEST_H_
 
 #include "Tablica.h"
 #include "IRunnable.h"
@@ -9,6 +9,7 @@
 class Tablica_test: IRunnable {
  private:
   Tablica arr;
+
  public:
 /*! \brief Implementacja funkcji prepare() interfesju IRunnable.
    *
@@ -17,7 +18,7 @@ class Tablica_test: IRunnable {
    * \param size Parametr typu unsigned int, gdyz rozmiar nie powinien nigdy byc
    *             ujemny. Jego wartosc zapisywana jest do pola desired_size.
    */
-  virtual void prepare (int size) { arr.setDesiredSize(size); }
+  virtual void prepare(int size) { arr.setDesiredSize(size); }
 
   /*! \brief Implementacja funkcji run() interfesju IRunnable.
    *
@@ -26,19 +27,18 @@ class Tablica_test: IRunnable {
    *          alokacja pamieci oraz instrukcje warunkowe.
    */
   virtual void run() {
-    for(int index = 0; index < arr.getDesiredSize(); index++) {
-      if(arr.isFull())
-	      arr.increaseSize();
-	      
-	   try {
-      arr[index] = 123;
-	   }
-	   catch (const char* message) {
-	     std::cout << message << std::endl;
-	   }
+    for (int index = 0; index < arr.getDesiredSize(); index++) {
+      if (arr.isFull())
+        arr.increaseSize();
+
+      try {
+        arr[index] = 123;
+      }
+      catch (const char* message) {
+        std::cout << message << std::endl;
+      }
     }
   }
- 
 };
 
-#endif
+#endif  // LAB03_14_03_PRJ_INC_TABLICA_TEST_H_

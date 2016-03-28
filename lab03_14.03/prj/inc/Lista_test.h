@@ -1,16 +1,18 @@
 // Copyright 2016 Kamil Kuczaj
-#ifndef LISTA_TEST_H
-#define LISTA_TEST_H
+#ifndef LAB03_14_03_PRJ_INC_LISTA_TEST_H_
+#define LAB03_14_03_PRJ_INC_LISTA_TEST_H_
 
 #include "Lista.h"
 #include "IRunnable.h"
 
 #include <cstdlib>   // to generate random numbers
 #include <iostream>  // to display messages in the console
+#include <string>    // to deal with string words
+
 class Lista_test: IRunnable {
  private:
   Lista list;
-  
+
  public:
 /*! \brief Szuka elementu.
    *
@@ -33,7 +35,6 @@ class Lista_test: IRunnable {
     else
       std::cout << "Found: " << random_word << " at index: "
                 << result << std::endl;
-
   }
 
   /*! \brief Zapisuje liste slowami.
@@ -46,34 +47,37 @@ class Lista_test: IRunnable {
    */
   virtual void prepare(int desired_size) {
     std::ifstream dictionary;
-    dictionary.open("109582_English_Words.txt",std::fstream::in);
+    dictionary.open("109582_English_Words.txt", std::fstream::in);
     try {
       dictionary.exceptions(dictionary.failbit);
     }
     catch(const std::ios_base::failure & ex) {
-      std::cerr << "Error! Couldn't find or open a file" << ex.what() << std::endl;
+      std::cerr << "Error! Couldn't find or open a file"
+                << ex.what() << std::endl;
     }
 
     // read input only if the list is empty and file stream is open
-    if(dictionary.is_open() && list.isEmpty() ) {
+    if (dictionary.is_open() && list.isEmpty()) {
       // http://stackoverflow.com/questions/21647/reading-from-text-file-until-eof-repeats-last-line
       // user Wilhelmtell '08
       std::string word;
-      for(int i=0; i < desired_size; i++) {
+      for (int i = 0; i < desired_size; i++) {
         dictionary >> word;
-        if(dictionary.eof()) break;
-        list.add(word,i);
+        if (dictionary.eof()) break;
+        std::cout << "Jestesmy tuz przed wejsciem do funkcji dodawania elementu"
+                  << std::endl;
+        list.add(word, i);
       }
     }
     dictionary.close();
   }
-  
+
   std::string getRandomWordFromTheDict() {
     std::ifstream dictionary;
     std::string word;
-  
+
     dictionary.open("109582_English_Words.txt", std::fstream::in);
-  
+
     try {
       dictionary.exceptions(dictionary.failbit);
     }
@@ -81,14 +85,16 @@ class Lista_test: IRunnable {
       std::cerr << "Error! Couldn't find or open a file" << ex.what()
                 << std::endl;
     }
-  
+
     // generating random number in 0 to 109582-1
     srand(time(NULL));
     int random_number = rand()%(109582-1);
 
+    // stackoverflow.com
+    // /questions/21647/reading-from-text-file-until-eof-repeats-last-line
+    // user Wilhelmtell '08
     if (dictionary.is_open()) {
-      // http://stackoverflow.com/questions/21647/reading-from-text-file-until-eof-repeats-last-line
-      // user Wilhelmtell '08
+
       for (int i=0; i < random_number; i++) {
         dictionary >> word;
         if (dictionary.eof()) break;
@@ -98,7 +104,6 @@ class Lista_test: IRunnable {
     dictionary.close();
     return word;
   }
-  
 };
 
-#endif
+#endif  // LAB03_14_03_PRJ_INC_LISTA_TEST_H_

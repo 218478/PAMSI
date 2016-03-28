@@ -22,7 +22,6 @@
  */
 class ILista {
  protected:
-
   /*! \brief Wstawia element w dowolnym miejscu listy.
    *
    * \details Wstawia element typu std::string w miejsce wskazywane przez

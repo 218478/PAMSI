@@ -1,5 +1,6 @@
-#ifndef TABLICA_H
-#define TABLICA_H
+// Copyright 2016 Kamil Kuczaj
+#ifndef LAB03_14_03_PRJ_INC_TABLICA_H_
+#define LAB03_14_03_PRJ_INC_TABLICA_H_
 
 #include "ITablica.h"
 
@@ -47,8 +48,8 @@ class Tablica: ITablica  {
    *          do ktorego mozliwy bedzie zapis.
    */
   int index;
-  
-  public:
+
+ public:
   /*! \brief Pozwala prosto okreslic, czy nalezy przydzielic pamiec.
    *
    * \details Metoda prywatna. Sluzy do okreslania czy nalezy wywolac
@@ -69,8 +70,8 @@ class Tablica: ITablica  {
     int new_size = current_size * 2;
     try {
       int *new_elements = new int[new_size];
-      for(int i=0; i < current_size; i++)
-	      new_elements[i] = elements[i];
+      for (int i=0; i < current_size; i++)
+        new_elements[i] = elements[i];
 
       delete [] elements;
       current_size = new_size;
@@ -90,7 +91,7 @@ class Tablica: ITablica  {
    * \param x Okresla poczatkowa wielkosc przydzielonej pamieci. Domyslna wartosc
    *          w przypadku braku podania to 10.
    */
-  Tablica(int x=10) { elements=new int[x]; current_size=x; index=0; }
+  Tablica(int x = 10) { elements = new int[x]; current_size = x; index = 0; }
 
   /*! \brief Destruktor.
    *
@@ -105,21 +106,20 @@ class Tablica: ITablica  {
    * \return Zwraca wartosc typu int. Reprezentuje ilosc danych w tablilcy.
    */
   virtual int getSize() { return current_size; }
-  
   virtual int getDesiredSize() const { return desired_size; }
   virtual void setDesiredSize(int t) { desired_size = t; }
   virtual int operator[] (int i) const {
-    if(i < current_size)
+    if (i < current_size)
       return elements[i];
     else
       throw("Index out of bounds");
   }
   virtual int& operator[] (int i) {
-    if(i < current_size)
+    if (i < current_size)
       return elements[i];
     else
       throw("Index out of bounds");
   }
 };
 
-#endif
+#endif  // LAB03_14_03_PRJ_INC_TABLICA_H_

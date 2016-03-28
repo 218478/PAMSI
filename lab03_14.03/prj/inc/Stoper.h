@@ -1,6 +1,6 @@
 // Copyright 2016 Kamil Kuczaj
-#ifndef LAB02_07_03_PRJ_INC_STOPER_H_
-#define LAB02_07_03_PRJ_INC_STOPER_H_
+#ifndef LAB03_14_03_PRJ_INC_STOPER_H_
+#define LAB03_14_03_PRJ_INC_STOPER_H_
 
 #include "IStoper.h"
 
@@ -48,14 +48,14 @@ class Stoper: IStoper {
   *
   * \details Alokuje pamiec dla pol, poniewaz sa wskaznikami.
   */
- Stoper();
- 
+  Stoper();
+
  /*! \brief Destruktor.
   *
   * \details Zwalniam pamiec po polach.
   */
   ~Stoper();
-  
+
   /*! \brief Implementacja funkcji start() z interfejsu IStoper.
    *
    * \details Zapisuje moment uruchomienia stopera. Korzysta z metody
@@ -95,4 +95,4 @@ class Stoper: IStoper {
   virtual void dumpToFile(std::string file_name);
 };
 
-#endif  // LAB02_07_03_PRJ_INC_STOPER_H_
+#endif  // LAB03_14_03_PRJ_INC_STOPER_H_
