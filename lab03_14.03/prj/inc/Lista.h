@@ -19,84 +19,7 @@
  * \author Kamil Kuczaj.
  */
 
-/*! \brief Imlementacja wezlow dla listy.
- *
- * \details Potrzebne do implementacji interfejsu listy. Zawiera pole
- *          typu string.
- */
-class Node {
- private:
-  /*! \brief Element w wezle.
-   *
-   * \details Co jest w wezle. Ma przechowywac pojedyncze slowo.
-   */
-  std::string element;
 
-  /*! \brief Wskaznik na nastepny wezel.
-   *
-   * \details Wskazuje na nastepny wezel.
-   */
-  Node* next;
-
-  /*! \brief Zaprzyjaznienie klasy Lista.
-   *
-   * \details Umozliwia dostep do wezlow dla listy.
-   */
-  friend class Lista;
-
- public:
-  /*! \brief Bezparametryczny konstruktor.
-   *
-   * \details Nawet nie wiem czy jest potrzebny.
-   */
-  Node() {
-    std::cout << "Stworzylismy wezel" << std::endl;
-    next = 0; }
-
-  /*! \brief Destrukor.
-   *
-   * \details Wymuszony poprzez alokacje pamieci dla pola next w konstruktorze.
-   */
-  ~Node() {
-    std::cout << "Usunelismy wezel" << std::endl; }
-
-  /*! \brief Dostep do pola element.
-   *
-   * \details Wymuszone poprzez hermetyzacje.
-   *
-   * \return Zwraca element typu String.
-   */
-  std::string getElem() { return element; }
-
-  /*! \brief Dostep do nastepnego wezla.
-   *
-   * \details Wymuszone poprzez hermetyzacje.
-   *
-   * \return Zwraca wskaznik typu Node*.
-   */
-  Node* getNext() {
-    if (next !=0)
-      return next;
-    else
-      std::cerr << "Could not return next element of class Node" << std::endl;
-  }
-
-  /*! \brief Ustawia pole element.
-   *
-   * \details Wymuszone poprzez hermetyzacje.
-   *
-   * \param[in] t Wartosc, ktora ma zostac zapisana do pola element.
-   */
-  void setElem(const std::string t) { element = t; }
-
-  /*! \brief Ustawia nastepny wezel.
-   *
-   * \details Wymuszone poprzez hermetyzacje.
-   *
-   * \param[in] t Wezel, ktory ma zostac przypisany do pola next.
-   */
-  void setNext(Node* t) { next = t; }
-};
 
 
 /*! \brief Klasa Lista, ktora symuluje zachowanie klasy list z biblioteki STL.
@@ -105,6 +28,27 @@ class Node {
  *          Mamy dostep do pierwszego elementu w liscie
  */
 class Lista: ILista {
+ private:
+  /*! \brief Imlementacja wezlow dla listy.
+   *
+   * \details Potrzebne do implementacji interfejsu listy. Zawiera pole
+   *          typu string.
+   */
+  struct Node {
+    /*! \brief Element w wezle.
+     *
+     * \details Co jest w wezle. Ma przechowywac pojedyncze slowo.
+     */
+    std::string element;
+
+    /*! \brief Wskaznik na nastepny wezel.
+     *
+     * \details Wskazuje na nastepny wezel.
+     */
+    Node* next;
+  };
+
+
   /*! \brief Pierwszy element listy.
    *
    * \details Wskazuje na pierwszy element listy.
