@@ -5,10 +5,7 @@
 #include <iostream>
 
 Lista::Lista() {
-  std::cout << "Tworzymy liste" << std::endl;
-  head = new Node;   // memory allocation
-  head->setNext(0);  // bad things happen if you forget about it
-  std::cout << "Stworzylismy liste" << std::endl;
+  head = 0;    // bad things happen if you forget about it
 }
 
 Lista::~Lista() {
@@ -17,39 +14,38 @@ Lista::~Lista() {
   // null checking is not needed
   for (int i = 0; i < size(); i++) {
     delete conductor1;  // usuwanie pamieci
-    conductor1 = conductor2->getNext();
+    conductor1 = conductor2->next;
     conductor2 = conductor1;
   }
 }
 
 void Lista::add(std::string item, int n) {
-  std::cout << "Jestesmy w funkcji dodawania elementu" << std::endl;
   if (n == 0) {  // adding at the beginning
     Node *temp = new Node;
-    temp->setElem(item);
-    temp->setNext(head);
+    temp->element = item;
+    temp->next = head;
     head = temp;
   } else if (n < size()) {  // inserting in the middle
     Node *inserted = new Node;
-    inserted->setElem(item);
+    inserted->element = item;
     Node *conductor = head;
     if (conductor != 0) {
       // repeating this operation n-times
       for (int i = 0; i < n; i++)
-        conductor = conductor->getNext();
+        conductor = conductor->next;
 
-      inserted->setNext(conductor->getNext());
-      conductor->setNext(inserted);
+      inserted->next = conductor->next;
+      conductor->next = inserted;
     } else if (n == size()) {  // adding at the end
       Node *added_at_the_end = new Node;
-      added_at_the_end->setElem(item);
+      added_at_the_end->element = item;
       Node *conductor = head;
       if (conductor != 0) {
         // repeating this operation n-times
         for (int i = 0; i < n; i++)
-          conductor = conductor->getNext();
-        conductor->setNext(added_at_the_end);
-        added_at_the_end->setNext(0);  // bad things happen if you don't do this
+          conductor = conductor->next;
+        conductor->next = added_at_the_end;
+        added_at_the_end->next = 0;  // bad things happen if you don't do this
       }
     }
   } else {
@@ -62,10 +58,10 @@ void Lista::remove(int n) {
     if (conductor != 0) {
       // repeating this operation (n-1)-times
       for (int i = 0; i < n-1; i++)
-        conductor = conductor->getNext();
-      Node *after_cond = conductor->getNext();  // point to the next element
+        conductor = conductor->next;
+      Node *after_cond = conductor->next;  // point to the next element
                                                 // which is to be deleted
-      conductor->setNext(after_cond->getNext());
+      conductor->next = after_cond->next;
       delete after_cond;
     } else {
       throw("List is empty"); }
@@ -73,7 +69,11 @@ void Lista::remove(int n) {
     throw("Index out of bounds"); }
 }
 
-bool Lista::isEmpty() { return (head == 0) ? true : false; }
+bool Lista::isEmpty() {
+  if (size() > 0)
+    return false;
+  else
+    return true; }
 
 std::string Lista::get(int n) {
   std::string temp;
@@ -82,8 +82,8 @@ std::string Lista::get(int n) {
     if (conductor != 0) {
       // repeating this operation n-times
       for (int i = 0; i < n; i++)
-        conductor = conductor->getNext();
-      temp = conductor->getElem();
+        conductor = conductor->next;
+      temp = conductor->element;
     } else {
       throw("List is empty"); }
   } else {
@@ -93,13 +93,19 @@ std::string Lista::get(int n) {
 }
 
 int Lista::size() {
+  //  std::cout << "Chcemy obliczyc rozmiar listy" << std::endl;
   Node *conductor = head;
+  //  std::cout << "Ustawilismy conductor na head" << std::endl;
   int temp_size = 0;
   if (conductor != 0) {
-    do {
-      conductor = conductor->getNext();
+    while (conductor->next != 0) {
+      std::cout << "Zawartosc listy:" << std::endl;
+      print();
+      conductor = conductor->next;
+
       temp_size++;
-    } while (conductor->getNext() != 0);
+    }
+    temp_size++;
   }
 
   return temp_size;
@@ -108,10 +114,11 @@ int Lista::size() {
 void Lista::print() {
   Node *conductor = head;
   if (conductor != 0) {
-    do {
-      std::cout << conductor->getElem();
-      conductor = conductor->getNext();
-    } while (conductor->getNext() != 0);
+    while (conductor->next != 0) {
+      std::cout << conductor->element << std::endl;
+      conductor = conductor->next;  // jump to the next element
+    }
+    conductor->element;
   }
 }
 
@@ -119,11 +126,11 @@ int Lista::search(std::string searched_word) {
   Node *conductor = head;
   int searched_index = 0;
   if (size() == 0) {
-     while (conductor->getNext() != 0) {
-        if (conductor->getElem() == searched_word)
+     while (conductor->next != 0) {
+        if (conductor->element == searched_word)
           return searched_index;
         else
-          conductor = conductor->getNext();
+          conductor = conductor->next;
 
         if (searched_index < size())
           searched_index++;

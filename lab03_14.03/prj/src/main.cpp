@@ -50,9 +50,9 @@ int main(int argc, char **argv) {
   for (int i=0; i < 1; i++) {
     referee.setOffList(data_sizes[i]); }
 
-  // running the array
-  for (int i=0; i < 5; i++) {
-    for (int j=0; j < trials_count; j++)
-      referee.setOffTable(data_sizes[i]);
-  }
+  // // running the array
+  // for (int i=0; i < 5; i++) {
+  //   for (int j=0; j < trials_count; j++)
+  //     referee.setOffTable(data_sizes[i]);
+  // }
 }

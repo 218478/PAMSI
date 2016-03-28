@@ -106,17 +106,47 @@ class Tablica: ITablica  {
    * \return Zwraca wartosc typu int. Reprezentuje ilosc danych w tablilcy.
    */
   virtual int getSize() { return current_size; }
+  
+  /*! \brief Zwraca wartosc desired_size.
+   *
+   * \details Zwraca rozmiar, ktory ma osiagnac tablica. Moze byc wieksza niz
+   *          desired_size.
+   */
   virtual int getDesiredSize() const { return desired_size; }
+
+  /*! \brief Ustawia wartosc desired_size.
+   *
+   * \details Ustawia rozmiar, ktory ma osiagnac tablica.
+   */
   virtual void setDesiredSize(int t) { desired_size = t; }
+
+  /*! \brief Akcesor do tablicy.
+   *
+   * \details Umozliwia dostep do tablicy.
+   *
+   * \param[in] i Indeks, w ktorym wartosc tablicy ma zostac zwrocona.
+   *
+   * \return Wartosc komorki tablicy, wskazywana przez i-ty indeks.
+   */
   virtual int operator[] (int i) const {
     if (i < current_size)
       return elements[i];
     else
       throw("Index out of bounds");
   }
+
+  /*! \brief Modyfikator do tablicy.
+   *
+   * \details Umozliwia dostep do zmiany i-tego elementu w tablicy.
+   *
+   * \param[in] i Wskazuje element, ktory ma zostac zmieniony.
+   *
+   * \return Referencja do i-tego elementu.
+   */
   virtual int& operator[] (int i) {
-    if (i < current_size)
-      return elements[i];
+    if (i < current_size) {
+      index++;
+      return elements[i]; }
     else
       throw("Index out of bounds");
   }

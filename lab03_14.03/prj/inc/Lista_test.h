@@ -46,7 +46,7 @@ class Lista_test: IRunnable {
    * \param[in] desired_size Ile elementow ma zostac wczytanych.
    */
   virtual void prepare(int desired_size) {
-    std::ifstream dictionary;
+    std::fstream dictionary;
     dictionary.open("109582_English_Words.txt", std::fstream::in);
     try {
       dictionary.exceptions(dictionary.failbit);
@@ -56,24 +56,28 @@ class Lista_test: IRunnable {
                 << ex.what() << std::endl;
     }
 
+    std::cout << list.isEmpty() << std::endl;
+
     // read input only if the list is empty and file stream is open
     if (dictionary.is_open() && list.isEmpty()) {
-      // http://stackoverflow.com/questions/21647/reading-from-text-file-until-eof-repeats-last-line
+      // http://stackoverflow.com
+      // /questions/21647/reading-from-text-file-until-eof-repeats-last-line
       // user Wilhelmtell '08
       std::string word;
       for (int i = 0; i < desired_size; i++) {
         dictionary >> word;
         if (dictionary.eof()) break;
-        std::cout << "Jestesmy tuz przed wejsciem do funkcji dodawania elementu"
-                  << std::endl;
-        list.add(word, i);
+        try {
+          list.add(word, i); }
+        catch (const char* message) {
+          std::cout << message << std::endl; }
       }
     }
     dictionary.close();
   }
 
   std::string getRandomWordFromTheDict() {
-    std::ifstream dictionary;
+    std::fstream dictionary;
     std::string word;
 
     dictionary.open("109582_English_Words.txt", std::fstream::in);

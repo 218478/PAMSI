@@ -38,25 +38,28 @@ class Node {
    */
   Node* next;
 
-  /*! \brief Zaprzyjaznienie interfejsu ILista.
+  /*! \brief Zaprzyjaznienie klasy Lista.
    *
    * \details Umozliwia dostep do wezlow dla listy.
    */
-  friend class ILista;
+  friend class Lista;
 
  public:
   /*! \brief Bezparametryczny konstruktor.
    *
    * \details Nawet nie wiem czy jest potrzebny.
    */
-  //Node() { next = new Node; next = 0; }
+  Node() {
+    std::cout << "Stworzylismy wezel" << std::endl;
+    next = 0; }
 
   /*! \brief Destrukor.
    *
    * \details Wymuszony poprzez alokacje pamieci dla pola next w konstruktorze.
    */
-  //~Node() { delete next; }
-  
+  ~Node() {
+    std::cout << "Usunelismy wezel" << std::endl; }
+
   /*! \brief Dostep do pola element.
    *
    * \details Wymuszone poprzez hermetyzacje.
