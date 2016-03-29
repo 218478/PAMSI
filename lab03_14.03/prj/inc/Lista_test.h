@@ -71,6 +71,11 @@ class Lista_test: IRunnable {
           std::cout << message << std::endl; }
       }
     }
+    /* // for debug */
+    /* list.print(); */
+    /* for (int i = 0 ; i < 10; i++) */
+    /*   std::cout << "Element o indeksie nr " << i << " to : " */
+    /*             << list.get(i) << std:: endl; */
     dictionary.close();
   }
 
@@ -96,7 +101,6 @@ class Lista_test: IRunnable {
     // /questions/21647/reading-from-text-file-until-eof-repeats-last-line
     // user Wilhelmtell '08
     if (dictionary.is_open()) {
-
       for (int i=0; i < random_number; i++) {
         dictionary >> word;
         if (dictionary.eof()) break;

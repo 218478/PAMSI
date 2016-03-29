@@ -100,12 +100,14 @@ void Lista::remove(int n) {
     throw("Index out of bounds");
 }
 
+// dziala
 bool Lista::isEmpty() {
   if (size() > 0)
     return false;
   else
     return true; }
 
+// dziala
 std::string Lista::get(int n) {
   std::string temp;
   if (n < size()) {
@@ -146,27 +148,21 @@ void Lista::print() {
 }
 
 
-// tutaj trzeba zmienic mechanizm
+// dziala funkcja search
 int Lista::search(std::string searched_word) {
   Node *conductor = head;
   int searched_index = 0;
-  // // for debug
-  // std::cout << "Czy pusta? " << isEmpty() << std::endl;
-  if (!isEmpty()) {
-     while (conductor->next != 0) {
-        if (conductor->element == searched_word)
-          return searched_index;
-        else
-          conductor = conductor->next;
 
-        if (searched_index < size())
-          searched_index++;
-        else
-          return -2;   // we didn't find anything
-     }  // while
+  if (isEmpty())
+    return -1;  // list is empty
+
+  while (conductor != 0) {
+    if (conductor->element == searched_word)
+      return searched_index;
+
+    searched_index++;
+    conductor = conductor->next;
   }
-  else
-    return -1;   // list is empty
-
-  return -3;  // unresolved error
+  return -2;   // we didn't find anything
 }
+

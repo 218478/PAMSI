@@ -11,14 +11,14 @@
 
 bool Sedzia::setOffTable(int how_many) {
   Stoper timer;
-  Tablica_test array;
+  Tablica_test tablica_testowa;
 
   std::ostringstream ss;
   ss << how_many;
 
-  array.prepare(how_many);
+  tablica_testowa.prepare(how_many);
   timer.start();
-  array.run();
+  tablica_testowa.run();
   timer.stop();
   timer.dumpToFile(ss.str());
 
@@ -27,12 +27,12 @@ bool Sedzia::setOffTable(int how_many) {
 
 
 bool Sedzia::setOffList(int how_many) {
-  Lista_test list;
+  Lista_test lista_testowa;
   Stoper timer;
 
-  list.prepare(how_many);
+  lista_testowa.prepare(how_many);
   timer.start();
-  list.run();
+  lista_testowa.run();
   timer.stop();
   return true;
 }
