@@ -51,5 +51,4 @@ int main(int argc, char **argv) {
     for (uint j=0; j < trials_count; j++)
       referee.setOffTable(data_sizes[i]);
   }
-
 }

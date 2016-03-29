@@ -46,16 +46,17 @@ class Stoper: IStoper {
  public:
  /*! \brief Konstruktor bezparametryczny.
   *
-  * \details Alokuje pamiec dla pol, poniewaz sa wskaznikami.
+  * \details Alokuje pamiec dla pol, poniewaz sa wskaznikami i beda przechowywac
+  *          wartosc.
   */
- Stoper();
- 
+  Stoper();
+
  /*! \brief Destruktor.
   *
   * \details Zwalniam pamiec po polach.
   */
   ~Stoper();
-  
+
   /*! \brief Implementacja funkcji start() z interfejsu IStoper.
    *
    * \details Zapisuje moment uruchomienia stopera. Korzysta z metody

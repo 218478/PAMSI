@@ -23,27 +23,21 @@ class Sedzia {
    *          wypelniany jest element klasy TablicA po uprzednim jej
    *          przygotowaniu.
    *
-   * \param how_many Informacja iloma elementami ma zostac wypelniona tablica.
-   *
-   * \retval true Wyscig zakonczony.
+   * \param[in] how_many  Informacja iloma elementami ma zostac wypelniona
+   *                      tablica.
    */
-  bool setOffTable(int how_many);
+  void setOffTable(int how_many);
 
   /*! \brief Funkcja, w ktorej odbywa sie pomiar czasu szukania w liscie.
    *
    * \details Losuje how_many slow a potem znajduje wylosowany.
    *
-   * \retval true Wyscig zakonczony.
+   * \param[in] how_many     Ilosc slow jaka ma zostac wczytana do listy.
+   * \param[in] trials_count Ile razy ma zostac wylosowane slowo ze slownika
+   *                         oraz ile razy ma zostac podjeta proba znalezenia
+   *                         go w liscie.
    */
-  bool setOffList(int how_many);
-
-  /*! \brief Losuje slowo ze slownika.
-   *
-   * \details Wybiera slow z pelnego zakresu slownika.
-   *
-   * \return Losowe slowo typu string.
-   */
-  std::string getRandomWordFromTheDict(int how_many);
+  void setOffList(int how_many, int trials_count);
 };
 
 #endif  // LAB03_14_03_PRJ_INC_SEDZIA_H_

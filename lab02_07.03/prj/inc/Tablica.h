@@ -1,10 +1,11 @@
-#ifndef TABLICA_H
-#define TABLICA_H
+// Copyright 2016 Kamil Kuczaj
+#ifndef LAB02_07_03_PRJ_INC_TABLICA_H_
+#define LAB02_07_03_PRJ_INC_TABLICA_H_
 
 #include "IRunnable.h"
 
-#include <new> // dla sprawdzenia poprawnosci alokacji pamieci
-#include <iostream> // dla wyswietlenia bledu
+#include <new>       // dla sprawdzenia poprawnosci alokacji pamieci
+#include <iostream>  // dla wyswietlenia bledu
 
 /*! \file Tablica.h
  *
@@ -54,7 +55,7 @@ template <class Type> class Tablica: IRunnable  {
    *          komorki pamieci, do ktorego mozliwy bedzie zapis.
    */
   unsigned int index;
-  
+
   /*! \brief Pozwala prosto okreslic, czy nalezy przydzielic pamiec.
    *
    * \details Metoda prywatna. Sluzy do okreslania czy nalezy wywolac
@@ -73,11 +74,11 @@ template <class Type> class Tablica: IRunnable  {
    *          pamiec.
    */
   void increaseSize() {
-    uint new_size = current_size * 2;
+    uint new_size = current_size + 1;
     try {
       int *new_elements = new int[new_size];
-      for(uint i=0; i < current_size; i++)
-	new_elements[i] = elements[i];
+      for (uint i=0; i < current_size; i++)
+        new_elements[i] = elements[i];
 
       delete [] elements;
       current_size = new_size;
@@ -90,7 +91,6 @@ template <class Type> class Tablica: IRunnable  {
   }
 
  public:
-
   /*! \brief Konstruktor parametryczny.
    *
    * \details Umozliwia okreslenie poczatkowego rozmiaru tablicy. W przypadku
@@ -99,7 +99,7 @@ template <class Type> class Tablica: IRunnable  {
    * \param x Okresla poczatkowa wielkosc przydzielonej pamieci. Domyslna wartosc
    *          w przypadku braku podania to 10.
    */
-  Tablica(uint x=10) { elements=new int[x]; current_size=x; index=0; }
+  explicit Tablica(uint x = 10) { elements = new int[x]; current_size = x; index = 0; }
 
   /*! \brief Destruktor.
    *
@@ -114,7 +114,7 @@ template <class Type> class Tablica: IRunnable  {
    * \param size Parametr typu unsigned int, gdyz rozmiar nie powinien nigdy byc
    *             ujemny. Jego wartosc zapisywana jest do pola desired_size.
    */
-  virtual void prepare (uint size) { desired_size = size; }
+  virtual void prepare(uint size) { desired_size = size; }
 
   /*! \brief Implementacja funkcji run() interfesju IRunnable.
    *
@@ -123,9 +123,9 @@ template <class Type> class Tablica: IRunnable  {
    *          instrukcje warunkowe.
    */
   virtual void run() {
-    while(index < desired_size) {
-      if(isFull())
-	increaseSize();
+    while (index < desired_size) {
+      if (isFull())
+        increaseSize();
 
       elements[index++] = 123;
     }
@@ -141,4 +141,4 @@ template <class Type> class Tablica: IRunnable  {
   uint getSize() { return current_size; }
 };
 
-#endif
+#endif  // LAB02_07_03_PRJ_INC_TABLICA_H_

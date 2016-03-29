@@ -135,8 +135,7 @@ class Lista: ILista {
   * \param[in] searched_word Szukane slowo.
   *
   * \retval -1 Lista pusta.
-  * \retval -2 Nie ma takiego elementu.
-  * \retval -3 Nieokreslony blad.
+  * \retval -2 Nie ma takiego elementu w liscie.
   *
   * \return Indeks, na ktorym znajduje sie szukane slowo.
   */

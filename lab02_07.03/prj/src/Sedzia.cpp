@@ -1,6 +1,9 @@
 // Copyright 2016 Kamil Kuczaj
 #include "Sedzia.h"
 
+#include <iostream>
+#include <sstream>
+
 bool Sedzia::setOffTable(int how_many) {
   Stoper timer;
   Tablica<int> array;
