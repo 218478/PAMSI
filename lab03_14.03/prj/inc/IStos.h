@@ -19,16 +19,6 @@
  */
 class IStos {
  protected:
-  /*! \brief Dodaje element w okreslonym miejscu.
-   *
-   * \details Metoda czysto wirtualna. Dodaje element item w miejscu index
-   *          pojemnika.
-   *
-   * \param[in] item    Dana, ktora ma byc wlozona.
-   * \param[in] index   Indeks, w ktorym ma znalezc sie nowa dana.
-   */
-  virtual int add(int item, int index) = 0;
-
   /*! \brief Dodaje element na poczatek.
    *
    * \details Dodaje element na poczatek pojemnika.

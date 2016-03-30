@@ -17,10 +17,10 @@
  */
 class Sedzia {
  public:
-  /*! \brief Funkcja, w ktorej odbywa sie bieg.
+  /*! \brief Funkcja, w ktorej odbywa sie zapis intow.
    *
    * \details Podczas wykonywania tej funkcji uruchamiany jest Stoper oraz
-   *          wypelniany jest element klasy TablicA po uprzednim jej
+   *          wypelniany jest element klasy Tablica po uprzednim jej
    *          przygotowaniu.
    *
    * \param[in] how_many  Informacja iloma elementami ma zostac wypelniona
@@ -38,6 +38,17 @@ class Sedzia {
    *                         go w liscie.
    */
   void setOffList(int how_many, int trials_count);
+
+  /*! \brief Funkcja, w ktorej odbywa sie zapis intow.
+   *
+   * \details Podczas wykonywania tej funkcji uruchamiany jest Stoper oraz
+   *          wypelniany jest element klasy Stos po uprzednim jej
+   *          przygotowaniu.
+   *
+   * \param[in] how_many  Informacja iloma elementami ma zostac wypelniona
+   *                      tablica.
+   */
+  void setOffStack(int how_many);
 };
 
 #endif  // LAB03_14_03_PRJ_INC_SEDZIA_H_

@@ -11,20 +11,39 @@
  * \details Implementacja pojemnika, gdzie dostepny jest jedynie element
  *          bedacy "na gorze". Jej skladowe elementy to inty. Zdecydowalem
  *          sie nie stosowac szablonow ze wzgledu na niepotrzebna komplikacje.
+ *          Nie zdecydowalem sie na uzycie listy jako elementu klasy, poniewaz
+ *          stos posiada teraz wlasny interfejs i zmieniajac cos w liscie,
+ *          musialbym rowniez kompilowac ten plik jeszcze raz. Poza tym w liscie
+ *          dodaje sie slowa, a nie inty.\
+ *          Nie ma ograniczen rozmiaru.
  */
 class Stos: IStos {
  private:
-  /*! \brief Gora stosu.
+  /*! \brief Imlementacja wezlow dla stosu.
    *
-   * \details Wskaznik na wierzcholek stosu.
+   * \details Potrzebne do implementacji interfejsu stosu. Zawiera pole
+   *          typu string.
    */
-  int *top;
+  struct Node {
+    /*! \brief Element w wezle.
+     *
+     * \details Co jest w wezle. Ma przechowywac pojedyncza liczbe calkowita.
+     */
+    int element;
 
-  /*! \brief Stos.
+    /*! \brief Wskaznik na nastepny wezel.
+     *
+     * \details Wskazuje na nastepny wezel.
+     */
+    Node* next;
+  };
+
+
+  /*! \brief Pierwszy element stosu. Tzw. wierzcholek.
    *
-   * \details Reprezentacja stosu. Zwieksza pamiec dwukrotnie.
+   * \details Wskazuje na pierwszy element listy.
    */
-  Lista *stack;
+  Node *top;
 
  public:
   /*! \brief Bezparametryczny konstruktor.
@@ -37,14 +56,15 @@ class Stos: IStos {
    *
    * \details Popuje wszystkie elementy.
    */
+  ~Stos();
 
   /*! \brief Usuwa element z okreslonego miejsca.
    *
    * \details Usuwa i zwraca podany element znajdujacy sie w index-owym miejscu.
    *
-   * \param[in] element "Wpychany" element typu int.
+   * \param[in] item "Wpychany" element typu int.
    */
-  virtual void push(int element);
+  virtual void push(int item);
 
   /*! \brief Usuwa element z pojemnika.
    *
@@ -65,8 +85,7 @@ class Stos: IStos {
    */
   virtual bool empty();
 
-  /*!
-   * \brief Zwraca aktualny rozmiar pojemnika.
+  /*! \brief Zwraca aktualny rozmiar pojemnika.
    *
    * \details Zwraca wartosc, ktora reprezentuje obecna ilosc elementow
    *          w pojemniku. Metoda czysto wirtualna.
@@ -74,6 +93,12 @@ class Stos: IStos {
    * \return Ilosc elementow w pojemniku.
    */
   virtual int size();
+
+  /*! \brief Wyswietla elementy stosu.
+   *
+   * \details Wyswietla cala zawartosc stosu. Nie jest czescia interfesju.
+   */
+  void print();
 };
 
 
