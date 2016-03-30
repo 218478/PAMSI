@@ -1,70 +1,66 @@
+// Copyright 2016 Kamil Kuczaj
 #include "Sedzia.h"
+#include "Stoper.h"
+#include "Tablica_test.h"
+#include "Lista_test.h"
+#include "Stos_test.h"
+#include "Kolejka_test.h"
 
-bool Sedzia::setOffTable(uint how_many) {
+#include <unistd.h>  // to make Linux wait because searching is too fast
 
+#include <sstream>   // to convert int to string
+#include <string>    // to deal with strings
+#include <iostream>  // to display messages
+
+
+void Sedzia::setOffTable(int how_many) {
   Stoper timer;
-  Tablica<int> array;
+  Tablica_test tablica_testowa;
 
   std::ostringstream ss;
-  ss << how_many;
+  ss << "Tablica_" << how_many;
 
-  array.prepare(how_many);
+  tablica_testowa.prepare(how_many);
   timer.start();
-  array.run();
+  tablica_testowa.run();
   timer.stop();
-
-  return true;
+  timer.dumpToFile(ss.str());
 }
 
 
-bool Sedzia::setOffList (uint how_many) {
-  Lista<std::string> list;
+void Sedzia::setOffList(int how_many, int trials_count) {
+  Lista_test lista_testowa;
   Stoper timer;
-  uint index_where_word_was_found;
 
-  list.prepare(how_many);
-  std::string random_word = getRandomWordFromTheDict(how_many);
-  
+  std::ostringstream ss;
+  ss << "Lista_" << how_many;
   timer.start();
-  index_where_word_was_found = list.run(random_word);
+  lista_testowa.prepare(how_many);
   timer.stop();
+  std::cout << "Preparation of " << how_many << "-size list took: "
+            << timer.getElapsedTime() << " microseconds" << std::endl;
 
-  std::cout << "Found: " << random_word << " at index: "
-	    << index_where_word_was_found << " in "
-	    << how_many << "-sized array" << " in time of: "
-	    << timer.getElapsedTime() << " miliseconds" << std::endl;
-  
-  return true;
+  for (int i = 0; i < trials_count; i++) {
+    timer.start();
+    lista_testowa.run();
+    timer.stop();
+    std::cout << "Search took: " << timer.getElapsedTime()
+              << " microseconds. Saving to file." << std::endl;
+    timer.dumpToFile(ss.str());
+    sleep(1);  // sleep for a second to get a new random seed from the clock
+  }
 }
 
+void Sedzia::setOffStack(int how_many) {
+  Stos_test stos_testowy;
+  Stoper timer;
 
-std::string Sedzia::getRandomWordFromTheDict(uint how_many) {
-  std::fstream dictionary;
-  std::string word;
-  
-  dictionary.open("109582_English_Words.txt",std::fstream::in);
-
-  try {
-    dictionary.exceptions(dictionary.failbit);
-  }
-  catch(const std::ios_base::failure & ex) {
-    std::cerr << "Error! Couldn't find or open a file" << ex.what() << std::endl;
-  }
-
-  // generating random number in 0 to how_many range
-  srand(time(NULL));
-  uint random_number = rand()%how_many;
-
-  if(dictionary.is_open() ) {
-    // http://stackoverflow.com/questions/21647/reading-from-text-file-until-eof-repeats-last-line
-    // user Wilhelmtell '08
-    for(uint i=0; i < random_number; i++) {
-      dictionary >> word;
-      if(dictionary.eof()) break;
-    }
-  }
-
-  dictionary.close();
-  return word;
+  stos_testowy.prepare(how_many);
 }
 
+void Sedzia::setOffQueue(int how_many) {
+  Kolejka_test kolejka_testowa;
+  Stoper timer;
+
+  kolejka_testowa.prepare(how_many);
+}

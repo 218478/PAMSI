@@ -1,15 +1,8 @@
-#ifndef SEDZIA_H
-#define SEDZIA_H
+// Copyright 2016 Kamil Kuczaj
+#ifndef LAB03_14_03_PRJ_INC_SEDZIA_H_
+#define LAB03_14_03_PRJ_INC_SEDZIA_H_
 
-#include "Stoper.h"
-#include "Tablica.h"
-#include "Lista.h"
-
-#include <iostream>
-#include <iomanip>
-#include <sstream> // to convert int to string
-#include <string>  // to deal with strings
-#include <cstdlib>   // to deal with drawing random word from the dictionary
+#include <string>    // to deal with strings
 
 /*! \file Sedzia.h
  *
@@ -17,64 +10,56 @@
  * \author Kamil Kuczaj
  */
 
-
-/*! \brief Skraca zapis.
- *
- * \details Zdefiniowanie wlasnego typu - pozwala na krotszy zapis
- */
-typedef unsigned int uint;
-
-
 /*! \brief Implementacja klasy Sedzia.
  *
  * \details Sedzia wykorzystuje elementy klasy Stoper oraz klasy Tablica.
  *          Mierzy czas wypelniania elemntow Tablicy.
  */
 class Sedzia {
-
  public:
-  /*! \brief Funkcja, w ktorej odbywa sie bieg.
+  /*! \brief Funkcja, w ktorej odbywa sie zapis intow.
    *
    * \details Podczas wykonywania tej funkcji uruchamiany jest Stoper oraz
-   *          wypelniany jest element klasy TablicA po uprzednim jej
+   *          wypelniany jest element klasy Tablica po uprzednim jej
    *          przygotowaniu.
    *
-   * \param how_many Informacja iloma elementami ma zostac wypelniona tablica.
-   * \retval true Wyscig zakonczony.
+   * \param[in] how_many  Informacja iloma elementami ma zostac wypelniona
+   *                      tablica.
    */
-  bool setOffTable(uint how_many);
+  void setOffTable(int how_many);
 
   /*! \brief Funkcja, w ktorej odbywa sie pomiar czasu szukania w liscie.
    *
    * \details Losuje how_many slow a potem znajduje wylosowany.
    *
-   * \retval true Wyscig zakonczony.
+   * \param[in] how_many     Ilosc slow jaka ma zostac wczytana do listy.
+   * \param[in] trials_count Ile razy ma zostac wylosowane slowo ze slownika
+   *                         oraz ile razy ma zostac podjeta proba znalezenia
+   *                         go w liscie.
    */
-  bool setOffList (uint how_many);
+  void setOffList(int how_many, int trials_count);
 
-  /*! \brief Losuje slowo ze slownika.
+  /*! \brief Funkcja, w ktorej odbywa sie zapis stringow do stosu.
    *
-   * \details Wybiera slow z pelnego zakresu slownika.
+   * \details Podczas wykonywania tej funkcji uruchamiany jest Stoper oraz
+   *          wypelniany jest element klasy Stos po uprzednim jej
+   *          przygotowaniu. Slowa pobiera z tego samego slownika co lista.
    *
-   * \return Losowe slowo typu string.
+   * \param[in] how_many  Informacja iloma elementami ma zostac wypelniona
+   *                      tablica.
    */
-  std::string getRandomWordFromTheDict(uint how_many);
+  void setOffStack(int how_many);
 
-  /*! \brief Odpala bubble sort tablicy intow.
+   /*! \brief Funkcja, w ktorej odbywa sie zapis stringow do kolejki.
    *
-   * \details Bubble sort.
+   * \details Podczas wykonywania tej funkcji uruchamiany jest Stoper oraz
+   *          wypelniany jest element klasy Stos po uprzednim jej
+   *          przygotowaniu. Slowa pobiera z tego samego slownika co lista.
    *
-   * \param[in] how_many Ile intow ma byc wczytane i posortowane.
-   *                     W przedziale 1-100;
+   * \param[in] how_many  Informacja iloma elementami ma zostac wypelniona
+   *                      tablica.
    */
-  void setOffBubbleSortArray(int how_many) {
-    Tablica<int> tab;
-    try {
-      tab.bubbleSort(how_many); }
-    catch (const char *message) {
-      std::cout << message << std::endl;
-    }
-    }
+  void setOffQueue(int how_many);
 };
 
-#endif
+#endif  // LAB03_14_03_PRJ_INC_SEDZIA_H_
