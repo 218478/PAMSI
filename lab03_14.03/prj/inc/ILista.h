@@ -36,10 +36,9 @@ class ILista {
    *
    * \details Usuwa element z miejsca wskazywanego przez zmienna index.
    *
-   * \retval true Udalo sie usunac.
-   * \retval false Nie udalo sie usunac wskazanego elementu.
+   * \return Zwraca zawartosc komorki o tej indeksie.
    */
-  virtual void remove(int index) = 0;
+  virtual std::string remove(int index) = 0;
 
   /*! \brief Sprawdza czy lista jest pusta.
    *

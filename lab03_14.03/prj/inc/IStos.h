@@ -2,6 +2,8 @@
 #ifndef LAB03_14_03_PRJ_INC_ISTOS_H_
 #define LAB03_14_03_PRJ_INC_ISTOS_H_
 
+#include <string>
+
 /*! \file IStos.h
  *
  * \brief Plik zawiera interfejs dla pojemnika Stos.
@@ -23,9 +25,9 @@ class IStos {
    *
    * \details Dodaje element na poczatek pojemnika.
    *
-   * \param[in] element "Wpychany" element typu int.
+   * \param[in] element "Wpychany" element typu std::string.
    */
-  virtual void push(int element) = 0;
+  virtual void push(std::string element) = 0;
 
   /*! \brief Usuwa element z pojemnika.
    *
@@ -34,7 +36,7 @@ class IStos {
    *
    * \return Usuniety element.
    */
-  virtual int pop() = 0;
+  virtual std::string pop() = 0;
 
   /*! \brief Sprawdza czy pojemnika jest pusty.
    *

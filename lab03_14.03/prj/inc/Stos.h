@@ -5,52 +5,31 @@
 #include "IStos.h"
 #include "Lista.h"
 
+#include <string>
 
 /*! \brief Implementacja klasy Stos, zlozonej z intow.
  *
  * \details Implementacja pojemnika, gdzie dostepny jest jedynie element
- *          bedacy "na gorze". Jej skladowe elementy to inty. Zdecydowalem
+ *          bedacy "na gorze". Jej skladowe elementy to stringi. Zdecydowalem
  *          sie nie stosowac szablonow ze wzgledu na niepotrzebna komplikacje.
- *          Nie zdecydowalem sie na uzycie listy jako elementu klasy, poniewaz
- *          stos posiada teraz wlasny interfejs i zmieniajac cos w liscie,
- *          musialbym rowniez kompilowac ten plik jeszcze raz. Poza tym w liscie
- *          dodaje sie slowa, a nie inty.\
- *          Nie ma ograniczen rozmiaru.
+ *          Zdecydowalem sie na uzycie listy jako elementu klasy, poniewaz
+ *          byl to wymog prowadzacego. Nie ma ograniczen rozmiaru.
  */
 class Stos: IStos {
  private:
-  /*! \brief Imlementacja wezlow dla stosu.
+  /*! \brief Zawartosc stosu.
    *
-   * \details Potrzebne do implementacji interfejsu stosu. Zawiera pole
-   *          typu string.
+   * \details Implementacja listy jako pole stosu jest wymogiem prowadzacego.
+   *          Dodatkowo bardzo ulatiwa implementacje.
    */
-  struct Node {
-    /*! \brief Element w wezle.
-     *
-     * \details Co jest w wezle. Ma przechowywac pojedyncza liczbe calkowita.
-     */
-    int element;
-
-    /*! \brief Wskaznik na nastepny wezel.
-     *
-     * \details Wskazuje na nastepny wezel.
-     */
-    Node* next;
-  };
-
-
-  /*! \brief Pierwszy element stosu. Tzw. wierzcholek.
-   *
-   * \details Wskazuje na pierwszy element listy.
-   */
-  Node *top;
+  Lista stack;
 
  public:
   /*! \brief Bezparametryczny konstruktor.
    *
    * \details Inicjalizuje wierzcholek *top jak wskaznik na NULL.
    */
-  Stos(): top(0) {}
+  Stos();
 
   /*! \brief Destruktor.
    *
@@ -62,23 +41,21 @@ class Stos: IStos {
    *
    * \details Usuwa i zwraca podany element znajdujacy sie w index-owym miejscu.
    *
-   * \param[in] item "Wpychany" element typu int.
+   * \param[in] item "Wpychany" element typu std::string.
    */
-  virtual void push(int item);
+  virtual void push(std::string item);
 
   /*! \brief Usuwa element z pojemnika.
    *
    * \details Usuwa element z pojemnika i zwraca go uzytkownikowi.
-   *          Metoda czysto wirtualna.
    *
    * \return Usuniety element.
    */
-  virtual int pop();
+  virtual std::string pop();
 
   /*! \brief Sprawdza czy pojemnika jest pusty.
    *
    * \details Sprawdza czy znajduja sie jakies elementy w pojemniku.
-   *          Metoda czysto wirtualna.
    *
    * \retval true Pojemnik pusty.
    * \retval false Pojemnik nie jest pusty.
@@ -88,7 +65,7 @@ class Stos: IStos {
   /*! \brief Zwraca aktualny rozmiar pojemnika.
    *
    * \details Zwraca wartosc, ktora reprezentuje obecna ilosc elementow
-   *          w pojemniku. Metoda czysto wirtualna.
+   *          w pojemniku.
    *
    * \return Ilosc elementow w pojemniku.
    */

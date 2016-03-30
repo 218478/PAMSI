@@ -87,10 +87,9 @@ class Lista: ILista {
    *
    * \details Usuwa element z miejsca wskazywanego przez zmienna index.
    *
-   * \retval true Udalo sie usunac element o podanym indeksie.
-   * \retval false Nie udalo sie usunac elementu o podanym indeksie.
+   * \return Zwraca slowo, ktore znajdowalo sie na tym indeksie.
    */
-  virtual void remove(int index);
+  virtual std::string remove(int index);
 
   /*! \brief Sprawdza czy lista jest pusta.
    *

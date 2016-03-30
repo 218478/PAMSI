@@ -50,3 +50,17 @@ void Sedzia::setOffList(int how_many, int trials_count) {
     sleep(1);  // sleep for a second to get a new random seed from the clock
   }
 }
+
+void Sedzia::setOffStack(int how_many) {
+  Stos_test stos_testowy;
+  Stoper timer;
+
+  stos_testowy.prepare(how_many);
+}
+
+void Sedzia::setOffQueue(int how_many) {
+  Kolejka_test kolejka_testowa;
+  Stoper timer;
+
+  kolejka_testowa.prepare(how_many);
+}

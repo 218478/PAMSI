@@ -2,6 +2,8 @@
 #ifndef LAB03_14_03_PRJ_INC_IKOLEJKA_H_
 #define LAB03_14_03_PRJ_INC_IKOLEJKA_H_
 
+#include <string>
+
 /*! \file IKolejka.h
  *
  * \brief Plik zawiera interfejs dla pojemnika Kolejka.
@@ -19,26 +21,13 @@
  */
 class IKolejka {
  protected:
-  /*! \brief Dodaje element w okreslonym miejscu.
-   *
-   * \details Metoda czysto wirtualna. Dodaje element item w miejscu index
-   *          pojemnika.
-   *
-   * \param[in] item    Dana, ktora ma byc wlozona.
-   * \param[in] index   Indeks, w ktorym ma znalezc sie nowa dana.
-   *
-   * \retval true Udalo sie dodac element.
-   * \retval false Nie udalo sie dodac elementu.
-   */
-  virtual bool add(int item, int index) = 0;
-
   /*! \brief Dodaje element na poczatek.
    *
    * \details Dodaje element na poczatek pojemnika.
    *
-   * \param[in] element "Wpychany" element typu int.
+   * \param[in] element "Wpychany" element typu string.
    */
-  virtual void push(int element) = 0;
+  virtual void push(std::string element) = 0;
 
   /*! \brief Usuwa element z pojemnika.
    *
@@ -47,7 +36,7 @@ class IKolejka {
    *
    * \return Usuniety element.
    */
-  virtual int pop() = 0;
+  virtual std::string pop() = 0;
 
   /*! \brief Sprawdza czy pojemnika jest pusty.
    *

@@ -1,44 +1,29 @@
 // Copyright 2016 Kamil Kuczaj
 #include "Stos.h"
 
+#include <string>
+
+Stos::Stos(): stack() {}
+
 Stos::~Stos() {
-  while (top != 0)
+  while (!stack.isEmpty())  // while stack is not empty
     pop();
 }
 
-void Stos::push(int item) {
-  Node* temp = new Node;
-  temp->element = item;
-  temp->next = top;
-  top = temp;
+void Stos::push(std::string item) {
+  stack.add(item, 0);
 }
 
-int Stos::pop() {
-  Node *conductor = top;
-  int temp = conductor->element;
-  top = conductor->next;
-  delete conductor;
-
-  return temp;
+std::string Stos::pop() {
+  return stack.remove(0);
 }
 
-bool Stos::empty() { return (top == 0) ? true : false; }
+bool Stos::empty() { return stack.isEmpty(); }
 
 int Stos::size() {
-  Node *conductor = top;
-  int temp_size = 0;
-  while (conductor != 0) {
-    conductor = conductor->next;
-    temp_size++;
-  }
-
-  return temp_size;
+  return stack.size();
 }
 
 void Stos::print() {
-  Node *conductor = top;
-  while (conductor != 0) {
-    std::cout << conductor->element << std::endl;
-    conductor = conductor->next;  // jump to the next element
-  }
+  stack.print();
 }

@@ -78,7 +78,9 @@ void Lista::add(std::string item, int n) {
 // dziala usuwanie z poczatku, ze srodka i z konca
 // dziala rowaniez wyswietlanie wyjatkow w przypadku gdy lista pusta
 // lub odwolujemy sie do zbyt duzego indeksu
-void Lista::remove(int n) {
+std::string Lista::remove(int n) {
+  std::string word;
+
   if (size() == 0)
     throw("List is empty");
   if (n < size()) {
@@ -86,6 +88,7 @@ void Lista::remove(int n) {
 
     if (n == 0) {  // if we want to remove at the beginning
       head = conductor->next;
+      word = conductor->element;
       delete conductor;
     } else {
       // repeating this operation (n-1)-times
@@ -94,10 +97,13 @@ void Lista::remove(int n) {
       Node *after_cond = conductor->next;  // point to the next element
       // which is to be deleted
       conductor->next = after_cond->next;
+      word = after_cond->element;
       delete after_cond; }
     }
-  else 
+  else
     throw("Index out of bounds");
+
+  return word;
 }
 
 // dziala

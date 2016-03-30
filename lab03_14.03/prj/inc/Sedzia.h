@@ -39,16 +39,27 @@ class Sedzia {
    */
   void setOffList(int how_many, int trials_count);
 
-  /*! \brief Funkcja, w ktorej odbywa sie zapis intow.
+  /*! \brief Funkcja, w ktorej odbywa sie zapis stringow do stosu.
    *
    * \details Podczas wykonywania tej funkcji uruchamiany jest Stoper oraz
    *          wypelniany jest element klasy Stos po uprzednim jej
-   *          przygotowaniu.
+   *          przygotowaniu. Slowa pobiera z tego samego slownika co lista.
    *
    * \param[in] how_many  Informacja iloma elementami ma zostac wypelniona
    *                      tablica.
    */
   void setOffStack(int how_many);
+
+   /*! \brief Funkcja, w ktorej odbywa sie zapis stringow do kolejki.
+   *
+   * \details Podczas wykonywania tej funkcji uruchamiany jest Stoper oraz
+   *          wypelniany jest element klasy Stos po uprzednim jej
+   *          przygotowaniu. Slowa pobiera z tego samego slownika co lista.
+   *
+   * \param[in] how_many  Informacja iloma elementami ma zostac wypelniona
+   *                      tablica.
+   */
+  void setOffQueue(int how_many);
 };
 
 #endif  // LAB03_14_03_PRJ_INC_SEDZIA_H_
