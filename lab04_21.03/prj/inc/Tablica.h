@@ -58,7 +58,7 @@ class Tablica: ITablica  {
    * \retval true Pamiec pelna. Nalezy zwiekszyc rozmiar.
    * \retval false Jest jeszcze wolne miejsce.
    */
-  virtual bool isFull() { return ((index >= (current_size)) ?true:false); }
+  virtual bool isFull();
 
   /*! \brief Zwieksza rozmiar przydzielonej pamieci na stercie.
    *
@@ -66,38 +66,25 @@ class Tablica: ITablica  {
    *          komorki z nowo-przydzielona pamiecia. Usuwa stara
    *          pamiec.
    */
-  virtual void increaseSize() {
-    int new_size = current_size * 2;
-    try {
-      int *new_elements = new int[new_size];
-      for (int i=0; i < current_size; i++)
-        new_elements[i] = elements[i];
-
-      delete [] elements;
-      current_size = new_size;
-      elements = new_elements;
-    }
-    // if you fail to allocate memory
-    catch (std::bad_alloc& ex) {
-      std::cerr << ex.what() << std::endl;
-    }
-  }
+  virtual void increaseSize();
 
   /*! \brief Konstruktor parametryczny.
    *
    * \details Umozliwia okreslenie poczatkowego rozmiaru tablicy. W przypadku
    *          braku okreslenia tego rozmiaru przyjmuje domyslna wartosc rowna 10.
+   *          Explicit oznacza tyle, ze nie moge stworzyc tablicy w ten sposob:
+   *          Tablica t = 10;
    *
    * \param x Okresla poczatkowa wielkosc przydzielonej pamieci. Domyslna wartosc
    *          w przypadku braku podania to 10.
    */
-  Tablica(int x = 10) { elements = new int[x]; current_size = x; index = 0; }
+  explicit Tablica(int x = 10);
 
   /*! \brief Destruktor.
    *
    * \details Usuwa pamiec przypisana komorce, na ktora wskazuje pole *elements.
    */
-  ~Tablica() { delete [] elements; }
+  ~Tablica();
 
   /*! \brief Zwraca aktualny rozmiar tablicy dynamicznej.
    *
@@ -105,20 +92,20 @@ class Tablica: ITablica  {
    *
    * \return Zwraca wartosc typu int. Reprezentuje ilosc danych w tablilcy.
    */
-  virtual int getSize() { return current_size; }
+  virtual int getSize();
   
   /*! \brief Zwraca wartosc desired_size.
    *
    * \details Zwraca rozmiar, ktory ma osiagnac tablica. Moze byc wieksza niz
    *          desired_size.
    */
-  virtual int getDesiredSize() const { return desired_size; }
+  virtual int getDesiredSize() const;
 
   /*! \brief Ustawia wartosc desired_size.
    *
    * \details Ustawia rozmiar, ktory ma osiagnac tablica.
    */
-  virtual void setDesiredSize(int t) { desired_size = t; }
+  virtual void setDesiredSize(int t);
 
   /*! \brief Akcesor do tablicy.
    *
@@ -128,12 +115,7 @@ class Tablica: ITablica  {
    *
    * \return Wartosc komorki tablicy, wskazywana przez i-ty indeks.
    */
-  virtual int operator[] (int i) const {
-    if (i < current_size)
-      return elements[i];
-    else
-      throw("Index out of bounds");
-  }
+  virtual int operator[] (int i) const;
 
   /*! \brief Modyfikator do tablicy.
    *
@@ -143,13 +125,13 @@ class Tablica: ITablica  {
    *
    * \return Referencja do i-tego elementu.
    */
-  virtual int& operator[] (int i) {
-    if (i < current_size) {
-      index++;
-      return elements[i]; }
-    else
-      throw("Index out of bounds");
-  }
+  virtual int& operator[] (int i);
+
+  /*! \brief Sortowanie babelkowe.
+   *
+   * \details Sortuje elementy metoda babelkowa. Zlozonosc obliczeniowa n^2.
+   */
+  void bubbleSort();
 };
 
 #endif  // LAB03_14_03_PRJ_INC_TABLICA_H_
