@@ -13,7 +13,10 @@
 \maketitle
 
 \section{Wstęp}
-Podanym zadaniem był pomiar czasu znajdywania losowego elementu listy typu\textit{string}. Należało wykonać pomiary zapisu: $10^1$, $10^3$ oraz $10^5$. Wykorzystano słownik $109582$ najpopularniejszych słów w języku angielskim. Zdecydowano się na wybór języka angielskiego nad polskim z uwagi na zlikwidowanie problemów z wczytywaniem znaków łacińskich. W programie zaimplementowano szablony, dzięki czemu bardzo łatwo jest zmierzyć czas dla innych zmiennych lub nawet własnych klas.
+Podanym zadaniem był pomiar czasu znajdywania losowego elementu listy typu\textit{string}. Należało wykonać pomiary zapisu: $10^1$, $10^3$, $10^5$, $10^6$ oraz $10^9$. Wykorzystano słownik $109582$ najpopularniejszych słów w języku angielskim. Zdecydowano się na wybór języka angielskiego nad polskim z uwagi na zlikwidowanie problemów z wczytywaniem znaków łacińskich.\\
+W programie nie użyto szablonów. Było to wynikiem konsultacji z prowadzącym na zajęciach.
+
+\textbf{Z uwagi na to, że w liście użyto węzłów i nie zaimplementowano jej używając tablicy, alokacja nowego elementu ma złożoność obliczeniową rzędu O($n^2$). Jest to mój błąd wynikający z niezrozumienia prowadzącego. Skutkowało to tym, że wykonano jedynie trzy pomiary: $10^1$, $10^3$, $10^5$. Dalsze pomiary zajmowały zbyt dużo czasu.}
 
 Słowa w słowniku posortowane są alfabetycznie, więc za każdym razem do struktury danych były wczytywane będąc już uprzednio posortowane rosnąco.
 
@@ -33,8 +36,8 @@ Słowa w słowniku posortowane są alfabetycznie, więc za każdym razem do stru
 \section{Pomiary oraz ich interpretacja}
 \bigskip
 
-Bardzo dużą część czasu zajmowało zapisanie stu tysięcy słów - wynikało to z tego, że należało zaalokować pamięć, w tym wypadku zwiększając ją o jeden element za każdym razem. Wiąże się to ze złożonością obliczeniową rzędu $n^2$ w notacji dużego $\Theta$.\\\\
-W programie użyłem funkcji \textit{rand()} z biblioteki \textit{<cstdlib>} do wylosowania losowego slowa ze slownika $109582$ najpopularniejszych słów w języku angielskim. Następnie przeszukiwałem listę w poszukiwaniu tego słowa i zapisywałem go do pliku niezależnie od tego, czy słowo zostało znalezione. Chciałem w ten sposób pokazać, że przeszukanie listy jest bardzo efektywne. Poniżej w tabeli przedstawione zostały średnie wyniki pomiarów.\\\\\\
+Bardzo dużą część czasu zajmowało zapisanie stu tysięcy słów - wynikało to z tego, że należało zaalokować pamięć, w tym wypadku zwiększając ją o jeden element za każdym razem. Wiąże się to ze złożonością obliczeniową rzędu O($n^2$). Jest to następstwo mojego błędu, które zdążyłem już opisać we wstępie.\\\\
+W programie użyłem funkcji \textit{rand()} z biblioteki \textit{<cstdlib>} do wylosowania losowego słowa ze słownika $109582$ najpopularniejszych słów w języku angielskim. Następnie przeszukiwałem listę w poszukiwaniu tego słowa i zapisywałem go do pliku niezależnie od tego, czy słowo zostało znalezione. Chciałem w ten sposób pokazać, że przeszukanie listy jest bardzo efektywne. Poniżej w tabeli przedstawione zostały średnie wyniki pomiarów.\\\\\\
 
 \begin{table}[h]
 \begin{center}
@@ -49,7 +52,7 @@ W programie użyłem funkcji \textit{rand()} z biblioteki \textit{<cstdlib>} do 
 \end{tabular}
 
 \end{center}
-\caption{Wyniki pomiarów. Łatwo zauważyć, że przeszukanie listy trwa bardzo krótko i prawie nie zależy od ilości elementów}
+\caption{Wyniki pomiarów. Łatwo zauważyć, że przeszukanie listy trwa bardzo krótko i prawie nie zależy od ilości elementów. Złożoność obliczeniowa O($n$).}
 \end{table}
 
 \bigskip
@@ -63,9 +66,9 @@ Wydawać by się mogło, że liczenie średniej z pomiarów, gdzie nie uwzględn
 \begin{center}
 	\includegraphics[scale=0.6]{../wyniki/wyniki_przeszukania.png}
 \end{center}
-\caption{Zobrazowanie wyników pomiaru oraz regresja logartymiczna wykonana w programie \textit{LibreOffice Calc}}
+\caption{Zobrazowanie wyników pomiaru oraz regresja logartymiczna wykonana w programie \textit{LibreOffice Calc}.}
 \end{figure}
 \newpage
 \section{Wnioski}
-\hspace{4ex}Zastosowanie struktury danych typu \textit{lista} zdecydowanie pozwoliło zmniejszyć czas na znalezienie słowa. Dysponując podanymi danymi zakwalifikowałbym przeszukanie tablicy jako algorytm rzędu $log(n)$ w notacji dużego $\Theta$.
+\hspace{4ex}Zastosowanie struktury danych typu \textit{lista} zdecydowanie pozwoliło zmniejszyć czas na znalezienie słowa. Dysponując podanymi danymi zakwalifikowałbym przeszukanie tablicy jako algorytm rzędu O($n$).
 \end{document}
