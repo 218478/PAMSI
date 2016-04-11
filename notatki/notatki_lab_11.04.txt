@@ -62,4 +62,9 @@ Zad. dom.
 Jak zachowuje się odczyt i zapis? Powinno być O(1) lub w przypadku pesymistycznym gdy wszystko jest
 na jednej liście, to wtedy O(n).
 
+Musi być tablica dynamiczna. Ale moze trzeba od razu definiowac odpowiednio duze tablice.
+Jak te tablice powiekszac?
 
+Buckety to ilość elementów w tej tablicy.
+
+Kluczem jest string a wartoscia int.

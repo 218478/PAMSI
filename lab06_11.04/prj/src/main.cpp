@@ -1,6 +1,8 @@
 // Copyright 2016 Kamil Kuczaj
 #include "Sedzia.h"
 
+#include "HashTable.h"
+
 #include <iostream>
 
 /*! \mainpage Opis programu
@@ -13,7 +15,7 @@
  * Folder src/ zawiera pliki zrodlowe. W glownym folderze zbudowany zostal Makefile.
  * Pliki obiektowe sa budowane w folderze obj/ a nastepnie linkowane do glownego
  * folderu (prj/). Testowano przy wykorzystaniu kompilatora g++ w wersji 4.8.4 na
- * systemie Linux Ubuntu 14.04.04 opartego o jądro 4.2.0-30-generic.
+ * systemie Linux Ubuntu 14.04.04 opartego o jadro 4.2.0-30-generic.
  *
  * \section Licencja
  *
@@ -39,11 +41,13 @@ int main(int argc, char **argv) {
   std::cout << "!!! INFO: Program starts indexing at 0, not at 1 !!!"
             << std::endl << std::endl;
 
-  Sedzia referee;
-  int trials_count = 50;
+  HashTable tablica_asocjacyjna;
 
-  // dziesiec, tysiac, sto tysiecy, milion, milard
-  int data_sizes[5]= {10, 1000, 100000, 1000000, 1000000000};
+  // Sedzia referee;
+  // int trials_count = 50;
+
+  // // dziesiec, tysiac, sto tysiecy, milion, milard
+  // int data_sizes[5]= {10, 1000, 100000, 1000000, 1000000000};
 
   // // running the list
   // for (int i = 0; i < 3; i++)
