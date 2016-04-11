@@ -1,0 +1,11 @@
+1. Fork repo na githubie
+2. Umieść w wybranej strukturze (lista/stos/kolejka) zadane rozmiary problemów 10^1, 10^2, 10^3, 10^6, 10^9)
+3. Zaimplementuj algorytm quick sort
+3. Zmierz czas sortowania dla tablic o rozmiarze N (wartość pobrana z)
+
+
+Zad. dom:
+
+1. Przeanalizuj quick sorta () dla pesymistecznego przypadku oraz dla średniego
+2. sprawdzić 2-3 metody piwotowania i ich wpływ na O(n) dla przypadku średniego
+3. Implementacja MergeSort + przetestowanie, wykresy itd.

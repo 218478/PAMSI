@@ -1,0 +1,5 @@
+// Copyright 2016 Kamil Kuczaj
+#ifndef LAB06_11_04_PRJ_INC_IHASHTABLE_H_
+#define LAB06_11_04_PRJ_INC_IHASHTABLE_H_
+
+#endif  // LAB06_11_04_PRJ_INC_IHASHTABLE_H_

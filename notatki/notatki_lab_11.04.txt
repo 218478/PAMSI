@@ -1,0 +1,65 @@
+Tablica asocjacyjna
+
+tablica["klucz"]
+
+		 (k,v)
+ |----------------| |-------> dowolny typ
+\/
+klucz
+
+Tablica asocjacyjna zwykle implementowana przy pomocy tablicy z hashowaniem.
+      ___
+     |   |
+---->|   |--> 32-bitowy skort heksadecymalny
+     |___|
+      MD5
+
+Prawdopodobienstwo kolizji wartosci w MD5 jest baaardzo małe.
+
+
+Teraz nasze wymaganie na zadanie a propos tablicy asocjacyjnej:
+- szybkie
+- brak kolizji (lub bardzo mało z rozkładem normalnym)
+
+
+W przypadku encyklopedii funkcja skrótu powinna nam powiedzieć, w którym tomie jest nasze
+szukane słowo.
+
+tab[0] --> O(1) {niezależenie od ilości elementów, chodzi o odczyt, zapis}
+
+dla tablicy asocjacyjnej też O(1), kiedy wszystko jest fajnie
+
+dla listy jest O(n)  {zwykle używa się listy do trzymania rzeczy w tablicy asocjacyjnej}
+
+Jak często będziemy musieli się odwoływać zależy od algorytmu haszującego (funkcji skrótu)
+
+___________________________________________________________________________________________
+Przykład
+cout << ksiazka["kowalski"]; ma wydrukowac numer kowalskiego (o to chodzi w tej tablicy)
+
+h(x) = {0,1,2}
+
+h("kowalski") = 1;
+h("kowalska") = 1;
+h("kobyła") = 1;
+
+h("zły") = 2;
+___________________________________________________________________________________________
+
+Tablica ADT
+- operator []
+
+
+Trzeba podać podczas inicjalizacji tablicy asocjacyjnej liczbę elementów tablicy z hashowaniem.
+Zrób książkę telefoniczną.
+
+Co zalecają przy wyborze funkcji skrótu?
+
+
+
+
+Zad. dom.
+Jak zachowuje się odczyt i zapis? Powinno być O(1) lub w przypadku pesymistycznym gdy wszystko jest
+na jednej liście, to wtedy O(n).
+
+
