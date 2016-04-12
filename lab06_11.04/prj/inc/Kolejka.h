@@ -5,8 +5,6 @@
 #include "IKolejka.h"
 #include "Lista.h"
 
-#include <string>
-
 
 /*! \brief Implementacja interfejsu IKolejka w postaci klasy Kolejka.
  *
@@ -14,22 +12,23 @@
  *          jej funkcjonalnosci. W celu zrozumienia pelnej funkcjonalnosci
  *          klasy Kolejka, prosze odwolac sie do dokumentacji klasy Lista.
  */
-class Kolejka: IKolejka {
- private:
+template <class Type>
+class Kolejka: IKolejka<Type> {
+private:
   /*! \brief Zawartosc kolejki.
    *
    * \details Symuluje kolejke, poniewac jest to bardzo prosta implementacja.
    */
-  Lista queue;
+  Lista<Type> queue;
 
- public:
+public:
   /*! \brief Dodaje element na poczatek.
    *
    * \details Dodaje element na poczatek pojemnika.
    *
    * \param[in] element "Wpychany" element typu string.
    */
-  virtual void push(std::string element);
+  virtual void push(Type element) {  queue.add(element, 0); }
 
   /*! \brief Usuwa element z pojemnika.
    *
@@ -38,7 +37,7 @@ class Kolejka: IKolejka {
    *
    * \return Usuniety element.
    */
-  virtual std::string pop();
+  virtual Type pop() { return queue.remove(queue.size()-1); }  // index=0 not 1
 
   /*! \brief Sprawdza czy pojemnika jest pusty.
    *
@@ -48,7 +47,7 @@ class Kolejka: IKolejka {
    * \retval true Pojemnik pusty.
    * \retval false Pojemnik nie jest pusty.
    */
-  virtual bool empty();
+  virtual bool empty() { return queue.isEmpty(); }
 
   /*! \brief Zwraca aktualny rozmiar pojemnika.
    *
@@ -57,14 +56,14 @@ class Kolejka: IKolejka {
    *
    * \return Ilosc elementow w pojemniku.
    */
-  virtual int size();
+  virtual int size() { return queue.size(); }
 
   /*! \brief Wyswietla zawartosc kolejki.
    *
    * \details Uzyteczna przy debugowaniu programu. Wyswietla kazde slowo
    *          w osobnej linii, zaczynajac od najstarszego.
    */
-  void print();
+  void print() { queue.print(); }
 };
 
 

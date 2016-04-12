@@ -8,7 +8,7 @@
 
 class Tablica_test: IRunnable {
  private:
-  Tablica arr;
+  Array<int> arr;
 
  public:
 /*! \brief Implementacja funkcji prepare() interfesju IRunnable.

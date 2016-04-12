@@ -10,7 +10,7 @@ klucz
 Tablica asocjacyjna zwykle implementowana przy pomocy tablicy z hashowaniem.
       ___
      |   |
----->|   |--> 32-bitowy skort heksadecymalny
+---->|   |--> 32-bitowy skrót heksadecymalny
      |___|
       MD5
 

@@ -1,29 +1,29 @@
 // Copyright 2016 Kamil Kuczaj
 #include "Stos.h"
 
-#include <string>
+// #include <string>
 
-Stos::Stos(): stack() {}
+// //Stos::Stos(): stack() {}
 
-Stos::~Stos() {
-  while (!stack.isEmpty())  // while stack is not empty
-    pop();
-}
+// Stos::~Stos() {
+//   while (!stack.isEmpty())  // while stack is not empty
+//     pop();
+// }
 
-void Stos::push(std::string item) {
-  stack.add(item, 0);
-}
+// void Stos::push(std::string item) {
+//   stack.add(item, 0);
+// }
 
-std::string Stos::pop() {
-  return stack.remove(0);
-}
+// std::string Stos::pop() {
+//   return stack.remove(0);
+// }
 
-bool Stos::empty() { return stack.isEmpty(); }
+// bool Stos::empty() { return stack.isEmpty(); }
 
-int Stos::size() {
-  return stack.size();
-}
+// int Stos::size() {
+//   return stack.size();
+// }
 
-void Stos::print() {
-  stack.print();
-}
+// void Stos::print() {
+//   stack.print();
+// }

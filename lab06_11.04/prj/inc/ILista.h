@@ -20,6 +20,7 @@
  * \details Abstrakcyjna klasa, ktora zostala utworzona na potrzeby ADT
  *          Abstract Data Types.
  */
+template <class Type>
 class ILista {
  protected:
   /*! \brief Wstawia element w dowolnym miejscu listy.
@@ -30,7 +31,7 @@ class ILista {
    * \param[in] item Element wstawiany. Slowo.
    * \param[in] index Miejsce, w ktore ma byc wstawiony element item.
    */
-  virtual void add(std::string item, int index) = 0;
+  virtual void add(Type item, int index) = 0;
 
   /*! \brief Usuwa element z dowolnego miejsca listy.
    *
@@ -38,7 +39,7 @@ class ILista {
    *
    * \return Zwraca zawartosc komorki o tej indeksie.
    */
-  virtual std::string remove(int index) = 0;
+  virtual Type remove(int index) = 0;
 
   /*! \brief Sprawdza czy lista jest pusta.
    *
@@ -55,7 +56,7 @@ class ILista {
    *
    * \return Zwraca element typu Type.
    */
-  virtual std::string get(int index) = 0;
+  virtual Type get(int index) = 0;
 
   /*! \brief Zwraca rozmiar listy.
    *

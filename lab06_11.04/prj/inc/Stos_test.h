@@ -5,9 +5,11 @@
 #include "IRunnable.h"
 #include "Stos.h"
 
+#include <string>
+
 class Stos_test: IRunnable {
  private:
-  Stos stack;
+  Stos<std::string> stack;
 
  public:
   /*! \brief Przygotowuje pojemnik przed wykonaniem czynnosci.

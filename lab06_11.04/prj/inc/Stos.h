@@ -5,7 +5,7 @@
 #include "IStos.h"
 #include "Lista.h"
 
-#include <string>
+
 
 /*! \brief Implementacja klasy Stos, zlozonej z intow.
  *
@@ -15,27 +15,31 @@
  *          Zdecydowalem sie na uzycie listy jako elementu klasy, poniewaz
  *          byl to wymog prowadzacego. Nie ma ograniczen rozmiaru.
  */
-class Stos: IStos {
+template <class Type>
+class Stos: IStos<Type> {
  private:
   /*! \brief Zawartosc stosu.
    *
    * \details Implementacja listy jako pole stosu jest wymogiem prowadzacego.
    *          Dodatkowo bardzo ulatiwa implementacje.
    */
-  Lista stack;
+  Lista<Type> stack;
 
  public:
   /*! \brief Bezparametryczny konstruktor.
    *
    * \details Inicjalizuje wierzcholek *top jak wskaznik na NULL.
    */
-  Stos();
+  Stos(): stack() {}
 
   /*! \brief Destruktor.
    *
    * \details Popuje wszystkie elementy.
    */
-  ~Stos();
+  ~Stos() {
+    while (!stack.isEmpty())  // while stack is not empty
+      pop();
+  }
 
   /*! \brief Usuwa element z okreslonego miejsca.
    *
@@ -43,7 +47,7 @@ class Stos: IStos {
    *
    * \param[in] item "Wpychany" element typu std::string.
    */
-  virtual void push(std::string item);
+  virtual void push(Type item) { stack.add(item, 0); }
 
   /*! \brief Usuwa element z pojemnika.
    *
@@ -51,7 +55,7 @@ class Stos: IStos {
    *
    * \return Usuniety element.
    */
-  virtual std::string pop();
+  virtual std::string pop() { return stack.remove(0); }
 
   /*! \brief Sprawdza czy pojemnika jest pusty.
    *
@@ -60,7 +64,7 @@ class Stos: IStos {
    * \retval true Pojemnik pusty.
    * \retval false Pojemnik nie jest pusty.
    */
-  virtual bool empty();
+  virtual bool empty() { return stack.isEmpty(); }
 
   /*! \brief Zwraca aktualny rozmiar pojemnika.
    *
@@ -69,13 +73,13 @@ class Stos: IStos {
    *
    * \return Ilosc elementow w pojemniku.
    */
-  virtual int size();
+  virtual int size() { return stack.size(); }
 
   /*! \brief Wyswietla elementy stosu.
    *
    * \details Wyswietla cala zawartosc stosu. Nie jest czescia interfesju.
    */
-  void print();
+  void print() { stack.print(); }
 };
 
 

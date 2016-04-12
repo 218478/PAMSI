@@ -11,6 +11,7 @@
  *
  * \details Wymuszony poprzez ISP (programowanie obiektowe SOLID).
  */
+template <class Type>
 class ITablica {
  protected:
   /*! \brief Sprawdza czy tablica jest pelna.
@@ -69,7 +70,7 @@ class ITablica {
    *
    * \return i-ty element
    */
-  virtual int operator[] (int i) const = 0;
+  virtual Type operator[] (int i) const = 0;
 
   /*! \brief Modyfikator do i-tego elementu tablicy.
    *
@@ -79,7 +80,7 @@ class ITablica {
    *
    * \return Referencja do i-tego elementu
    */
-  virtual int& operator[] (int i) = 0;
+  virtual Type& operator[] (int i) = 0;
 };
 
 #endif  // LAB03_14_03_PRJ_INC_ITABLICA_H_

@@ -5,9 +5,11 @@
 #include "IRunnable.h"
 #include "Kolejka.h"
 
+#include <string>
+
 class Kolejka_test: IRunnable {
  private:
-  Kolejka queue;
+  Kolejka<std::string> queue;
 
  public:
   /*! \brief Przygotowuje pojemnik przed wykonaniem czynnosci.

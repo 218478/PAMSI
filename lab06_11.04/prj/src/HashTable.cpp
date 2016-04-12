@@ -3,7 +3,7 @@
 
 #include <string>
 
-HashTable::HashTable() { hash_table = new Lista[array_size]; }
+HashTable::HashTable() {  }
 
 HashTable::~HashTable() { delete [] hash_table; }
 

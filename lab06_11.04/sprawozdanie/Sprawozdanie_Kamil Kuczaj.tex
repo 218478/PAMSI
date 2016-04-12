@@ -1,0 +1,36 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[polish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\author{Kamil Kuczaj}
+\title{Sprawozdanie z Laboratorium 6 - Pomiar czasu wyszukiwania klucza w tablicy asocjacyjnej.}
+\date{\today}
+\begin{document}
+
+\maketitle
+
+\section{Wstęp}
+\hspace{4ex}Zadaniem na laboratorium był pomiar czasu wyszukiwania klucza w tablicy asocjacyjnej. Jest ona zbudowana z tablicy asocjacyjnej, która składa się z list niewielkich rozmiarów. Funkcja sortująca przyporządkowuje odpowiedni \textit{bucket} po podaniu do niej klucza (\textit{tj. elementu}. Wg teorii algorytm ten powinien mieć złożoność obliczeniową równą O($1$).\\\\W naszym przypadku mieliśmy załadować kolejno $10^1$, $10^3$, $10^5$, $10^6$, $10^9$ oraz sprawdzić czas wyszukiwania znanego elementu. Konstrukcja tablicy asocjacyjnej przypominała w moim przypadku książkę telefoniczną, tj. na podstawie słowa zwracana był ciąg 10 cyfr.
+
+\section{Specyfikacja komputera}
+
+\begin{center}
+	\begin{tabular}{| r | c |}
+	\hline
+	Wersja kompilatora \textit{g++} & 4.8.4 \\ \hline
+	System & Ubuntu 14.04.4 \\ \hline
+	Procesor	 & Intel Core i5 2510M 2.3 GHz \\ \hline
+	Pamięć RAM & 8 GB DDR3 1600 MHz \\ \hline
+	Rozmiar zmiennej \textit{int} & 4 bajty \\ \hline
+	\end{tabular}
+\end{center}
+\newpage	
+
+\section{Pomiary oraz ich interpretacja}
+
+\section{Wnioski}
+\hspace{4ex}
+\end{document}

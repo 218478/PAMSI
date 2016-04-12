@@ -2,7 +2,6 @@
 #ifndef LAB03_14_03_PRJ_INC_IKOLEJKA_H_
 #define LAB03_14_03_PRJ_INC_IKOLEJKA_H_
 
-#include <string>
 
 /*! \file IKolejka.h
  *
@@ -19,6 +18,7 @@
  * \details Abstrakcyjna klasa, ktora zostala utworzona na potrzeby ADT
  *          Abstract Data Types.
  */
+template <class Type>
 class IKolejka {
  protected:
   /*! \brief Dodaje element na poczatek.
@@ -27,7 +27,7 @@ class IKolejka {
    *
    * \param[in] element "Wpychany" element typu string.
    */
-  virtual void push(std::string element) = 0;
+  virtual void push(Type element) = 0;
 
   /*! \brief Usuwa element z pojemnika.
    *
@@ -36,7 +36,7 @@ class IKolejka {
    *
    * \return Usuniety element.
    */
-  virtual std::string pop() = 0;
+  virtual Type pop() = 0;
 
   /*! \brief Sprawdza czy pojemnika jest pusty.
    *

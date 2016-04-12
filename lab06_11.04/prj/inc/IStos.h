@@ -19,6 +19,7 @@
  * \details Abstrakcyjna klasa, ktora zostala utworzona na potrzeby ADT
  *          Abstract Data Types.
  */
+template <class Type>
 class IStos {
  protected:
   /*! \brief Dodaje element na poczatek.
@@ -27,7 +28,7 @@ class IStos {
    *
    * \param[in] element "Wpychany" element typu std::string.
    */
-  virtual void push(std::string element) = 0;
+  virtual void push(Type element) = 0;
 
   /*! \brief Usuwa element z pojemnika.
    *
@@ -36,7 +37,7 @@ class IStos {
    *
    * \return Usuniety element.
    */
-  virtual std::string pop() = 0;
+  virtual Type pop() = 0;
 
   /*! \brief Sprawdza czy pojemnika jest pusty.
    *
