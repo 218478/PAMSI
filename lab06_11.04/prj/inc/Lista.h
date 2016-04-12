@@ -69,16 +69,7 @@ class Lista: ILista<Type> {
    *
    * \details Usuwa cala pamiec listy "skaczac" po jej elementach.
    */
-  ~Lista() { list.~Array();
-    /* Node *conductor1 = head;  // two conductors to avoid memory */
-    /* Node *conductor2 = head;  // issues when deleting memory */
-    /* // null checking is not needed */
-    /* while (conductor1 != 0) { */
-    /*   delete conductor1;  // usuwanie pamieci */
-    /*   conductor1 = conductor2->next; */
-    /*   conductor2 = conductor1; */
-    /* } */
-  }
+  ~Lista() { list.~Array(); }
 
   /*! \brief Wstawia element w dowolnym miejscu listy.
    *
@@ -88,15 +79,13 @@ class Lista: ILista<Type> {
    * \param[in] index Miejsce, w ktore ma byc wstawiony element item.
    */
   virtual void add(Type item, int n) {
-    int current_size = size();
+    int current_size = list.getSize();
     if (n > current_size)  // if we want to add an element beyond list
       throw("Requested index out of bounds");
 
     if (isEmpty()) {  // if the list is empty
       Node* temp = new Node;
       temp->element = item;
-      // // for debug
-      // std::cout << "Dodajemy na poczatku i lista pusta." << std::endl;
       head = temp;
       head->next = 0;
 
@@ -105,16 +94,12 @@ class Lista: ILista<Type> {
       temp->element = item;
 
       if (n == 0) {  // when we adding at the beginning
-        // // for debug
-        // std::cout << "Dodajemy na poczatku." << std::endl;
         temp->next = head;
         head = temp;
       } else {
         Node *conductor = head;
 
         if (n < current_size) {  // when inserting
-          // // for debug
-          // std::cout << "Wsadzamy do srodka." << std::endl;
           for (int i = 0; i < (n-1); i++)
             conductor = conductor->next;
 
@@ -194,20 +179,15 @@ class Lista: ILista<Type> {
    * \return Zwraca element typu std::string.
    */
   virtual Type get(int n) {
-    std::string temp;
-    if (n < size()) {
-      Node *conductor = head;
-      if (conductor != 0) {
-        // repeating this operation n-times
-        for (int i = 0; i < n; i++)
-          conductor = conductor->next;
-        temp = conductor->element;
-      } else {
-        throw("List is empty"); }
-    } else {
-      throw("Index out of bounds"); }
+    Type temp;
 
-    return temp;
+    // error checking
+    if (n >= list.getSize() )
+      throw("Index out of bounds");
+    if (isEmpty())
+      throw("List is empty");
+
+    return list[n].element;
   }
 
   /*! \brief Zwraca rozmiar listy.
@@ -216,17 +196,7 @@ class Lista: ILista<Type> {
    *
    * \return Rozmiar listy.
    */
-  virtual int size() {
-    Node *conductor = head;
-    int temp_size = 0;
-    while (conductor != 0) {
-      conductor = conductor->next;
-      temp_size++;
-    }
-
-    return temp_size;
-  }
-
+  virtual int size() { return list.getSize(); }
 
   /*! \brief Wypisuje zawartosc listy.
    *
@@ -234,11 +204,8 @@ class Lista: ILista<Type> {
    *          Na gorze znajduje sie poczatek listy.
    */
   void print() {
-    Node *conductor = head;
-    while (conductor != 0) {
-      std::cout << conductor->element << std::endl;
-      conductor = conductor->next;  // jump to the next element
-    }
+    for (int i = 0; i < list.getSize(); i++)
+      std::cout << list[i].element << std::endl;
   }
 
   /*! \brief Wyszukuje podane slowo i zwraca jego indeks
@@ -254,22 +221,16 @@ class Lista: ILista<Type> {
   * \return Indeks, na ktorym znajduje sie szukane slowo.
   */
   int search(Type searched_word) {
-    Node *conductor = head;
     int searched_index = 0;
 
     if (isEmpty())
       return -1;  // list is empty
 
-    while (conductor != 0) {
-      if (conductor->element == searched_word)
-        return searched_index;
-
+    while (list[searched_index] != searched_word)
       searched_index++;
-      conductor = conductor->next;
-    }
+
     return -2;   // we didn't find anything
   }
-
 };
 
 #endif  // LAB03_14_03_PRJ_INC_LISTA_H_
