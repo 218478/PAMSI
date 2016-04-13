@@ -113,6 +113,18 @@ class Array: ITablica<Type>  {
    */
   virtual int getSize() { return current_size; }
 
+  /*! \brief Zmniejsza zmienna przechowujaca rozmiar tablicy.
+   *
+   * \details Zmniejsza rozmiar, zmienna current_size o n. Stworzenie
+   *          tej funkcji zostalo wymuszone przez implementacje listy.
+   *          Uzywanie funkcji remove(int n) z klasy Lista powodowalo to,
+   *          ze jej rozmiar faktycznie malal o jeden element, ale klasa
+   *          Tablica o tym nie wiedziala.
+   *
+   * \param[in] n O ile zmniejszyc zmienna current_size.
+   */
+  void decreaseSize(int n) { current_size -= n; }
+
   /*! \brief Zwraca wartosc desired_size.
    *
    * \details Zwraca rozmiar, ktory ma osiagnac tablica. Moze byc wieksza niz

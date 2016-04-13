@@ -46,6 +46,12 @@ class Lista: ILista<Type> {
      * \details Wskazuje na nastepny wezel.
      */
     Node* next;
+
+    /*! \brief Konstruktor.
+     *
+     * \details Bo kompilator nie ogarnia.
+     */
+    Node() { element = "sdgs"; next = 0; }    
   };
 
   /*! \brief Zawartosc listy
@@ -84,37 +90,33 @@ class Lista: ILista<Type> {
       throw("Requested index out of bounds");
 
     if (isEmpty()) {  // if the list is empty
-      Node* temp = new Node;
-      temp->element = item;
-      head = temp;
-      head->next = 0;
+      list[0].element = item;
+      list[0].next = 0;
+      head = &list[0];
 
     } else {  // and when it's not empty
-      Node* temp = new Node;
-      temp->element = item;
 
       if (n == 0) {  // when we adding at the beginning
-        temp->next = head;
-        head = temp;
+        std::cout << "Rozmiary listy: " << list.getSize() << std::endl;
+        list[list.getSize()-1].next = head;
+        head = &list[list.getSize()-1];
       } else {
         Node *conductor = head;
 
-        if (n < current_size) {  // when inserting
+        if (n < list.getSize()) {  // when inserting
           for (int i = 0; i < (n-1); i++)
             conductor = conductor->next;
 
-          temp->next = conductor->next;
-          conductor->next = temp;
+          list[list.getSize()-1].next = conductor->next;
+          conductor->next = &list[list.getSize()-1];
         }
 
-        if (n == current_size) {  // when adding at the end
-          // // for debug
-          // std::cout << "Dolaczamy na koniec." << std::endl;
+        if (n == list.getSize()) {  // when adding at the end
           for (int i = 0; i < (n-1); i++)
             conductor = conductor->next;
 
-          temp->next = 0;
-          conductor->next = temp;
+          list[list.getSize()-1].next = 0;
+          conductor->next = &list[list.getSize()-1];
         }
       }
     }
@@ -138,7 +140,7 @@ class Lista: ILista<Type> {
       if (n == 0) {  // if we want to remove at the beginning
         head = conductor->next;
         word = conductor->element;
-        delete conductor;
+        list[0] = list[list.getSize()-1];
       } else {
         // repeating this operation (n-1)-times
         for (int i = 0; i < n-1; i++)
@@ -147,7 +149,9 @@ class Lista: ILista<Type> {
         // which is to be deleted
         conductor->next = after_cond->next;
         word = after_cond->element;
-        delete after_cond; }
+        after_cond->element = list[list.getSize()-1].element; }
+
+      list.decreaseSize(1);
     }
     else
       throw("Index out of bounds");
@@ -181,13 +185,19 @@ class Lista: ILista<Type> {
   virtual Type get(int n) {
     Type temp;
 
-    // error checking
-    if (n >= list.getSize() )
-      throw("Index out of bounds");
-    if (isEmpty())
-      throw("List is empty");
-
-    return list[n].element;
+    if (n < size()) {
+      Node *conductor = head;
+      if (conductor != 0) {
+        // repeating this operation n-times
+        for (int i = 0; i < n; i++)
+          conductor = conductor->next;
+        temp = conductor->element;
+      } else {
+        throw("List is empty"); }
+    } else {
+      throw("Index out of bounds"); }
+    
+    return temp;
   }
 
   /*! \brief Zwraca rozmiar listy.
@@ -204,8 +214,11 @@ class Lista: ILista<Type> {
    *          Na gorze znajduje sie poczatek listy.
    */
   void print() {
-    for (int i = 0; i < list.getSize(); i++)
-      std::cout << list[i].element << std::endl;
+    Node *conductor = head;
+    while (conductor != 0) {
+      std::cout << conductor->element << std::endl;
+      conductor = conductor->next;  // jump to the next element
+    }
   }
 
   /*! \brief Wyszukuje podane slowo i zwraca jego indeks
@@ -222,12 +235,17 @@ class Lista: ILista<Type> {
   */
   int search(Type searched_word) {
     int searched_index = 0;
+    Node *conductor = head;
 
     if (isEmpty())
       return -1;  // list is empty
 
-    while (list[searched_index] != searched_word)
+    while (conductor != 0) {
+      if (conductor->element == searched_word)
+        return searched_index;
       searched_index++;
+      conductor = conductor->next;
+    }
 
     return -2;   // we didn't find anything
   }
