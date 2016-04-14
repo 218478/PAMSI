@@ -43,6 +43,9 @@ int main(int argc, char **argv) {
 
   //  HashTable tablica_asocjacyjna;
 
+  std::cout << "1000/100 = " << 1000/100 << std::endl
+            << "10000000/100 = " << 10000000/100 << std::endl;
+  
   Sedzia referee;
   int trials_count = 50;
 

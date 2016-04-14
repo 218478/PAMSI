@@ -44,7 +44,7 @@ void Lista_test::prepare(int desired_size) {
 
     try {
       // read input only if the list is empty and file stream is open
-      if (dictionary.is_open() && list.isEmpty()) {
+      if (dictionary.is_open()) {
         // http://stackoverflow.com
         // /questions/21647/reading-from-text-file-until-eof-repeats-last-line
         // user Wilhelmtell '08
@@ -52,7 +52,7 @@ void Lista_test::prepare(int desired_size) {
         for (int i = 0; i < desired_size; i++) {
           dictionary >> word;
           if (dictionary.eof()) break;
-
+          std::cout << "Rozmiar listy: " << list.size() << std::endl;
           list.add(word, i);
         }
       }

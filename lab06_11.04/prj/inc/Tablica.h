@@ -162,6 +162,7 @@ class Array: ITablica<Type>  {
    * \return Referencja do i-tego elementu.
    */
   virtual Type& operator[] (int i) {
+    std::cout << "i: " << i << "\tcurrent_size: " << current_size << std::endl;
     if (i < current_size) {
       index++;
       return elements[i]; }

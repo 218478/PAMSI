@@ -46,12 +46,6 @@ class Lista: ILista<Type> {
      * \details Wskazuje na nastepny wezel.
      */
     Node* next;
-
-    /*! \brief Konstruktor.
-     *
-     * \details Bo kompilator nie ogarnia.
-     */
-    Node() { element = "sdgs"; next = 0; }    
   };
 
   /*! \brief Zawartosc listy
@@ -64,12 +58,18 @@ class Lista: ILista<Type> {
    */
   Node *head;
 
+  /*! \brief Wskazuje nastepny wolny wezel.
+   *
+   * \details Wskazuje na wezel, do ktorego moga zostac zaladowane dane.
+   */
+  int next_free;
+
  public:
   /*! \brief Konstruktor.
    *
    * \details Tworzy poczatek listy. Alokuje dla niego pamiec.
    */
-  Lista()  { head = 0; }   // bad things happen if you dont do it
+  Lista()  { head = &list[0]; next_free = 0;}
 
   /*! \brief Destruktor.
    *
@@ -79,15 +79,19 @@ class Lista: ILista<Type> {
 
   /*! \brief Wstawia element w dowolnym miejscu listy.
    *
-   * \details Wstawia element typu Type w miejsce wskazywane przez zmienna index.
+   * \details Wstawia element typu Type w miejsce wskazywane przez zmienna
+   *          index. Wyjatki:
+   *          "Index out of bounds" (const char*) - chcesz zapisac na miejscu
+   *                                                poza lista
    *
    * \param[in] item Element wstawiany. Slowo typu string.
    * \param[in] index Miejsce, w ktore ma byc wstawiony element item.
    */
   virtual void add(Type item, int n) {
-    int current_size = list.getSize();
-    if (n > current_size)  // if we want to add an element beyond list
-      throw("Requested index out of bounds");
+    std::cout << "Adres glowy: " << head << std::endl;
+
+    if (n > next_free)  // if we want to add an element beyond list
+      throw("Index out of bounds");
 
     if (isEmpty()) {  // if the list is empty
       list[0].element = item;
@@ -95,31 +99,32 @@ class Lista: ILista<Type> {
       head = &list[0];
 
     } else {  // and when it's not empty
-
       if (n == 0) {  // when we adding at the beginning
-        std::cout << "Rozmiary listy: " << list.getSize() << std::endl;
-        list[list.getSize()-1].next = head;
-        head = &list[list.getSize()-1];
+        list[next_free].next = head;
+        head = &list[next_free];
       } else {
         Node *conductor = head;
 
-        if (n < list.getSize()) {  // when inserting
+        if (n < next_free) {  // when inserting
           for (int i = 0; i < (n-1); i++)
             conductor = conductor->next;
 
-          list[list.getSize()-1].next = conductor->next;
-          conductor->next = &list[list.getSize()-1];
+          list[next_free].next = conductor->next;
+          list[next_free].element = item;
+          conductor->next = &list[next_free];
         }
 
         if (n == list.getSize()) {  // when adding at the end
           for (int i = 0; i < (n-1); i++)
             conductor = conductor->next;
 
-          list[list.getSize()-1].next = 0;
-          conductor->next = &list[list.getSize()-1];
+          list[next_free].next = 0;
+          list[next_free].element = item;
+          conductor->next = &list[next_free];
         }
       }
     }
+    next_free++;
   }
 
 
@@ -140,7 +145,7 @@ class Lista: ILista<Type> {
       if (n == 0) {  // if we want to remove at the beginning
         head = conductor->next;
         word = conductor->element;
-        list[0] = list[list.getSize()-1];
+        list[0] = list[next_free-1];
       } else {
         // repeating this operation (n-1)-times
         for (int i = 0; i < n-1; i++)
@@ -149,12 +154,11 @@ class Lista: ILista<Type> {
         // which is to be deleted
         conductor->next = after_cond->next;
         word = after_cond->element;
-        after_cond->element = list[list.getSize()-1].element; }
+        after_cond->element = list[next_free-1].element; }
 
       list.decreaseSize(1);
-    }
-    else
-      throw("Index out of bounds");
+    } else {
+      throw("Index out of bounds"); }
 
     return word;
   }
@@ -196,7 +200,7 @@ class Lista: ILista<Type> {
         throw("List is empty"); }
     } else {
       throw("Index out of bounds"); }
-    
+
     return temp;
   }
 
@@ -206,7 +210,7 @@ class Lista: ILista<Type> {
    *
    * \return Rozmiar listy.
    */
-  virtual int size() { return list.getSize(); }
+  virtual int size() { return next_free; }
 
   /*! \brief Wypisuje zawartosc listy.
    *

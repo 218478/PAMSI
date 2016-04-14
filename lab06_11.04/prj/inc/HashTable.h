@@ -3,20 +3,31 @@
 #define LAB06_11_04_PRJ_INC_HASHTABLE_H_
 
 #include "IHashTable.h"
-#include "Lista.h"
+#include "Tablica.h"
+// #include "Lista.h" bo nie umiem jej zaimplementowac na tablicy
 
 #include <string>
+#include <list>
 
 class HashTable : virtual public IHashTable {
  private:
-  Lista<std::string> *hash_table;
+  struct my_element {
+    std::string key;
+    int number;
+  };
+
+  std::list<my_element> *hash_table;
 
  public:
   /*! \brief Bezparametryczny konstruktor.
    *
-   * \details Alokuje pamiec dla pola *hash_table.
+   * \details Alokuje pamiec dla pola *hash_table. Tworze tablice, w ktorej
+   *          moze znajdowac sie nieskonczona ilosc bucketow, kazdy bucket po
+   *          100 elementow. Tutaj dzielenie int przez inta zawsze spowoduje
+   *          calkowity wynik.
    */
-  HashTable();
+  explicit HashTable(int no_of_elements) {
+    hash_table = new std::list<my_element>[no_of_elements/100]; }
 
   /*! \brief Destruktor.
    *
