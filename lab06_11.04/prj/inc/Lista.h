@@ -114,7 +114,7 @@ class Lista: ILista<Type> {
           conductor->next = &list[next_free];
         }
 
-        if (n == list.getSize()) {  // when adding at the end
+        if (n == next_free) {  // when adding at the end
           for (int i = 0; i < (n-1); i++)
             conductor = conductor->next;
 

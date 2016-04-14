@@ -9,6 +9,15 @@
 #include <string>
 #include <list>
 
+
+/*! \brief Klasa tablicy asocjacyjnej.
+ *
+ * \details Zaimplementowana na bazie tablicy hashujacej.
+ *          !!! WAZNE !!!
+ *          Konstruujac te tablice, podac jako parametr wielekrotnosc 100
+ *          setki. Jest to wielkosc bucketow i dzielenie musi zwracac liczbe
+ *          calkowita.
+ */
 class HashTable : virtual public IHashTable {
  private:
   struct my_element {
@@ -16,7 +25,16 @@ class HashTable : virtual public IHashTable {
     int number;
   };
 
+  // needed to search through STL list
+  struct find_key {
+    std::string key;
+    find_key(std::string key): key(key) {}
+    bool operator() ( const my_element& m ) const {
+      return m.key == key;  }
+  };
+
   std::list<my_element> *hash_table;
+  int hash_table_size;
 
  public:
   /*! \brief Bezparametryczny konstruktor.
@@ -26,8 +44,7 @@ class HashTable : virtual public IHashTable {
    *          100 elementow. Tutaj dzielenie int przez inta zawsze spowoduje
    *          calkowity wynik.
    */
-  explicit HashTable(int no_of_elements) {
-    hash_table = new std::list<my_element>[no_of_elements/100]; }
+  explicit HashTable(int no_of_elements);
 
   /*! \brief Destruktor.
    *
@@ -35,6 +52,18 @@ class HashTable : virtual public IHashTable {
    */
   ~HashTable();
 
+  /*! \brief Algorytm haszujacy.
+   *
+   * \details Czyli tzw funkcja sortujaca. Algortym na podstawie postu
+   *          uzytkownika cnicutar ze strony:
+   *          stackoverflow.com/questions/7666509/hash-function-for-string
+   *          www.cse.yorku.ca/~oz/hash.html
+   *
+   *          Nazwa tego algorytmu to djb2.
+   *
+   * \param[in] key Wartosc, na podstawie ktorej ma zostac zwrocony int.
+   */
+  int hashFunction(std::string key);
 
   /*! \brief Getter do tablicy.
    *
