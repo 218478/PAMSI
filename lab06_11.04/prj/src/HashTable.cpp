@@ -11,21 +11,26 @@ HashTable::HashTable(int no_of_elements) {
 
 HashTable::~HashTable() { delete [] hash_table; }
 
-int hashFunction(std::string key) {
+int HashTable::hashFunction(const std::string& key) const {
   const char *str = key.c_str();
   int hash = 5381;
   int c;
 
-  while (c = *str++)
+  while ( (c = *(str++)) )
     hash = ((hash << 5) + hash) + c; /* hash * 33 + c */
 
   return hash;
 }
 
 int HashTable::operator[] (std::string key) const {
+  int list_no = hashFunction(key);
+
   // http://stackoverflow.com/questions/589985/vectors-structs-and-stdfind
-  std::list<my_element>::iterator findIter
-      = std::find_if(hash_table->begin(), hash_table->end(), find_key(key));
+  std::list<my_element>::iterator find_iter =
+      std::find_if(hash_table[list_no].begin(),
+                   hash_table[list_no].end(), find_key(key));
+
+  return find_iter->number;
 }
 
 void HashTable::put(std::string key, int value) {

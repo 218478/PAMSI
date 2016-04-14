@@ -41,11 +41,8 @@ int main(int argc, char **argv) {
   std::cout << "!!! INFO: Program starts indexing at 0, not at 1 !!!"
             << std::endl << std::endl;
 
-  //  HashTable tablica_asocjacyjna;
+  HashTable tablica_asocjacyjna(1000);
 
-  std::cout << "1000/100 = " << 1000/100 << std::endl
-            << "10000000/100 = " << 10000000/100 << std::endl;
-  
   Sedzia referee;
   int trials_count = 50;
 

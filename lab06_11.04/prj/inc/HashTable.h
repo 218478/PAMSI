@@ -63,7 +63,7 @@ class HashTable : virtual public IHashTable {
    *
    * \param[in] key Wartosc, na podstawie ktorej ma zostac zwrocony int.
    */
-  int hashFunction(std::string key);
+  int hashFunction(const std::string& key) const;
 
   /*! \brief Getter do tablicy.
    *
