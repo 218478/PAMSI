@@ -92,6 +92,8 @@ class HashTable : virtual public IHashTable {
    *                    bedzie zwracany przy wyszukiwaniu.
    */
   virtual void put(std::string key, int value);
+
+  void print();
 };
 
 #endif  // LAB06_11_04_PRJ_INC_HASHTABLE_H_

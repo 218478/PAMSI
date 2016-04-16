@@ -1,8 +1,6 @@
 // Copyright 2016 Kamil Kuczaj
 #include "Sedzia.h"
 
-#include "HashTable.h"
-
 #include <iostream>
 
 /*! \mainpage Opis programu
@@ -41,27 +39,25 @@ int main(int argc, char **argv) {
   std::cout << "!!! INFO: Program starts indexing at 0, not at 1 !!!"
             << std::endl << std::endl;
 
-  HashTable tablica_asocjacyjna(1000);
+  // Sedzia referee;
+  // int trials_count = 50;
 
-  Sedzia referee;
-  int trials_count = 50;
+  // // // dziesiec, tysiac, sto tysiecy, milion, milard
+  // int data_sizes[5]= {10, 1000, 100000, 1000000, 1000000000};
 
-  // // dziesiec, tysiac, sto tysiecy, milion, milard
-  int data_sizes[5]= {10, 1000, 100000, 1000000, 1000000000};
+  // // running the list
+  // for (int i = 0; i < 3; i++)
+  //   referee.setOffList(data_sizes[i], trials_count);
 
-  // running the list
-  for (int i = 0; i < 3; i++)
-    referee.setOffList(data_sizes[i], trials_count);
+  // // // running the array
+  // // for (int i = 0; i < 5; i++) {
+  // //   for (int j = 0; j < trials_count; j++)
+  // //     referee.setOffTable(data_sizes[i]);
+  // // }
 
-  // // running the array
-  // for (int i = 0; i < 5; i++) {
-  //   for (int j = 0; j < trials_count; j++)
-  //     referee.setOffTable(data_sizes[i]);
-  // }
+  // // printing stack
+  // referee.setOffStack(data_sizes[0]);
 
-  // printing stack
-  referee.setOffStack(data_sizes[0]);
-
-  // printing queue
-  referee.setOffQueue(data_sizes[0]);
+  // // printing queue
+  // referee.setOffQueue(data_sizes[0]);
 }
