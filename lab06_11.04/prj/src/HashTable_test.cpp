@@ -12,8 +12,11 @@ void HashTable_test::prepare(int size) {
   } else {
     std::string temp1, temp2;
     for (int i = 0; i < size; i++) {
-      if (input.eof())
+      if (input.eof()) {
+        input.close();
         input.clear();  // start reading from the beginning
+        input.open("./dict//phonebook_ex.txt", std::ios::in);
+      }
 
       input >> temp1 >> temp2;
       hash_table.put(temp1, std::stoi(temp2));

@@ -41,7 +41,8 @@ int HashTable::operator[] (std::string key) const {
                    hash_table[list_no].end(), find_key(key));
 
   std::cout << "Found at bucket no: " << list_no << " at index: "
-            << find_iter->number << std::endl;
+            << std::distance(hash_table[list_no].begin(), find_iter)
+            << " with value: " << find_iter->number << std::endl;
 
   return find_iter->number;
 }
