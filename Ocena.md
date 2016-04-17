@@ -22,3 +22,28 @@ Dlaczego tylko trzy punkty pomiarowe? Miało być 10^{1,2,3,6,9}.
 
 Dlaczego złożoność wyszukiwania O(log n)? Jak to się ma do oczekiwań teoretycznych?
 Jakie wnioski z tej rozbieżności praktyki z teorią?
+
+# Lab5 - sortowanie
+
+# Lab6 - tablica asocjacyjna
+
+W sprawozdaniu brakuje omówienia kwestii powiększania tablicy dynamicznej, które
+jest niezbędne, aby faktycznie osiągnąć złożoność O(1). Współczynnik wypełnienia
+musi być utrzymywany na odpowiednim poziomie. Po zmianie rozmiaru tablicy konieczne
+jest wykonanie tzw. "rehashowania", czyli przeorganizowania całej tablicy, co wiążę
+się z pewnym kosztem, który jednak "amortyzuje się" podobnie jak operacje wykonywane
+przy powiększaniu tablicy dynamicznej (przy odpowedniej strategii tego powiększania).
+
+Załączone do sprawozdania tabele są dla mnie niezrozumiałe - brak opisów kolumn.
+
+Wniosek niepoprawny lub nieprecyzyjny - funkcja skrótu
+
+```
+unsigned int HashTable::hashFunction(const std::string& key)
+```
+
+nie może wpływać na zmianę złożoności z O(1) na O(log n) - sama nie zależy w
+żaden sposób od n, a jedynie od długości klucza k.
+Problem wynika najprawdopodobniej z nieuwzględnienia współczynnika wypełnienia.
+
+Ocena: 4
