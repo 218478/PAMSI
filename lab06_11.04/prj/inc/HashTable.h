@@ -36,6 +36,8 @@ class HashTable : virtual public IHashTable {
   std::list<my_element> *hash_table;
   int hash_table_size;
 
+  void increaseSize();
+
  public:
   /*! \brief Bezparametryczny konstruktor.
    *
@@ -44,7 +46,7 @@ class HashTable : virtual public IHashTable {
    *          100 elementow. Tutaj dzielenie int przez inta zawsze spowoduje
    *          calkowity wynik.
    */
-  explicit HashTable(int no_of_elements);
+  explicit HashTable(int no_of_elements = 1000);
 
   /*! \brief Destruktor.
    *
@@ -55,15 +57,15 @@ class HashTable : virtual public IHashTable {
   /*! \brief Algorytm haszujacy.
    *
    * \details Czyli tzw funkcja sortujaca. Algortym na podstawie postu
-   *          uzytkownika cnicutar ze strony:
-   *          stackoverflow.com/questions/7666509/hash-function-for-string
+   *          uzytkownika Basile Starynkevitch ze strony:
+   *          stackoverflow.com/questions/8317508/hash-function-for-a-string
    *          www.cse.yorku.ca/~oz/hash.html
    *
-   *          Nazwa tego algorytmu to djb2.
+   *          Algorytm opracowany na podstawie tozsamowci Bezoute'a.
    *
    * \param[in] key Wartosc, na podstawie ktorej ma zostac zwrocony int.
    */
-  int hashFunction(const std::string& key) const;
+  unsigned int hashFunction(const std::string& key) const;
 
   /*! \brief Getter do tablicy.
    *

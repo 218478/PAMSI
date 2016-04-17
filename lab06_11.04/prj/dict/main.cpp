@@ -40,7 +40,7 @@ int main(int argc, char *argv[]) {
       std::random_shuffle(words.begin(), words.end());
       for (std::vector<std::string>::iterator it = words.begin();
            it != words.end(); it++)
-        output_file << *it << "\t" << myrandom() << std::endl;
+        output_file << *it << std::endl << myrandom() << std::endl;
     }
 
     std::cout << "\n\tSuccess generating random words list of "

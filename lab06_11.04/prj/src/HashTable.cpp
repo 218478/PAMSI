@@ -6,21 +6,30 @@
 #include <algorithm>  // bo moja lista nie jest jeszcze gotowa
 #include <iostream>   // to print the contents of the hash table
 
+void HashTable::increaseSize() {
+  
+}
+
 HashTable::HashTable(int no_of_elements) {
-  hash_table_size = no_of_elements/100;
+  hash_table_size = no_of_elements/10;
+  std::cout << "Size: " << hash_table_size << std::endl;
   hash_table = new std::list<my_element>[hash_table_size]; }
 
 HashTable::~HashTable() { delete [] hash_table; }
 
-int HashTable::hashFunction(const std::string& key) const {
+unsigned int HashTable::hashFunction(const std::string& key) const {
   const char *str = key.c_str();
-  int hash = 5381;
-  int c;
 
-  while ( (c = *(str++)) )
-    hash = ((hash << 5) + hash) + c; /* hash * 33 + c */
+  int A = 54059;  // a prime
+  int B = 76963;  // another prime
+  //  int C = 86969;  // yet another prime
 
-  return hash % hash_table_size; // because we are limited to the array size
+  unsigned h = 31;  // also prime
+  while (*str) {
+    h = (h * A) ^ (str[0] * B);
+    str++;
+  }
+  return h % hash_table_size;  // because we are limited to the array size
 }
 
 int HashTable::operator[] (std::string key) const {
@@ -31,6 +40,9 @@ int HashTable::operator[] (std::string key) const {
       std::find_if(hash_table[list_no].begin(),
                    hash_table[list_no].end(), find_key(key));
 
+  std::cout << "Found at bucket no: " << list_no << " at index: "
+            << find_iter->number << std::endl;
+
   return find_iter->number;
 }
 
@@ -40,11 +52,6 @@ void HashTable::put(std::string key, int value) {
   int index = hashFunction(key);
   hash_table[index].push_back(temp);
 }
-
-// std::ostream& HashTable::operator << (std::ostream& out_stream, my_element& temp) {
-//   std::out_stream << temp.key << "\t" << temp.value << std::endl;
-//   return out_stream;
-// }
 
 void HashTable::print() {
   std::list<my_element>::const_iterator j;

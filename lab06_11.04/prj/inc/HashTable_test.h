@@ -9,6 +9,8 @@ class HashTable_test : IRunnable {
  private:
   HashTable hash_table;
  public:
+ HashTable_test(int size) : hash_table(size) {}
+ 
   virtual void prepare(int size);
 
   virtual void run();
