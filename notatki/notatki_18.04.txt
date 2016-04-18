@@ -21,9 +21,25 @@ WAŻNEEEEE! PO lewej mają być elementy mniejsze od korzenia (ZAWSZZEEEEEEE). P
 Bardzo prosto zaimplementować to drzewo w tablicy
 Jakby były własne obiekty to musisz overloadnąć operator < i operator >
 
+
+W sumie to nie trzeba dokumentować interfejsów bo są one samodokumentowalne i w moim przypadku
+jest to zwykle powielenie tego co bedzie w implementacji interfejsu.
+
+
+WAŻNE 2:
+
+Dziecko po lewej to zawsze indeks rodzica * 2 a to po prawej to indeks rodzica * 2 i potem +1.
+
+Przeczytac o drzewach czerwono czarnych. <<<---- VERY IMPORTANTTTT!!!!
+
 _____________________________________________________
 Na zajęciach zaimplementować drzewo.
 1. interfejs
 2. implementacja
 
-Jako zadanie domowe zmierzyć czas odczytu.
+Jako zadanie domowe zmierzyć czas odczytu. Dla wszystkich rozmiarow to do miliarda
+
+
+_________________________________________________
+
+Na przyszlych zajeciach beda grafy. A potem algorytmy grafowe.

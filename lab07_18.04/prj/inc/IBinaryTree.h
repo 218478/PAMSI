@@ -11,14 +11,11 @@
 template <class Type>
 class IBinaryTree {
  public:
-  /*! \brief Dodaje element do drzewa.
-   *
-   * \details Dodaje element do drzewa wstawiajac go w odpowiednie
-   *          miejsce.
-   */
   virtual void put(Type element) = 0;
 
-  virtual Type operator[] (Type element) const = 0;
+  virtual bool search(Type element) const = 0;
+
+  virtual void rebalance() = 0;
 };
 
 
