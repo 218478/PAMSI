@@ -6,6 +6,7 @@
 #include "Stos_test.h"
 #include "Kolejka_test.h"
 #include "HashTable_test.h"
+#include "BinaryTree_test.h"
 
 #include <unistd.h>  // to make Linux wait because searching is too fast
 
@@ -76,6 +77,20 @@ void Sedzia::setOffHashTable(int how_many) {
   tablica_testowa.prepare(how_many);
   timer.start();
   tablica_testowa.run();
+  timer.stop();
+  timer.dumpToFile(ss.str());
+}
+
+void Sedzia::setOffBinaryTree(int how_many) {
+  Stoper timer;
+  BinaryTree_test tree;
+
+  std::ostringstream ss;
+  ss << "BinaryTree_" << how_many;
+
+  tree.prepare(how_many);
+  timer.start();
+  tree.run();
   timer.stop();
   timer.dumpToFile(ss.str());
 }

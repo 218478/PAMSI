@@ -6,6 +6,12 @@
 #include "BinaryTree.h"
 
 class BinaryTree_test : virtual IRunnable {
+ private:
+  /*! \brief Testowane drzewo.
+   *
+   * \details Pojemnik, ktory jest testowany przez te klase.
+   */
+  BinaryTree<int> tree;
  public:
   /*! \brief Przygotowuje pojemnik przed wykonaniem czynnosci.
    *

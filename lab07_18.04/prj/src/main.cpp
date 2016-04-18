@@ -39,11 +39,11 @@ int main(int argc, char **argv) {
   std::cout << "!!! INFO: Program starts indexing at 0, not at 1 !!!"
             << std::endl << std::endl;
 
-  // Sedzia referee;
+  Sedzia referee;
   // int trials_count = 50;
 
-  // // dziesiec, tysiac, sto tysiecy, milion, milard
-  // int data_sizes[5]= {10, 1000, 100000, 1000000, 1000000000};
+  // dziesiec, tysiac, sto tysiecy, milion, milard
+  int data_sizes[5]= {10, 1000, 100000, 1000000, 1000000000};
 
   // // running the list
   // for (int i = 0; i < 3; i++)
@@ -67,4 +67,7 @@ int main(int argc, char **argv) {
   //   for (int j = 0; j < trials_count; j++)
   //     referee.setOffHashTable(data_sizes[i]);
   // }
+
+  // running the binary tree test
+  referee.setOffBinaryTree(data_sizes[1]);
 }

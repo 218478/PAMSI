@@ -21,14 +21,31 @@ class BinaryTree : IBinaryTree<Type> {
    */
   Array<Type> tree;
 
+  /*! \brief Przechowuje informacje ile elementow znajduje sie w drzewie.
+   *
+   * \details Zmienna pomocna przy budowaniu drzewa. Takiej implementacji
+   *          nie zapewnila moja tablica dynamiczna.
+   */
+  int size;
+
  public:
+  /*! \brief Konstruktor.
+   *
+   * \details Napisanie konstruktora zostalo wymuszone przez wprowadzenie
+   *          zmiennej size, ktora przechowuje rozmiar drzewa.
+   */
+  BinaryTree() : size(0) {}
   /*! \brief Dodaje element do drzewa.
    *
    * \details Dodaje element do drzewa wstawiajac go w odpowiednie
    *          miejsce.
    */
   virtual void put(Type element) {
-    
+    if (size == 0) {
+      tree[0] = element;
+      size++;
+    }
+    std::cout << size << std::endl;
   }
 
   /*! \brief Wyszukuje element w drzewie.
@@ -41,7 +58,9 @@ class BinaryTree : IBinaryTree<Type> {
    * \retval true Element znajduje sie w drzewie.
    * \retval false Elementu nie ma w drzewie.
    */
-  virtual bool search(Type element) const {}
+  virtual bool search(Type element) const {
+    return false;
+  }
 
   /*! \brief Porzadkuje drzewo.
    *
@@ -50,6 +69,28 @@ class BinaryTree : IBinaryTree<Type> {
    *          a wieksze po prawej.
    */
   virtual void rebalance() {}
+
+  /*! \brief Wyswietla zawartosc drzewa.
+   *
+   * \details Wydrukowuje na standardowym wyjsciu zawartosc drzewa.
+   *          Kazdy poziom jest drukowany w osobnej linii.
+   */
+  virtual void print() {
+    if (size > 0)
+      std::cout << tree[0] << std::endl;
+    else
+      throw("Empty tree");
+
+    int j = 1;
+    for (int i = 1; i < size; i++) {
+      std::cout << tree[i] << " ";
+
+      if ((i-(2^(j-1))) == ((2^j)+1)) {
+        std::cout << std::endl;
+        j++;
+      }
+    }
+  }
 };
 
 

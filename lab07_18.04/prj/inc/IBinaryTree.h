@@ -16,6 +16,8 @@ class IBinaryTree {
   virtual bool search(Type element) const = 0;
 
   virtual void rebalance() = 0;
+
+  virtual void print() = 0;
 };
 
 
