@@ -1,0 +1,29 @@
+Rób regresje w sprawozdaniach.
+Lepiej opisuj tabelki.
+
+
+Dzisiaj - drzewo.
+Drzewo binarne różni się od kopca, tym że nie mamy podane czym jest korzeń i mamy ogólną zasadę
+układania elementów w drzewie.
+
+Silniki od gierek korzystają z drzewa binarnego. (Binary Space Partitioning)
+Bazy danych też siedzą na drzewkach.
+
+Triki programistów gier 3D (Andrew LaMothe)
+
+W przypadku pesymistycznym mamy taką samą złożność jak w liście, czyli O(n)
+W ogólnym O(logn)
+
+
+WAŻNEEEEE! PO lewej mają być elementy mniejsze od korzenia (ZAWSZZEEEEEEE). Po prawej wszystkie, które są większe.
+
+
+Bardzo prosto zaimplementować to drzewo w tablicy
+Jakby były własne obiekty to musisz overloadnąć operator < i operator >
+
+_____________________________________________________
+Na zajęciach zaimplementować drzewo.
+1. interfejs
+2. implementacja
+
+Jako zadanie domowe zmierzyć czas odczytu.
