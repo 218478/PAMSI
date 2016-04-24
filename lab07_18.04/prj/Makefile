@@ -4,13 +4,13 @@ SOURCES = src/main.cpp src/Stoper.cpp src/Sedzia.cpp src/Tablica.cpp \
 	src/Stos.cpp src/Kolejka.cpp src/Lista.cpp src/Tablica_test.cpp \
 	src/Stos_test.cpp src/Kolejka_test.cpp src/Lista_test.cpp \
 	src/HashTable.cpp src/HashTable_test.cpp src/BinaryTree.cpp \
-	src/BinaryTree_test.cpp
+	src/BinaryTree_test.cpp src/RBTree.cpp
 HEADERS = inc/Stoper.h inc/Sedzia.h inc/Tablica.h inc/Stos.h inc/Kolejka.h \
 	inc/ILista.h inc/Lista.h inc/IRunnable.h inc/IStoper.h inc/ITablica.h \
 	inc/IStos.h inc/IKolejka.h  inc/Tablica_test.h inc/Stos_test.h \
 	inc/Kolejka_test.h inc/Lista_test.h inc/IHashTable.h inc/HashTable.h \
 	inc/HashTable_test.h inc/IBinaryTree.h inc/BinaryTree.h \
-	inc/BinaryTree_test.h
+	inc/BinaryTree_test.h inc/RBTree.h
 OBJECTS = $(subst src/,obj/,$(subst .cpp,.o,$(SOURCES)))
 EXECUTABLE = program
 

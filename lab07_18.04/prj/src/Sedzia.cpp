@@ -85,6 +85,8 @@ void Sedzia::setOffBinaryTree(int how_many) {
   Stoper timer;
   BinaryTree_test tree;
 
+  static int licznik = 1;
+  
   std::ostringstream ss;
   ss << "BinaryTree_" << how_many;
 
@@ -93,4 +95,5 @@ void Sedzia::setOffBinaryTree(int how_many) {
   tree.run();
   timer.stop();
   timer.dumpToFile(ss.str());
+  std::cout << licznik++ << std::endl;
 }

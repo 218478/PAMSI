@@ -16,8 +16,9 @@ class BinaryTree : IBinaryTree<Type> {
    *          powieksza swoj rozmiar zawsze dwukrotnie (sprawdzic w metodzie
    *          increaseSize() klasy Array.\
    *          Waznym elementem tej klasy jest fakt, ze lewe dziecko rodzica
-   *          w drzewie bedzie mialo zawsze indeks [rodzic*2] a to po prawej
-   *          [rodzic*2+1].
+   *          w drzewie bedzie mialo zawsze indeks [rodzic*2+1] a to po prawej
+   *          [rodzic*2+2]. Tak dzieje sie w moim przypadku, gdyz indeksuje
+   *          korzen jako element nr 0.
    */
   Array<Type> tree;
 
@@ -45,7 +46,6 @@ class BinaryTree : IBinaryTree<Type> {
       tree[0] = element;
       size++;
     }
-    std::cout << size << std::endl;
   }
 
   /*! \brief Wyszukuje element w drzewie.
@@ -59,6 +59,15 @@ class BinaryTree : IBinaryTree<Type> {
    * \retval false Elementu nie ma w drzewie.
    */
   virtual bool search(Type element) const {
+    for (int index = 0; index < size;) {
+      if (element == tree[index]) {
+        return true;
+      } else if (element < tree[index]) {
+        index = index*2 + 1;  // If the element is on the left side
+      } else {
+        index = index*2 + 2;  // If the element is on the right side
+      }
+    }
     return false;
   }
 

@@ -35,12 +35,8 @@
  */
 
 int main(int argc, char **argv) {
-  // information for the user
-  std::cout << "!!! INFO: Program starts indexing at 0, not at 1 !!!"
-            << std::endl << std::endl;
-
   Sedzia referee;
-  // int trials_count = 50;
+  int trials_count = 50;
 
   // dziesiec, tysiac, sto tysiecy, milion, milard
   int data_sizes[5]= {10, 1000, 100000, 1000000, 1000000000};
@@ -69,5 +65,8 @@ int main(int argc, char **argv) {
   // }
 
   // running the binary tree test
-  referee.setOffBinaryTree(data_sizes[1]);
+  for (int i = 0; i < 5; i++) {
+    for (int j = 0; j < trials_count; j++)
+      referee.setOffBinaryTree(data_sizes[i]);
+  }
 }

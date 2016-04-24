@@ -5,7 +5,15 @@
 
 void BinaryTree_test::prepare(int size) {
   std::srand(time(0));
-  tree.put(static_cast<int>(rand()));
+  int temp;
+  int random_index = static_cast<int>(rand()) % size;
+  for (int i = 0; i < size; i++) {
+    temp = static_cast<int>(rand());
+    tree.insert(temp);
+    
+    if (i == random_index)
+      random_element = temp;
+  }
 }
 
-void BinaryTree_test::run() {}
+void BinaryTree_test::run() { tree.search(random_element); }
