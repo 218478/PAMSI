@@ -1,0 +1,15 @@
+Grafy
+
+ADT dla grafu:
+add_vertex()
+add_edge(x,y, waga = 1)
+remove_vertex(x)
+remove_edge(x,y)
+get_neighbours(x)
+find_path(x,y)
+
+
+Powiedz, dlaczego wybrales liste sasiedztwa lub macierz sasiedztwa w sprawku.
+
+
+W domu implementacja DFS i BFS. Zbadac ile czasu im to zajmuje.
