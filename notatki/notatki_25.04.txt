@@ -13,3 +13,7 @@ Powiedz, dlaczego wybrales liste sasiedztwa lub macierz sasiedztwa w sprawku.
 
 
 W domu implementacja DFS i BFS. Zbadac ile czasu im to zajmuje.
+
+
+-----------------------------------------------------------------------------------
+Jako zadanie domowe mamy mieć 10, 100, 1 000, 1 000 000 wierzcholkow i losowo je sobie polaczyc. Potem BFS i DFS i gitarka.
