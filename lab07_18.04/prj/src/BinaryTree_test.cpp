@@ -9,11 +9,17 @@ void BinaryTree_test::prepare(int size) {
   int random_index = static_cast<int>(rand()) % size;
   for (int i = 0; i < size; i++) {
     temp = static_cast<int>(rand());
-    tree.insert(temp);
+    tree.put(temp);
     
     if (i == random_index)
       random_element = temp;
   }
 }
 
-void BinaryTree_test::run() { tree.search(random_element); }
+void BinaryTree_test::run() {
+	if (tree.search(random_element))
+		std::cout << "Znalazlem" << std::endl;
+	else
+		std::cout << "Nie znalazlem" << std::endl;
+	tree.print();
+}

@@ -6,7 +6,8 @@
  *
  * \details Zawiera ogolne zalozenia tej struktury danych.
  *          Uzyto szablonow. W przypadku wrzucenia dwoch takich
- *          samych elementow - nadpisuja sie.
+ *          samych elementow - nadpisuja sie. Wywalilem metode
+ *          rebalance, bo drzewo czerwono-czarne jest samorebalansujace.
  */
 template <class Type>
 class IBinaryTree {
@@ -14,8 +15,6 @@ class IBinaryTree {
   virtual void put(Type element) = 0;
 
   virtual bool search(Type element) const = 0;
-
-  virtual void rebalance() = 0;
 
   virtual void print() = 0;
 };

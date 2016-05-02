@@ -3,49 +3,184 @@
 #define LAB07_18_04_PRJ_INC_BINARYTREE_H_
 
 #include "IBinaryTree.h"
-#include "Tablica.h"
+
+#include <vector>
+#include <iostream>
+
+enum { BLACK, RED };
 
 /*! \brief Implementacja drzewa binarnego.
+ *
+ * \details Drzewo to ma jak najwierniej przypominac drzewo czerwono-czarne.
+ *              Nie zaimplementowano metod usuwających elementy z drzewa, gdyz
+ *              nie bylo to istotne dla, zadanego przez prowadzacego, cwiczenia.
+ *              Zgodnie z ogolnie przyjetymi zasadami po lewej stronie zawsze
+ *              znajduja sie elementy mniejsze od rodzica, a po prawej wieksze.
+ *              Czesc kodu zostala skopiowana ze strony Wikipedii.
  */
 template <class Type>
 class BinaryTree : IBinaryTree<Type> {
  private:
+  /*! \ brief Struktura wezlow.
+   *
+   * \details Struktura wezla, o ktory bedzie opieralo sie drzewo. Mamy dostep
+   *              do rodzica elementu oraz lewego i prawego dziecka.
+   */
+  struct Node {
+    Type element;
+    int color;
+    Node *parent, *left, *right;
+    Node(Type i) : element(i), parent(nullptr), left(nullptr), right(nullptr) {}
+  };
+
+  /*! \brief Zwraca dziadka elementu.
+   *
+   * \details Funkcja zwraca rodzica rodzica konkretnego wezla.
+   */
+   Node* grandparent(Node *n) {
+    if ((n != nullptr) && (n->parent != nullptr))
+      return n->parent->parent;
+    else
+      return nullptr;
+    }
+
+  /*! \brief Zwraca wujka elementu.
+    *
+    * \details Zwraca drugie dziecko dziadka, ktore nie jest rodzicem
+    *              wezla.
+    */
+    Node* uncle(Node *n) {
+      Node *g = grandparent(n);
+      if (g == nullptr)
+        return nullptr; // No grandparent means no uncle
+      if (n->parent == g->left)
+        return g->right;
+      else
+        return g->left;
+    }
+
+void rotate_right(Node *n) {
+  Node* pivot = n->left;
+  n->left = pivot->right;
+  pivot->right = n;
+  n = pivot;
+}
+
+
+void rotate_left(Node *n) {
+  Node* pivot = n->right;
+  n->right = pivot->left;
+  pivot->left = n;
+  n = pivot;
+}
+
+void insert_case1(Node *n) {
+ if (n->parent == nullptr)
+  n->color = BLACK;
+ else
+  insert_case2(n);
+}
+
+void insert_case2(Node *n) {
+ if (n->parent->color == BLACK)
+  return; /* Tree is still valid */
+ else
+  insert_case3(n);
+}
+
+void insert_case3(Node *n) {
+  Node *u = uncle(n), *g;
+
+ if ((u != nullptr) && (u->color == RED)) {
+  n->parent->color = BLACK;
+  u->color = BLACK;
+  g = grandparent(n);
+  g->color = RED;
+  insert_case1(g);
+ } else {
+  insert_case4(n);
+ }
+}
+
+void insert_case4(Node *n) {
+  Node *g = grandparent(n);
+
+ if ((n == n->parent->right) && (n->parent == g->left)) {
+  rotate_left(n->parent);
+
+ /*
+ * rotate_left can be the below because of already having *g =  grandparent(n) 
+ *
+ * struct Node *saved_p=g->left, *saved_left_n=n->left;
+ * g->left=n; 
+ * n->left=saved_p;
+ * saved_p->right=saved_left_n;
+ * 
+ * and modify the parent's Nodes properly
+ */
+
+  n = n->left;
+
+ } else if ((n == n->parent->left) && (n->parent == g->right)) {
+  rotate_right(n->parent);
+
+ /*
+ * rotate_right can be the below to take advantage of already having *g =  grandparent(n) 
+ *
+ * struct Node *saved_p=g->right, *saved_right_n=n->right;
+ * g->right=n; 
+ * n->right=saved_p;
+ * saved_p->left=saved_right_n;
+ * 
+ */
+
+  n = n->right; 
+ }
+ insert_case5(n);
+}
+
+void insert_case5(Node *n) {
+  Node *g = grandparent(n);
+
+   n->parent->color = BLACK;
+   g->color = RED;
+   if (n == n->parent->left)
+    rotate_right(g);
+   else
+    rotate_left(g);
+}
+
+
   /*! \brief Tablica dynamiczna, na ktorej zbudowane jest drzewo.
    *
-   * \details Wykorzystuje konstrukcje tablicy dynamicznej, ktora
-   *          powieksza swoj rozmiar zawsze dwukrotnie (sprawdzic w metodzie
-   *          increaseSize() klasy Array.\
-   *          Waznym elementem tej klasy jest fakt, ze lewe dziecko rodzica
-   *          w drzewie bedzie mialo zawsze indeks [rodzic*2+1] a to po prawej
-   *          [rodzic*2+2]. Tak dzieje sie w moim przypadku, gdyz indeksuje
-   *          korzen jako element nr 0.
+   * \details Wykorzystuje pojemnik typu std::vector do przechowywania
+   *              wezlow.
    */
-  Array<Type> tree;
+  std::vector<Node> tree;
 
-  /*! \brief Przechowuje informacje ile elementow znajduje sie w drzewie.
+  /*! \brief Korzen drzewa.
    *
-   * \details Zmienna pomocna przy budowaniu drzewa. Takiej implementacji
-   *          nie zapewnila moja tablica dynamiczna.
+   * \details Przechowuje adres do korzenia drzewa.
    */
-  int size;
+   Node* head;
 
  public:
-  /*! \brief Konstruktor.
+  /*! \brief Bezparametryczny konstuktor
    *
-   * \details Napisanie konstruktora zostalo wymuszone przez wprowadzenie
-   *          zmiennej size, ktora przechowuje rozmiar drzewa.
+   * \details Inicjalizuje korzen jako nullptr.
    */
-  BinaryTree() : size(0) {}
+   BinaryTree() : head(nullptr) {}
+
   /*! \brief Dodaje element do drzewa.
    *
    * \details Dodaje element do drzewa wstawiajac go w odpowiednie
    *          miejsce.
    */
   virtual void put(Type element) {
-    if (size == 0) {
-      tree[0] = element;
-      size++;
-    }
+    tree.push_back(Node(element));
+    if (tree.size() == 1)
+      head = &tree[0];
+    insert_case1(&tree.back());
   }
 
   /*! \brief Wyszukuje element w drzewie.
@@ -59,25 +194,24 @@ class BinaryTree : IBinaryTree<Type> {
    * \retval false Elementu nie ma w drzewie.
    */
   virtual bool search(Type element) const {
-    for (int index = 0; index < size;) {
-      if (element == tree[index]) {
-        return true;
-      } else if (element < tree[index]) {
-        index = index*2 + 1;  // If the element is on the left side
-      } else {
-        index = index*2 + 2;  // If the element is on the right side
-      }
+    Node *temp = head;
+    std::cout << "Glowa " << head << std::endl;
+    std::cout << "Lewy bachor " << head->left << std::endl;
+    std::cout << "Prawy bachor " << head->right << std::endl;
+    std::cout << "Kolor " << head->color << std::endl;
+    std::cout << "Zawiera " << head->element << std::endl;
+    while (element != temp->element && temp != nullptr) {
+      if (element < temp->element)
+        temp = temp->left;
+      else
+        temp = temp->right;
     }
-    return false;
-  }
 
-  /*! \brief Porzadkuje drzewo.
-   *
-   * \details Porzadkuje drzewo w taki sposob, ze mniejsze elementy
-   *          od korzenia/rodzica znajduja sie zawsze z lewej strony,
-   *          a wieksze po prawej.
-   */
-  virtual void rebalance() {}
+    if (temp == nullptr)
+      return false; 
+    else
+      return true;
+  }
 
   /*! \brief Wyswietla zawartosc drzewa.
    *
@@ -85,20 +219,8 @@ class BinaryTree : IBinaryTree<Type> {
    *          Kazdy poziom jest drukowany w osobnej linii.
    */
   virtual void print() {
-    if (size > 0)
-      std::cout << tree[0] << std::endl;
-    else
-      throw("Empty tree");
-
-    int j = 1;
-    for (int i = 1; i < size; i++) {
-      std::cout << tree[i] << " ";
-
-      if ((i-(2^(j-1))) == ((2^j)+1)) {
-        std::cout << std::endl;
-        j++;
-      }
-    }
+    for (Node i : tree)
+      std::cout << i.element << std::endl;
   }
 };
 
