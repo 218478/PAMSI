@@ -7,8 +7,6 @@
 #include <vector>
 #include <iostream>
 
-enum { BLACK, RED };
-
 /*! \brief Implementacja drzewa binarnego.
  *
  * \details Drzewo to ma jak najwierniej przypominac drzewo czerwono-czarne.
@@ -21,6 +19,12 @@ enum { BLACK, RED };
 template <class Type>
 class BinaryTree : IBinaryTree<Type> {
  private:
+  /*! \brief Enum dla zakodowania kolorow.
+   *
+   * \details BLACK to inaczej 0, a RED to po prostu 1.
+   */
+  enum { BLACK, RED }; 
+
   /*! \ brief Struktura wezlow.
    *
    * \details Struktura wezla, o ktory bedzie opieralo sie drzewo. Mamy dostep
@@ -75,6 +79,7 @@ void rotate_left(Node *n) {
 }
 
 void insert_case1(Node *n) {
+  std::cout << grandparent(n) << std::endl;
  if (n->parent == nullptr)
   n->color = BLACK;
  else
@@ -176,11 +181,28 @@ void insert_case5(Node *n) {
    * \details Dodaje element do drzewa wstawiajac go w odpowiednie
    *          miejsce.
    */
-  virtual void put(Type element) {
-    tree.push_back(Node(element));
-    if (tree.size() == 1)
-      head = &tree[0];
-    insert_case1(&tree.back());
+  virtual void put(Type elem) {
+    tree.push_back(Node(elem));
+    if (tree.size() == 1) {
+      head = &tree.back();
+      head->left = head->right = nullptr;
+    }
+    else {
+      Node *temp = head;
+      while (temp->left != nullptr && temp->right != nullptr) {
+        if (temp->element < elem)
+          temp = temp->left;
+        else
+          temp = temp->right;
+      }
+      if (temp->element < elem)
+        temp->left = &tree.back();
+      else
+        temp->right = &tree.back();
+
+      tree.back().parent = temp;
+    }
+    //insert_case1(&tree.back());
   }
 
   /*! \brief Wyszukuje element w drzewie.
@@ -193,21 +215,24 @@ void insert_case5(Node *n) {
    * \retval true Element znajduje sie w drzewie.
    * \retval false Elementu nie ma w drzewie.
    */
-  virtual bool search(Type element) const {
+  virtual bool search(Type elem) const {
     Node *temp = head;
-    std::cout << "Glowa " << head << std::endl;
+    while (temp->left != nullptr && temp->right != nullptr) {
+      if (elem < temp->element)
+        temp = temp->left;
+      else
+        temp = temp->right;
+
+    std::cout << std::endl;
+    std::cout << "Moj adres " << head << std::endl;
     std::cout << "Lewy bachor " << head->left << std::endl;
     std::cout << "Prawy bachor " << head->right << std::endl;
     std::cout << "Kolor " << head->color << std::endl;
     std::cout << "Zawiera " << head->element << std::endl;
-    while (element != temp->element && temp != nullptr) {
-      if (element < temp->element)
-        temp = temp->left;
-      else
-        temp = temp->right;
+    std::cout << std::endl;
     }
 
-    if (temp == nullptr)
+    if (temp == nullptr && temp->element != elem)
       return false; 
     else
       return true;
