@@ -8,7 +8,7 @@ void BinaryTree_test::prepare(int size) {
   int temp;
   int random_index = static_cast<int>(rand()) % size;
   for (int i = 0; i < size; i++) {
-    temp = static_cast<int>(rand());
+    temp = static_cast<int>(rand())%size-size/2;
     tree.put(temp);
     
     if (i == random_index)
@@ -18,8 +18,7 @@ void BinaryTree_test::prepare(int size) {
 
 void BinaryTree_test::run() {
 	if (tree.search(random_element))
-		std::cout << "Znalazlem" << std::endl;
+		flag = true;
 	else
-		std::cout << "Nie znalazlem" << std::endl;
-	tree.print();
+		flag = false;
 }

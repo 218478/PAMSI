@@ -72,17 +72,6 @@ class Sedzia {
    */
   void setOffHashTable(int how_many);
 
-  /*! \brief Funkcja, w ktorej odbywa sie zapis liczb do drzewa.
-   *
-   * \details Podczas wykonywania tej funkcji uruchamiany jest Stoper oraz
-   *          wypelniany jest element klasy BinaryTree po uprzednim jej
-   *          przygotowaniu. Liczby sa generowane w sposob pseudo losowy.
-   *
-   * \param[in] how_many  Informacja iloma elementami ma zostac wypelniona
-   *                      kontener.
-   */
-  void setOffBinaryTree(int how_many);
-
   void setOffGraphDFS(int how_many);
 
   void setOffGraphBFS(int how_many);

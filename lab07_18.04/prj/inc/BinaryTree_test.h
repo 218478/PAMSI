@@ -20,7 +20,10 @@ class BinaryTree_test : virtual IRunnable {
    */
   int random_element;
 
+
+
  public:
+    bool flag;
   /*! \brief Przygotowuje pojemnik przed wykonaniem czynnosci.
    *
    * \details Funkcja, ktora ma wykonac wszystkie dodatkowe czynnosci,

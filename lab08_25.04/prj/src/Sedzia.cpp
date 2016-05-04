@@ -6,7 +6,6 @@
 #include "Stos_test.h"
 #include "Kolejka_test.h"
 #include "HashTable_test.h"
-#include "BinaryTree_test.h"
 #include "GraphBFS.h"
 #include "GraphDFS.h"
 
@@ -81,23 +80,6 @@ void Sedzia::setOffHashTable(int how_many) {
   tablica_testowa.run();
   timer.stop();
   timer.dumpToFile(ss.str());
-}
-
-void Sedzia::setOffBinaryTree(int how_many) {
-  Stoper timer;
-  BinaryTree_test tree;
-
-  static int licznik = 1;
-  
-  std::ostringstream ss;
-  ss << "BinaryTree_" << how_many;
-
-  tree.prepare(how_many);
-  timer.start();
-  tree.run();
-  timer.stop();
-  timer.dumpToFile(ss.str());
-  std::cout << licznik++ << std::endl;
 }
 
 void Sedzia::setOffGraphDFS(int how_many) {

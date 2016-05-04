@@ -17,20 +17,20 @@
  *              Czesc kodu zostala skopiowana ze strony Wikipedii.
  */
 template <class Type>
-class BinaryTree : IBinaryTree<Type> {
+ class BinaryTree : IBinaryTree<Type> {
  private:
   /*! \brief Enum dla zakodowania kolorow.
    *
    * \details BLACK to inaczej 0, a RED to po prostu 1.
    */
-  enum { BLACK, RED }; 
+   enum { BLACK, RED }; 
 
   /*! \ brief Struktura wezlow.
    *
    * \details Struktura wezla, o ktory bedzie opieralo sie drzewo. Mamy dostep
    *              do rodzica elementu oraz lewego i prawego dziecka.
    */
-  struct Node {
+   struct Node {
     Type element;
     int color;
     Node *parent, *left, *right;
@@ -46,7 +46,7 @@ class BinaryTree : IBinaryTree<Type> {
       return n->parent->parent;
     else
       return nullptr;
-    }
+  }
 
   /*! \brief Zwraca wujka elementu.
     *
@@ -63,55 +63,55 @@ class BinaryTree : IBinaryTree<Type> {
         return g->left;
     }
 
-void rotate_right(Node *n) {
-  Node* pivot = n->left;
-  n->left = pivot->right;
-  pivot->right = n;
-  n = pivot;
-}
+    void rotate_right(Node *n) {
+      Node* pivot = n->left;
+      n->left = pivot->right;
+      pivot->right = n;
+      n = pivot;
+    }
 
 
-void rotate_left(Node *n) {
-  Node* pivot = n->right;
-  n->right = pivot->left;
-  pivot->left = n;
-  n = pivot;
-}
+    void rotate_left(Node *n) {
+      Node* pivot = n->right;
+      n->right = pivot->left;
+      pivot->left = n;
+      n = pivot;
+    }
 
-void insert_case1(Node *n) {
-  std::cout << grandparent(n) << std::endl;
- if (n->parent == nullptr)
-  n->color = BLACK;
- else
-  insert_case2(n);
-}
+    void insert_case1(Node *n) {
+      std::cout << grandparent(n) << std::endl;
+      if (n->parent == nullptr)
+        n->color = BLACK;
+      else
+        insert_case2(n);
+    }
 
-void insert_case2(Node *n) {
- if (n->parent->color == BLACK)
+    void insert_case2(Node *n) {
+     if (n->parent->color == BLACK)
   return; /* Tree is still valid */
- else
-  insert_case3(n);
-}
+       else
+        insert_case3(n);
+    }
 
-void insert_case3(Node *n) {
-  Node *u = uncle(n), *g;
+    void insert_case3(Node *n) {
+      Node *u = uncle(n), *g;
 
- if ((u != nullptr) && (u->color == RED)) {
-  n->parent->color = BLACK;
-  u->color = BLACK;
-  g = grandparent(n);
-  g->color = RED;
-  insert_case1(g);
- } else {
-  insert_case4(n);
- }
-}
+      if ((u != nullptr) && (u->color == RED)) {
+        n->parent->color = BLACK;
+        u->color = BLACK;
+        g = grandparent(n);
+        g->color = RED;
+        insert_case1(g);
+      } else {
+        insert_case4(n);
+      }
+    }
 
-void insert_case4(Node *n) {
-  Node *g = grandparent(n);
+    void insert_case4(Node *n) {
+      Node *g = grandparent(n);
 
- if ((n == n->parent->right) && (n->parent == g->left)) {
-  rotate_left(n->parent);
+      if ((n == n->parent->right) && (n->parent == g->left)) {
+        rotate_left(n->parent);
 
  /*
  * rotate_left can be the below because of already having *g =  grandparent(n) 
@@ -124,9 +124,9 @@ void insert_case4(Node *n) {
  * and modify the parent's Nodes properly
  */
 
-  n = n->left;
+ n = n->left;
 
- } else if ((n == n->parent->left) && (n->parent == g->right)) {
+} else if ((n == n->parent->left) && (n->parent == g->right)) {
   rotate_right(n->parent);
 
  /*
@@ -139,19 +139,19 @@ void insert_case4(Node *n) {
  * 
  */
 
-  n = n->right; 
- }
- insert_case5(n);
+ n = n->right; 
+}
+insert_case5(n);
 }
 
 void insert_case5(Node *n) {
   Node *g = grandparent(n);
 
-   n->parent->color = BLACK;
-   g->color = RED;
-   if (n == n->parent->left)
+  n->parent->color = BLACK;
+  g->color = RED;
+  if (n == n->parent->left)
     rotate_right(g);
-   else
+  else
     rotate_left(g);
 }
 
@@ -161,7 +161,7 @@ void insert_case5(Node *n) {
    * \details Wykorzystuje pojemnik typu std::vector do przechowywania
    *              wezlow.
    */
-  std::vector<Node> tree;
+   std::vector<Node> tree;
 
   /*! \brief Korzen drzewa.
    *
@@ -181,26 +181,32 @@ void insert_case5(Node *n) {
    * \details Dodaje element do drzewa wstawiajac go w odpowiednie
    *          miejsce.
    */
-  virtual void put(Type elem) {
+   virtual void put(Type elem) {
     tree.push_back(Node(elem));
     if (tree.size() == 1) {
-      head = &tree.back();
-      head->left = head->right = nullptr;
+      head = &tree[0];
     }
     else {
       Node *temp = head;
-      while (temp->left != nullptr && temp->right != nullptr) {
-        if (temp->element < elem)
-          temp = temp->left;
+      while (true) {
+        if (elem < temp->element) {
+          if (temp->left == nullptr) {
+            temp->left = &tree.back();
+            break;
+          }
+          else
+            temp = temp->left;
+        }
         else
-          temp = temp->right;
+        {
+          if (temp->right == nullptr) {
+            temp->right = &tree.back();
+            break;
+          }
+          else
+            temp = temp->right;
+        }
       }
-      if (temp->element < elem)
-        temp->left = &tree.back();
-      else
-        temp->right = &tree.back();
-
-      tree.back().parent = temp;
     }
     //insert_case1(&tree.back());
   }
@@ -215,27 +221,29 @@ void insert_case5(Node *n) {
    * \retval true Element znajduje sie w drzewie.
    * \retval false Elementu nie ma w drzewie.
    */
-  virtual bool search(Type elem) const {
+   virtual bool search(Type elem) const {
     Node *temp = head;
-    while (temp->left != nullptr && temp->right != nullptr) {
-      if (elem < temp->element)
-        temp = temp->left;
-      else
-        temp = temp->right;
 
-    std::cout << std::endl;
-    std::cout << "Moj adres " << head << std::endl;
-    std::cout << "Lewy bachor " << head->left << std::endl;
-    std::cout << "Prawy bachor " << head->right << std::endl;
-    std::cout << "Kolor " << head->color << std::endl;
-    std::cout << "Zawiera " << head->element << std::endl;
-    std::cout << std::endl;
+    while (true) {
+      if (elem == temp->element)
+        return true;
+
+      if (elem < temp->element) {
+        if (temp->left == nullptr)
+          break;
+        else
+          temp = temp->left;
+      }
+      else
+      {
+        if (temp->right == nullptr)
+          break;
+        else
+          temp = temp->right;
+      }
     }
 
-    if (temp == nullptr && temp->element != elem)
-      return false; 
-    else
-      return true;
+    return false;
   }
 
   /*! \brief Wyswietla zawartosc drzewa.
@@ -243,7 +251,15 @@ void insert_case5(Node *n) {
    * \details Wydrukowuje na standardowym wyjsciu zawartosc drzewa.
    *          Kazdy poziom jest drukowany w osobnej linii.
    */
-  virtual void print() {
+   virtual void print() {
+    Node *temp = head;
+    std::cout << "    " << temp->element << std::endl;
+    if (temp->left != nullptr)
+      std::cout << temp->left->element << "\t";
+    if (temp->right != nullptr)
+      std::cout << temp->right->element << "\t";
+
+    std::cout << std::endl << "Zawartosc:" << std::endl;
     for (Node i : tree)
       std::cout << i.element << std::endl;
   }

@@ -92,5 +92,6 @@ void Sedzia::setOffBinaryTree(int how_many) {
   timer.start();
   tree.run();
   timer.stop();
-  timer.dumpToFile(ss.str());
+  if (tree.flag)
+    timer.dumpToFile(ss.str());
 }
