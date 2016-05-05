@@ -3,7 +3,6 @@
 #define LAB03_14_03_PRJ_INC_LISTA_H_
 
 #include "ILista.h"
-#include "Tablica.h"
 
 #include <cstddef>   // to use the NULL macro
 #include <string>    // to deal with words saving and searching
@@ -26,107 +25,139 @@
  * \details Zajmuje sie dynamiczna alokacja pamieci. Lista jest jednokierunkowa.
  *          Mamy dostep do pierwszego elementu w liscie
  */
-template <class Type>
-class Lista: ILista<Type> {
+ template <class Type>
+ class Lista: ILista<Type> {
  private:
   /*! \brief Imlementacja wezlow dla listy.
    *
    * \details Potrzebne do implementacji interfejsu listy. Zawiera pole
    *          typu string.
    */
-  struct Node {
+   struct Node {
     /*! \brief Element w wezle.
      *
      * \details Co jest w wezle. Ma przechowywac pojedyncze slowo.
      */
-    Type element;
+     Type element;
+
+     /*! \brief Waga krawedzi.
+      *
+      * \details Pole stworzone w celu implementacji grafu.
+      *          Reprezentuje wage krawedzi pomiedzy wezlami.
+      */
+     int weight;
 
     /*! \brief Wskaznik na nastepny wezel.
      *
      * \details Wskazuje na nastepny wezel.
      */
-    Node* next;
-  };
+     Node* next;
+   };
 
-  /*! \brief Zawartosc listy
-   */
-  Array<Node> list;
 
-  /*! \brief Glowa listy.
+  /*! \brief Pierwszy element listy.
    *
-   * \details Wskazuje zawsze na pierwszy element listy.
+   * \details Wskazuje na pierwszy element listy.
    */
-  Node *head;
+   Node *head;
 
-  /*! \brief Wskazuje nastepny wolny wezel.
+  /*! \brief Przechowuje rozmiar listy.
    *
-   * \details Wskazuje na wezel, do ktorego moga zostac zaladowane dane.
+   * \details Dzieki zastosowaniu tej zmiennej, o wiele latwiej debugowac Lista.
+   *          Pozwala to na kontrole mechanizmow sprawdzania. Powinien byc
+   *          zawsze dodatni.
    */
-  int next_free;
+   int size_of_list;
 
  public:
   /*! \brief Konstruktor.
    *
    * \details Tworzy poczatek listy. Alokuje dla niego pamiec.
    */
-  Lista()  { head = &list[0]; next_free = 0;}
+   Lista() {
+    head = 0;    // bad things happen if you forget about it
+    size_of_list = 0;  // for debug
+  }
 
+  /*! \brief Parametryczny konstruktor.
+   *
+   * \details Konstruktor dodany na potrzeby implementacji grafu.
+   */
+   Lista(Type x) : Lista() {
+    add(x, 0);
+   }
   /*! \brief Destruktor.
    *
    * \details Usuwa cala pamiec listy "skaczac" po jej elementach.
    */
-  ~Lista() { list.~Array(); }
+   ~Lista() {
+      Node *conductor1 = head;  // two conductors to avoid memory
+  Node *conductor2 = head;  // issues when deleting memory
+  // null checking is not needed
+  while (conductor1 != 0) {
+    delete conductor1;  // usuwanie pamieci
+    conductor1 = conductor2->next;
+    conductor2 = conductor1;
+  }
+}
 
   /*! \brief Wstawia element w dowolnym miejscu listy.
    *
-   * \details Wstawia element typu Type w miejsce wskazywane przez zmienna
-   *          index. Wyjatki:
-   *          "Index out of bounds" (const char*) - chcesz zapisac na miejscu
-   *                                                poza lista
+   * \details Wstawia element typu Type w miejsce wskazywane przez zmienna index.
    *
    * \param[in] item Element wstawiany. Slowo typu string.
    * \param[in] index Miejsce, w ktore ma byc wstawiony element item.
    */
-  virtual void add(Type item, int n) {
-    std::cout << "Adres glowy: " << head << std::endl;
+   virtual void add(Type item, int n){
+    int current_size = size();
+  if (n > current_size)  // if we want to add an element beyond list
+    throw("Requested index out of bounds");
 
-    if (n > next_free)  // if we want to add an element beyond list
-      throw("Index out of bounds");
+  if (isEmpty()) {  // if the list is empty
+    Node* temp = new Node;
+    temp->element = item;
+    // // for debug
+    // std::cout << "Dodajemy na poczatku i lista pusta." << std::endl;
+    head = temp;
+    head->next = 0;
+    size_of_list++;
 
-    if (isEmpty()) {  // if the list is empty
-      list[0].element = item;
-      list[0].next = 0;
-      head = &list[0];
+  } else {  // and when it's not empty
+  Node* temp = new Node;
+  temp->element = item;
 
-    } else {  // and when it's not empty
-      if (n == 0) {  // when we adding at the beginning
-        list[next_free].next = head;
-        head = &list[next_free];
-      } else {
-        Node *conductor = head;
+    if (n == 0) {  // when we adding at the beginning
+      // // for debug
+      // std::cout << "Dodajemy na poczatku." << std::endl;
+      temp->next = head;
+      head = temp;
+      size_of_list++;
+    } else {
+      Node *conductor = head;
 
-        if (n < next_free) {  // when inserting
-          for (int i = 0; i < (n-1); i++)
-            conductor = conductor->next;
+      if (n < current_size) {  // when inserting
+        // // for debug
+        // std::cout << "Wsadzamy do srodka." << std::endl;
+        for (int i = 0; i < (n-1); i++)
+          conductor = conductor->next;
 
-          list[next_free].next = conductor->next;
-          list[next_free].element = item;
-          conductor->next = &list[next_free];
-        }
+        temp->next = conductor->next;
+        conductor->next = temp;
+        size_of_list++;
+      }
 
-        if (n == next_free) {  // when adding at the end
-          for (int i = 0; i < (n-1); i++)
-            conductor = conductor->next;
+      if (n == current_size) {  // when adding at the end
+        // // for debug
+        // std::cout << "Dolaczamy na koniec." << std::endl;
+        for (int i = 0; i < (n-1); i++)
+          conductor = conductor->next;
 
-          list[next_free].next = 0;
-          list[next_free].element = item;
-          conductor->next = &list[next_free];
-        }
+        temp->next = 0;
+        conductor->next = temp;
       }
     }
-    next_free++;
   }
-
+}
 
   /*! \brief Usuwa element z dowolnego miejsca listy.
    *
@@ -134,35 +165,33 @@ class Lista: ILista<Type> {
    *
    * \return Zwraca slowo, ktore znajdowalo sie na tym indeksie.
    */
-  virtual Type remove(int n) {
-    std::string word;
+   virtual Type remove(int n) {
+    Type word;
 
     if (size() == 0)
       throw("List is empty");
     if (n < size()) {
       Node *conductor = head;
 
-      if (n == 0) {  // if we want to remove at the beginning
-        head = conductor->next;
-        word = conductor->element;
-        list[0] = list[next_free-1];
-      } else {
-        // repeating this operation (n-1)-times
-        for (int i = 0; i < n-1; i++)
-          conductor = conductor->next;
-        Node *after_cond = conductor->next;  // point to the next element
-        // which is to be deleted
-        conductor->next = after_cond->next;
-        word = after_cond->element;
-        after_cond->element = list[next_free-1].element; }
-
-      list.decreaseSize(1);
+    if (n == 0) {  // if we want to remove at the beginning
+      head = conductor->next;
+      word = conductor->element;
+      delete conductor;
     } else {
-      throw("Index out of bounds"); }
+      // repeating this operation (n-1)-times
+      for (int i = 0; i < n-1; i++)
+        conductor = conductor->next;
+      Node *after_cond = conductor->next;  // point to the next element
+      // which is to be deleted
+      conductor->next = after_cond->next;
+      word = after_cond->element;
+      delete after_cond; }
+    }
+    else
+      throw("Index out of bounds");
 
     return word;
   }
-
 
   /*! \brief Sprawdza czy lista jest pusta.
    *
@@ -171,7 +200,7 @@ class Lista: ILista<Type> {
    * \retval true Lista jest pusta.
    * \retval false Lista nie jest pusta.
    */
-  virtual bool isEmpty() {
+   virtual bool isEmpty() {
     if (size() > 0)
       return false;
     else
@@ -186,23 +215,22 @@ class Lista: ILista<Type> {
    *
    * \return Zwraca element typu std::string.
    */
-  virtual Type get(int n) {
+   virtual Type get(int n) {
     Type temp;
-
     if (n < size()) {
       Node *conductor = head;
       if (conductor != 0) {
-        // repeating this operation n-times
+      // repeating this operation n-times
         for (int i = 0; i < n; i++)
           conductor = conductor->next;
         temp = conductor->element;
       } else {
         throw("List is empty"); }
-    } else {
-      throw("Index out of bounds"); }
+      } else {
+        throw("Index out of bounds"); }
 
-    return temp;
-  }
+        return temp;
+      }
 
   /*! \brief Zwraca rozmiar listy.
    *
@@ -210,20 +238,32 @@ class Lista: ILista<Type> {
    *
    * \return Rozmiar listy.
    */
-  virtual int size() { return next_free; }
+   virtual int size() {
+    Node *conductor = head;
+    int temp_size = 0;
+    while (conductor != 0) {
+      conductor = conductor->next;
+      temp_size++;
+    }
+
+    return temp_size;
+
+  // for debug
+  //  return size_of_list;
+  }
 
   /*! \brief Wypisuje zawartosc listy.
    *
    * \details Wypisuje kazdy element listy w osobnej linii.
    *          Na gorze znajduje sie poczatek listy.
    */
-  void print() {
+   void print() {
     Node *conductor = head;
     while (conductor != 0) {
       std::cout << conductor->element << std::endl;
-      conductor = conductor->next;  // jump to the next element
-    }
+    conductor = conductor->next;  // jump to the next element
   }
+}
 
   /*! \brief Wyszukuje podane slowo i zwraca jego indeks
   *
@@ -238,21 +278,23 @@ class Lista: ILista<Type> {
   * \return Indeks, na ktorym znajduje sie szukane slowo.
   */
   int search(Type searched_word) {
-    int searched_index = 0;
     Node *conductor = head;
+    int searched_index = 0;
 
     if (isEmpty())
-      return -1;  // list is empty
+    return -1;  // list is empty
 
-    while (conductor != 0) {
-      if (conductor->element == searched_word)
-        return searched_index;
-      searched_index++;
-      conductor = conductor->next;
-    }
+  while (conductor != 0) {
+    if (conductor->element == searched_word)
+      return searched_index;
 
-    return -2;   // we didn't find anything
+    searched_index++;
+    conductor = conductor->next;
   }
+  return -2;   // we didn't find anything
+}
+
+
 };
 
 #endif  // LAB03_14_03_PRJ_INC_LISTA_H_
