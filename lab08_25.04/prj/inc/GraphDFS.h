@@ -21,7 +21,9 @@ public:
 		graph.addVertex(0);
 		graph.addVertex(1);
 		graph.print();
-		graph.addEdge(0,1);
+		graph.addEdge(0,1,100);
+		//graph.removeVertex(1);
+		graph.removeEdge(0,1);
 		graph.print();
 	// graph.removeEdge(1,2);
 	}

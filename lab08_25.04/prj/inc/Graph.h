@@ -45,39 +45,42 @@ private:
   }
 
   virtual void addEdge(int x, int y, int weight = 1) {
-    if (graph.size() < x) {
+    if (graph.size() > x && graph.size() > y) {
       std::cout << "Found vertex. Adding" << std::endl;
       ListNode temp(y, weight);  // couldn't do it nicer because g++ complains
       graph[x].add(y,weight,graph[x].size());
+      graph[y].add(x,weight,graph[y].size());
     }
     else
       std::cerr << "Did not found vertex no " << x << std::endl;
   }
 
   virtual void removeVertex(int x) {
-    // typename std::vector<GraphNode>::iterator it;  // WATCH OUT, ITS STRANGE
-    // it = find(graph.begin(), graph.end(), GraphNode(x));
-    // if (it != graph.end())
-    //   graph.erase(graph.begin() + x); 
-    //   // RAII should be OK - we call list's destructor here
-    // else
-    //   std::cerr << "No such vertex no " << x << std::endl;
+    if (x < graph.size()) {
+      graph.erase(graph.begin() + x); 
+      // RAII should be OK - we call list's destructor here
+      for (int i = 0; i < graph.size(); i++) {
+        for (int j = 0; j < graph[i].size(); j++) {
+          if (j == x) graph[i].remove(x);
+        }
+      }
+    }
+    else
+      std::cerr << "No such vertex no " << x << std::endl;
   }
 
   virtual void removeEdge(int x, int y) {
-    // typename std::vector<GraphNode>::iterator it1;  // WATCH OUT, ITS STRANGE
-    // it1 = find(graph.begin(), graph.end(), GraphNode(x));
-    // if (it1 != graph.end()) {
-    //   typename std::list<ListNode>::iterator it2;
-    //   it2 = find(graph[x].v.begin(), graph[x].v.end(), y);
-    //   if (it2 != graph[x].v.end())
-    //     graph[x].v.erase(graph[x].v.begin() + y);
-    //   else
-    //     std::cerr << "Vertex " << x << " does not border with vertex "
-    //                   << y << std::endl;
-    // }
-    // else
-    //   std::cerr << "No such vertex no " << x << std::endl;
+    if (x < graph.size() && y < graph.size()) {
+      if (graph[x].search(y) == y) {
+        graph[x].remove(y);
+        graph[y].remove(x);
+      }
+      else
+        std::cerr << "Vertex " << x << " does not border with vertex "
+                      << y << std::endl;
+    }
+    else
+      std::cerr << "No such vertex no " << x << std::endl;
   }
 
   virtual Lista<int> getNeighbours(int x) {
@@ -94,9 +97,9 @@ private:
     for (int i = 0; i < graph.size(); i++) {
       std::cout << "wierzcholek: " << i << "\t";
       for (int j = 0; j < graph[i].size(); j++)
-        std::cout << graph[i].get(j) <<"(" << graph[i].getWeight(j) << ")" << std::endl;
+        std::cout << graph[i].get(j) <<"(" << graph[i].getWeight(j) << ") ";
+      std::cout <<  std::endl;  
     }
-    
   }
 };
 
