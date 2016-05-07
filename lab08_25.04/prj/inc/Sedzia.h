@@ -3,6 +3,7 @@
 #define LAB03_14_03_PRJ_INC_SEDZIA_H_
 
 #include <string>    // to deal with strings
+#include "Stoper.h"
 
 /*! \file Sedzia.h
  *
@@ -16,6 +17,9 @@
  *          Mierzy czas wypelniania elemntow Tablicy.
  */
 class Sedzia {
+private:
+  Stoper timer;
+
  public:
    /*! \brief Funkcja, gdzie odbywa sie zapis phonebook'a do tablicy haszowej.
    *
@@ -26,7 +30,6 @@ class Sedzia {
    * \param[in] how_many  Informacja iloma elementami ma zostac wypelniona
    *                      tablica.
    */
-  void setOffHashTable(int how_many);
 
   void setOffGraphDFS(int how_many);
 

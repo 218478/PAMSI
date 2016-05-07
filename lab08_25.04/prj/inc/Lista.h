@@ -84,31 +84,32 @@
    * \details Konstruktor dodany na potrzeby implementacji grafu.
    */
    Lista(Type x) : Lista() {
-    add(x, 0);
+    add(x, 1, 0);
    }
   /*! \brief Destruktor.
    *
    * \details Usuwa cala pamiec listy "skaczac" po jej elementach.
    */
-   ~Lista() {
-      Node *conductor1 = head;  // two conductors to avoid memory
-  Node *conductor2 = head;  // issues when deleting memory
-  // null checking is not needed
-  while (conductor1 != 0) {
-    delete conductor1;  // usuwanie pamieci
-    conductor1 = conductor2->next;
-    conductor2 = conductor1;
-  }
-}
+//    ~Lista() {
+//       Node *conductor1 = head;  // two conductors to avoid memory
+//   Node *conductor2 = head;  // issues when deleting memory
+//   // null checking is not needed
+//   while (conductor1 != 0) {
+//     delete conductor1;  // usuwanie pamieci
+//     conductor1 = conductor2->next;
+//     conductor2 = conductor1;
+//   }
+// }
 
   /*! \brief Wstawia element w dowolnym miejscu listy.
    *
    * \details Wstawia element typu Type w miejsce wskazywane przez zmienna index.
    *
    * \param[in] item Element wstawiany. Slowo typu string.
-   * \param[in] index Miejsce, w ktore ma byc wstawiony element item.
+   * \param[in] w Waga krawedzi.
+   * \param[in] n Miejsce, w ktore ma byc wstawiony element item.
    */
-   virtual void add(Type item, int n){
+   virtual void add(Type item, int w, int n){
     int current_size = size();
   if (n > current_size)  // if we want to add an element beyond list
     throw("Requested index out of bounds");
@@ -116,6 +117,7 @@
   if (isEmpty()) {  // if the list is empty
     Node* temp = new Node;
     temp->element = item;
+    temp->weight = w;
     // // for debug
     // std::cout << "Dodajemy na poczatku i lista pusta." << std::endl;
     head = temp;
@@ -125,6 +127,7 @@
   } else {  // and when it's not empty
   Node* temp = new Node;
   temp->element = item;
+  temp->weight = w; 
 
     if (n == 0) {  // when we adding at the beginning
       // // for debug
@@ -224,6 +227,23 @@
         for (int i = 0; i < n; i++)
           conductor = conductor->next;
         temp = conductor->element;
+      } else {
+        throw("List is empty"); }
+      } else {
+        throw("Index out of bounds"); }
+
+        return temp;
+      }
+
+   virtual int getWeight(int n) {
+    Type temp;
+    if (n < size()) {
+      Node *conductor = head;
+      if (conductor != 0) {
+      // repeating this operation n-times
+        for (int i = 0; i < n; i++)
+          conductor = conductor->next;
+        temp = conductor->weight;
       } else {
         throw("List is empty"); }
       } else {

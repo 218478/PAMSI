@@ -1,5 +1,6 @@
 CXXFLAGS = -Iinc -Wall -pedantic -g -std=c++11 -pipe
 CC = g++
+
 SOURCES = src/main.cpp src/Stoper.cpp src/Sedzia.cpp src/Tablica.cpp \
 	src/Stos.cpp src/Kolejka.cpp src/Lista.cpp
 

@@ -29,6 +29,8 @@ private:
    std::vector< Lista<int> > graph;
 
  public:
+  // Graph(int how_many) { graph.reserve(how_many); }
+
   virtual void addVertex(int x) {
     if (graph.size() <= x) {
       if (graph.size() == x) {
@@ -42,56 +44,60 @@ private:
       std::cerr << "Duplicate. Not adding." << std::endl;
   }
 
-//   virtual void addEdge(int x, int y, int weight = 1) {
-//     // typename std::vector<GraphNode>::iterator it;  // WATCH OUT, ITS STRANGE
-//     // it = find(graph.begin(), graph.end(), GraphNode(x));
-//     // if (it != graph.end())
-//     // {
-//     //   std::cout << "Found vertex. Adding" << std::endl;
-//     //   ListNode temp(y, weight);  // couldn't do it nicer because g++ complains
-//     //   it.v.push_back(temp);
-//     // }
-//     // else
-//     // {
-//     //   std::cerr << "Did not found vertex no " << x << std::endl;
-//     // }
-//   }
+  virtual void addEdge(int x, int y, int weight = 1) {
+    if (graph.size() < x) {
+      std::cout << "Found vertex. Adding" << std::endl;
+      ListNode temp(y, weight);  // couldn't do it nicer because g++ complains
+      graph[x].add(y,weight,graph[x].size());
+    }
+    else
+      std::cerr << "Did not found vertex no " << x << std::endl;
+  }
 
-//   virtual void removeVertex(int x) {
-//     // typename std::vector<GraphNode>::iterator it;  // WATCH OUT, ITS STRANGE
-//     // it = find(graph.begin(), graph.end(), GraphNode(x));
-//     // if (it != graph.end())
-//     //   graph.erase(graph.begin() + x); 
-//     //   // RAII should be OK - we call list's destructor here
-//     // else
-//     //   std::cerr << "No such vertex no " << x << std::endl;
-//   }
+  virtual void removeVertex(int x) {
+    // typename std::vector<GraphNode>::iterator it;  // WATCH OUT, ITS STRANGE
+    // it = find(graph.begin(), graph.end(), GraphNode(x));
+    // if (it != graph.end())
+    //   graph.erase(graph.begin() + x); 
+    //   // RAII should be OK - we call list's destructor here
+    // else
+    //   std::cerr << "No such vertex no " << x << std::endl;
+  }
 
-//   virtual void removeEdge(int x, int y) {
-//     // typename std::vector<GraphNode>::iterator it1;  // WATCH OUT, ITS STRANGE
-//     // it1 = find(graph.begin(), graph.end(), GraphNode(x));
-//     // if (it1 != graph.end()) {
-//     //   typename std::list<ListNode>::iterator it2;
-//     //   it2 = find(graph[x].v.begin(), graph[x].v.end(), y);
-//     //   if (it2 != graph[x].v.end())
-//     //     graph[x].v.erase(graph[x].v.begin() + y);
-//     //   else
-//     //     std::cerr << "Vertex " << x << " does not border with vertex "
-//     //                   << y << std::endl;
-//     // }
-//     // else
-//     //   std::cerr << "No such vertex no " << x << std::endl;
-//   }
+  virtual void removeEdge(int x, int y) {
+    // typename std::vector<GraphNode>::iterator it1;  // WATCH OUT, ITS STRANGE
+    // it1 = find(graph.begin(), graph.end(), GraphNode(x));
+    // if (it1 != graph.end()) {
+    //   typename std::list<ListNode>::iterator it2;
+    //   it2 = find(graph[x].v.begin(), graph[x].v.end(), y);
+    //   if (it2 != graph[x].v.end())
+    //     graph[x].v.erase(graph[x].v.begin() + y);
+    //   else
+    //     std::cerr << "Vertex " << x << " does not border with vertex "
+    //                   << y << std::endl;
+    // }
+    // else
+    //   std::cerr << "No such vertex no " << x << std::endl;
+  }
 
-//   virtual std::list<ListNode> getNeighbours(int x) {
-//     // typename std::vector<GraphNode>::iterator it1;  // WATCH OUT, ITS STRANGE
-//     // it1 = find(graph.begin(), graph.end(), GraphNode(x));
-//     // if (it1 != graph.end()) {
-//     //   return graph[x].v;
-//     // }
-//     // else
-//     //   std::cerr << "Vertex " << x << " doesn't exist" << std::endl;
-//   }
+  virtual Lista<int> getNeighbours(int x) {
+    if (graph.size() <= x) {
+      return graph[x];
+    }
+    else
+      std::cerr << "Vertex " << x << " doesn't exist" << std::endl;
+  }
+
+/*! \brief For debug.
+*/
+  void print() {
+    for (int i = 0; i < graph.size(); i++) {
+      std::cout << "wierzcholek: " << i << "\t";
+      for (int j = 0; j < graph[i].size(); j++)
+        std::cout << graph[i].get(j) <<"(" << graph[i].getWeight(j) << ")" << std::endl;
+    }
+    
+  }
 };
 
 
