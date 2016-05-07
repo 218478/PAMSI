@@ -47,7 +47,7 @@ class Stos: IStos<Type> {
    *
    * \param[in] item "Wpychany" element typu std::string.
    */
-  virtual void push(Type item) { stack.add(item, 0); }
+  virtual void push(Type item) { stack.add(item,1, 0); }
 
   /*! \brief Usuwa element z pojemnika.
    *
@@ -55,7 +55,7 @@ class Stos: IStos<Type> {
    *
    * \return Usuniety element.
    */
-  virtual std::string pop() { return stack.remove(0); }
+  virtual Type pop() { return stack.remove(0); }
 
   /*! \brief Sprawdza czy pojemnika jest pusty.
    *

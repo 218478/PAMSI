@@ -4,6 +4,7 @@
 
 #include "IRunnable.h"
 #include "Graph.h"
+#include "Stos.h"
 
 class GraphDFS : IRunnable {
 private:
@@ -13,6 +14,7 @@ private:
 	 *              odwolac sie do klasy Graph.
 	 */
 	Graph graph;
+	Stos<int> stos;
 
 public:
 	// GraphDFS(int how_many) : graph(how_many) {}

@@ -28,7 +28,7 @@ public:
    *
    * \param[in] element "Wpychany" element typu string.
    */
-  virtual void push(Type element) {  queue.add(element, 0); }
+  virtual void push(Type element) {  queue.add(element,1, 0); }
 
   /*! \brief Usuwa element z pojemnika.
    *

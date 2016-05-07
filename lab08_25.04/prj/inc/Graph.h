@@ -6,7 +6,6 @@
 #include "Lista.h"
 
 #include <vector>
-#include <algorithm>
 #include <iostream>
 
 /*! \brief Graf oparty o liste sasiedztwa.
@@ -87,8 +86,10 @@ private:
     if (graph.size() <= x) {
       return graph[x];
     }
-    else
+    else {
       std::cerr << "Vertex " << x << " doesn't exist" << std::endl;
+      return Lista<int>(-1);;
+    }
   }
 
 /*! \brief For debug.
