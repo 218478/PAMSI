@@ -169,6 +169,7 @@ void insert_case5(Node *n) {
    */
    Node* head;
 
+
  public:
   /*! \brief Bezparametryczny konstuktor
    *

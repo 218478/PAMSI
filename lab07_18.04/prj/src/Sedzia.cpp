@@ -10,6 +10,7 @@
 
 #include <unistd.h>  // to make Linux wait because searching is too fast
 
+
 #include <sstream>   // to convert int to string
 #include <string>    // to deal with strings
 #include <iostream>  // to display messages
@@ -28,6 +29,7 @@ void Sedzia::setOffTable(int how_many) {
   timer.stop();
   timer.dumpToFile(ss.str());
 }
+
 
 
 void Sedzia::setOffList(int how_many, int trials_count) {

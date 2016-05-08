@@ -16,6 +16,9 @@ template <class Type> class RBtree {
   node *root;
   node *q;
 
+
+
+
  public:
   RBtree()
   {

@@ -4,16 +4,24 @@
 		"selected_items":
 		[
 			[
+				"other",
+				"other_than"
+			],
+			[
+				"add",
+				"addVertex"
+			],
+			[
+				"push",
+				"push_back"
+			],
+			[
 				"graph",
 				"graph_size"
 			],
 			[
 				"re",
 				"removeEdge"
-			],
-			[
-				"add",
-				"addEdge"
 			],
 			[
 				"remo",
@@ -63,7 +71,7 @@
 			"file": "inc/GraphDFS.h",
 			"settings":
 			{
-				"buffer_size": 1252,
+				"buffer_size": 2411,
 				"line_ending": "Unix"
 			}
 		},
@@ -71,23 +79,7 @@
 			"file": "inc/GraphBFS.h",
 			"settings":
 			{
-				"buffer_size": 445,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "inc/Graph.h",
-			"settings":
-			{
-				"buffer_size": 3457,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "inc/Sedzia.h",
-			"settings":
-			{
-				"buffer_size": 1050,
+				"buffer_size": 1685,
 				"line_ending": "Unix"
 			}
 		},
@@ -95,7 +87,31 @@
 			"file": "src/Sedzia.cpp",
 			"settings":
 			{
-				"buffer_size": 616,
+				"buffer_size": 979,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "inc/Sedzia.h",
+			"settings":
+			{
+				"buffer_size": 1090,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "inc/Lista.h",
+			"settings":
+			{
+				"buffer_size": 8078,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "inc/Graph.h",
+			"settings":
+			{
+				"buffer_size": 4080,
 				"line_ending": "Unix"
 			}
 		},
@@ -103,7 +119,7 @@
 			"file": "src/main.cpp",
 			"settings":
 			{
-				"buffer_size": 1330,
+				"buffer_size": 1414,
 				"line_ending": "Unix"
 			}
 		}
@@ -115,10 +131,22 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 96.0,
-		"last_filter": "git push",
+		"height": 159.0,
+		"last_filter": "git com",
 		"selected_items":
 		[
+			[
+				"git com",
+				"Git: Commit"
+			],
+			[
+				"git add",
+				"Git: Add..."
+			],
+			[
+				"git comm",
+				"Git: Commit"
+			],
 			[
 				"git push",
 				"Git: Push"
@@ -134,14 +162,6 @@
 			[
 				"make cl",
 				"Build With: Make - Clean"
-			],
-			[
-				"git com",
-				"Git: Commit"
-			],
-			[
-				"git add",
-				"Git: Add..."
 			],
 			[
 				"make ",
@@ -206,6 +226,10 @@
 	],
 	"file_history":
 	[
+		"/home/kkuczaj/PAMSI/lab08_25.04/prj/src/GraphBFS.cpp",
+		"/home/kkuczaj/PAMSI/lab08_25.04/prj/inc/GraphBFS.h",
+		"/home/kkuczaj/PAMSI/lab08_25.04/prj/src/Sedzia.cpp",
+		"/home/kkuczaj/PAMSI/lab08_25.04/prj/inc/Sedzia.h",
 		"/home/kkuczaj/PAMSI/lab08_25.04/prj/inc/Stos.h",
 		"/home/kkuczaj/PAMSI/notatki/notatki_25.04.txt",
 		"/home/kkuczaj/PAMSI/lab08_25.04/prj/inc/IGraph.h",
@@ -216,13 +240,9 @@
 		"/home/kkuczaj/PAMSI/lab08_25.04/prj/inc/IStos.h",
 		"/home/kkuczaj/PAMSI/lab08_25.04/prj/inc/IKolejka.h",
 		"/home/kkuczaj/PAMSI/lab08_25.04/prj/src/GraphDFS.cpp",
-		"/home/kkuczaj/PAMSI/lab08_25.04/prj/inc/GraphBFS.h",
 		"/home/kkuczaj/Dropbox/Jurek/ILV/jurek nagrtanioa/prz7/20160427-110055.idc",
-		"/home/kkuczaj/PAMSI/lab08_25.04/prj/inc/Sedzia.h",
-		"/home/kkuczaj/PAMSI/lab08_25.04/prj/src/Sedzia.cpp",
 		"/home/kkuczaj/PAMSI/lab08_25.04/prj/src/main.cpp",
 		"/home/kkuczaj/.config/sublime-text-3/Packages/User/make_multithreaded.sublime-build",
-		"/home/kkuczaj/PAMSI/lab08_25.04/prj/src/GraphBFS.cpp",
 		"/home/kkuczaj/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
 		"/home/kkuczaj/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
 		"/home/kkuczaj/PAMSI/lab08_25.04/prj/lab08.sublime-project",
@@ -245,6 +265,11 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"graph[temp].get(i)",
+			"vertexCount",
+			"temp1",
+			"dfs",
+			"stos",
 			"graph",
 			"Type"
 		],
@@ -254,6 +279,11 @@
 		"regex": false,
 		"replace_history":
 		[
+			"temp2",
+			"graph_size",
+			"temp",
+			"bfs",
+			"kolejka",
 			"dfs",
 			"int"
 		],
@@ -266,7 +296,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -275,15 +305,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1252,
+						"buffer_size": 2411,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								637,
-								637
+								758,
+								758
 							]
 						],
 						"settings":
@@ -291,10 +321,10 @@
 							"syntax": "Packages/C++/C++.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 306.0,
+						"translation.y": 429.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -303,59 +333,53 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 445,
+						"buffer_size": 1685,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								389,
-								389
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 3,
-			"sheets":
-			[
-				{
-					"buffer": 2,
-					"file": "inc/Graph.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3457,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3389,
-								3389
+								1005,
+								1005
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1530.0,
+						"translation.y": 357.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/Sedzia.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 979,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								559,
+								559
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 153.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
@@ -367,15 +391,45 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1050,
+						"buffer_size": 1090,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								492,
-								492
+								984,
+								984
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": -0.0,
+						"translation.y": 204.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "inc/Lista.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8078,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4586,
+								4586
 							]
 						],
 						"settings":
@@ -385,55 +439,67 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 290.0,
+						"translation.y": 2516.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 5,
+					"file": "inc/Graph.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4080,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1653,
+								1653
+							],
+							[
+								1810,
+								1810
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1224.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "src/Sedzia.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 616,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								387,
-								387
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
+					"buffer": 6,
 					"file": "src/main.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1330,
+						"buffer_size": 1414,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1313,
-								1313
+								1238,
+								1238
 							]
 						],
 						"settings":
@@ -441,10 +507,10 @@
 							"syntax": "Packages/C++/C++.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 408.0,
+						"translation.y": 511.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 4,
 					"type": "text"
 				}
 			]
