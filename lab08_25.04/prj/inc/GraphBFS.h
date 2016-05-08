@@ -25,27 +25,25 @@ private:
 	 */
 	 std::list<int> lista;
 
-	 Kolejka<int> kolejka;
+	
 
 public:
 		virtual void run() {
+		Kolejka<int> kolejka;
 		kolejka.push(0);  // start
-		std::cout << std::endl;
-		kolejka.print();
-		std::cout << std::endl;
-		int temp;
+		int temp, temp2;
+		static int iter = 0;
 		while (!kolejka.empty()) {
 			temp = kolejka.pop();
 			for (int i = 0; i < graph[temp].size(); i++) {
-				auto it = std::find(lista.begin(), lista.end(), graph[temp].get(i));
+				temp2 = graph[temp].get(i);
+				auto it = std::find(lista.begin(), lista.end(), temp2);
 				if (it == lista.end()) {
-					lista.push_back(graph[temp].get(i));
-					kolejka.push(graph[temp].get(i));
+					std::cout << iter++ << std::endl;
+					lista.push_back(temp2);
+					kolejka.push(temp2);
 				}
 			}
-		std::cout << std::endl;
-		kolejka.print();
-		std::cout << std::endl;
 		}
 		std::cout << "BFS complete." << std::endl;
 	}

@@ -153,21 +153,22 @@
       throw("List is empty");
     if (n < size()) {
       Node *conductor = head;
-
-    if (n == 0) {  // if we want to remove at the beginning
-      head = conductor->next;
-      word = conductor->element;
-      delete conductor;
-    } else {
-      // repeating this operation (n-1)-times
-      for (int i = 0; i < n-1; i++)
-        conductor = conductor->next;
-      Node *after_cond = conductor->next;  // point to the next element
-      // which is to be deleted
-      conductor->next = after_cond->next;
-      word = after_cond->element;
-      delete after_cond; }
-    }
+      if (n == 0) {  // if we want to remove at the beginning
+        head = conductor->next;
+        word = conductor->element;
+        delete conductor;
+        }
+      else
+        {
+        // repeating this operation (n-1)-times
+        for (int i = 0; i < n-1; i++)
+          conductor = conductor->next;
+        Node *after_cond = conductor->next;  // point to the next element
+        // which is to be deleted
+        conductor->next = after_cond->next;
+        word = after_cond->element;
+        delete after_cond; }
+      }
     else
       throw("Index out of bounds");
 
@@ -289,16 +290,18 @@
   return -2;   // we didn't find anything
 }
 
-
-int min () {
+/*! \brief Choose min other than specified as an argument
+*/
+Type min (Lista other_than) {
   Node *conductor = head;
   int temp = conductor->element;
+  // a trick because my graph always has its own vertex on its adjacency list
 
   if (isEmpty())
     return -1;  // list is empty
 
   while (conductor != 0) {
-    if (conductor->element < temp)
+    if (conductor->element < temp && other_than.search(conductor->element) < 0)
       temp = conductor->element;
 
     conductor = conductor->next;

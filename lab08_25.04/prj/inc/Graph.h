@@ -45,17 +45,17 @@ private:
 
   virtual void addEdge(int x, int y, int weight = 1) {
     if (graph.size() > x && graph.size() > y) {
-      std::cout << "Found vertex. Adding" << std::endl;
+      //std::cout << "Found vertex. Adding" << std::endl;
       ListNode temp(y, weight);  // couldn't do it nicer because g++ complains
-      if (graph[x].search(y) == -2)
+      if (graph[x].search(y) == -2 )
         graph[x].add(y,weight,graph[x].size());
-      else
-        std::cerr << "Connection already exists" << std::endl;
+      // else
+      //   std::cerr << "Connection already exists" << std::endl;
 
-      if (graph[y].search(x) == -2)
+      if (graph[y].search(x) == -2 )
         graph[y].add(x,weight,graph[y].size());
-      else
-        std::cerr << "Connection already exists" << std::endl;
+      // else
+      //   std::cerr << "Connection already exists" << std::endl;
     }
     else
       std::cerr << "Did not found vertex no " << x << std::endl;
@@ -132,6 +132,17 @@ private:
    */
   Lista<int> operator[] (int n) {
     return graph[n];
+  }
+
+  bool isEdge(int u, int v) {
+    if (graph.size() > u) {
+      if (graph[u].search(v) > 0)
+        return true;
+    }
+  else {
+    std::cerr << "No vertex no: " << u << std::endl;
+    return false;
+  }
   }
 };
 
