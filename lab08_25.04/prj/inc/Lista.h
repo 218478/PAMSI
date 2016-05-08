@@ -1,6 +1,6 @@
 // Copyright 2016 Kamil Kuczaj
-#ifndef LAB03_14_03_PRJ_INC_LISTA_H_
-#define LAB03_14_03_PRJ_INC_LISTA_H_
+#ifndef LAB08_25_04_PRJ_INC_LISTA_H_
+#define LAB08_25_04_PRJ_INC_LISTA_H_
 
 #include "ILista.h"
 
@@ -86,20 +86,6 @@
    Lista(Type x) : Lista() {
     add(x, 1, 0);
    }
-  /*! \brief Destruktor.
-   *
-   * \details Usuwa cala pamiec listy "skaczac" po jej elementach.
-   */
-//    ~Lista() {
-//       Node *conductor1 = head;  // two conductors to avoid memory
-//   Node *conductor2 = head;  // issues when deleting memory
-//   // null checking is not needed
-//   while (conductor1 != 0) {
-//     delete conductor1;  // usuwanie pamieci
-//     conductor1 = conductor2->next;
-//     conductor2 = conductor1;
-//   }
-// }
 
   /*! \brief Wstawia element w dowolnym miejscu listy.
    *
@@ -118,8 +104,6 @@
     Node* temp = new Node;
     temp->element = item;
     temp->weight = w;
-    // // for debug
-    // std::cout << "Dodajemy na poczatku i lista pusta." << std::endl;
     head = temp;
     head->next = 0;
     size_of_list++;
@@ -130,8 +114,6 @@
   temp->weight = w; 
 
     if (n == 0) {  // when we adding at the beginning
-      // // for debug
-      // std::cout << "Dodajemy na poczatku." << std::endl;
       temp->next = head;
       head = temp;
       size_of_list++;
@@ -139,8 +121,6 @@
       Node *conductor = head;
 
       if (n < current_size) {  // when inserting
-        // // for debug
-        // std::cout << "Wsadzamy do srodka." << std::endl;
         for (int i = 0; i < (n-1); i++)
           conductor = conductor->next;
 
@@ -150,8 +130,6 @@
       }
 
       if (n == current_size) {  // when adding at the end
-        // // for debug
-        // std::cout << "Dolaczamy na koniec." << std::endl;
         for (int i = 0; i < (n-1); i++)
           conductor = conductor->next;
 
@@ -267,9 +245,6 @@
     }
 
     return temp_size;
-
-  // for debug
-  //  return size_of_list;
   }
 
   /*! \brief Wypisuje zawartosc listy.
@@ -315,6 +290,22 @@
 }
 
 
+int min () {
+  Node *conductor = head;
+  int temp = conductor->element;
+
+  if (isEmpty())
+    return -1;  // list is empty
+
+  while (conductor != 0) {
+    if (conductor->element < temp)
+      temp = conductor->element;
+
+    conductor = conductor->next;
+  }
+  return temp;
+}
+
 };
 
-#endif  // LAB03_14_03_PRJ_INC_LISTA_H_
+#endif  // LAB08_25_04_PRJ_INC_LISTA_H_

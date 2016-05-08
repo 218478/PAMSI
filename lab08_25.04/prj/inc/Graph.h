@@ -33,7 +33,7 @@ private:
   virtual void addVertex(int x) {
     if (graph.size() <= x) {
       if (graph.size() == x) {
-        std::cout << "Did not found. Adding." << std::endl;
+        //std::cout << "Did not found. Adding." << std::endl;
         graph.push_back(Lista<int>(x));  // adding only vertex, no weight, no edge
       }
       else
@@ -47,8 +47,15 @@ private:
     if (graph.size() > x && graph.size() > y) {
       std::cout << "Found vertex. Adding" << std::endl;
       ListNode temp(y, weight);  // couldn't do it nicer because g++ complains
-      graph[x].add(y,weight,graph[x].size());
-      graph[y].add(x,weight,graph[y].size());
+      if (graph[x].search(y) == -2)
+        graph[x].add(y,weight,graph[x].size());
+      else
+        std::cerr << "Connection already exists" << std::endl;
+
+      if (graph[y].search(x) == -2)
+        graph[y].add(x,weight,graph[y].size());
+      else
+        std::cerr << "Connection already exists" << std::endl;
     }
     else
       std::cerr << "Did not found vertex no " << x << std::endl;
@@ -88,7 +95,7 @@ private:
     }
     else {
       std::cerr << "Vertex " << x << " doesn't exist" << std::endl;
-      return Lista<int>(-1);;
+      return Lista<int>(-1);
     }
   }
 
@@ -101,6 +108,30 @@ private:
         std::cout << graph[i].get(j) <<"(" << graph[i].getWeight(j) << ") ";
       std::cout <<  std::endl;  
     }
+  }
+
+  /*! \brief Returns the number of vertices
+   *
+   * \details Return the size of vector.
+   */
+  int size() { return graph.size(); }
+
+  /*! \brief Zwraca sasiadujace wierczholki pierwszego wierzcholka grafu.
+   */
+  Lista<int> front() {
+    return graph[0];
+  }
+
+  /*! \brief Zwraca sasiadujace wierczholki ostatniego elementu grafu.
+   */
+  Lista<int> back() {
+    return graph[size()-1];
+  }
+
+  /*! \brief Zwraca sasiadujace wierzcholki n-tego wierzcholka grafu.
+   */
+  Lista<int> operator[] (int n) {
+    return graph[n];
   }
 };
 

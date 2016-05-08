@@ -44,6 +44,6 @@ int main(int argc, char **argv) {
   // running the array
   for (int i = 0; i < 1; i++) {
     for (int j = 0; j < trials_count; j++)
-      referee.setOffGraphDFS(10);
+      referee.setOffGraphDFS(3);
   }
 }

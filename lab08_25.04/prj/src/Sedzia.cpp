@@ -22,4 +22,12 @@ void Sedzia::setOffGraphDFS(int how_many) {
 }
 
 void Sedzia::setOffGraphBFS(int how_many) {
+	GraphBFS bfs;
+	bfs.prepare(how_many);
+	std::ostringstream temp_buffer;
+	temp_buffer << "GraphDFS_" << how_many;
+	timer.start();
+	bfs.run();
+	timer.stop();
+	timer.dumpToFile(temp_buffer.str());
 }
