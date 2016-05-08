@@ -30,15 +30,22 @@ private:
 public:
 		virtual void run() {
 		kolejka.push(0);  // start
+		std::cout << std::endl;
+		kolejka.print();
+		std::cout << std::endl;
 		int temp;
 		while (!kolejka.empty()) {
 			temp = kolejka.pop();
-			auto it = std::find(lista.begin(), lista.end(), temp);
-			if (it == lista.end()) {
-				lista.push_back(temp);
-				for (int i = 0; i < graph[lista.back()].size(); i++)
-					kolejka.push(lista.back());
+			for (int i = 0; i < graph[temp].size(); i++) {
+				auto it = std::find(lista.begin(), lista.end(), graph[temp].get(i));
+				if (it == lista.end()) {
+					lista.push_back(graph[temp].get(i));
+					kolejka.push(graph[temp].get(i));
+				}
 			}
+		std::cout << std::endl;
+		kolejka.print();
+		std::cout << std::endl;
 		}
 		std::cout << "BFS complete." << std::endl;
 	}
