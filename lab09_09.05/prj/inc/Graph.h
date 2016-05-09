@@ -31,9 +31,10 @@ private:
  public:
   Graph(int how_many) {
     // creating how_many vertices and connecting them
-    for (int i = 0; i < how_many; i++) {
+    addVertex(0);
+    for (int i = 1; i < how_many; i++) {
       addVertex(i);
-      addEdge(i,i-1);  // no weight
+      addEdge(i,i-1);  // weight = 1
     }
     addEdge(0,how_many-1);
 
@@ -44,6 +45,10 @@ private:
         temp1 = static_cast<int>(rand()) % how_many;
         addEdge(i, temp1);
       }
+    }
+
+    for (int i = 0; i < how_many; i++) {
+      graph[i].remove(0);
     }
   }
 
@@ -92,22 +97,27 @@ private:
       std::cerr << "No such vertex no " << x << std::endl;
   }
 
+  // cos jest tutaj zle, narazie dziala, ale trzeba to zmienic bo nie chce mi
+  // usuwac poczatkowych krawedzi w liscie
   virtual void removeEdge(int x, int y) {
     if (x < graph.size() && y < graph.size()) {
-      if (graph[x].search(y) == y) {
+      if (graph[x].search(y) > 0 || graph[y].search(x) > 0) {
         graph[x].remove(y);
         graph[y].remove(x);
       }
-      else
+      else {
+                std::cout << "search dla poz: "  << x << " od " << y
+                      << " wyszedl: " << graph[x].search(y) << std:: endl;
         std::cerr << "Vertex " << x << " does not border with vertex "
                       << y << std::endl;
+      }
     }
     else
       std::cerr << "No such vertex no " << x << std::endl;
   }
 
   virtual Lista<int> getNeighbours(int x) {
-    if (graph.size() <= x) {
+    if (graph.size() > x) {
       return graph[x];
     }
     else {
@@ -116,8 +126,8 @@ private:
     }
   }
 
-/*! \brief For debug.
-*/
+ /*! \brief For debug.
+  */
   void print() {
     for (int i = 0; i < graph.size(); i++) {
       std::cout << "wierzcholek: " << i << "\t";
@@ -163,12 +173,27 @@ private:
     }
   }
 
+  /*! \brief Algorytm branch & bound bez extended list.
+   *
+   * \details Algoyrtm domniemywa, ze graf jest skonczony oraz wszystkie
+   *              wierzcholki sa w jakis sposob ze soba polaczone.
+   */
   Lista<int> branchBound() {
+    Lista<int> temp = getNeighbours(1);
+    print();
+    std::cout << std::endl;
+    temp.print();
 
+    
   }
 
+  /*! \brief Algorytm branch & bound wykorzystujacy extended list.
+     *
+     * \details Algoyrtm domniemywa, ze graf jest skonczony oraz wszystkie
+     *              wierzcholki sa w jakis sposob ze soba polaczone.
+     */
   Lista<int> branchBoundExtendedList() {
-    
+
   }
 };
 
