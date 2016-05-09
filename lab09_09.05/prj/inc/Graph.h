@@ -7,6 +7,7 @@
 
 #include <vector>
 #include <iostream>
+#include <cstdlib>
 
 /*! \brief Graf oparty o liste sasiedztwa.
  *
@@ -28,7 +29,23 @@ private:
    std::vector< Lista<int> > graph;
 
  public:
-  // Graph(int how_many) { graph.reserve(how_many); }
+  Graph(int how_many) {
+    // creating how_many vertices and connecting them
+    for (int i = 0; i < how_many; i++) {
+      addVertex(i);
+      addEdge(i,i-1);  // no weight
+    }
+    addEdge(0,how_many-1);
+
+    srand(time(0));
+    int temp1;  // to shorten the code, to connect vertices randomly
+    for (int i = 0; i < how_many/2; i++) {
+      for (int j = 0; j < 1; j++) {
+        temp1 = static_cast<int>(rand()) % how_many;
+        addEdge(i, temp1);
+      }
+    }
+  }
 
   virtual void addVertex(int x) {
     if (graph.size() <= x) {
@@ -133,16 +150,25 @@ private:
   Lista<int> operator[] (int n) {
     return graph[n];
   }
-
+  /*! \brief Sprawdza czy wierzcholki polaczone sa krawedzia.
+  */
   bool isEdge(int u, int v) {
     if (graph.size() > u) {
       if (graph[u].search(v) > 0)
         return true;
     }
-  else {
-    std::cerr << "No vertex no: " << u << std::endl;
-    return false;
+    else {
+      std::cerr << "No vertex no: " << u << std::endl;
+      return false;
+    }
   }
+
+  Lista<int> branchBound() {
+
+  }
+
+  Lista<int> branchBoundExtendedList() {
+    
   }
 };
 

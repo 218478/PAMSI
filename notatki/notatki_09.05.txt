@@ -1,0 +1,24 @@
+Dzisiaj droga pomiędzy punktami
+
+Pod warunkiem, że najmniejsza waga to jeden, to mozemy nie szukac pozostalych drog, gdy waga jest mniejsza lub rowna najkrotsza minus 1.
+
+Algorytm branch & bound (to trzeba zaimplementowac)
+- pomiar czasu
+
+branch & bound + extended list
+
+Zamiast extended list moze byc tablica hashowa, bo jest szybsza
+
+
+
+Czyli reasumujac:
+Pomiar czasu:
+- branch & bound
+- branch & bound with extended list
+
+
+Przy okazji warto zobaczyć:
+wyklady z grafow sa fajnie zrobione z MIT (Patrick'a Winston'a)
+
+_____________________________________________________________
+W przyszlym tygodniu zaczynamy przymierzac sie do projektow.

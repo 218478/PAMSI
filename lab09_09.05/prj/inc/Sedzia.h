@@ -31,9 +31,9 @@ private:
    *                      tablica.
    */
 
-  void setOffGraphDFS(int& how_many, int& trials_count);
+  void setOffGraphBranchBound(int& how_many, int& trials_count);
 
-  void setOffGraphBFS(int& how_many, int& trials_count);
+  void setOffGraphBranchBoundExtendedList(int& how_many, int& trials_count);
 };
 
 #endif  // LAB03_14_03_PRJ_INC_SEDZIA_H_
