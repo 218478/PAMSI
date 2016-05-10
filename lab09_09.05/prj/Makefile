@@ -1,4 +1,4 @@
-CXXFLAGS = -Iinc -Wall -pedantic -g -std=c++11 -pipe
+CXXFLAGS = -Iinc -Wall -pedantic -g -std=c++11 -Wno-sign-compare
 CC = g++
 
 SOURCES = src/main.cpp src/Stoper.cpp src/Sedzia.cpp src/Tablica.cpp \

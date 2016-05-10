@@ -31,7 +31,7 @@ private:
    *                      tablica.
    */
 
-  void setOffGraphBranchBound(int& how_many, int& trials_count);
+  void setOffGraphBranchBound(int& how_many, int& trials_count );
 
   void setOffGraphBranchBoundExtendedList(int& how_many, int& trials_count);
 };

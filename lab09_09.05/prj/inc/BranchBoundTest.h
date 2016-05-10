@@ -10,15 +10,17 @@
 class BranchBoundTest : public IRunnable{
 private:
 	Graph graph;
+	int start, stop;
 
 public:
-	BranchBoundTest(int how_many) : graph(how_many) {}
+	BranchBoundTest(int how_many, int x, int y) :
+	graph(how_many), start(x), stop(y) {}
 
 	virtual void prepare(int how_many) {
 		// do nothing because prepare was done in a constructor
 	}
 	virtual void run() {
-		graph.branchBound();
+		graph.branchBound(start, stop);
 		
 	}
 };

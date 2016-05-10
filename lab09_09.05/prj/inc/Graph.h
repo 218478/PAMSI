@@ -7,7 +7,8 @@
 
 #include <vector>
 #include <iostream>
-#include <cstdlib>
+#include <cstdlib>  // for random generatorion
+#include <cmath>  // for random generatorion
 
 /*! \brief Graf oparty o liste sasiedztwa.
  *
@@ -41,15 +42,15 @@ private:
     srand(time(0));
     int temp1;  // to shorten the code, to connect vertices randomly
     for (int i = 0; i < how_many/2; i++) {
-      for (int j = 0; j < 1; j++) {
+      for (int j = 0; j < static_cast<int>(log(how_many)); j++) {
         temp1 = static_cast<int>(rand()) % how_many;
-        addEdge(i, temp1);
+        addEdge(i, temp1, static_cast<int>(rand())%10);
       }
     }
 
-    for (int i = 0; i < how_many; i++) {
+    for (int i = 0; i < how_many; i++)
       graph[i].remove(0);
-    }
+
   }
 
   virtual void addVertex(int x) {
@@ -176,23 +177,38 @@ private:
   /*! \brief Algorytm branch & bound bez extended list.
    *
    * \details Algoyrtm domniemywa, ze graf jest skonczony oraz wszystkie
-   *              wierzcholki sa w jakis sposob ze soba polaczone.
+   *              wierzcholki sa w jakis sposob ze soba polaczone. Znajduje
+   *              najkrotsze polaczenie pomiedzy x i y.
+   *
+   * \param[in] x Poczatkowy wierczholek.
+   * \param[in] y Koncowy wierzcholek, meta.
    */
-  Lista<int> branchBound() {
-    Lista<int> temp = getNeighbours(1);
+  Lista<int> branchBound(int x, int y) {
+    Lista<int> temp = getNeighbours(x);
     print();
     std::cout << std::endl;
     temp.print();
 
-    
+    bool found_a_way = false;
+
+    while (!found_a_way) {
+      if (temp.search(y) > 0) {
+        found_a_way = true;
+      }
+    }
+
   }
 
   /*! \brief Algorytm branch & bound wykorzystujacy extended list.
      *
      * \details Algoyrtm domniemywa, ze graf jest skonczony oraz wszystkie
-     *              wierzcholki sa w jakis sposob ze soba polaczone.
+     *              wierzcholki sa w jakis sposob ze soba polaczone. Znajduje
+   *              najkrotsze polaczenie pomiedzy x i y.
+   *
+   * \param[in] x Poczatkowy wierczholek.
+   * \param[in] y Koncowy wierzcholek, meta.
      */
-  Lista<int> branchBoundExtendedList() {
+  Lista<int> branchBoundExtendedList(int x, int y) {
 
   }
 };
