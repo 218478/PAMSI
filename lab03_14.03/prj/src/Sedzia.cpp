@@ -18,10 +18,9 @@ void Sedzia::setOffList(int how_many, int trials_count) {
   // Stoper timer;
 
   Lista<int>  liscik;
-
-  liscik.push_back(1);
-  liscik.push_back(3);
-  liscik.push_back(4);
+try{
+  for (int i = 0; i < 10; i++)
+    liscik.push_back(i);
   liscik.add(2,1);
   liscik.print();
 
@@ -33,6 +32,10 @@ void Sedzia::setOffList(int how_many, int trials_count) {
   liscik.print();
 
   std::cout << "szukam trojeczki. Rezultat: " << liscik.search(3) << std::endl;
+}
+catch (const char *msg) {
+  std::cout << msg << std::endl;
+}
 
   // std::ostringstream ss;
   // ss << "Lista_" << how_many;

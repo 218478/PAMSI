@@ -166,8 +166,12 @@ class Array: ITablica<Type>  {
     if (i < current_size) {
       index++;
       return elements[i]; }
-    else
-      throw("Index out of bounds");
+    else {
+      if ( i == current_size)
+        increaseSize();
+      else
+        throw("Index out of bounds");
+    }
   }
 
   /*! \brief Sortowanie babelkowe.

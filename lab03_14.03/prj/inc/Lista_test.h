@@ -10,7 +10,17 @@
 
 class Lista_test: IRunnable {
  private:
-  Lista<std::string> list;
+  /*! \brief Testowany element.
+   *
+   * \details Po prostu to co testujemy.
+   */
+  Lista<int> list;
+
+  /*! \brief Szukany element.
+   *
+   * \details Losowany w metodzie prepare();
+   */
+   int random_element;
 
  public:
 /*! \brief Szuka elementu.
