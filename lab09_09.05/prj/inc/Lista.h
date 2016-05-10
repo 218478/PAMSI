@@ -143,6 +143,9 @@
   /*! \brief Usuwa element z dowolnego miejsca listy.
    *
    * \details Usuwa element z miejsca wskazywanego przez zmienna index.
+   *              Cos jest nie tak z ta funkcja bo nie usuwa dobrze i nie moge
+   *              dojsc dlaczego tak jest. Jak chcesz jej uzyc to  lepiej
+   *              napisz wlasna :D.
    *
    * \return Zwraca slowo, ktore znajdowalo sie na tym indeksie.
    */
@@ -173,6 +176,19 @@
       throw("Index out of bounds");
 
     return word;
+  }
+
+  /*! \brief Usuwa wszystkie elementy listy.
+   *
+   * \details Nie korzysta z funkcji remove, wiec dziala super.
+   */
+  void clear() {
+    Node *conductor = head;
+    head = nullptr;
+    while(conductor != nullptr) {
+      delete conductor;
+      conductor = conductor->next;
+    }
   }
 
   /*! \brief Sprawdza czy lista jest pusta.
@@ -231,6 +247,37 @@
         return temp;
       }
 
+  Lista<Type> getMinWeight() {
+    if (isEmpty())
+      throw ("Empty list");
+
+    Lista<Type> temp;
+    Node *conductor = head;
+    int min_weight = conductor->weight;
+    int index = 0;
+
+    temp.push_back(index, min_weight);
+
+    while (conductor != nullptr) {
+      conductor = conductor->next;
+      index++;
+      if (conductor->weight < min_weight) {
+        temp.clear();
+        min_weight = conductor->weight;
+        temp.push_back(index, min_weight);
+      }
+
+      if (conductor->weight == min_weight)
+        temp.push_back(index, min_weight);
+    }
+
+    return temp;
+  }
+
+  void push_back(Type item, int weight = 1) {
+    add(item, size() - 1, weight);
+  }
+
   /*! \brief Zwraca rozmiar listy.
    *
    * \details Zwraca ilosc elementow w liscie.
@@ -254,12 +301,19 @@
    *          Na gorze znajduje sie poczatek listy.
    */
    void print() {
+    if (isEmpty())
+      std::cerr << "Empty list" << std::endl;
+
     Node *conductor = head;
     while (conductor != 0) {
       std::cout << conductor->element << std::endl;
     conductor = conductor->next;  // jump to the next element
   }
 }
+
+  void operator << (Lista<Type>) {
+    print();
+  }
 
   /*! \brief Wyszukuje podane slowo i zwraca jego indeks
   *

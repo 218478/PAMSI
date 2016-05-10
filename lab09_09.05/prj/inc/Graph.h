@@ -184,19 +184,34 @@ private:
    * \param[in] y Koncowy wierzcholek, meta.
    */
   Lista<int> branchBound(int x, int y) {
-    Lista<int> temp = getNeighbours(x);
-    print();
-    std::cout << std::endl;
-    temp.print();
+    try {
+      Lista<int> temp = getNeighbours(x);
+      print();
+      std::cout << std::endl;
+      temp.print();
 
-    bool found_a_way = false;
+      std::cout << "Clearing..." << std::endl;
+      temp.clear();
 
-    while (!found_a_way) {
-      if (temp.search(y) > 0) {
-        found_a_way = true;
+      temp.print();
+
+      bool found_a_way = false;
+
+      static int i = 0;  // not to get into infinite loop
+
+      while (!found_a_way && i++ != 1000) {
+        if (temp.search(y) > 0) {
+          found_a_way = true;
+        }
+
+        std::cout << "Minimalna waga: " << std::endl;
+        temp = temp.getMinWeight();
       }
-    }
 
+      return temp; }
+  catch( const char *msg) {
+      std::cerr << msg << std::endl;
+    }
   }
 
   /*! \brief Algorytm branch & bound wykorzystujacy extended list.
@@ -209,7 +224,10 @@ private:
    * \param[in] y Koncowy wierzcholek, meta.
      */
   Lista<int> branchBoundExtendedList(int x, int y) {
+    Lista<int> temp = getNeighbours(x);
 
+
+    return temp;
   }
 };
 
