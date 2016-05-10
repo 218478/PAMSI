@@ -1,10 +1,11 @@
 // Copyright 2016 Kamil Kuczaj
 #include "Sedzia.h"
 #include "Stoper.h"
-#include "Tablica_test.h"
 #include "Lista_test.h"
 #include "Stos_test.h"
 #include "Kolejka_test.h"
+
+#include "Lista.h"
 
 #include <unistd.h>  // to make Linux wait because searching is too fast
 
@@ -12,43 +13,40 @@
 #include <string>    // to deal with strings
 #include <iostream>  // to display messages
 
-
-void Sedzia::setOffTable(int how_many) {
-  Stoper timer;
-  Tablica_test tablica_testowa;
-
-  std::ostringstream ss;
-  ss << "Tablica_" << how_many;
-
-  tablica_testowa.prepare(how_many);
-  timer.start();
-  tablica_testowa.run();
-  timer.stop();
-  timer.dumpToFile(ss.str());
-}
-
-
 void Sedzia::setOffList(int how_many, int trials_count) {
-  Lista_test lista_testowa;
-  Stoper timer;
+  // Lista_test lista_testowa;
+  // Stoper timer;
 
-  std::ostringstream ss;
-  ss << "Lista_" << how_many;
-  timer.start();
-  lista_testowa.prepare(how_many);
-  timer.stop();
-  std::cout << "Preparation of " << how_many << "-size list took: "
-            << timer.getElapsedTime() << " microseconds" << std::endl;
+  Lista<int>  liscik;
 
-  for (int i = 0; i < trials_count; i++) {
-    timer.start();
-    lista_testowa.run();
-    timer.stop();
-    std::cout << "Search took: " << timer.getElapsedTime()
-              << " microseconds. Saving to file." << std::endl;
-    timer.dumpToFile(ss.str());
-    sleep(1);  // sleep for a second to get a new random seed from the clock
-  }
+  liscik.push_back(1);
+  liscik.push_back(3);
+  liscik.push_back(4);
+  liscik.add(2,1);
+  liscik.print();
+
+  std::cout << "szukam trojeczki. Rezultat: " << liscik.search(3) << std::endl;
+
+  std::cout << "\nRemoving..." << std::endl;
+  liscik.remove(0);
+  liscik.remove(1);
+  liscik.print();
+
+  std::cout << "szukam trojeczki. Rezultat: " << liscik.search(3) << std::endl;
+
+  // std::ostringstream ss;
+  // ss << "Lista_" << how_many;
+  // timer.start();
+  // lista_testowa.prepare(how_many);
+  // timer.stop();
+
+  // for (int i = 0; i < trials_count; i++) {
+  //   timer.start();
+  //   lista_testowa.run();
+  //   timer.stop();
+  //   timer.dumpToFile(ss.str());
+  //   sleep(1);  // sleep for a second to get a new random seed from the clock
+  // }
 }
 
 void Sedzia::setOffStack(int how_many) {

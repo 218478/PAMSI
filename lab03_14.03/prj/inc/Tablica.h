@@ -20,13 +20,14 @@
  * \details Implementuje metody interfejsu ITablica. Zajmuje sie dynamiczna
  *          alokacja pamieci.
  */
-class Tablica: ITablica  {
+template <class Type>
+class Array: ITablica<Type>  {
  private:
   /*! \brief Wskaznik do poczatku tablicy dynamicznej.
    *
    * \details Wskazuje na adres w pamieci sterty. Pole prywatne.
    */
-  int *elements;
+  Type *elements;
 
   /*! \brief Okresla aktualny rozmiar stosu.
    *
@@ -69,8 +70,8 @@ class Tablica: ITablica  {
   virtual void increaseSize() {
     int new_size = current_size * 2;
     try {
-      int *new_elements = new int[new_size];
-      for (int i=0; i < current_size; i++)
+      Type *new_elements = new Type[new_size];
+      for (int i = 0; i < current_size; i++)
         new_elements[i] = elements[i];
 
       delete [] elements;
@@ -83,21 +84,26 @@ class Tablica: ITablica  {
     }
   }
 
+
   /*! \brief Konstruktor parametryczny.
    *
    * \details Umozliwia okreslenie poczatkowego rozmiaru tablicy. W przypadku
    *          braku okreslenia tego rozmiaru przyjmuje domyslna wartosc rowna 10.
+   *          Explicit oznacza tyle, ze nie moge stworzyc tablicy w ten sposob:
+   *          Tablica t = 10;
    *
    * \param x Okresla poczatkowa wielkosc przydzielonej pamieci. Domyslna wartosc
    *          w przypadku braku podania to 10.
    */
-  Tablica(int x = 10) { elements = new int[x]; current_size = x; index = 0; }
+  explicit Array(int x = 10) {
+    elements = new Type[x]; current_size = x; index = 0;
+  }
 
   /*! \brief Destruktor.
    *
    * \details Usuwa pamiec przypisana komorce, na ktora wskazuje pole *elements.
    */
-  ~Tablica() { delete [] elements; }
+  ~Array() { delete [] elements; }
 
   /*! \brief Zwraca aktualny rozmiar tablicy dynamicznej.
    *
@@ -106,7 +112,19 @@ class Tablica: ITablica  {
    * \return Zwraca wartosc typu int. Reprezentuje ilosc danych w tablilcy.
    */
   virtual int getSize() { return current_size; }
-  
+
+  /*! \brief Zmniejsza zmienna przechowujaca rozmiar tablicy.
+   *
+   * \details Zmniejsza rozmiar, zmienna current_size o n. Stworzenie
+   *          tej funkcji zostalo wymuszone przez implementacje listy.
+   *          Uzywanie funkcji remove(int n) z klasy Lista powodowalo to,
+   *          ze jej rozmiar faktycznie malal o jeden element, ale klasa
+   *          Tablica o tym nie wiedziala.
+   *
+   * \param[in] n O ile zmniejszyc zmienna current_size.
+   */
+  void decreaseSize(int n) { current_size -= n; }
+
   /*! \brief Zwraca wartosc desired_size.
    *
    * \details Zwraca rozmiar, ktory ma osiagnac tablica. Moze byc wieksza niz
@@ -128,7 +146,7 @@ class Tablica: ITablica  {
    *
    * \return Wartosc komorki tablicy, wskazywana przez i-ty indeks.
    */
-  virtual int operator[] (int i) const {
+  virtual Type operator[] (int i) const {
     if (i < current_size)
       return elements[i];
     else
@@ -143,12 +161,32 @@ class Tablica: ITablica  {
    *
    * \return Referencja do i-tego elementu.
    */
-  virtual int& operator[] (int i) {
+  virtual Type& operator[] (int i) {
+    std::cout << "i: " << i << "\tcurrent_size: " << current_size << std::endl;
     if (i < current_size) {
       index++;
       return elements[i]; }
     else
       throw("Index out of bounds");
+  }
+
+  /*! \brief Sortowanie babelkowe.
+   *
+   * \details Sortuje elementy metoda babelkowa. Zlozonosc obliczeniowa n^2.
+   */
+  void bubbleSort() {
+    Type temp;
+    int n = getSize();
+
+    for (int i = 1; i < n; i++) {
+      for (int j = 0; j < (n-i); j++) {
+        if (elements[j+1] < elements[j]) {
+          temp = elements[j];
+          elements[j] = elements[j+1];
+          elements[j+1] = temp;
+        }
+      }
+    }
   }
 };
 

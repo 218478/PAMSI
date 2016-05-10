@@ -22,7 +22,7 @@ class Stos: IStos {
    * \details Implementacja listy jako pole stosu jest wymogiem prowadzacego.
    *          Dodatkowo bardzo ulatiwa implementacje.
    */
-  Lista stack;
+  Lista<std::string> stack;
 
  public:
   /*! \brief Bezparametryczny konstruktor.

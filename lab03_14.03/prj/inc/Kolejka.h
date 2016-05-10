@@ -20,7 +20,7 @@ class Kolejka: IKolejka {
    *
    * \details Symuluje kolejke, poniewac jest to bardzo prosta implementacja.
    */
-  Lista queue;
+  Lista<std::string> queue;
 
  public:
   /*! \brief Dodaje element na poczatek.

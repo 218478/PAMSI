@@ -36,10 +36,6 @@
 
 
 int main(int argc, char **argv) {
-  // information for the user
-  std::cout << "!!! INFO: Program starts indexing at 0, not at 1 !!!"
-            << std::endl << std::endl;
-
   Sedzia referee;
   int trials_count = 50;
 
@@ -47,14 +43,9 @@ int main(int argc, char **argv) {
   int data_sizes[5]= {10, 1000, 100000, 1000000, 1000000000};
 
   // running the list
-  for (int i = 0; i < 3; i++)
+  for (int i = 0; i < 1; i++)
     referee.setOffList(data_sizes[i], trials_count);
 
-  // running the array
-  for (int i = 0; i < 5; i++) {
-    for (int j = 0; j < trials_count; j++)
-      referee.setOffTable(data_sizes[i]);
-  }
 
   // // printing stack
   // referee.setOffStack(data_sizes[0]);

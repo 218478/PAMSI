@@ -10,7 +10,7 @@
 
 class Lista_test: IRunnable {
  private:
-  Lista list;
+  Lista<std::string> list;
 
  public:
 /*! \brief Szuka elementu.
