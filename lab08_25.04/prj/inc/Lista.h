@@ -140,6 +140,14 @@
   }
 }
 
+  void clear() {
+    Node* conductor = head;
+    while (conductor != nullptr) {
+      delete conductor;
+      conductor = conductor->next;
+    }
+  }
+
   /*! \brief Usuwa element z dowolnego miejsca listy.
    *
    * \details Usuwa element z miejsca wskazywanego przez zmienna index.

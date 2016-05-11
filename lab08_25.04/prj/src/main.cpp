@@ -36,17 +36,17 @@
 
 int main(int argc, char **argv) {
   Sedzia referee;
-  int trials_count = 50;
+  int trials_count = 1;
 
   // dziesiec, tysiac, sto tysiecy, milion, milard
   int data_sizes[5]= {10, 1000, 100000, 1000000, 1000000000};
 
 
   // running the BFS
-  for (int i = 0; i < 5; i++)
+  for (int i = 0; i < 1; i++)
       referee.setOffGraphBFS(data_sizes[i], trials_count);
 
-  // running the DFS
-  for (int i = 0; i < 5; i++)
-      referee.setOffGraphDFS(data_sizes[i], trials_count);
+  // // running the DFS
+  // for (int i = 0; i < 1; i++)
+  //     referee.setOffGraphDFS(data_sizes[i], trials_count);
 }

@@ -1,17 +1,15 @@
-CXXFLAGS = -Iinc -Wall -pedantic -g -std=c++11 -pipe
+CXXFLAGS = -Iinc -Wall -pedantic -g -std=c++11 -Wno-sign-compare
 CC = g++
 
-SOURCES = src/main.cpp src/Stoper.cpp src/Sedzia.cpp src/Tablica.cpp \
-	src/Stos.cpp src/Kolejka.cpp src/Lista.cpp
+SOURCES = src/main.cpp src/Stoper.cpp src/Sedzia.cpp \
+	src/Stos.cpp src/Kolejka.cpp src/Lista.cpp src/Graph.cpp \
+	src/GraphBFS.cpp src/GraphDFS.cpp
 
-	# src/Graph.cpp \
-	#src/GraphBFS.cpp src/GraphDFS.cpp
-HEADERS = inc/Stoper.h inc/Sedzia.h inc/Tablica.h inc/Stos.h inc/Kolejka.h \
-	inc/ILista.h inc/Lista.h inc/IRunnable.h inc/IStoper.h inc/ITablica.h \
-	inc/IStos.h inc/IKolejka.h
+HEADERS = inc/Stoper.h inc/Sedzia.h inc/Stos.h inc/Kolejka.h \
+	inc/ILista.h inc/Lista.h inc/IRunnable.h inc/IStoper.h \
+	inc/IStos.h inc/IKolejka.h inc/Graph.h inc/IGraph.h \
+	inc/GraphBFS.h inc/GraphDFS.h
 	
-	 #inc/IGraph.h inc/Graph.h inc/GraphBFS.h \
-	#inc/GraphDFS.h
 OBJECTS = $(subst src/,obj/,$(subst .cpp,.o,$(SOURCES)))
 EXECUTABLE = program
 

@@ -11,7 +11,7 @@
 #include <iostream>  // to display messages
 
 void Sedzia::setOffGraphDFS(int& how_many, int& trials_count) {
-	GraphDFS dfs;
+	GraphDFS dfs(how_many);
 	dfs.prepare(how_many);
 	std::ostringstream temp_buffer;
 	temp_buffer << "DFS_" << how_many;
@@ -24,7 +24,7 @@ void Sedzia::setOffGraphDFS(int& how_many, int& trials_count) {
 }
 
 void Sedzia::setOffGraphBFS(int& how_many, int& trials_count) {
-	GraphBFS bfs;
+	GraphBFS bfs(how_many);
 	bfs.prepare(how_many);
 	std::ostringstream temp_buffer;
 	temp_buffer << "BFS_" << how_many;

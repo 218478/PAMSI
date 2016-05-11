@@ -7,6 +7,8 @@
 
 #include <vector>
 #include <iostream>
+#include <cstdlib>  // for random generatorion
+#include <cmath>  // for random generatorion
 
 /*! \brief Graf oparty o liste sasiedztwa.
  *
@@ -28,7 +30,28 @@ private:
    std::vector< Lista<int> > graph;
 
  public:
-  // Graph(int how_many) { graph.reserve(how_many); }
+  Graph(int how_many) {
+    // creating how_many vertices and connecting them
+    addVertex(0);
+    for (int i = 1; i < how_many; i++) {
+      addVertex(i);
+      addEdge(i,i-1);  // weight = 1
+    }
+    addEdge(0,how_many-1);
+
+    srand(time(0));
+    int temp1;  // to shorten the code, to connect vertices randomly
+    for (int i = 0; i < how_many/2; i++) {
+      for (int j = 0; j < static_cast<int>(log(how_many)); j++) {
+        temp1 = static_cast<int>(rand()) % how_many;
+        addEdge(i, temp1, static_cast<int>(rand())%10);
+      }
+    }
+
+    for (int i = 0; i < how_many; i++)
+      graph[i].remove(0);
+
+  }
 
   virtual void addVertex(int x) {
     if (graph.size() <= x) {
@@ -75,22 +98,27 @@ private:
       std::cerr << "No such vertex no " << x << std::endl;
   }
 
+  // cos jest tutaj zle, narazie dziala, ale trzeba to zmienic bo nie chce mi
+  // usuwac poczatkowych krawedzi w liscie
   virtual void removeEdge(int x, int y) {
     if (x < graph.size() && y < graph.size()) {
-      if (graph[x].search(y) == y) {
+      if (graph[x].search(y) > 0 || graph[y].search(x) > 0) {
         graph[x].remove(y);
         graph[y].remove(x);
       }
-      else
+      else {
+                std::cout << "search dla poz: "  << x << " od " << y
+                      << " wyszedl: " << graph[x].search(y) << std:: endl;
         std::cerr << "Vertex " << x << " does not border with vertex "
                       << y << std::endl;
+      }
     }
     else
       std::cerr << "No such vertex no " << x << std::endl;
   }
 
   virtual Lista<int> getNeighbours(int x) {
-    if (graph.size() <= x) {
+    if (graph.size() > x) {
       return graph[x];
     }
     else {
@@ -99,8 +127,8 @@ private:
     }
   }
 
-/*! \brief For debug.
-*/
+ /*! \brief For debug.
+  */
   void print() {
     for (int i = 0; i < graph.size(); i++) {
       std::cout << "wierzcholek: " << i << "\t";
@@ -133,16 +161,17 @@ private:
   Lista<int> operator[] (int n) {
     return graph[n];
   }
-
+  /*! \brief Sprawdza czy wierzcholki polaczone sa krawedzia.
+  */
   bool isEdge(int u, int v) {
     if (graph.size() > u) {
       if (graph[u].search(v) > 0)
         return true;
     }
-  else {
-    std::cerr << "No vertex no: " << u << std::endl;
-    return false;
-  }
+    else {
+      std::cerr << "No vertex no: " << u << std::endl;
+      return false;
+    }
   }
 };
 
