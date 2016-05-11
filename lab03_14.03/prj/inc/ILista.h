@@ -2,8 +2,6 @@
 #ifndef LAB03_14_03_PRJ_INC_ILISTA_H_
 #define LAB03_14_03_PRJ_INC_ILISTA_H_
 
-#include <string>   // to insert words
-
 /*! \file ILista.h
  *
  * \brief Plik zawiera interfejs dla pojemnika Lista oraz dla klasy Wezel.

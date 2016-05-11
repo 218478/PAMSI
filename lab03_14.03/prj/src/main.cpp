@@ -43,7 +43,7 @@ int main(int argc, char **argv) {
   int data_sizes[5]= {20, 1000, 100000, 1000000, 1000000000};
 
   // running the list
-  for (int i = 0; i < 1; i++)
+  for (int i = 0; i < 5; i++)
     referee.setOffList(data_sizes[i], trials_count);
 
 

@@ -14,42 +14,45 @@
 #include <iostream>  // to display messages
 
 void Sedzia::setOffList(int how_many, int trials_count) {
-  // Lista_test lista_testowa;
-  // Stoper timer;
+  Lista_test lista_testowa;
+  Stoper timer;
 
-  Lista<int>  liscik;
-try{
-  for (int i = 0; i < 10; i++)
-    liscik.push_back(i);
-  liscik.add(2,1);
-  liscik.print();
+//   Lista<int>  liscik;
+// try{
+//   for (int i = 0; i < 10; i++)
+//     liscik.add(i,i);
+//   std::cout << std::endl;
+//   liscik.print();
+//   std::cout << std::endl;
+//   liscik.add(2,1);
+//   liscik.print();
 
-  std::cout << "szukam trojeczki. Rezultat: " << liscik.search(3) << std::endl;
+//   std::cout << "szukam trojeczki. Rezultat: " << liscik.search(3) << std::endl;
 
-  std::cout << "\nRemoving..." << std::endl;
-  liscik.remove(0);
-  liscik.remove(1);
-  liscik.print();
+//   std::cout << "\nRemoving..." << std::endl;
+//   liscik.remove(0);
+//   liscik.remove(1);
+//   liscik.print();
 
-  std::cout << "szukam trojeczki. Rezultat: " << liscik.search(3) << std::endl;
-}
-catch (const char *msg) {
-  std::cout << msg << std::endl;
-}
+//   std::cout << "szukam trojeczki. Rezultat: " << liscik.search(3) << std::endl;
+// }
+// catch (const char *msg) {
+//   std::cout << msg << std::endl;
+// }
 
-  // std::ostringstream ss;
-  // ss << "Lista_" << how_many;
-  // timer.start();
-  // lista_testowa.prepare(how_many);
-  // timer.stop();
+  std::ostringstream ss;
+  ss << "Lista_" << how_many;
+  timer.start();
+  lista_testowa.prepare(how_many);
+  timer.stop();
 
-  // for (int i = 0; i < trials_count; i++) {
-  //   timer.start();
-  //   lista_testowa.run();
-  //   timer.stop();
-  //   timer.dumpToFile(ss.str());
-  //   sleep(1);  // sleep for a second to get a new random seed from the clock
-  // }
+  for (int i = 0; i < trials_count; i++) {
+    timer.start();
+    lista_testowa.run();
+    timer.stop();
+    timer.dumpToFile(ss.str());
+    // sleep(1);  // sleep for a second to get a new random seed from the clock
+  }
 }
 
 void Sedzia::setOffStack(int how_many) {

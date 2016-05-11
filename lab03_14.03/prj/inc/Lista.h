@@ -3,12 +3,14 @@
 #define LAB03_14_03_PRJ_INC_LISTA_H_
 
 #include "ILista.h"
-#include "Tablica.h"
+
 
 #include <cstddef>   // to use the NULL macro
 #include <string>    // to deal with words saving and searching
 #include <iostream>  // to print the contents of the list
 #include <fstream>   // to deal with loading words from the dictionary
+#include <algorithm>    // std::iter_swap
+#include <vector>   // to simulate dynamic array because mine sucks
 
 /*! \file Lista.h
  *
@@ -29,54 +31,17 @@
 template <class Type>
 class Lista: ILista<Type> {
  private:
-  /*! \brief Imlementacja wezlow dla listy.
-   *
-   * \details Potrzebne do implementacji interfejsu listy. Zawiera pole
-   *          typu string.
+   /*! \brief Zawartosc listy
    */
-  struct Node {
-    /*! \brief Element w wezle.
-     *
-     * \details Co jest w wezle. Ma przechowywac pojedyncze slowo.
-     */
-    Type element;
+  std::vector<Type> list;
 
-    /*! \brief Wskaznik na nastepny wezel.
-     *
-     * \details Wskazuje na nastepny wezel.
-     */
-    Node* next;
-  };
-
-  /*! \brief Zawartosc listy
-   */
-  Array<Node> list;
-
-  /*! \brief Glowa listy.
+  /*! \brief Wskazuje na ineks nastepny wolny wezel.
    *
-   * \details Wskazuje zawsze na pierwszy element listy.
-   */
-  Node *head;
-
-  /*! \brief Wskazuje nastepny wolny wezel.
-   *
-   * \details Wskazuje na wezel, do ktorego moga zostac zaladowane dane.
+   * \details Wskazuje na indeks wezel, do ktorego moga zostac zaladowane dane.
    */
   int next_free;
 
  public:
-  /*! \brief Konstruktor.
-   *
-   * \details Tworzy poczatek listy. Alokuje dla niego pamiec.
-   */
-  Lista()  { head = &list[0]; next_free = 0;}
-
-  /*! \brief Destruktor.
-   *
-   * \details Usuwa cala pamiec listy "skaczac" po jej elementach.
-   */
-  // ~Lista() { list.~Array(); }
-
   /*! \brief Wstawia element w dowolnym miejscu listy.
    *
    * \details Wstawia element typu Type w miejsce wskazywane przez zmienna
@@ -88,43 +53,17 @@ class Lista: ILista<Type> {
    * \param[in] index Miejsce, w ktore ma byc wstawiony element item.
    */
   virtual void add(Type item, int n) {
-    std::cout << "Adres glowy: " << head << std::endl;
-
-    if (n > next_free)  // if we want to add an element beyond list
+    int sz = list.size();
+    if (n > sz)
       throw("Index out of bounds");
 
-    if (isEmpty()) {  // if the list is empty
-      list[0].element = item;
-      list[0].next = 0;
-      head = &list[0];
-
-    } else {  // and when it's not empty
-      if (n == 0) {  // when we adding at the beginning
-        list[next_free].next = head;
-        head = &list[next_free];
-      } else {
-        Node *conductor = head;
-
-        if (n < next_free) {  // when inserting
-          for (int i = 0; i < (n-1); i++)
-            conductor = conductor->next;
-
-          list[next_free].next = conductor->next;
-          list[next_free].element = item;
-          conductor->next = &list[next_free];
-        }
-
-        if (n == next_free) {  // when adding at the end
-          for (int i = 0; i < (n-1); i++)
-            conductor = conductor->next;
-
-          list[next_free].next = 0;
-          list[next_free].element = item;
-          conductor->next = &list[next_free];
-        }
-      }
+    if (sz == 0 || sz == n) {
+      list.push_back(item);
+      return;
     }
-    next_free++;
+
+    if (n < sz) 
+      list.emplace(list.begin()+n, item);
   }
 
   /*! \brief Dodaje element na samym koncu listy.
@@ -133,7 +72,7 @@ class Lista: ILista<Type> {
    *              stosuje sie w bibliotece STL.
    */
   virtual void push_back(Type item) {
-    add(item, size());
+    add(item, list.size());
   }
 
   /*! \brief Usuwa element z dowolnego miejsca listy.
@@ -144,30 +83,19 @@ class Lista: ILista<Type> {
    */
   virtual Type remove(int n) {
     Type word;
+    int size = list.size();
 
-    if (size() == 0)
+    if (size == 0)
       throw("List is empty");
-    if (n < size()) {
-      Node *conductor = head;
+    if (n < size) {
+      word = list[n];
+      for (int i = n; i < size; i++)
+        list[i] = list[i+1];
+    } else
+      throw("Index out of bounds");
 
-      if (n == 0) {  // if we want to remove at the beginning
-        head = conductor->next;
-        word = conductor->element;
-        list[0] = list[next_free-1];
-      } else {
-        // repeating this operation (n-1)-times
-        for (int i = 0; i < n-1; i++)
-          conductor = conductor->next;
-        Node *after_cond = conductor->next;  // point to the next element
-        // which is to be deleted
-        conductor->next = after_cond->next;
-        word = after_cond->element;
-        after_cond->element = list[next_free-1].element; }
-
-      // list.decreaseSize(1);
-    } else {
-      throw("Index out of bounds"); }
-
+    list.erase(list.end()-1);
+    next_free--;
     return word;
   }
 
@@ -180,7 +108,7 @@ class Lista: ILista<Type> {
    * \retval false Lista nie jest pusta.
    */
   virtual bool isEmpty() {
-    if (size() > 0)
+    if (list.size() > 0)
       return false;
     else
       return true; }
@@ -196,16 +124,13 @@ class Lista: ILista<Type> {
    */
   virtual Type get(int n) {
     Type temp;
+    int size = list.size();
 
-    if (n < size()) {
-      Node *conductor = head;
-      if (conductor != 0) {
-        // repeating this operation n-times
-        for (int i = 0; i < n; i++)
-          conductor = conductor->next;
-        temp = conductor->element;
-      } else {
-        throw("List is empty"); }
+    if (size == 0)
+      throw("Empty list");
+
+    if (n < size) {
+          temp = list[n];
     } else {
       throw("Index out of bounds"); }
 
@@ -218,7 +143,7 @@ class Lista: ILista<Type> {
    *
    * \return Rozmiar listy.
    */
-  virtual int size() { return next_free; }
+  virtual int size() { return list.size(); }
 
   /*! \brief Wypisuje zawartosc listy.
    *
@@ -226,11 +151,8 @@ class Lista: ILista<Type> {
    *          Na gorze znajduje sie poczatek listy.
    */
   void print() {
-    Node *conductor = head;
-    while (conductor != 0) {
-      std::cout << conductor->element << std::endl;
-      conductor = conductor->next;  // jump to the next element
-    }
+    for (Type& e: list)
+      std::cout << e << std::endl;
   }
 
   /*! \brief Wyszukuje podane slowo i zwraca jego indeks
@@ -246,17 +168,14 @@ class Lista: ILista<Type> {
   * \return Indeks, na ktorym znajduje sie szukane slowo.
   */
   int search(Type searched_word) {
-    int searched_index = 0;
-    Node *conductor = head;
+    int index;
 
     if (isEmpty())
       return -1;  // list is empty
 
-    while (conductor != 0) {
-      if (conductor->element == searched_word)
-        return searched_index;
-      searched_index++;
-      conductor = conductor->next;
+    for (index = 0; index < size(); index++) {
+      if (list[index] == searched_word)
+        return index;
     }
 
     return -2;   // we didn't find anything

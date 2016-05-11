@@ -111,7 +111,7 @@ class Array: ITablica<Type>  {
    *
    * \return Zwraca wartosc typu int. Reprezentuje ilosc danych w tablilcy.
    */
-  virtual int getSize() { return current_size; }
+  virtual int size() { return current_size; }
 
   /*! \brief Zmniejsza zmienna przechowujaca rozmiar tablicy.
    *
@@ -130,7 +130,7 @@ class Array: ITablica<Type>  {
    * \details Zwraca rozmiar, ktory ma osiagnac tablica. Moze byc wieksza niz
    *          desired_size.
    */
-  virtual int getDesiredSize() const { return desired_size; }
+  virtual int capacity() const { return desired_size; }
 
   /*! \brief Ustawia wartosc desired_size.
    *
@@ -174,13 +174,22 @@ class Array: ITablica<Type>  {
     }
   }
 
+  /*! \brief Wyswietla cala tablice.
+   *
+   * \details Kazdy element w nowej linii na standardowym wyjsciu.
+   */
+   void print() {
+      for (int i = 0; i < size(); i++)
+        std::cout << elements[i] << std::endl;
+   }
+
   /*! \brief Sortowanie babelkowe.
    *
    * \details Sortuje elementy metoda babelkowa. Zlozonosc obliczeniowa n^2.
    */
   void bubbleSort() {
     Type temp;
-    int n = getSize();
+    int n = size();
 
     for (int i = 1; i < n; i++) {
       for (int j = 0; j < (n-i); j++) {

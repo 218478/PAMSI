@@ -40,7 +40,7 @@ class ITablica {
    *
    * \return  Ilosc zapisanych elementow.
    */
-  virtual int getSize() = 0;
+  virtual int size() = 0;
 
   /*! \brief Zwraca maksymalny, pozadany rozmiar tablicy.
    *
@@ -52,7 +52,7 @@ class ITablica {
    *
    * \return  Maksymalna, satysfakcjonujaca ilosc elementow.
    */
-  virtual int getDesiredSize() const = 0;
+  virtual int capacity() const = 0;
 
   /*! \brief Ustawia pole desired_size na wartosc, jaka potrzebujemy.
    *
