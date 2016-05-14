@@ -4,10 +4,10 @@
 
 #include "IRunnable.h"
 #include "Graph.h"
-#include "Stos.h"
-#include "Lista.h"
 
 #include <cstdlib>  // to create random connection between vertices
+#include <stack>  // to play with a different type of stack
+#include <list>    // to play with a different type of list
 #include <algorithm>  // find() function and min() function
 
 class GraphDFS : IRunnable {
@@ -17,64 +17,55 @@ private:
 	 * \details W celu dalszych informacji na temat tego pola prosze
 	 *              odwolac sie do klasy Graph.
 	 */
-	 Graph graph;
+	Graph graph;
 
-	/*! \brief Przechowuje liste wierzcholkow.
-	 *
-	 * \details Przechowuje liste wierzcholkow badanego grafu.
-	 */
-	 Lista<int> lista;
-
-	 /*! \brief Przechowuje tymczasowe odwiedzone wierzcholki.
-	  *
-	  * \details Warunek DFSu.
-	  */
-	  Stos<int> stos;
-
-	enum VertexState { White, Gray, Black };
-
-	int graph_size;
 public:
- GraphDFS(int how_many) : graph(how_many) {}
+	GraphDFS(int how_many) : graph(how_many) {}
 
-void DFS() {
-    		int *state = new int[graph_size];
-    		for (int i = 0; i < graph_size; i++)
-            state[i] = White;
-      runDFS(0, state);
-      delete [] state;
-}
 
-void runDFS(int u, int state[]) {
-    		state[u] = Gray;
-    		for (int v = 0; v < graph_size; v++)
-          	if (graph.isEdge(u, v) && state[v] == White)
-           	runDFS(v, state);
-    		state[u] = Black;
-}
+	virtual void run() {
+		std::list<int> lista;
+		std::stack<int> stos;
+		graph.print();
+		stos.push(0);  // start
+		lista.push_back(0);  // start
+		static int iter = 0;
+		int temp, temp2;
+		while (!stos.empty() && iter < 1000) {
+			temp = stos.top();
+			stos.pop();
+			for (int i = 0; i < graph[temp].size(); i++) {
+				temp2 = graph[temp].get(i);
+				auto it = std::find(lista.begin(), lista.end(), temp2);
+				if (it == lista.end()) {
+					std::cout << "Lista ";
+					for (auto& e: lista)
+						std::cout << e << " ";
 
-virtual void run() {
-	// graph.print();
-	// stos.push(0);  // start
-	// lista.add(0,1,0);
-	// int temp1 = 0;	int temp2 = 0;
-	// static int i = 0;
-	// while (!stos.empty() && i++ != 1000) {
-	// 	std::cout << std::endl;
-	// 	stos.print();
-	// 	std::cout << std::endl;
-	// 	temp1 = graph[temp1].min(lista);
-	// 	temp2 = lista.search(temp2);
-	// 	if (temp2 < 0) {
-	// 		stos.push(temp1);  // if we havent visited the vertex
-	// 		lista.add(temp1,1,lista.size()-1);
-	// 	}
-	// 	else
-	// 		temp1 = stos.pop();
-	// }
-	// lista.print();
-	DFS();
-	std::cout << "DFS complete." << std::endl;
+					std::cout << std::endl << "stos ";
+					std::stack<int> stos_temp = stos;
+					for (auto e = stos_temp.top(); !stos_temp.empty(); stos_temp.pop(), e = stos_temp.top()) 
+						std::cout << e << " ";
+
+					std::cout << std::endl << std::endl;
+					lista.push_back(temp2);
+					stos.push(temp2);
+				}
+			}
+			std::cout << "Lista ";
+			for (auto& e: lista)
+				std::cout << e << " ";
+
+			std::cout << std::endl << "stos ";
+			std::stack<int> stos_temp = stos;
+			for (auto e = stos_temp.top(); !stos_temp.empty(); stos_temp.pop(), e = stos_temp.top()) 
+				std::cout << e << " ";
+
+			std::cout << std::endl << std::endl;
+			std::cout << "Rozmiar listy: " << lista.size() << std::endl
+			<< "Rozmiar kolejki: " << stos.size() << std::endl;
+		}
+		std::cout << "DFS complete." << std::endl;
 }
 
 virtual void prepare(int how_many) {

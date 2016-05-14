@@ -30,7 +30,6 @@ virtual void run() {
 	std::queue<int> kolejka;
 	kolejka.push(0); lista.push_back(0);  // start
 	int temp, temp2;
-	static int iter = 0;
 	while (!kolejka.empty()) {
 		temp = kolejka.front();
 		kolejka.pop();
@@ -61,9 +60,9 @@ virtual void run() {
 		// for (auto e = kolejka_temp.front(); !kolejka_temp.empty(); kolejka_temp.pop(), e = kolejka_temp.front()) 
 		// 	std::cout << e << " ";
 
-		std::cout << std::endl << std::endl;
-		std::cout << "Rozmiar listy: " << lista.size() << std::endl
-		<< "Rozmiar kolejki: " << kolejka.size() << std::endl;
+		// std::cout << std::endl << std::endl;
+		// std::cout << "Rozmiar listy: " << lista.size() << std::endl
+		// << "Rozmiar kolejki: " << kolejka.size() << std::endl;
 	}
 	std::cout << "BFS complete." << std::endl;
 }
