@@ -41,7 +41,7 @@ private:
 
     srand(time(0));
     int temp1;  // to shorten the code, to connect vertices randomly
-    for (int i = 0; i < how_many/2; i++) {
+    for (int i = 0; i < log(how_many); i++) {
       for (int j = 0; j < static_cast<int>(log(how_many)); j++) {
         temp1 = static_cast<int>(rand()) % how_many;
         addEdge(i, temp1, static_cast<int>(rand())%10);
@@ -56,7 +56,7 @@ private:
   virtual void addVertex(int x) {
     if (graph.size() <= x) {
       if (graph.size() == x) {
-        //std::cout << "Did not found. Adding." << std::endl;
+        // std::cout << "Did not found. Adding." << std::endl;
         graph.push_back(Lista<int>(x));  // adding only vertex, no weight, no edge
       }
       else

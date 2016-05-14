@@ -28,7 +28,7 @@ void Sedzia::setOffGraphBFS(int& how_many, int& trials_count) {
 	bfs.prepare(how_many);
 	std::ostringstream temp_buffer;
 	temp_buffer << "BFS_" << how_many;
-	std::cout << trials_count << std::endl;
+	std::cout << "Ilosc prob: " << trials_count << std::endl;
 	for (int i = 0; i < trials_count; i++) {
 		timer.start();
 		bfs.run();
