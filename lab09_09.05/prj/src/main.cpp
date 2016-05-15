@@ -39,7 +39,7 @@ int main(int argc, char **argv) {
   int trials_count = 1;
 
   // dziesiec, tysiac, sto tysiecy, milion, milard
-  int data_sizes[5]= {10, 1000, 100000, 1000000, 1000000000};
+  int data_sizes[5]= {11, 1000, 100000, 1000000, 1000000000};
 
 
   // running the BFS

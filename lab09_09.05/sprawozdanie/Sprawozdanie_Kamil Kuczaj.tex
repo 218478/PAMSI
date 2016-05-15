@@ -14,7 +14,11 @@
 \maketitle
 
 \section{Wstęp}
-\hspace{4ex}Postawione zadanie polegało na zmierzeniu czasu wyszukiwania losowej ścieżki w grafie nieskierowanym. Graf miał składać się z $10^1$, $10^3$, $10^5$, $10^6$, $10^9$ krawędzi. Tym razem objęto inny sposób generacji grafu niż w poprzednim ćwiczeniu - zdecydowano, że liczba wierzchołków będzie ustalona i będzie wynosić 1000. Następnie generowane jest n krawędzi, gdzie n odpowiada zadanej ilości elementów, odpowiednio $10^1$, $10^3$, $10^5$, $10^6$, $10^9$.
+\hspace{4ex}Postawione zadanie polegało na zmierzeniu czasu wyszukiwania najkrótszej drogi pomiędze losowo wybranymi wierczołkami w grafie nieskierowanym. Graf miał składać się z $10^1$, $10^3$, $10^5$, $10^6$, $10^9$ krawędzi. Tym razem objęto inny sposób generacji grafu niż w poprzednim ćwiczeniu - zdecydowano, że liczba wierzchołków będzie ustalona i będzie wynosić 1000. Następnie generowane jest n krawędzi, gdzie n odpowiada zadanej ilości elementów, odpowiednio $10^1$, $10^3$, $10^5$, $10^6$, $10^9$.\\\\Pomiary należało wykonać na dwóch algorytmach:
+\begin{enumerate}
+\item Branch \& Bound
+\item Branch \& Bound + extended list
+\end{enumerate}
 
 \section{Specyfikacja komputera}
 
@@ -32,7 +36,11 @@
 
 \section{Pomiary oraz ich interpretacja}
 
+Wskutek złej organizacji pracy, zabrakło czasu na zaimplementowanie tego algorytmu.
 
 \section{Wnioski}
-\hspace{4ex}
+\hspace{4ex}Branch \& Bound staje się dużo bardziej efektywny gdy dołączymy do niego listę wierzchołków odwiedzonych, tzw. \textit{extended list}.
+
+
+Wnioski na podstawie literatury znalezionej w internecie oraz wykładu MIT Patricka Winstona.
 \end{document}

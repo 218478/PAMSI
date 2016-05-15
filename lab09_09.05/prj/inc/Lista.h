@@ -260,9 +260,6 @@
 
       if (conductor->weight == min_weight)
         temp.push_back(conductor->element, min_weight);
-
-      std::cout << "\n\nNajkrotsze:" << std::endl;
-      temp.print();
     }
 
     return temp;

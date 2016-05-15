@@ -36,20 +36,18 @@ private:
     addVertex(0);
     for (int i = 1; i < vertices_no; i++) {
       addVertex(i);
-      addEdge(i,i-1);  // weight = 1
+      addEdge(i,i-1,static_cast<int>(rand())%9+1);  // weight = 1
     }
-    addEdge(0,how_many-1);
+    addEdge(0,vertices_no-1,static_cast<int>(rand())%9+1);
 
     srand(time(0));
     int temp1;  // to shorten the code, to connect vertices randomly
-    for (int i = 0; i < vertices_no; i++) {
       for (int j = 0; j < how_many; j++) {
         temp1 = static_cast<int>(rand()) % vertices_no;
-        addEdge(i, temp1, static_cast<int>(rand())%9+1); // +1 because there were 0 length edges
+        addEdge(j%vertices_no, temp1, static_cast<int>(rand())%9+1); // +1 because there were 0 length edges
       }
-    }
 
-    for (int i = 0; i < how_many; i++)
+    for (int i = 0; i < vertices_no; i++)
       graph[i].remove(0);
 
   }
@@ -186,29 +184,29 @@ private:
    */
   Lista<int> branchBound(int x, int y) {
     try {
-      std::vector< Lista<int> > abc;
+      std::vector< Lista<int> > ways;
 
       Lista<int> temp = getNeighbours(x);
-      std::cout << std::endl;
-      temp.print();
-      std::cout << std::endl;
 
       bool found_a_way = false;
 
-      static int i = 0;  // not to get into infinite loop
+      static int watchdog = 0;  // not to get into infinite loop haha watchdog
 
-      while (!found_a_way && i++ != 1000) {
+      while (!found_a_way && watchdog++ != 1000) {
         if (temp.search(y) > 0) {
           found_a_way = true;
         }
 
-        std::cout << "Minimalna waga: " << std::endl;
         temp = temp.getMinWeight();
+
+        for (int i = 0; i < temp.size(); i++)
+          ways.
+
         found_a_way = true;
       }
 
-      // std::cout << "Najkrotsza droga: " << std::endl;
-      // temp.print();
+      std::cout << "Najkrotsza droga: " << std::endl;
+      temp.print();
 
       return temp; }
   catch( const char *msg) {
