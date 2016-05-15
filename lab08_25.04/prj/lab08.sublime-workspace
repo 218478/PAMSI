@@ -1,0 +1,502 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"kol",
+				"kolejka_temp"
+			],
+			[
+				"Kolejka",
+				"kolejka"
+			],
+			[
+				"Graph",
+				"GraphBFS"
+			],
+			[
+				"con",
+				"connected_vertex"
+			],
+			[
+				"other",
+				"other_than"
+			],
+			[
+				"add",
+				"addVertex"
+			],
+			[
+				"push",
+				"push_back"
+			],
+			[
+				"graph",
+				"graph_size"
+			],
+			[
+				"re",
+				"removeEdge"
+			],
+			[
+				"remo",
+				"removeVertex"
+			],
+			[
+				"Ga",
+				"GraphDFS"
+			],
+			[
+				"Grap",
+				"GraphDFS"
+			],
+			[
+				"we",
+				"weight"
+			],
+			[
+				"List",
+				"ListNode"
+			],
+			[
+				"w",
+				"weight"
+			],
+			[
+				"I",
+				"IRunnable"
+			],
+			[
+				"Gra",
+				"GraphNode"
+			],
+			[
+				"Grahp",
+				"GraphNode"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "inc/Graph.h",
+			"settings":
+			{
+				"buffer_size": 5118,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/main.cpp",
+			"settings":
+			{
+				"buffer_size": 1470,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/Sedzia.cpp",
+			"settings":
+			{
+				"buffer_size": 1124,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/Makefile/Make.sublime-build",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 138.0,
+		"last_filter": "make cl	",
+		"selected_items":
+		[
+			[
+				"make cl	",
+				"Build With: Make - Clean"
+			],
+			[
+				"git cm",
+				"Git: Commit"
+			],
+			[
+				"git add",
+				"Git: Add..."
+			],
+			[
+				"git co",
+				"Git: Commit"
+			],
+			[
+				"git push",
+				"Git: Push"
+			],
+			[
+				"git com	",
+				"Git: Commit"
+			],
+			[
+				"git ad",
+				"Git: Add..."
+			],
+			[
+				"git com",
+				"Git: Commit"
+			],
+			[
+				"git comm",
+				"Git: Commit"
+			],
+			[
+				"git c",
+				"Git: Commit"
+			],
+			[
+				"make cl",
+				"Build With: Make - Clean"
+			],
+			[
+				"make ",
+				"Build With: Make - Clean"
+			],
+			[
+				"make cle",
+				"Build With: Make - Clean"
+			],
+			[
+				"g",
+				"Git: Push"
+			],
+			[
+				"git pu",
+				"Git: Push"
+			],
+			[
+				"git stat",
+				"Git: Status"
+			],
+			[
+				"git ",
+				"Package Control: Install Package"
+			],
+			[
+				"git",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 139.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			"l",
+			"ls",
+			"make"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/kkuczaj/PAMSI/lab08_25.04/prj",
+		"/home/kkuczaj/PAMSI/lab08_25.04/prj/inc",
+		"/home/kkuczaj/PAMSI/lab08_25.04/prj/src"
+	],
+	"file_history":
+	[
+		"/home/kkuczaj/PAMSI/lab08_25.04/prj/src/Sedzia.cpp",
+		"/home/kkuczaj/PAMSI/lab08_25.04/prj/src/main.cpp",
+		"/home/kkuczaj/PAMSI/lab08_25.04/prj/inc/Graph.h",
+		"/home/kkuczaj/PAMSI/lab08_25.04/prj/inc/GraphBFS.h",
+		"/home/kkuczaj/PAMSI/lab08_25.04/prj/inc/GraphDFS.h",
+		"/home/kkuczaj/PAMSI/lab08_25.04/prj/src/Stoper.cpp",
+		"/home/kkuczaj/PAMSI/lab08_25.04/prj/inc/Stoper.h",
+		"/home/kkuczaj/PAMSI/lab08_25.04/prj/inc/Sedzia.h",
+		"/home/kkuczaj/Dropbox/Jurek/automotive_system/CMakeLists.txt",
+		"/home/kkuczaj/Dropbox/Jurek/automotive_system/CMakeLists.txt.bak",
+		"/home/kkuczaj/PAMSI/lab08_25.04/prj/inc/Lista.h",
+		"/home/kkuczaj/PAMSI/lab08_25.04/prj/inc/ILista.h",
+		"/home/kkuczaj/PAMSI/lab08_25.04/prj/inc/IKolejka.h",
+		"/home/kkuczaj/PAMSI/lab08_25.04/prj/inc/IGraph.h",
+		"/home/kkuczaj/PAMSI/lab08_25.04/prj/Makefile",
+		"/home/kkuczaj/PAMSI/lab08_25.04/prj/src/GraphBFS.cpp",
+		"/home/kkuczaj/PAMSI/lab08_25.04/prj/inc/Stos.h",
+		"/home/kkuczaj/PAMSI/notatki/notatki_25.04.txt",
+		"/home/kkuczaj/PAMSI/lab08_25.04/prj/inc/Kolejka.h",
+		"/home/kkuczaj/PAMSI/lab08_25.04/prj/inc/IStos.h",
+		"/home/kkuczaj/PAMSI/lab08_25.04/prj/src/GraphDFS.cpp",
+		"/home/kkuczaj/Dropbox/Jurek/ILV/jurek nagrtanioa/prz7/20160427-110055.idc",
+		"/home/kkuczaj/.config/sublime-text-3/Packages/User/make_multithreaded.sublime-build",
+		"/home/kkuczaj/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/kkuczaj/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
+		"/home/kkuczaj/PAMSI/lab08_25.04/prj/lab08.sublime-project",
+		"/home/kkuczaj/PAMSI/lab08_25.04/prj/src/Graph.cpp"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"front",
+			"queue",
+			"kolejka",
+			"std::cout",
+			"next_free",
+			",",
+			"graph[temp].get(i)",
+			"vertexCount",
+			"temp1",
+			"dfs",
+			"stos",
+			"graph",
+			"Type"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"top",
+			"stack",
+			"stos",
+			"kolejka_temp",
+			"temp2",
+			"graph_size",
+			"temp",
+			"bfs",
+			"kolejka",
+			"dfs",
+			"int"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "inc/Graph.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5118,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 1,
+					"file": "src/main.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1470,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/Sedzia.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1124,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 153.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.5,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 485.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.git":
+	{
+		"height": 112.0
+	},
+	"pinned_build_system": "Packages/Makefile/Make.sublime-build",
+	"project": "lab08.sublime-project",
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 1,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 259.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

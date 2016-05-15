@@ -74,10 +74,7 @@
    *
    * \details Tworzy poczatek listy. Alokuje dla niego pamiec.
    */
-   Lista() {
-    head = 0;    // bad things happen if you forget about it
-    size_of_list = 0;  // for debug
-  }
+   Lista(): head(nullptr), size_of_list(0) {}
 
   /*! \brief Parametryczny konstruktor.
    *
@@ -105,7 +102,7 @@
     temp->element = item;
     temp->weight = w;
     head = temp;
-    head->next = 0;
+    head->next = nullptr;
     size_of_list++;
 
   } else {  // and when it's not empty
@@ -133,7 +130,7 @@
         for (int i = 0; i < (n-1); i++)
           conductor = conductor->next;
 
-        temp->next = 0;
+        temp->next = nullptr;
         conductor->next = temp;
       }
     }
@@ -217,7 +214,7 @@
     Type temp;
     if (n < size()) {
       Node *conductor = head;
-      if (conductor != 0) {
+      if (conductor != nullptr) {
       // repeating this operation n-times
         for (int i = 0; i < n; i++)
           conductor = conductor->next;
@@ -234,7 +231,7 @@
     Type temp;
     if (n < size()) {
       Node *conductor = head;
-      if (conductor != 0) {
+      if (conductor != nullptr) {
       // repeating this operation n-times
         for (int i = 0; i < n; i++)
           conductor = conductor->next;
@@ -252,30 +249,31 @@
       throw ("Empty list");
 
     Lista<Type> temp;
-    Node *conductor = head;
-    int min_weight = conductor->weight;
-    int index = 0;
+    int min_weight = head->weight;  // must be initialized
 
-    temp.push_back(index, min_weight);
-
-    while (conductor != nullptr) {
-      conductor = conductor->next;
-      index++;
+    for (Node *conductor = head; conductor != nullptr; conductor = conductor->next) {
       if (conductor->weight < min_weight) {
         temp.clear();
         min_weight = conductor->weight;
-        temp.push_back(index, min_weight);
+        temp.push_back(conductor->element, min_weight);
       }
 
       if (conductor->weight == min_weight)
-        temp.push_back(index, min_weight);
+        temp.push_back(conductor->element, min_weight);
+
+      std::cout << "\n\nNajkrotsze:" << std::endl;
+      temp.print();
     }
 
     return temp;
   }
 
+  /*! \brief Dodaje na koniec.
+   *
+   * \details Dziala tak jak w STLu. Korzysta z metody add()
+   */
   void push_back(Type item, int weight = 1) {
-    add(item, size() - 1, weight);
+    add(item, weight, size());
   }
 
   /*! \brief Zwraca rozmiar listy.
@@ -287,7 +285,7 @@
    virtual int size() {
     Node *conductor = head;
     int temp_size = 0;
-    while (conductor != 0) {
+    while (conductor != nullptr) {
       conductor = conductor->next;
       temp_size++;
     }
@@ -305,12 +303,15 @@
       std::cerr << "Empty list" << std::endl;
 
     Node *conductor = head;
-    while (conductor != 0) {
-      std::cout << conductor->element << std::endl;
+    while (conductor != nullptr) {
+      std::cout << "vertex no: " << conductor->element << "(" 
+      << conductor->weight << ")" << std::endl;
     conductor = conductor->next;  // jump to the next element
   }
 }
 
+  /*! \brief To wypadaloby poprawic.
+   */
   void operator << (Lista<Type>) {
     print();
   }
@@ -334,7 +335,7 @@
     if (isEmpty())
     return -1;  // list is empty
 
-  while (conductor != 0) {
+  while (conductor != nullptr) {
     if (conductor->element == searched_word)
       return searched_index;
 
@@ -354,7 +355,7 @@ Type min (Lista other_than) {
   if (isEmpty())
     return -1;  // list is empty
 
-  while (conductor != 0) {
+  while (conductor != nullptr) {
     if (conductor->element < temp && other_than.search(conductor->element) < 0)
       temp = conductor->element;
 

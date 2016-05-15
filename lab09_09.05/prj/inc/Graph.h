@@ -31,9 +31,10 @@ private:
 
  public:
   Graph(int how_many) {
+    int vertices_no = 10;
     // creating how_many vertices and connecting them
     addVertex(0);
-    for (int i = 1; i < how_many; i++) {
+    for (int i = 1; i < vertices_no; i++) {
       addVertex(i);
       addEdge(i,i-1);  // weight = 1
     }
@@ -41,10 +42,10 @@ private:
 
     srand(time(0));
     int temp1;  // to shorten the code, to connect vertices randomly
-    for (int i = 0; i < how_many/2; i++) {
-      for (int j = 0; j < static_cast<int>(log(how_many)); j++) {
-        temp1 = static_cast<int>(rand()) % how_many;
-        addEdge(i, temp1, static_cast<int>(rand())%10);
+    for (int i = 0; i < vertices_no; i++) {
+      for (int j = 0; j < how_many; j++) {
+        temp1 = static_cast<int>(rand()) % vertices_no;
+        addEdge(i, temp1, static_cast<int>(rand())%9+1); // +1 because there were 0 length edges
       }
     }
 
@@ -185,15 +186,12 @@ private:
    */
   Lista<int> branchBound(int x, int y) {
     try {
+      std::vector< Lista<int> > abc;
+
       Lista<int> temp = getNeighbours(x);
-      print();
       std::cout << std::endl;
       temp.print();
-
-      std::cout << "Clearing..." << std::endl;
-      temp.clear();
-
-      temp.print();
+      std::cout << std::endl;
 
       bool found_a_way = false;
 
@@ -206,7 +204,11 @@ private:
 
         std::cout << "Minimalna waga: " << std::endl;
         temp = temp.getMinWeight();
+        found_a_way = true;
       }
+
+      // std::cout << "Najkrotsza droga: " << std::endl;
+      // temp.print();
 
       return temp; }
   catch( const char *msg) {
