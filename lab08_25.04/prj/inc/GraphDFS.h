@@ -26,7 +26,7 @@ public:
 	virtual void run() {
 		std::list<int> lista;
 		std::stack<int> stos;
-		graph.print();
+		// graph.print();
 		stos.push(0);  // start
 		lista.push_back(0);  // start
 		static int iter = 0;
@@ -38,32 +38,34 @@ public:
 				temp2 = graph[temp].get(i);
 				auto it = std::find(lista.begin(), lista.end(), temp2);
 				if (it == lista.end()) {
-					std::cout << "Lista ";
-					for (auto& e: lista)
-						std::cout << e << " ";
+					// std::cout << "Lista ";
+					// for (auto& e: lista)
+					// 	std::cout << e << " ";
+					// std::cout << std::endl;
 
-					std::cout << std::endl << "stos ";
-					std::stack<int> stos_temp = stos;
-					for (auto e = stos_temp.top(); !stos_temp.empty(); stos_temp.pop(), e = stos_temp.top()) 
-						std::cout << e << " ";
+					// std::cout << std::endl << "stos ";
+					// std::stack<int> stos_temp = stos;
+					// for (auto e = stos_temp.top(); !stos_temp.empty(); stos_temp.pop(), e = stos_temp.top()) 
+					// 	std::cout << e << " ";
 
-					std::cout << std::endl << std::endl;
+					// std::cout << std::endl << std::endl;
 					lista.push_back(temp2);
 					stos.push(temp2);
 				}
 			}
-			std::cout << "Lista ";
-			for (auto& e: lista)
-				std::cout << e << " ";
+			// std::cout << "Lista ";
+			// for (auto& e: lista)
+			// 	std::cout << e << " ";
+			// std::cout << std::endl;
 
-			std::cout << std::endl << "stos ";
-			std::stack<int> stos_temp = stos;
-			for (auto e = stos_temp.top(); !stos_temp.empty(); stos_temp.pop(), e = stos_temp.top()) 
-				std::cout << e << " ";
+			// std::cout << std::endl << "stos ";
+			// std::stack<int> stos_temp = stos;
+			// for (auto e = stos_temp.top(); !stos_temp.empty(); stos_temp.pop(), e = stos_temp.top()) 
+			// 	std::cout << e << " ";
 
-			std::cout << std::endl << std::endl;
-			std::cout << "Rozmiar listy: " << lista.size() << std::endl
-			<< "Rozmiar kolejki: " << stos.size() << std::endl;
+			// std::cout << std::endl << std::endl;
+			// std::cout << "Rozmiar listy: " << lista.size() << std::endl
+			// << "Rozmiar kolejki: " << stos.size() << std::endl;
 		}
 		std::cout << "DFS complete." << std::endl;
 }

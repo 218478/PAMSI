@@ -15,6 +15,8 @@ void Sedzia::setOffGraphDFS(int& how_many, int& trials_count) {
 	dfs.prepare(how_many);
 	std::ostringstream temp_buffer;
 	temp_buffer << "DFS_" << how_many;
+	std::cout << "Ilosc prob: " << trials_count << std::endl
+	<< "Wielkosc proby: " << how_many << std::endl;
 	for (int i = 0; i < trials_count; i++) {
 		timer.start();
 		dfs.run();
