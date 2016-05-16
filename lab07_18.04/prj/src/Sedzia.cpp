@@ -11,7 +11,7 @@
 #include <iostream>  // to display messages
 
 
-void Sedzia::setOffBinaryTree(int how_many) {
+void Sedzia::setOffBinaryTree(int& how_many, int& trials_count) {
   Stoper timer;
   BinaryTree_test tree;
 
@@ -19,9 +19,15 @@ void Sedzia::setOffBinaryTree(int how_many) {
   ss << "BinaryTree_" << how_many;
 
   tree.prepare(how_many);
-  timer.start();
-  tree.run();
-  timer.stop();
-  if (tree.flag)
-    timer.dumpToFile(ss.str());
+
+  for (int i = 0; i < trials_count; i++) {
+    timer.start();
+    tree.run();
+    timer.stop();
+    if (tree.found())
+      timer.dumpToFile(ss.str());
+
+    // tree.deleteOneLastTime();
+  }
+
 }

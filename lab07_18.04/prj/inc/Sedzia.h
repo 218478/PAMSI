@@ -26,7 +26,7 @@ class Sedzia {
    * \param[in] how_many  Informacja iloma elementami ma zostac wypelniona
    *                      kontener.
    */
-  void setOffBinaryTree(int how_many);
+  void setOffBinaryTree(int& how_many, int& trials_count);
 };
 
 #endif  // LAB03_14_03_PRJ_INC_SEDZIA_H_

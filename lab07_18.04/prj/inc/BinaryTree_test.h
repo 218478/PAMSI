@@ -11,7 +11,7 @@ class BinaryTree_test : virtual IRunnable {
    *
    * \details Pojemnik, ktory jest testowany przez te klase.
    */
-  RBTNode tree;
+  TRBTree *tree;
 
   /*! \brief Szukany element.
    *
@@ -20,10 +20,23 @@ class BinaryTree_test : virtual IRunnable {
    */
   int random_element;
 
-
-
- public:
+  /*! \brief Uzywana, aby sprawdzic czy zostalo znalezione slowo.
+    */
     bool flag;
+ public:
+
+  /*! \brief Konstruktor.
+   *
+   * \detials Qństruktor.
+   */
+   BinaryTree_test() : flag(false) {}
+
+  /*! \brief Hermetyzacja flagi.
+   *
+   * \details Zeby nie mozna bylo jej zmodyfikowac z zewnatrz.
+   */
+   bool found() { return flag;}
+
   /*! \brief Przygotowuje pojemnik przed wykonaniem czynnosci.
    *
    * \details Funkcja, ktora ma wykonac wszystkie dodatkowe czynnosci,
@@ -40,6 +53,8 @@ class BinaryTree_test : virtual IRunnable {
    *          chcemy zmierzyc.
    */
   virtual void run();
+
+  void deleteOneLastTime() {  delete[] tree; }
 };
 
 

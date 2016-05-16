@@ -42,8 +42,8 @@ int main(int argc, char **argv) {
   int data_sizes[5]= {10, 1000, 100000, 1000000, 1000000000};
 
   // running the binary tree test
-  for (int i = 2; i < 5; i++) {
+  for (int i = 0; i < 5; i++) {
     for (int j = 0; j < trials_count; j++)
-      referee.setOffBinaryTree(data_sizes[i]);
+      referee.setOffBinaryTree(data_sizes[i], trials_count);
   }
 }
