@@ -1,296 +1,105 @@
-// www.coders-hub.com/2015/07/red-black-tree-rb-tree-using-c.html#.VxyVnFZ97Io
+// Drzewo czerwono-czarne
+// Data: 11.06.2013
+// (C)2013 mgr Jerzy Wałaszek
+//------------------------------
 
+#include <iostream>
+#include <string>
+#include <cstdlib>
+#include <ctime>
 
-#include<iostream>
+using namespace std;
 
-template <class Type> class RBtree {
- private:
-  struct node {
-    Type key;
-    node *parent;
-    char color;
-    node *left;
-    node *right;
-  };
+const int MAXN = 30;           // Liczba węzłów
 
-  node *root;
-  node *q;
+// Typ węzłów drzewa RBT
 
-
-
-
- public:
-  RBtree()
-  {
-    q=NULL;
-    root=NULL;
-  }
-  void insert(Type z) {
-  node *p, *q;
-  node *t = new node;
-  t->key = z;
-  t->left = NULL;
-  t->right = NULL;
-  t->color = 'r';
-  p=root;
-  q=NULL;
-  if(root==NULL)
-  {
-    root=t;
-    t->parent=NULL;
-  }
-  else
-  {
-    while(p!=NULL)
-    {
-      q=p;
-      if(p->key<t->key)
-        p=p->right;
-      else
-        p=p->left;
-    }
-    t->parent=q;
-    if(q->key<t->key)
-      q->right=t;
-    else
-      q->left=t;
-  }
-  insertfix(t);
-}
-
-  void insertfix(node *t)
+struct RBTNode
 {
-  node *u;
-  if(root==t)
-  {
-    t->color='b';
-    return;
-  }
-  while(t->parent!=NULL&&t->parent->color=='r')
-  {
-    node *g=t->parent->parent;
-    if(g->left==t->parent)
-    {
-      if(g->right!=NULL)
-      {
-        u=g->right;
-        if(u->color=='r')
-        {
-          t->parent->color='b';
-          u->color='b';
-          g->color='r';
-          t=g;
-        }
-      }
-      else
-      {
-        if(t->parent->right==t)
-        {
-          t=t->parent;
-          leftrotate(t);
-        }
-        t->parent->color='b';
-        g->color='r';
-        rightrotate(g);
-      }
-    }
-    else
-    {
-      if(g->left!=NULL)
-      {
-        u=g->left;
-        if(u->color=='r')
-        {
-          t->parent->color='b';
-          u->color='b';
-          g->color='r';
-          t=g;
-        }
-      }
-      else
-      {
-        if(t->parent->left==t)
-        {
-          t=t->parent;
-          rightrotate(t);
-        }
-        t->parent->color='b';
-        g->color='r';
-        leftrotate(g);
-      }
-    }
-    root->color='b';
-  }
-}
-  void leftrotate(node *p)
-{
-  if(p->right==NULL)
-    return ;
-  else
-  {
-    node *y=p->right;
-    if(y->left!=NULL)
-    {
-      p->right=y->left;
-      y->left->parent=p;
-    }
-    else
-      p->right=NULL;
-    if(p->parent!=NULL)
-      y->parent=p->parent;
-    if(p->parent==NULL)
-      root=y;
-    else
-    {
-      if(p==p->parent->left)
-        p->parent->left=y;
-      else
-        p->parent->right=y;
-    }
-    y->left=p;
-    p->parent=y;
-  }
-}
-
-  void rightrotate(node *p)
-{
-  if(p->left==NULL)
-    return ;
-  else
-  {
-    node *y=p->left;
-    if(y->right!=NULL)
-    {
-      p->left=y->right;
-      y->right->parent=p;
-    }
-    else
-      p->left=NULL;
-    if(p->parent!=NULL)
-      y->parent=p->parent;
-    if(p->parent==NULL)
-      root=y;
-    else
-    {
-      if(p==p->parent->left)
-        p->parent->left=y;
-      else
-        p->parent->right=y;
-    }
-    y->right=p;
-    p->parent=y;
-  }
-}
-
-  node* successor(node *p) {
-    node *y=NULL;
-    if(p->left!=NULL)
-    {
-      y=p->left;
-      while(y->right!=NULL)
-        y=y->right;
-    }
-    else
-    {
-      y=p->right;
-      while(y->left!=NULL)
-        y=y->left;
-    }
-    return y;
-  }
-
-  void disp() { display(root); }
-
-  void display(node *p) {
-  if (root == NULL) {
-    std::cout << "\nEmpty Tree.";
-    return ; }
-  
-  if(p!=NULL)
-  {
-    std::cout<<"\n\t NODE: ";
-    std::cout<<"\n Key: "<<p->key;
-    std::cout<<"\n Colour: ";
-    if(p->color=='b')
-      std::cout<<"Black";
-    else
-      std::cout<<"Red";
-    if(p->parent!=NULL)
-      std::cout<<"\n Parent: "<<p->parent->key;
-    else
-      std::cout<<"\n There is no parent of the node.  ";
-    if(p->right!=NULL)
-      std::cout<<"\n Right Child: "<<p->right->key;
-    else
-      std::cout<<"\n There is no right child of the node.  ";
-    if(p->left!=NULL)
-      std::cout<<"\n Left Child: "<<p->left->key;
-    else
-      std::cout<<"\n There is no left child of the node.  ";
-    std::cout<<std::endl;
-    if(p->left)
-    {
-      std::cout<<"\n\nLeft:\n";
-      display(p->left);
-    }
-    /*else
-      std::cout<<"\nNo Left Child.\n";*/
-    if(p->right)
-    {
-      std::cout<<"\n\nRight:\n";
-      display(p->right);
-    }
-    /*else
-      std::cout<<"\nNo Right Child.\n"*/
-  }
-}
-
-  void search(Type x){
-  if(root==NULL)
-  {
-    std::cout<<"\nEmpty Tree\n" ;
-    return  ;
-  }
-  node *p=root;
-  int found=0;
-  while(p!=NULL&& found==0)
-  {
-    if(p->key==x)
-      found=1;
-    if(found==0)
-    {
-      if(p->key<x)
-        p=p->right;
-      else
-        p=p->left;
-    }
-  }
-  if(found==0)
-    std::cout<<"\nElement Not Found.";
-  else
-  {
-    std::cout<<"\n\t FOUND NODE: ";
-    std::cout<<"\n Key: "<<p->key;
-    std::cout<<"\n Colour: ";
-    if(p->color=='b')
-      std::cout<<"Black";
-    else
-      std::cout<<"Red";
-    if(p->parent!=NULL)
-      std::cout<<"\n Parent: "<<p->parent->key;
-    else
-      std::cout<<"\n There is no parent of the node.  ";
-    if(p->right!=NULL)
-      std::cout<<"\n Right Child: "<<p->right->key;
-    else
-      std::cout<<"\n There is no right child of the node.  ";
-    if(p->left!=NULL)
-      std::cout<<"\n Left Child: "<<p->left->key;
-    else
-      std::cout<<"\n There is no left child of the node.  ";
-    std::cout<<std::endl;
-
-  }
-}
-
+  RBTNode * up;
+  RBTNode * left;
+  RBTNode * right;
+  int key;
+  char color;
 };
+
+// Definicja typu obiektowego TRBTree
+class TRBTree
+{
+  private:
+    RBTNode S;             // Węzeł strażnika
+    RBTNode * root;        // Korzeń drzewa czerwono-czarnego
+    string cr,cl,cp;       // Łańcuchy do znaków ramek
+
+    void printRBT(string sp, string sn, RBTNode * p); // Wypisuje drzewo
+
+  public:
+    TRBTree();             // Konstruktor klasy
+    ~TRBTree();            // Destruktor klasy
+    void DFSRelease(RBTNode * p); // Usuwa rekurencyjnie drzewo
+    void print();          // Wypisuje drzewo
+    RBTNode * findRBT(int k); // Wyszukuje węzeł o kluczu k
+    RBTNode * minRBT(RBTNode * p); // Wyszukuje najmniejszy węzeł w p
+    RBTNode * succRBT(RBTNode * p);// Wyszukuje następnik p
+    void rot_L(RBTNode * A); // Rotacja w lewo względem A
+    void rot_R(RBTNode * A); // Rotacja w prawo względem A
+    void insertRBT(int k);   // Wstawia węzeł o kluczu k
+    void removeRBT(RBTNode * X); // Usuwa węzeł X
+};
+
+
+// int main()
+// {
+//   int Tk[MAXN];          // Tablica kluczy węzłów
+//   int i,x,i1,i2;
+//   TRBTree * RBT;         // Obiekt drzewa czerwono-czarnego
+
+//   srand(time(NULL));     // Inicjujemy generator pseudolosowy
+
+//   RBT = new TRBTree;     // Tworzymy puste drzewo
+
+//   for(i = 0; i < MAXN; i++) // Tablicę wypełniamy wartościami kluczy
+//     Tk[i] = i + 1;
+
+//   for(i = 0; i < 300; i++)  // Mieszamy tablicę
+//   {
+//     i1 = rand() % MAXN;     // Losujemy 2 indeksy
+//     i2 = rand() % MAXN;
+
+//     x = Tk[i1];             // Wymieniamy Tk[i1] <-->. Tk[i2]
+//     Tk[i1] = Tk[i2];
+//     Tk[i2] = x;
+//   }
+
+//   for(i = 0; i < MAXN; i++) // Na podstawie tablicy tworzymy drzewo czerwono-czarne
+//   {
+//     cout << Tk[i] << " ";
+//     RBT->insertRBT(Tk[i]);
+//   }
+
+//   cout << endl << endl;
+
+//   RBT->print();             // Wyświetlamy zawartość drzewa
+
+//   cout << endl << endl;
+
+//   for(i = 0; i < 300; i++)  // Ponownie mieszamy tablicę
+//   {
+//     i1 = rand() % MAXN; i2 = rand() % MAXN;
+//     x = Tk[i1]; Tk[i1] = Tk[i2]; Tk[i2] = x;
+//   }
+
+//   for(i = 0; i < MAXN >> 1; i++) // Usuwamy połowę węzłów
+//   {
+//     cout << Tk[i] << " ";
+//     RBT->removeRBT(RBT->findRBT(Tk[i]));
+//   }
+
+//   cout << endl << endl;
+
+//   RBT->print();            // Wyświetlamy zawartość drzewa
+
+//   delete RBT;              // Usuwamy drzewo z pamięci
+
+//   return 0;
+// } 

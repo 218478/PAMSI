@@ -1,0 +1,80 @@
+Kartkówka 23.05 z teorii, która była. Algorytmy i struktury danych. 
+
+W ciągu 2 tygodni (bo tyle nam zostało).
+
+30.05 będziemy patrzeć na wyniki pracy. Dwa ostatnie zajęcia to prezentacja projektów przed całą grupą. Będziemy musieli kolegom wytłumaczyć ten algorytm. Dwie oceny za projekt - jedna za sam projekt, a druga za prezentację.
+
+Tylko jedno zadanie będzie samodzielne. Reszta będzie trzeba w grupie pracować. Jedno zadanko może się powtórzyć dwukrotnie.
+
+
+Zadania:
+1. Program, który pozwala na najkrótszą drogę pomiędzy wrocławskim przystankami. Algorytm Ejsta
+2. Inteligentna gra w warcaby z inteligentym przeciwnikiem (3 poziomy tr.d). algorytm minmax
+3. Gra w kółko i krzyżyk (2 poziomy trudności). algorytm minmax
+4. Problem plecakowy. W jaki sposób złodziej powinien spakować plecak, aby wynieść najdroższy łup.
+5. Sieci neuronowe. Rozpoznawanie liter.
+6. Sieci neuronowe. Rozpoznawanie cyfr.
+
+
+Dr ma linki dla niektórych.
+
+
+Offtopic:
+Na stronie Wrocławia jest zbiór danych sieć połączeń komunikacji miejskiej.
+
+Razem w Pawłem. Dodatkowe punkty za wizualizację.
+
+
+____________________________________________________
+
+nasz projekt: ann z rozpoznawaniem liter.
+
+
+Czyli za tydzień mamy kartkówkę i już mamy zrobioną istotną część projektu.
+
+Za dwa tygodnie jest prezentacja (omówienie teorii i wizualizacja).
+
+
+
+Na kartkówce będzie 5 pytań - algorytmy i struktury danych. 15 minut.
+
+
+
+_________________________________________________________
+
+To było na jsosie:
+
+
+# Zadania projektowe
+
+1. Program pozwalający odnaleźć najkrótszą drogę pomiędzy przystankiem A a
+przystankiem B (argumenty wywołania programu) we wrocławskiej sieci połączeń MPK.
+Zadanie rozwiązać przy pomocy algorytmu A*
+Dodatkowe punkty za wizualizację
+Przydatne linki:
+http://www.wroclaw.pl/open-data/index.php/zbiory-danych/17-transport/106-rozklad-jazdy-transportu-publicznego
+
+2. Interaktywna gra w warcaby z "inteligentnym" przeciwnikiem. Zadanie rozwiązać
+przy pomocy algorytmu minimax, uwzględnić 3 poziomy trudności.
+Dodatkowe punkty za wizualizację
+
+3. Gra w kółko i krzyżyk, interaktywna, z 2 poziomami trudności, algorytm minimax.
+Dodatkowe punkty za wizualizację
+
+4. Problem plecakowy - w jaki sposób złodziej powinien spakować swój plecak o
+określonej pojemności, aby wynieść z salonu jubilerskiego najbardziej korzystny łup
+Dodatkowe punkty za wizualizację
+
+5. Sieć neuronowa - rozpoznawanie liter.
+Przydatne linki:
+- https://github.com/stephencwelch/Neural-Networks-Demystified
+- http://yann.lecun.com/exdb/mnist/
+
+6. Sieć neuronowa - rozpoznawanie cyfr.
+Przydatne linki: https://github.com/stephencwelch/Neural-Networks-Demystified
+- http://yann.lecun.com/exdb/mnist/
+
+
+__________________________________________________________
+
+Lepiej Python do nas, niż C++.

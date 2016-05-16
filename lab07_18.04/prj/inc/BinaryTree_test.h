@@ -3,7 +3,7 @@
 #define LAB07_18_04_PRJ_INC_BINARYTREE_TEST_H_
 
 #include "IRunnable.h"
-#include "BinaryTree.h"
+#include "RBTree.h"
 
 class BinaryTree_test : virtual IRunnable {
  private:
@@ -11,7 +11,7 @@ class BinaryTree_test : virtual IRunnable {
    *
    * \details Pojemnik, ktory jest testowany przez te klase.
    */
-  BinaryTree<int> tree;
+  RBTNode tree;
 
   /*! \brief Szukany element.
    *
