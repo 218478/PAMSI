@@ -1,5 +1,6 @@
 // Copyright 2016 Kamil Kuczaj
 #include "Sedzia.h"
+#include "Lista.h"
 
 #include <iostream>
 
@@ -43,8 +44,9 @@ int main(int argc, char **argv) {
 
 
   // running the BFS
-  for (int i = 0; i < 1; i++) 
-      referee.setOffGraphBranchBound(data_sizes[i], trials_count);
+  // for (int i = 0; i < 1; i++) 
+  //     referee.setOffGraphBranchBound(data_sizes[i], trials_count);
+
 
   // // running the DFS
   // for (int i = 0; i < 5; i++)

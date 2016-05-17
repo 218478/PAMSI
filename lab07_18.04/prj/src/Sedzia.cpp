@@ -25,9 +25,7 @@ void Sedzia::setOffBinaryTree(int& how_many, int& trials_count) {
     tree.run();
     timer.stop();
     if (tree.found())
-      timer.dumpToFile(ss.str());
-
-    // tree.deleteOneLastTime();
+      timer.dumpToFile(ss.str());    
   }
-
+  // tree.deleteOneLastTime();
 }

@@ -24,13 +24,6 @@ class BinaryTree_test : virtual IRunnable {
     */
     bool flag;
  public:
-
-  /*! \brief Konstruktor.
-   *
-   * \detials Qństruktor.
-   */
-   BinaryTree_test() : flag(false) {}
-
   /*! \brief Hermetyzacja flagi.
    *
    * \details Zeby nie mozna bylo jej zmodyfikowac z zewnatrz.
@@ -45,7 +38,7 @@ class BinaryTree_test : virtual IRunnable {
    *
    * \param[in] size Ilosc elementow.
    */
-  virtual void prepare(int size);
+  virtual void prepare(int MAXN);
 
   /*! \brief Odpalenie badanej czynnosci.
    *

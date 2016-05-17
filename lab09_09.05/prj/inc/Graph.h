@@ -7,6 +7,7 @@
 
 #include <vector>
 #include <iostream>
+#include <queue>  // priority queue
 #include <cstdlib>  // for random generatorion
 #include <cmath>  // for random generatorion
 
@@ -173,6 +174,10 @@ private:
     }
   }
 
+  /*! \brief Potrzebne do impelementacji branch&bounda.
+   */
+  // friend Lista<int>::Node;
+
   /*! \brief Algorytm branch & bound bez extended list.
    *
    * \details Algoyrtm domniemywa, ze graf jest skonczony oraz wszystkie
@@ -184,7 +189,12 @@ private:
    */
   Lista<int> branchBound(int x, int y) {
     try {
-      std::vector< Lista<int> > ways;
+
+      typedef Lista<int> MojaLista;
+      // Using lambda to compare elements.
+      // auto cmp = [](Lista<int> left, Lista<int> right) { return (left ^1) < (right ^1);};
+
+      // std::priority_queue < MojaLista, MojaLista, std::greater< MojaLista > ways;
 
       Lista<int> temp = getNeighbours(x);
 
@@ -198,9 +208,6 @@ private:
         }
 
         temp = temp.getMinWeight();
-
-        for (int i = 0; i < temp.size(); i++)
-          ways.
 
         found_a_way = true;
       }

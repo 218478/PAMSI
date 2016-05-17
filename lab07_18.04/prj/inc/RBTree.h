@@ -10,10 +10,8 @@
 
 using namespace std;
 
-const int MAXN = 30;           // Liczba węzłów
-
-// Typ węzłów drzewa RBT
-
+/*! \brief Typ węzłów drzewa RBT.
+ */
 struct RBTNode
 {
   RBTNode * up;
@@ -23,7 +21,8 @@ struct RBTNode
   char color;
 };
 
-// Definicja typu obiektowego TRBTree
+/*! \brief Definicja typu obiektowego TRBTree.
+ */
 class TRBTree
 {
   private:
