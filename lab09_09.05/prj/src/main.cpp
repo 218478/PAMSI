@@ -44,8 +44,8 @@ int main(int argc, char **argv) {
 
 
   // running the BFS
-  // for (int i = 0; i < 1; i++) 
-  //     referee.setOffGraphBranchBound(data_sizes[i], trials_count);
+  for (int i = 0; i < 1; i++) 
+      referee.setOffGraphBranchBound(data_sizes[i], trials_count);
 
 
   // // running the DFS

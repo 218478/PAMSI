@@ -24,13 +24,12 @@
    * \details Potrzebne do implementacji interfejsu listy. Zawiera pole
    *          typu string.
    */
-   template <class Type>
    struct Node {
     /*! \brief Element w wezle.
      *
      * \details Co jest w wezle. Ma przechowywac pojedyncze slowo.
      */
-     Type element;
+     int element;
 
      /*! \brief Waga krawedzi.
       *
@@ -43,7 +42,7 @@
      *
      * \details Wskazuje na nastepny wezel.
      */
-     Node<Type>* next;
+     Node* next;
 
      /*! \brief Potrzebne do implementacji wyrazenia lambda w grafie.
       */
@@ -56,15 +55,14 @@
  * \details Zajmuje sie dynamiczna alokacja pamieci. Lista jest jednokierunkowa.
  *          Mamy dostep do pierwszego elementu w liscie
  */
- template <class Type>
- class Lista: ILista<Type> {
+ class Lista: ILista {
  private:
 
   /*! \brief Pierwszy element listy.
    *
    * \details Wskazuje na pierwszy element listy.
    */
-   Node<int> *head;
+   Node *head;
 
   /*! \brief Przechowuje rozmiar listy.
    *
@@ -85,25 +83,25 @@
    *
    * \details Konstruktor dodany na potrzeby implementacji grafu.
    */
-   Lista(Type x) : Lista() {
-    add(x, 1, 0);
+   Lista(int x, int weight = 1) : Lista() {
+    add(x, weight, 0);
    }
 
   /*! \brief Wstawia element w dowolnym miejscu listy.
    *
-   * \details Wstawia element typu Type w miejsce wskazywane przez zmienna index.
+   * \details Wstawia element typu int w miejsce wskazywane przez zmienna index.
    *
    * \param[in] item Element wstawiany. Slowo typu string.
    * \param[in] w Waga krawedzi.
    * \param[in] n Miejsce, w ktore ma byc wstawiony element item.
    */
-   virtual void add(Type item, int w, int n){
+   virtual void add(int item, int w, int n){
     int current_size = size();
   if (n > current_size)  // if we want to add an element beyond list
     throw("Requested index out of bounds");
 
   if (isEmpty()) {  // if the list is empty
-    Node<int>* temp = new Node<int>;
+    Node* temp = new Node;
     temp->element = item;
     temp->weight = w;
     head = temp;
@@ -111,7 +109,7 @@
     size_of_list++;
 
   } else {  // and when it's not empty
-  Node<int>* temp = new Node<int>;
+  Node* temp = new Node;
   temp->element = item;
   temp->weight = w; 
 
@@ -120,7 +118,7 @@
       head = temp;
       size_of_list++;
     } else {
-      Node<int> *conductor = head;
+      Node *conductor = head;
 
       if (n < current_size) {  // when inserting
         for (int i = 0; i < (n-1); i++)
@@ -151,13 +149,13 @@
    *
    * \return Zwraca slowo, ktore znajdowalo sie na tym indeksie.
    */
-   virtual Type remove(int n) {
-    Type word;
+   virtual int remove(int n) {
+    int word;
 
     if (size() == 0)
       throw("List is empty");
     if (n < size()) {
-      Node<int> *conductor = head;
+      Node *conductor = head;
       if (n == 0) {  // if we want to remove at the beginning
         head = conductor->next;
         word = conductor->element;
@@ -168,7 +166,7 @@
         // repeating this operation (n-1)-times
         for (int i = 0; i < n-1; i++)
           conductor = conductor->next;
-        Node<int> *after_cond = conductor->next;  // point to the next element
+        Node *after_cond = conductor->next;  // point to the next element
         // which is to be deleted
         conductor->next = after_cond->next;
         word = after_cond->element;
@@ -185,7 +183,7 @@
    * \details Nie korzysta z funkcji remove, wiec dziala super.
    */
   void clear() {
-    Node<int> *conductor = head;
+    Node *conductor = head;
     head = nullptr;
     while(conductor != nullptr) {
       delete conductor;
@@ -215,10 +213,10 @@
    *
    * \return Zwraca element typu std::string.
    */
-   virtual Type get(int n) {
-    Type temp;
+   virtual int get(int n) {
+    int temp;
     if (n < size()) {
-      Node<int> *conductor = head;
+      Node *conductor = head;
       if (conductor != nullptr) {
       // repeating this operation n-times
         for (int i = 0; i < n; i++)
@@ -233,9 +231,9 @@
       }
 
    virtual int getWeight(int n) {
-    Type temp;
+    int temp;
     if (n < size()) {
-      Node<int> *conductor = head;
+      Node *conductor = head;
       if (conductor != nullptr) {
       // repeating this operation n-times
         for (int i = 0; i < n; i++)
@@ -249,14 +247,14 @@
         return temp;
       }
 
-  Lista<Type> getMinWeight() {
+  Lista getMinWeight() {
     if (isEmpty())
       throw ("Empty list");
 
-    Lista<Type> temp;
+    Lista temp;
     int min_weight = head->weight;  // must be initialized
 
-    for (Node<int> *conductor = head; conductor != nullptr; conductor = conductor->next) {
+    for (Node *conductor = head; conductor != nullptr; conductor = conductor->next) {
       if (conductor->weight < min_weight) {
         temp.clear();
         min_weight = conductor->weight;
@@ -274,7 +272,7 @@
    *
    * \details Dziala tak jak w STLu. Korzysta z metody add()
    */
-  void push_back(Type item, int weight = 1) {
+  void push_back(int item, int weight = 1) {
     add(item, weight, size());
   }
 
@@ -285,7 +283,7 @@
    * \return Rozmiar listy.
    */
    virtual int size() {
-    Node<int> *conductor = head;
+    Node *conductor = head;
     int temp_size = 0;
     while (conductor != nullptr) {
       conductor = conductor->next;
@@ -294,6 +292,8 @@
 
     return temp_size;
   }
+
+
 
   /*! \brief Wypisuje zawartosc listy.
    *
@@ -304,19 +304,13 @@
     if (isEmpty())
       std::cerr << "Empty list" << std::endl;
 
-    Node<int> *conductor = head;
+    Node *conductor = head;
     while (conductor != nullptr) {
       std::cout << "vertex no: " << conductor->element << "(" 
       << conductor->weight << ")" << std::endl;
     conductor = conductor->next;  // jump to the next element
   }
 }
-
-  /*! \brief To wypadaloby poprawic.
-   */
-  void operator << (Lista<Type>) {
-    print();
-  }
 
   /*! \brief Wyszukuje podane slowo i zwraca jego indeks
   *
@@ -330,8 +324,8 @@
   *
   * \return Indeks, na ktorym znajduje sie szukane slowo.
   */
-  int search(Type searched_word) {
-    Node<int> *conductor = head;
+  int search(int searched_word) {
+    Node *conductor = head;
     int searched_index = 0;
 
     if (isEmpty())
@@ -349,8 +343,8 @@
 
 /*! \brief Choose min other than specified as an argument
 */
-Type min (Lista other_than) {
-  Node<int> *conductor = head;
+int min (Lista other_than) {
+  Node *conductor = head;
   int temp = conductor->element;
   // a trick because my graph always has its own vertex on its adjacency list
 
@@ -368,10 +362,10 @@ Type min (Lista other_than) {
 
   /*! \brief Podlicza sume wag.
   */
-  Type sum() {
-    Type temp = 0;
+  int sum() {
+    int temp = 0;
 
-    Node<Type>* conductor = head;
+    Node* conductor = head;
     while (conductor != nullptr) {
       temp += conductor->weight;
       conductor = conductor->next;
@@ -388,14 +382,43 @@ Type min (Lista other_than) {
    *
    * \param[in] Porownywana lista.
    */
-    bool operator > (Lista<Type> second) {
+    bool operator > (Lista second) {
     int temp1 = sum();
     int temp2 = second.sum();
 
     return (temp1 > temp2) ? true : false;
-
    }
 
+
+  /*! \brief Przeciazenie operatora porownania.
+   *
+   * \details Potrzebne do wyrazenia lambda w branch&boundzie grafu.
+   *              Zwraca element, ktorego suma wszystkich elementow jest
+   *              mniejsza.
+   *
+   * \param[in] Porownywana lista.
+   */
+    bool operator < (Lista second) {
+    int temp1 = sum();
+    int temp2 = second.sum();
+
+    return (temp1 < temp2) ? true : false;
+  }
+
+
+    friend std::ostream& operator << (std::ostream& out, const Lista& lista );
 };
+
+  std::ostream& operator << (std::ostream& out, const Lista& lista ) {
+    // Node* conductor = head;
+    // while (conductor != nullptr) {
+    //   out << conductor->element << "(" << conductor->weight << ")"
+    //         << std::endl;
+    //   conductor = conductor->next;
+    // }
+
+    // return out;
+    lista.print();
+  }
 
 #endif  // LAB08_25_04_PRJ_INC_LISTA_H_

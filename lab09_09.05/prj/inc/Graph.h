@@ -8,6 +8,7 @@
 #include <vector>
 #include <iostream>
 #include <queue>  // priority queue
+#include <functional>  // to create functional
 #include <cstdlib>  // for random generatorion
 #include <cmath>  // for random generatorion
 
@@ -28,7 +29,7 @@ private:
    *              nie musze skupiac sie na poprawianiu starych struktur, tylko
    *              moge skupic sie na implementacji grafu.
    */
-   std::vector< Lista<int> > graph;
+   std::vector< Lista > graph;
 
  public:
   Graph(int how_many) {
@@ -117,13 +118,13 @@ private:
       std::cerr << "No such vertex no " << x << std::endl;
   }
 
-  virtual Lista<int> getNeighbours(int x) {
+  virtual Lista getNeighbours(int x) {
     if (graph.size() > x) {
       return graph[x];
     }
     else {
       std::cerr << "Vertex " << x << " doesn't exist" << std::endl;
-      return Lista<int>(-1);
+      return Lista(-1);
     }
   }
 
@@ -146,19 +147,19 @@ private:
 
   /*! \brief Zwraca sasiadujace wierczholki pierwszego wierzcholka grafu.
    */
-  Lista<int> front() {
+  Lista front() {
     return graph[0];
   }
 
   /*! \brief Zwraca sasiadujace wierczholki ostatniego elementu grafu.
    */
-  Lista<int> back() {
+  Lista back() {
     return graph[size()-1];
   }
 
   /*! \brief Zwraca sasiadujace wierzcholki n-tego wierzcholka grafu.
    */
-  Lista<int> operator[] (int n) {
+  Lista operator[] (int n) {
     return graph[n];
   }
   /*! \brief Sprawdza czy wierzcholki polaczone sa krawedzia.
@@ -187,35 +188,21 @@ private:
    * \param[in] x Poczatkowy wierczholek.
    * \param[in] y Koncowy wierzcholek, meta.
    */
-  Lista<int> branchBound(int x, int y) {
+  Lista branchBound(int x, int y) {
     try {
 
-      typedef Lista<int> MojaLista;
-      // Using lambda to compare elements.
-      // auto cmp = [](Lista<int> left, Lista<int> right) { return (left ^1) < (right ^1);};
 
-      // std::priority_queue < MojaLista, MojaLista, std::greater< MojaLista > ways;
-
-      Lista<int> temp = getNeighbours(x);
-
-      bool found_a_way = false;
-
-      static int watchdog = 0;  // not to get into infinite loop haha watchdog
-
-      while (!found_a_way && watchdog++ != 1000) {
-        if (temp.search(y) > 0) {
-          found_a_way = true;
+      struct CompareLists {
+        operator () (Lista& left, Lista& right) {
+          return left.sum() > right.sum();
         }
 
-        temp = temp.getMinWeight();
+      };
 
-        found_a_way = true;
-      }
+      std::priority_queue < Lista, std::vector< Lista >, CompareLists > ways;
 
-      std::cout << "Najkrotsza droga: " << std::endl;
-      temp.print();
-
-      return temp; }
+      Lista temp = getNeighbours(x);
+ }
   catch( const char *msg) {
       std::cerr << msg << std::endl;
     }
@@ -230,8 +217,8 @@ private:
    * \param[in] x Poczatkowy wierczholek.
    * \param[in] y Koncowy wierzcholek, meta.
      */
-  Lista<int> branchBoundExtendedList(int x, int y) {
-    Lista<int> temp = getNeighbours(x);
+  Lista branchBoundExtendedList(int x, int y) {
+    Lista temp = getNeighbours(x);
 
 
     return temp;
