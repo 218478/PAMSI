@@ -1,7 +1,5 @@
 // Copyright 2016 Kamil Kuczaj
 #include "Sedzia.h"
-#include "Lista.h"
-
 #include <iostream>
 
 /*! \mainpage Opis programu

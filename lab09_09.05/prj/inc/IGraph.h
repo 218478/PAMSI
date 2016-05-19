@@ -16,7 +16,7 @@ class IGraph {
   virtual void addEdge(int x, int y, int weight = 1) = 0;
   virtual void removeVertex(int x) = 0;
   virtual void removeEdge(int x, int y) = 0;
-  virtual Lista<int> getNeighbours(int x) = 0;
+  virtual Lista getNeighbours(int x) = 0;
 };
 
 #endif  // LAB08_25_04_PRJ_INC_IGRAPH_H_

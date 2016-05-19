@@ -1,4 +1,5 @@
 #include <functional>
+#include <algorithm>
 #include <queue>
 #include <list>
 #include <vector>
@@ -19,63 +20,36 @@ template<typename T> void print_queue(T& q) {
 	std::cout << '\n';
 }
 
-
-class Lista {
-private:
-  int element;
-
-public:
-	Lista(int x) : element(x) {}
-	bool operator > (Lista& second) {
-		return (element > second.element) ? true : false;
-	}
-
-	bool operator < (Lista& second) {
-		return (element < second.element) ? true : false;
-	}
-
-	int sum() const {
-		return element;
-	}
-
-
-	friend std::ostream& operator <<(std::ostream& str, const Lista& l);
-};
- 
-std::ostream& operator << (std::ostream& str, const Lista& l) {
-		return str << l.sum();
-	}
-
-
-//------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------
-
 struct Node {
 	int element, weight;
 	Node() : element(0), weight(0){}
 	Node(int e, int w = 1) : element(e), weight(w) {}
+	bool operator == (Node second) {
+		if (element == second.element && weight == second.weight)
+			return true;
+		else
+			return false;
+	}
 };
 
-class Lista2 {
+class Lista {
 private:
 
 
 	std::list<Node> list_container;
 
 public:
-	Lista2() {}
+	Lista() {}
 
-	Lista2(std::list<Node> l) : list_container(l) {}
+	Lista(std::list<Node> l) : list_container(l) {}
 
-	Lista2(int e, int w = 1) { list_container.push_back(Node(e,w)); }
+	Lista(int e, int w = 1) { list_container.push_back(Node(e,w)); }
 
-	bool operator > (Lista2& second) const {
+	bool operator > (Lista& second) const {
 		return (sum() > second.sum()) ? true : false;
 	}
 
-	bool operator < (Lista2& second) const {
+	bool operator < (Lista& second) const {
 		return (sum() < second.sum()) ? true : false;
 	}
 
@@ -96,27 +70,52 @@ public:
 
 	std::list<Node>::iterator end() { return list_container.end(); }
 
-	friend std::ostream& operator <<(std::ostream& str, const Lista2& l);
+	int size() { return list_container.size(); }
+
+	void print() { std::cout << *this << std::endl; }
+
+	int search(int searched_word) {
+		if (list_container.empty())
+			return -2;
+
+		Node node(searched_word);
+		std::cout << node.element << "\t" << node.weight << std::endl;
+		auto temp = std::find(list_container.begin(), list_container.end(), node);
+		if (temp == list_container.end())
+			return -1;
+		else
+			return temp->element;
+	}
+
+	friend std::ostream& operator <<(std::ostream& str, const Lista& l);
 };
 
-	std::ostream& operator << (std::ostream& str, const Lista2& l){
+	std::ostream& operator << (std::ostream& str, const Lista& l){
 		for (auto it = l.list_container.begin(); it != l.list_container.end(); it++)
 			str << it->element << " (" << it->weight << ") ";
 		return str;
 	}
 
+// // List test: just compile this file with g++
 
-int main() {
-	struct CompareLists {
-		bool operator()(Lista2& left, Lista2& right) {
-			return left > right;
-		}
-	};
+// int main() {
+// 	struct CompareLists {
+// 		bool operator()(Lista& left, Lista& right) {
+// 			return left > right;
+// 		}
+// 	};
 
-	std::priority_queue< Lista2, std::vector<Lista2>, CompareLists > q;
-	int index = 0;
-	for(int n : {1,8,5,6,3,4,0,9,7,2})
-		q.push( Lista2(index++, n));
+// 	Lista temp;
+// 	temp.push_back(12);
+// 	temp.push_back(1);
+// 	temp.push_back(2);
 
-	print_queue(q);
-}
+// 	temp.search(12);
+
+// 	std::priority_queue< Lista, std::vector<Lista>, CompareLists > q;
+// 	int index = 0;
+// 	for(int n : {1,8,5,6,3,4,0,9,7,2})
+// 		q.push( Lista(index++, n));
+
+// 	print_queue(q);
+// }
