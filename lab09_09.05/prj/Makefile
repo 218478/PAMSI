@@ -4,7 +4,7 @@ CC = g++
 SOURCES = src/main.cpp src/Stoper.cpp src/Sedzia.cpp	src/Lista.cpp src/Graph.cpp \
 	src/BranchBoundTest.cpp src/BranchBoundExtendedListTest.cpp
 
-HEADERS = inc/Stoper.h inc/Sedzia.h inc/Tablica.h inc/ILista.h inc/Lista.h \
+HEADERS = inc/Stoper.h inc/Sedzia.h inc/ILista.h inc/Lista.h \
 	inc/IRunnable.h inc/IStoper.h inc/Graph.h inc/IGraph.h \
 	inc/BranchBoundTest.h inc/BranchBoundExtendedListTest.h
 	
