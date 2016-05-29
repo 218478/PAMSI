@@ -6,11 +6,17 @@ Proszę korzystać z ``gettimeofday()`` http://linux.die.net/man/2/gettimeofday
 
 Sprawozdanie w LaTeXu, bdb.
 
+
+
 # Lab3 - projektowanie obiektowe
 
 Sprawozdanie w LaTeXu, bdb.
 Doxygen OK.
 Bałagan w repozytorium.
+
+- Kod poprpawiony, uporządkowany
+
+Ocena: 4,5
 
 # Lab4 - ADT, lista / kolejka / stos
 
@@ -22,6 +28,11 @@ Dlaczego tylko trzy punkty pomiarowe? Miało być 10^{1,2,3,6,9}.
 
 Dlaczego złożoność wyszukiwania O(log n)? Jak to się ma do oczekiwań teoretycznych?
 Jakie wnioski z tej rozbieżności praktyki z teorią?
+
+- Sprawozdanie poprawione
+
+Ocena: 4,5
+
 
 # Lab5 - sortowanie
 
@@ -47,3 +58,19 @@ nie może wpływać na zmianę złożoności z O(1) na O(log n) - sama nie zale�
 Problem wynika najprawdopodobniej z nieuwzględnienia współczynnika wypełnienia.
 
 Ocena: 4
+
+# Lab7 - drzewa
+
+Drzewo r-b zaimplementowane, ale z błędami
+
+Ocena 3,5
+
+# Lab8 - grafy, DFS / BFS
+
+Ocena: 4,5
+
+# Lab9 - grafy (b&b)
+
+Zadanie nie zostało wykonane.
+
+Ocena: 2
